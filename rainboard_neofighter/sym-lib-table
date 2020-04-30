@@ -1,0 +1,4 @@
+(sym_lib_table
+  (lib (name rainboard_newfighter)(type Legacy)(uri ${KIPRJMOD}/libraries/rainboard_newfighter.lib)(options "")(descr ""))
+  (lib (name Arduino_Shields)(type Legacy)(uri /Users/clean/Documents/rainboard/kicat_newofighter_test/rainboard_newfighter/libraries/arduino-kicad-library-master/arduino.lib)(options "")(descr ""))
+)

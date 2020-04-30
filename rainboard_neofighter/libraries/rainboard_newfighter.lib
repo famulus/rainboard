@@ -1,0 +1,18 @@
+EESchema-LIBRARY Version 2.4
+#encoding utf-8
+#
+# SANWA-OBSF24
+#
+DEF SANWA-OBSF24 S 0 40 Y Y 1 F N
+F0 "S" 0 350 50 H V C CNN
+F1 "SANWA-OBSF24" 0 -350 50 H V C CNN
+F2 "rainboard_newfighter:Sanwa-OBSF24" 350 50 50 H I C CNN
+F3 "" 350 50 50 H I C CNN
+DRAW
+C 0 0 283 0 1 0 N
+X gnd 1 0 -100 100 R 50 50 1 1 P
+X output 2 0 150 100 R 50 50 1 1 O
+ENDDRAW
+ENDDEF
+#
+#End Library
