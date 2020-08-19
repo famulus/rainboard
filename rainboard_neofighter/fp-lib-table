@@ -1,4 +1,0 @@
-(fp_lib_table
-  (lib (name rainboard_newfighter)(type KiCad)(uri ${KIPRJMOD}/libraries/rainboard_newfighter.pretty)(options "")(descr ""))
-  (lib (name arduno_mega)(type KiCad)(uri /Users/clean/Documents/rainboard/kicat_newofighter_test/rainboard_newfighter/libraries/arduino-kicad-library-master/Arduino.pretty)(options "")(descr ""))
-)
