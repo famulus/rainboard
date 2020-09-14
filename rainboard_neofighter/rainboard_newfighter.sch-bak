@@ -24,7 +24,7 @@ F 3 "~" H 1150 4450 50  0001 C CNN
 	1    1150 4450
 	1    0    0    -1  
 $EndComp
-Text GLabel 1250 1250 0    50   Input ~ 0
+Text GLabel 1250 1450 0    50   Input ~ 0
 button-38
 Wire Wire Line
 	1650 1450 1250 1450
@@ -1972,7 +1972,7 @@ Wire Wire Line
 	4250 2150 4650 2150
 Wire Wire Line
 	1650 1350 1250 1350
-Text GLabel 1250 1350 0    50   Input ~ 0
+Text GLabel 1250 1950 0    50   Input ~ 0
 button-28
 Text GLabel 1300 5050 0    50   Input ~ 0
 5V
@@ -2306,7 +2306,7 @@ F 3 "~" H 19150 12200 50  0001 C CNN
 $EndComp
 Text GLabel 17300 12450 0    50   Input ~ 0
 MIDI-OUT
-Text GLabel 1250 4200 0    50   Input ~ 0
+Text GLabel 1250 1350 0    50   Input ~ 0
 MIDI-OUT
 $Comp
 L schmitt_trigger:74HC14D U2
@@ -2987,4 +2987,6 @@ Wire Wire Line
 Connection ~ 15650 13450
 Wire Wire Line
 	15650 13450 15650 13550
+Text GLabel 1250 1250 0    50   Input ~ 0
+MIDI-IN
 $EndSCHEMATC
