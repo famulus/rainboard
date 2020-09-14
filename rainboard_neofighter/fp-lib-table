@@ -1,0 +1,8 @@
+(fp_lib_table
+  (lib (name rainboard_newfighter)(type KiCad)(uri ${KIPRJMOD}/libraries/rainboard_newfighter.pretty)(options "")(descr ""))
+  (lib (name arduno_mega)(type KiCad)(uri /Users/clean/Documents/rainboard/rainboard_neofighter/libraries/arduino-kicad-library-master/Arduino.pretty)(options "")(descr ""))
+  (lib (name schmitt_trigger)(type KiCad)(uri /Users/clean/Documents/rainboard/rainboard_neofighter/libraries/74HC14D)(options "")(descr ""))
+  (lib (name io_expander)(type KiCad)(uri /Users/clean/Documents/rainboard/rainboard_neofighter/libraries/MCP23017-E_SO)(options "")(descr ""))
+  (lib (name MIDI-DIN)(type KiCad)(uri /Users/clean/Documents/rainboard/rainboard_neofighter/libraries/SDS-50J)(options "")(descr ""))
+  (lib (name opto_coupler)(type KiCad)(uri /Users/clean/Documents/rainboard/rainboard_neofighter/libraries/EL357N_A__TA_-G)(options "")(descr ""))
+)

@@ -1,0 +1,37 @@
+midi interface:
+https://calcium3000.wordpress.com/projects/teensy-midi-interface/
+
+io expander:
+https://datasheet.lcsc.com/szlcsc/Microchip-Tech-MCP23017-E-SO_C47023.pdf
+https://www.best-microcontroller-projects.com/mcp23017.html
+
+1uf caps:
+
+https://datasheet.lcsc.com/szlcsc/Samsung-Electro-Mechanics-CL21B105KBFNNNE_C28323.pdf
+
+
+100k resistor:
+
+https://lcsc.com/product-detail/Chip-Resistor-Surface-Mount_Uniroyal-Elec-1206W4F1003T5E_C17900.html/?href=jlc-SMT
+
+10K resistor:
+
+1206W4F1002T5E
+https://datasheet.lcsc.com/szlcsc/Uniroyal-Elec-1206W4F1002T5E_C17902.pdf
+
+4.7K
+0603WAF4701T5E
+
+softpot connectors:
+https://learn.sparkfun.com/tutorials/softpot-hookup-guide?_ga=2.22320763.1912169295.1599843883-2146996178.1598153037
+
+
+schmitt trigger:
+https://calcium3000.wordpress.com/projects/teensy-midi-interface/
+https://components101.com/articles/schmitt-trigger-introduction-working-applications
+https://datasheet.lcsc.com/szlcsc/Nexperia-74HCT14D-653_C5967.pdf
+
+
+optocoupler:
+https://hackaday.com/2018/05/09/optocouplers-defending-your-microcontroller-midi-and-a-hot-tip-for-speed/
+https://datasheet.lcsc.com/szlcsc/Everlight-Elec-EL357N-B-TA-G_C6649.pdf
