@@ -418,7 +418,7 @@
   )
 
   (module Connector_JST:JST_XH_B3B-XH-AM_1x03_P2.50mm_Vertical (layer B.Cu) (tedit 5C28146E) (tstamp 5F528C44)
-    (at 107.95 8.3312 240)
+    (at 78.243583 59.281554 240)
     (descr "JST XH series connector, B3B-XH-AM, with boss (http://www.jst-mfg.com/product/pdf/eng/eXH.pdf), generated with kicad-footprint-generator")
     (tags "connector JST XH vertical boss")
     (path /5F740A1B)
@@ -1875,7 +1875,7 @@
   )
 
   (module Resistor_SMD:R_0603_1608Metric (layer F.Cu) (tedit 5B301BBD) (tstamp 5F5EFE5F)
-    (at 103.39375 3.318005 60)
+    (at 73.687333 54.268359 60)
     (descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator")
     (tags resistor)
     (path /5F7A17BA)
@@ -1947,7 +1947,7 @@
   )
 
   (module Resistor_SMD:R_0603_1608Metric (layer F.Cu) (tedit 5B301BBD) (tstamp 5F5EFE3D)
-    (at 99 10.7508 60)
+    (at 69.293583 61.701154 60)
     (descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator")
     (tags resistor)
     (path /5F7A3089)
