@@ -1762,8 +1762,6 @@ Wire Wire Line
 	13950 7500 14300 7500
 Wire Wire Line
 	14300 7250 14000 7250
-Wire Wire Line
-	1150 4450 1650 4450
 Text GLabel 1250 1650 0    50   Input ~ 0
 button-46
 Text GLabel 4650 4450 2    50   Input ~ 0
@@ -1976,8 +1974,6 @@ Text GLabel 1250 1950 0    50   Input ~ 0
 button-28
 Text GLabel 1300 5050 0    50   Input ~ 0
 5V
-Wire Wire Line
-	1300 5050 1650 5050
 Text GLabel 1050 3250 0    50   Input ~ 0
 softpot-1
 Text GLabel 1050 3350 0    50   Input ~ 0
@@ -2084,8 +2080,6 @@ F 3 "https://store.arduino.cc/arduino-mega-2560-rev3" H 3650 5950 60  0001 C CNN
 	1    2950 3200
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	1650 4750 1650 4850
 $Comp
 L power:Earth #PWR0102
 U 1 1 5F62A60D
@@ -2189,17 +2183,6 @@ Wire Wire Line
 	9400 10700 9400 10550
 Wire Wire Line
 	8200 11000 9400 11000
-$Comp
-L power:Earth #PWR0104
-U 1 1 5FA22592
-P 8250 13300
-F 0 "#PWR0104" H 8250 13050 50  0001 C CNN
-F 1 "Earth" H 8250 13150 50  0001 C CNN
-F 2 "" H 8250 13300 50  0001 C CNN
-F 3 "~" H 8250 13300 50  0001 C CNN
-	1    8250 13300
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	8250 13300 8250 11300
 Wire Wire Line
@@ -2214,7 +2197,6 @@ Wire Wire Line
 Wire Wire Line
 	9400 12500 9400 11600
 Connection ~ 9400 11600
-Connection ~ 8250 13300
 Wire Wire Line
 	9400 13050 9400 13300
 Wire Wire Line
@@ -2998,4 +2980,54 @@ F 4 "C14663" H 2200 9750 50  0001 C CNN "LCSC"
 	1    2200 9750
 	1    0    0    -1  
 $EndComp
+$Comp
+L power:GNDA #PWR0124
+U 1 1 63D6B335
+P 8250 13300
+F 0 "#PWR0124" H 8250 13050 50  0001 C CNN
+F 1 "GNDA" H 8255 13127 50  0000 C CNN
+F 2 "" H 8250 13300 50  0001 C CNN
+F 3 "" H 8250 13300 50  0001 C CNN
+	1    8250 13300
+	1    0    0    -1  
+$EndComp
+Connection ~ 8250 13300
+Wire Wire Line
+	8250 13400 8250 13350
+Wire Wire Line
+	1300 5050 1650 5050
+Wire Wire Line
+	1650 5250 1650 5150
+Connection ~ 1650 5050
+Connection ~ 1650 5150
+Wire Wire Line
+	1650 5150 1650 5050
+Wire Wire Line
+	1150 4450 1650 4450
+$Comp
+L power:GNDA #PWR0104
+U 1 1 63CEC50B
+P 1350 4700
+F 0 "#PWR0104" H 1350 4450 50  0001 C CNN
+F 1 "GNDA" H 1355 4527 50  0000 C CNN
+F 2 "" H 1350 4700 50  0001 C CNN
+F 3 "" H 1350 4700 50  0001 C CNN
+	1    1350 4700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1350 4700 1500 4700
+Wire Wire Line
+	1500 4700 1500 4850
+Wire Wire Line
+	1500 4850 1650 4850
+Wire Wire Line
+	1650 4450 1650 4550
+Connection ~ 1650 4450
+Connection ~ 1650 4550
+Wire Wire Line
+	1650 4550 1650 4650
+Connection ~ 1650 4650
+Wire Wire Line
+	1650 4650 1650 4750
 $EndSCHEMATC
