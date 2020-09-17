@@ -3379,7 +3379,7 @@
   (gr_line (start -65 -112.5833) (end -130 0) (layer Edge.Cuts) (width 0.2))
   (gr_line (start 48.5936 141) (end 130 0) (layer Edge.Cuts) (width 0.2))
   (gr_line (start -48.5936 141) (end 48.5936 141) (layer Edge.Cuts) (width 0.2))
-  (gr_text "Rainboard V0.2\n" (at 51.5 122.174) (layer B.SilkS) (tstamp 5F6237DD)
+  (gr_text "Rainboard V0.2\n" (at 15 131.5) (layer B.SilkS) (tstamp 5F6237DD)
     (effects (font (size 1 1) (thickness 0.15)) (justify mirror))
   )
   (gr_text "Rainboard V0.2\n" (at 51.5 120.2436) (layer F.SilkS)
