@@ -2042,17 +2042,6 @@ F 3 "~" H 1500 13600 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L Connector_Generic:Conn_01x03 J9
-U 1 1 5F740A1B
-P 10050 11700
-F 0 "J9" V 9877 11880 50  0000 L CNN
-F 1 "Conn_01x03" V 9968 11880 50  0000 L CNN
-F 2 "Connector_JST:JST_XH_B3B-XH-AM_1x03_P2.50mm_Vertical" V 10059 11880 50  0001 L CNN
-F 3 "~" H 10050 11700 50  0001 C CNN
-	1    10050 11700
-	1    0    0    -1  
-$EndComp
-$Comp
 L Connector_Generic:Conn_01x03 J10
 U 1 1 5F7591D3
 P 10350 12600
@@ -3063,4 +3052,15 @@ Wire Wire Line
 Connection ~ 20800 11650
 Wire Wire Line
 	20800 11650 20800 11550
+$Comp
+L Connector_Generic:Conn_01x03 J9
+U 1 1 5F740A1B
+P 10050 11700
+F 0 "J9" V 9877 11880 50  0000 L CNN
+F 1 "Conn_01x03" V 9968 11880 50  0000 L CNN
+F 2 "Connector_JST:JST_XH_B3B-XH-AM_1x03_P2.50mm_Vertical" V 10059 11880 50  0001 L CNN
+F 3 "~" H 10050 11700 50  0001 C CNN
+	1    10050 11700
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
