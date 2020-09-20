@@ -1,26 +1,67 @@
+use <SnapLib.0.36.scad>
+
 
 round_over = 4;
 wall_thickness = 3 ;
 
-rainboad_diameter = 328  ;
-rainboard_height = 41;
+rainboad_diameter = 332.55  ; // point to point, long diagonal  288 short diag
+rainboard_height = 47;
 
 hole_radius = 12;
 
-resolution = 200;
+resolution = 25;
 
 back_panel = [125,40,60];
+
+foot_inset = 15;
+
+
+
+
 
 
 module backPanel(dimentions=[1,2,3]) {
 
-translate([0,130,20]) minkowski(){
-    cube(back_panel, true);
-sphere(round_over, $fn=resolution);
-    };
+midi_opening = 18.5; //diameter
+usb_opening = [16,16,10] ;
+usb_vert_offset = 9.03;    
+    
+dc_power_opening = 13; // diameter
+    
+midi_in_y = -15.4; // offset from 0 on PCB
+midi_out_y = -37; 
+midi_vert_offset = -8.25;   
+ 
+translate([0,((288/2)-1.5),0]) rotate([90,0,0]){ // place all holes at the back panel
+    
+     translate([
+    19.5+midi_in_y, usb_vert_offset,0]) cube(usb_opening, center=true); // cutout for USB
+    translate([50+midi_in_y,usb_vert_offset,0]) cylinder(20, d=(dc_power_opening), center=true,$fn=resolution);  // cutout for power   
 
+    translate([midi_in_y,midi_vert_offset,0]) cylinder(20, d=(midi_opening), center=true,$fn=resolution);   // midi IN  
+    
+    translate([midi_out_y,midi_vert_offset,0]) cylinder(20, d=(midi_opening), center=true,$fn=resolution);     // midi OUT
+
+
+     }   
+     
 
  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 module mainBody(rainboard_height,rainboad_diameter, round_over ) {
@@ -43,12 +84,12 @@ module interior(rainboard_height,rainboad_diameter, round_over, wall_thickness )
 
 //        interior
             
-                   translate([0,0,wall_thickness])
+                   translate([0,0,0])
             minkowski(){
             
 //            interior hex
 //        cylinder(h=(rainboard_height+ wall_thickness), d=(rainboad_diameter - wall_thickness), center=true,$fn=6);
-              cylinder(h=rainboard_height-(round_over*2), d=((rainboad_diameter- (round_over*2)) -(wall_thickness*2) ), center=true,$fn=6);     
+              cylinder(h=rainboard_height-(round_over*2)-(wall_thickness*2) , d=((rainboad_diameter- (round_over*2)) -(wall_thickness*2) ), center=true,$fn=6);     
 
             
 //            round over
@@ -57,6 +98,17 @@ module interior(rainboard_height,rainboad_diameter, round_over, wall_thickness )
             };
 
  }
+
+module footer_cutout(rainboard_height,rainboad_diameter, foot_inset ) {
+        translate([0,0,foot_inset])
+    cylinder(h=rainboard_height+foot_inset , d=(rainboad_diameter-foot_inset), center=true,$fn=6);     
+
+
+ }
+
+
+
+
 
 
 module buttons(buttons ) {
@@ -73,11 +125,11 @@ module buttons(buttons ) {
 
 
 
-module modulation_strips(depth ) {
+module modulation_strips( ) {
 
 
 //  https://cdn-shop.adafruit.com/product-files/178/SOFTPOT-DATA-SHEET-Rev-F3.pdf
-tolerance = 0.12;
+tolerance = 1;
 half_tolerance = tolerance /2;
 ribbonLength =  115.86+ tolerance;
 ribbonWidth = 20.32+ tolerance;
@@ -85,20 +137,45 @@ ribbonThickness = 0.58+ tolerance;
 tailLength = 24.89+ tolerance;
 tailWidth  = 10.16+ tolerance;    
 distanceFromCenter =     126.9;
+slot_height =     2.5;
+active_area_width =   7.11;
+  active_area_length =   100;  
 
-translate([0,distanceFromCenter,-(rainboard_height/2)]){
-    cube([ribbonLength,ribbonWidth,ribbonThickness*2], true);
-      
-//    The Tail
- translate([ribbonLength/2,0,0])
-       rotate([0,-25,0])
 
-    cube([tailLength*2,tailWidth,ribbonThickness*2], true);
+difference(){
     
-}
+        cube([ribbonLength+(wall_thickness*2),ribbonWidth+(wall_thickness*2),slot_height+(wall_thickness+1)], true); // enclosing cuboid
+    translate([0,0,1])cube([ribbonLength+20,ribbonWidth,slot_height], true); // slot for ribbon
+          translate([0,0,10])cube([active_area_length,active_area_width,20], true); // smaller cutout for active area
+
+    }
 
 
  }
+
+
+
+
+module ledge( ) {
+
+    // ledge for plexiglass
+difference (){
+ plexi_thickness = 3;   
+    
+ translate([0,0,rainboard_height/2 - (plexi_thickness/2)-plexi_thickness-1])    cylinder(h=plexi_thickness , d=(rainboad_diameter  ), center=true,$fn=6);   // the ledge  
+    
+
+
+    translate([0,0,rainboard_height/2 - 3-2])   cylinder(h=20 , d=(rainboad_diameter-foot_inset-4), center=true,$fn=6);     // the cutout negative
+
+translate([0,((288/2)-1.5),0]) rotate([90,0,0]){ // place all holes at the back panel
+    translate([20,(rainboard_height/2)-10.5,0])cube([80,10,20],true);
+
+}
+
+    }
+
+    }
 
 
 
@@ -123,6 +200,7 @@ module sideButtons(buttons ) {
 
 
 //  Final Output
+ 
 difference(){
     difference(){
       mainBody(rainboard_height,rainboad_diameter, round_over );                   
@@ -131,29 +209,25 @@ difference(){
             
     buttons(buttons_coordinates);
     backPanel(back_panel);
-    modulation_strips(1);
-   rotate([0,0,60]) modulation_strips(1);
-//  rotate([0,0,120]) modulation_strips(1);
-//   rotate([0,0,180]) modulation_strips(1);
-//   rotate([0,0,240]) modulation_strips(1);
-   rotate([0,0,300]) modulation_strips(1);
+
+   rotate([0,0,60]) modulation_strips();
    
        rotate([0,0,60])sideButtons();
      rotate([0,0,300])sideButtons();
-       rotate([0,0,240])sideButtons();
 
      rotate([0,0,0])sideButtons();
-
-     rotate([0,0,120])sideButtons();
+  
+   footer_cutout(rainboard_height,rainboad_diameter, foot_inset);
+backPanel();
 
 };
     
+ledge();
 
 
 
 
-
-
+ 
  
 
 
