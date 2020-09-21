@@ -1,6 +1,3 @@
-use <SnapLib.0.36.scad>
-
-
 round_over = 4;
 wall_thickness = 3 ;
 
@@ -9,12 +6,11 @@ rainboard_height = 47;
 
 hole_radius = 12;
 
-resolution = 25;
+resolution = 100;
 
 back_panel = [125,40,60];
 
 foot_inset = 15;
-
 
 
 
@@ -41,26 +37,10 @@ translate([0,((288/2)-1.5),0]) rotate([90,0,0]){ // place all holes at the back 
     translate([midi_in_y,midi_vert_offset,0]) cylinder(20, d=(midi_opening), center=true,$fn=resolution);   // midi IN  
     
     translate([midi_out_y,midi_vert_offset,0]) cylinder(20, d=(midi_opening), center=true,$fn=resolution);     // midi OUT
-
-
      }   
      
 
  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -108,9 +88,6 @@ module footer_cutout(rainboard_height,rainboad_diameter, foot_inset ) {
 
 
 
-
-
-
 module buttons(buttons ) {
 
 //    button
@@ -121,37 +98,6 @@ module buttons(buttons ) {
     };
  }
 
-
-
-
-
-module modulation_strips( ) {
-
-
-//  https://cdn-shop.adafruit.com/product-files/178/SOFTPOT-DATA-SHEET-Rev-F3.pdf
-tolerance = 1;
-half_tolerance = tolerance /2;
-ribbonLength =  115.86+ tolerance;
-ribbonWidth = 20.32+ tolerance;
-ribbonThickness = 0.58+ tolerance;
-tailLength = 24.89+ tolerance;
-tailWidth  = 10.16+ tolerance;    
-distanceFromCenter =     126.9;
-slot_height =     2.5;
-active_area_width =   7.11;
-  active_area_length =   100;  
-
-
-difference(){
-    
-        cube([ribbonLength+(wall_thickness*2),ribbonWidth+(wall_thickness*2),slot_height+(wall_thickness+1)], true); // enclosing cuboid
-    translate([0,0,1])cube([ribbonLength+20,ribbonWidth,slot_height], true); // slot for ribbon
-          translate([0,0,10])cube([active_area_length,active_area_width,20], true); // smaller cutout for active area
-
-    }
-
-
- }
 
 
 
@@ -199,35 +145,161 @@ module sideButtons(buttons ) {
 
 
 
+
+
+
+module modulation_strips_positive( ) {
+
+
+//  https://cdn-shop.adafruit.com/product-files/178/SOFTPOT-DATA-SHEET-Rev-F3.pdf
+tolerance = 1;
+half_tolerance = tolerance /2;
+ribbonLength =  115.86+ tolerance;
+ribbonWidth = 20.32+ tolerance;
+ribbonThickness = 0.58+ tolerance;
+tailLength = 24.89+ tolerance;
+tailWidth  = 10.16+ tolerance;    
+distanceFromCenter =     126.9;
+slot_height =     2.5;
+active_area_width =   7.11;
+  active_area_length =   100;  
+softpot_wall_thickness = 1.5;
+
+
+  rotate([0,180,0]) 
+  translate([0,288/2-16.7,
+    ((rainboard_height/2)-(softpot_wall_thickness*2))
+    ])
+   cube(
+        [
+            ribbonLength+(softpot_wall_thickness*2),
+            ribbonWidth+(softpot_wall_thickness*2.5),
+            slot_height+(softpot_wall_thickness)
+        ]
+        , true); // enclosing cuboid
+        
+        
+      rotate([0,180,300]) 
+  translate([0,288/2-16.7,
+    ((rainboard_height/2)-(softpot_wall_thickness*2))
+    ])
+   cube(
+        [
+            ribbonLength+(softpot_wall_thickness*2),
+            ribbonWidth+(softpot_wall_thickness*2.5),
+            slot_height+(softpot_wall_thickness)
+        ]
+        , true); // enclosing cuboid
+    
+        
+    }
+
+
+
+
+
+module modulation_strips_negative( ) {
+
+
+//  https://cdn-shop.adafruit.com/product-files/178/SOFTPOT-DATA-SHEET-Rev-F3.pdf
+tolerance = 1;
+half_tolerance = tolerance /2;
+ribbonLength =  115.86+ tolerance;
+ribbonWidth = 20.32+ tolerance;
+ribbonThickness = 0.58+ tolerance;
+tailLength = 24.89+ tolerance;
+tailWidth  = 10.16+ tolerance;    
+distanceFromCenter =     126.9;
+slot_height =     2.5;
+slot_runout = 42;    
+active_area_width =   7.11;
+  active_area_length =   100;  
+softpot_wall_thickness = 1.5;
+
+
+  rotate([0,180,0]) 
+  translate([0,288/2-16.7,
+    ((rainboard_height/2)-(softpot_wall_thickness)-softpot_wall_thickness/2)
+    ]){
+        
+        cube([ribbonLength+slot_runout,ribbonWidth,slot_height], true); // slot for ribbon
+
+        translate([0,0,10])cube([active_area_length,active_area_width,20], true); // smaller cutout for active area
+      }
+      
+      
+  rotate([0,180,300]) 
+  translate([0,288/2-16.7,
+    ((rainboard_height/2)-(softpot_wall_thickness)-softpot_wall_thickness/2)
+    ]){
+        
+        cube([ribbonLength+slot_runout,ribbonWidth,slot_height], true); // slot for ribbon
+
+        translate([0,0,10])cube([active_area_length,active_area_width,20], true); // smaller cutout for active area
+      }
+      
+      
+
+//difference(){
+//    
+//
+//
+//    }
+
+
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //  Final Output
- 
 difference(){
     difference(){
       mainBody(rainboard_height,rainboad_diameter, round_over );                   
       interior(rainboard_height,rainboad_diameter, round_over, wall_thickness );
    };
             
-    buttons(buttons_coordinates);
+   footer_cutout(rainboard_height,rainboad_diameter, foot_inset);
+
     backPanel(back_panel);
 
-   rotate([0,0,60]) modulation_strips();
    
-       rotate([0,0,60])sideButtons();
+     rotate([0,0,60])sideButtons();
      rotate([0,0,300])sideButtons();
-
      rotate([0,0,0])sideButtons();
-  
-   footer_cutout(rainboard_height,rainboad_diameter, foot_inset);
-backPanel();
+      
+
+
+    buttons(buttons_coordinates);
+
+    backPanel();
+
+   
+      modulation_strips_negative();
 
 };
     
 ledge();
 
 
+difference (){
+    modulation_strips_positive();
+      modulation_strips_negative();
 
-
- 
+    }
  
 
 
