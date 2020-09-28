@@ -1015,3 +1015,16 @@ Constraint.other2=0
 Constraint.reference=0
 AddConstraint
 
+Constraint.h.v=0000001e
+Constraint.type=30
+Constraint.group.v=00000002
+Constraint.workplane.v=80020000
+Constraint.valA=6.00000000000000000000
+Constraint.ptA.v=00100001
+Constraint.ptB.v=00100002
+Constraint.other=0
+Constraint.other2=0
+Constraint.reference=1
+Constraint.disp.offset.x=-4.01877572016460948845
+AddConstraint
+
