@@ -2,7 +2,7 @@ round_over = 4;
 wall_thickness = 3 ;
 
 rainboad_diameter = 332.55  ; // point to point, long diagonal  288 short diag
-rainboard_height = 47;
+rainboard_height = 48;
 
 hole_radius = 12;
 
@@ -19,14 +19,14 @@ foot_inset = 15;
 module backPanel(dimentions=[1,2,3]) {
 
 midi_opening = 18.5; //diameter
-usb_opening = [16,16,10] ;
+usb_opening = [14.5,14.5,10] ;
 usb_vert_offset = 9.03;    
     
 dc_power_opening = 13; // diameter
     
 midi_in_y = -15.4; // offset from 0 on PCB
 midi_out_y = -37; 
-midi_vert_offset = -8.25;   
+midi_vert_offset = -7.75;   
  
 translate([0,((288/2)-1.5),0]) rotate([90,0,0]){ // place all holes at the back panel
     
@@ -108,7 +108,7 @@ module ledge( ) {
 difference (){
  plexi_thickness = 3;   
     
- translate([0,0,rainboard_height/2 - (plexi_thickness/2)-plexi_thickness-1])    cylinder(h=plexi_thickness , d=(rainboad_diameter  ), center=true,$fn=6);   // the ledge  
+ translate([0,0,  (rainboard_height/2 - (plexi_thickness/2)-plexi_thickness-2)  ])    cylinder(h=plexi_thickness , d=(rainboad_diameter  ), center=true,$fn=6);   // the ledge  
     
 
 
@@ -159,10 +159,7 @@ ribbonWidth = 20.32+ tolerance;
 ribbonThickness = 0.58+ tolerance;
 tailLength = 24.89+ tolerance;
 tailWidth  = 10.16+ tolerance;    
-distanceFromCenter =     126.9;
-slot_height =     2.5;
-active_area_width =   7.11;
-  active_area_length =   100;  
+softpot_backer =     2;
 softpot_wall_thickness = 1.5;
 
 
@@ -174,7 +171,7 @@ softpot_wall_thickness = 1.5;
         [
             ribbonLength+(softpot_wall_thickness*2),
             ribbonWidth+(softpot_wall_thickness*2.5),
-            slot_height+(softpot_wall_thickness)
+            softpot_backer+(softpot_wall_thickness)
         ]
         , true); // enclosing cuboid
         
@@ -187,7 +184,7 @@ softpot_wall_thickness = 1.5;
         [
             ribbonLength+(softpot_wall_thickness*2),
             ribbonWidth+(softpot_wall_thickness*2.5),
-            slot_height+(softpot_wall_thickness)
+            softpot_backer+(softpot_wall_thickness)
         ]
         , true); // enclosing cuboid
     
@@ -209,11 +206,10 @@ ribbonWidth = 20.32+ tolerance;
 ribbonThickness = 0.58+ tolerance;
 tailLength = 24.89+ tolerance;
 tailWidth  = 10.16+ tolerance;    
-distanceFromCenter =     126.9;
-slot_height =     2.5;
-slot_runout = 42;    
-active_area_width =   7.11;
-  active_area_length =   100;  
+slot_height =     1.6;
+slot_runout = 46;    
+active_area_width =   15;
+  active_area_length =   110;  
 softpot_wall_thickness = 1.5;
 
 
