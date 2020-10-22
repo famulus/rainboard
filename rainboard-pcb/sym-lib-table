@@ -1,0 +1,9 @@
+(sym_lib_table
+  (lib (name rainboard_newfighter)(type Legacy)(uri ${KIPRJMOD}/libraries/rainboard_newfighter.lib)(options "")(descr ""))
+  (lib (name Arduino_Shields)(type Legacy)(uri ${KIPRJMOD}/libraries/arduino-kicad-library-master/arduino.lib)(options "")(descr ""))
+  (lib (name rainboard_newfighter-rescue)(type Legacy)(uri ${KIPRJMOD}/rainboard_newfighter-rescue.lib)(options "")(descr ""))
+  (lib (name multiplex)(type Legacy)(uri ${KIPRJMOD}/libraries/MCP23017-E_SO/MCP23017-E_SO.lib)(options "")(descr ""))
+  (lib (name schmitt_trigger)(type Legacy)(uri ${KIPRJMOD}/libraries/74HC14D/74HC14D.lib)(options "")(descr ""))
+  (lib (name opto_couplers)(type Legacy)(uri ${KIPRJMOD}/libraries/EL357N_A__TA_-G/EL357N_A__TA_-G.lib)(options "")(descr ""))
+  (lib (name midi_din)(type Legacy)(uri ${KIPRJMOD}/libraries/SDS-50J/SDS-50J.lib)(options "")(descr ""))
+)
