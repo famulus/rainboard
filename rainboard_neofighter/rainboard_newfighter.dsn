@@ -24,10 +24,6 @@
       (path pcb 0  130000 0  48593.6 -141000  -48593.6 -141000  -130000 0
             -65000 112583  65000 112583  130000 0)
     )
-    (plane Earth (polygon B.Cu 0  90830.4 141935  171806 -2844.8  82550 -156616  -87680.8 -151333
-            -169469 -1320.8  -92202 143053  90830.4 141935))
-    (plane Earth (polygon F.Cu 0  170434 -5283.2  79552.8 -155245  -91998.8 -151130  -171044 5994.4
-            -91897.2 143002  92659.2 143002  170434 -5283.2))
     (via "Via[0-1]_800:400_um")
     (rule
       (width 200.66)
@@ -37,23 +33,11 @@
     )
   )
   (placement
-    (component Resistor_SMD:R_0603_1608Metric
-      (place R10 -5200 -115800 front 180 (PN 4.7k))
-      (place R9 -1700 -118200 front 180 (PN 4.7k))
-      (place R8 -21000 -114000 front 90 (PN 10k))
-      (place R7 -15500 -119500 front 90 (PN 220R))
-      (place C4 -15500 -114000 front 270 (PN 100nf))
-      (place C3 -37000 -121200 front 90 (PN 100nf))
-      (place R6 -43500 -109000 front 180 (PN 220R))
-      (place R5 -32000 -121200 front 90 (PN 220R))
-      (place R4 58000 -71000 front 240 (PN 4.7k))
-      (place R3 60000 -67500 front 60 (PN 4.7k))
-      (place R2 54762.4 -86614 front 240 (PN 100k))
-      (place R1 74000 -55000 front 60 (PN 100k))
-      (place C2 -15500 -108500 front 90 (PN 100nf))
-      (place C1 -30900 -86700 front 90 (PN 100nf))
+    (component Diode_SMD:D_SMA
+      (place D1 -35100 -115800 front 180 (PN D))
     )
     (component "rainboard_newfighter:Sanwa-OBSF24-v2"
+      (place S51 -73742.1 -76635 front 0 (PN "SANWA-OBSF24"))
       (place S57 -58993.7 -102180 front 0 (PN "SANWA-OBSF24"))
       (place S48 29496.8 -51090 front 180 (PN "SANWA-OBSF24"))
       (place S60 29496.8 -102180 front 90 (PN "SANWA-OBSF24"))
@@ -109,12 +93,27 @@
       (place S46 -29496.8 -51090 front 0 (PN "SANWA-OBSF24"))
       (place S49 58993.7 -51090 front 0 (PN "SANWA-OBSF24"))
       (place S50 88490.5 -51090 front 0 (PN "SANWA-OBSF24"))
-      (place S51 -73742.1 -76635 front 0 (PN "SANWA-OBSF24"))
       (place S52 -44245.2 -76635 front 0 (PN "SANWA-OBSF24"))
       (place S54 14748.4 -76635 front 180 (PN "SANWA-OBSF24"))
       (place S56 73742.1 -76635 front 0 (PN "SANWA-OBSF24"))
       (place S58 -29496.8 -102180 front 0 (PN "SANWA-OBSF24"))
       (place S61 58993.7 -102180 front 0 (PN "SANWA-OBSF24"))
+    )
+    (component Resistor_SMD:R_0603_1608Metric
+      (place R10 -5200 -115800 front 180 (PN 4.7k))
+      (place R9 -1700 -118200 front 180 (PN 4.7k))
+      (place R8 -21000 -114000 front 90 (PN 10k))
+      (place R7 -15500 -119500 front 90 (PN 220R))
+      (place C4 -15500 -114000 front 270 (PN 100nf))
+      (place C3 -37000 -121200 front 90 (PN 100nf))
+      (place R6 -43500 -109000 front 180 (PN 220R))
+      (place R5 -32000 -121200 front 90 (PN 220R))
+      (place R4 58000 -71000 front 240 (PN 4.7k))
+      (place R3 60000 -67500 front 60 (PN 4.7k))
+      (place R2 54762.4 -86614 front 240 (PN 100k))
+      (place R1 74000 -55000 front 60 (PN 100k))
+      (place C2 -15500 -108500 front 90 (PN 100nf))
+      (place C1 -30900 -86700 front 90 (PN 100nf))
     )
     (component "Connector_JST:JST_XH_B3B-XH-AM_1x03_P2.50mm_Vertical"
       (place J10 63652.4 -84886.8 back 60 (PN Conn_01x03))
@@ -154,19 +153,26 @@
     )
   )
   (library
-    (image Resistor_SMD:R_0603_1608Metric
-      (outline (path signal 50  1480 -730  -1480 -730))
-      (outline (path signal 50  1480 730  1480 -730))
-      (outline (path signal 50  -1480 730  1480 730))
-      (outline (path signal 50  -1480 -730  -1480 730))
-      (outline (path signal 120  -162.779 -510  162.779 -510))
-      (outline (path signal 120  -162.779 510  162.779 510))
-      (outline (path signal 100  800 -400  -800 -400))
-      (outline (path signal 100  800 400  800 -400))
-      (outline (path signal 100  -800 400  800 400))
-      (outline (path signal 100  -800 -400  -800 400))
-      (pin RoundRect[T]Pad_875x950_219.582_um 2 787.5 0)
-      (pin RoundRect[T]Pad_875x950_219.582_um 1 -787.5 0)
+    (image Diode_SMD:D_SMA
+      (outline (path signal 120  -3400 1650  2000 1650))
+      (outline (path signal 120  -3400 -1650  2000 -1650))
+      (outline (path signal 100  -649.44 -1.02  501.18 799.08))
+      (outline (path signal 100  -649.44 -1.02  501.18 -750.32))
+      (outline (path signal 100  501.18 -750.32  501.18 799.08))
+      (outline (path signal 100  -649.44 799.08  -649.44 -801.12))
+      (outline (path signal 100  501.18 -1.02  1499.4 -1.02))
+      (outline (path signal 100  -649.44 -1.02  -1551.14 -1.02))
+      (outline (path signal 50  -3500 -1750  -3500 1750))
+      (outline (path signal 50  3500 -1750  -3500 -1750))
+      (outline (path signal 50  3500 1750  3500 -1750))
+      (outline (path signal 50  -3500 1750  3500 1750))
+      (outline (path signal 100  2300 1500  -2300 1500))
+      (outline (path signal 100  2300 1500  2300 -1500))
+      (outline (path signal 100  -2300 -1500  -2300 1500))
+      (outline (path signal 100  2300 -1500  -2300 -1500))
+      (outline (path signal 120  -3400 1650  -3400 -1650))
+      (pin Rect[T]Pad_2500x1800_um 2 2000 0)
+      (pin Rect[T]Pad_2500x1800_um 1 -2000 0)
     )
     (image "rainboard_newfighter:Sanwa-OBSF24-v2"
       (outline (path signal 200  -7420 -1270  -7495.3 -1426.37  -7664.5 -1464.99  -7800.19 -1356.78
@@ -201,6 +207,20 @@
             11676.5 2767.39  11918.9 1393.12  12000 0))
       (pin Oval[A]Pad_3000x6000_um 1 -4100 1400)
       (pin Oval[A]Pad_3000x6000_um 2 4100 1400)
+    )
+    (image Resistor_SMD:R_0603_1608Metric
+      (outline (path signal 50  1480 -730  -1480 -730))
+      (outline (path signal 50  1480 730  1480 -730))
+      (outline (path signal 50  -1480 730  1480 730))
+      (outline (path signal 50  -1480 -730  -1480 730))
+      (outline (path signal 120  -162.779 -510  162.779 -510))
+      (outline (path signal 120  -162.779 510  162.779 510))
+      (outline (path signal 100  800 -400  -800 -400))
+      (outline (path signal 100  800 400  800 -400))
+      (outline (path signal 100  -800 400  800 400))
+      (outline (path signal 100  -800 -400  -800 400))
+      (pin RoundRect[T]Pad_875x950_219.582_um 2 787.5 0)
+      (pin RoundRect[T]Pad_875x950_219.582_um 1 -787.5 0)
     )
     (image "Connector_JST:JST_XH_B3B-XH-AM_1x03_P2.50mm_Vertical"
       (outline (path signal 120  -2850 2750  -2850 1500))
@@ -673,6 +693,10 @@
             643.577 997.138))
       (attach off)
     )
+    (padstack Rect[T]Pad_2500x1800_um
+      (shape (rect F.Cu -1250 -900 1250 900))
+      (attach off)
+    )
     (padstack Rect[T]Pad_1701.8x533.4_um
       (shape (rect F.Cu -850.9 -266.7 850.9 266.7))
       (attach off)
@@ -705,14 +729,14 @@
       (pins S1-2 XA1-D31)
     )
     (net Earth
-      (pins S57-1 S48-1 J18-1 J17-1 J16-1 J15-1 J14-1 J13-1 J8-1 J7-1 J6-1 J5-1 J4-1
-        J3-1 J2-1 J1-1 J12-S2 J12-S1 J12-3 J12-1 J12-2 U3-3 U1-17 U1-16 U1-15 U1-10
-        C4-2 U2-13 U2-11 U2-7 C3-2 C1-2 S60-1 S59-1 S53-1 S55-1 S41-1 S39-1 S47-1
-        S40-1 S1-1 S2-1 S3-1 S4-1 S5-1 S6-1 S7-1 S8-1 S9-1 S10-1 S11-1 S12-1 S13-1
-        S14-1 S15-1 S16-1 S17-1 S18-1 S19-1 S20-1 S21-1 S22-1 S23-1 S24-1 S25-1 S26-1
-        S27-1 S28-1 S29-1 S30-1 S31-1 S32-1 S33-1 S34-1 S35-1 S36-1 S37-1 S38-1 S42-1
-        S43-1 S44-1 S45-1 S46-1 S49-1 S50-1 S51-1 S52-1 S54-1 S56-1 S58-1 S61-1 XA1-GND6
-        XA1-GND5 XA1-GND1 XA1-GND2)
+      (pins S51-1 S57-1 S48-1 J18-1 J17-1 J16-1 J15-1 J14-1 J13-1 J8-1 J7-1 J6-1 J5-1
+        J4-1 J3-1 J2-1 J1-1 J12-S2 J12-S1 J12-2 U3-3 U1-17 U1-16 U1-15 U1-10 C4-2
+        U2-13 U2-11 U2-7 C3-2 C1-2 S60-1 S59-1 S53-1 S55-1 S41-1 S39-1 S47-1 S40-1
+        S1-1 S2-1 S3-1 S4-1 S5-1 S6-1 S7-1 S8-1 S9-1 S10-1 S11-1 S12-1 S13-1 S14-1
+        S15-1 S16-1 S17-1 S18-1 S19-1 S20-1 S21-1 S22-1 S23-1 S24-1 S25-1 S26-1 S27-1
+        S28-1 S29-1 S30-1 S31-1 S32-1 S33-1 S34-1 S35-1 S36-1 S37-1 S38-1 S42-1 S43-1
+        S44-1 S45-1 S46-1 S49-1 S50-1 S52-1 S54-1 S56-1 S58-1 S61-1 XA1-GND6 XA1-GND5
+        XA1-GND1 XA1-GND2)
     )
     (net "button-02"
       (pins S2-2 XA1-D35)
@@ -907,10 +931,10 @@
       (pins R10-1 R9-1 R8-2 U1-18 U1-9 C4-1 U2-14 C3-1 R5-1 C1-1 XA1-5V4 XA1-5V3 XA1-5V1)
     )
     (net "softpot-1"
-      (pins J9-2 R1-1 XA1-A10)
+      (pins J9-2 R1-1)
     )
     (net "softpot-2"
-      (pins J10-2 R2-1 XA1-A9)
+      (pins J10-2 R2-1 XA1-A10 XA1-A9)
     )
     (net "Net-(J3-Pad2)"
       (pins J3-2 U1-3)
@@ -990,9 +1014,6 @@
     (net "Net-(U1-Pad19)"
       (pins U1-19)
     )
-    (net "Net-(J11-Pad5)"
-      (pins J11-5 U3-2)
-    )
     (net "Net-(J11-Pad4)"
       (pins J11-4 R7-1)
     )
@@ -1010,9 +1031,6 @@
     )
     (net "Net-(J13-Pad2)"
       (pins J13-2 U1-21)
-    )
-    (net "Net-(R7-Pad2)"
-      (pins U3-1 R7-2)
     )
     (net "MIDI-IN"
       (pins U2-8 XA1-D19)
@@ -1056,29 +1074,41 @@
     (net "Net-(R8-Pad1)"
       (pins R8-1 U3-4 U2-5)
     )
+    (net "Net-(D1-Pad2)"
+      (pins D1-2 J11-5 U3-2)
+    )
+    (net "Net-(D1-Pad1)"
+      (pins D1-1 U3-1 R7-2)
+    )
+    (net "Net-(J12-Pad3)"
+      (pins J12-3)
+    )
+    (net "Net-(J12-Pad1)"
+      (pins J12-1)
+    )
     (class kicad_default "" 3.3V 5V AREF BREF Earth GNDA "MIDI-IN" "MIDI-OUT"
-      "Net-(J1-Pad2)" "Net-(J11-Pad1)" "Net-(J11-Pad2)" "Net-(J11-Pad3)" "Net-(J11-Pad4)"
-      "Net-(J11-Pad5)" "Net-(J11-PadS1)" "Net-(J12-Pad4)" "Net-(J12-Pad5)"
-      "Net-(J13-Pad2)" "Net-(J14-Pad2)" "Net-(J15-Pad2)" "Net-(J16-Pad2)"
-      "Net-(J17-Pad2)" "Net-(J18-Pad2)" "Net-(J2-Pad2)" "Net-(J3-Pad2)" "Net-(J4-Pad2)"
-      "Net-(J5-Pad2)" "Net-(J6-Pad2)" "Net-(J7-Pad2)" "Net-(J8-Pad2)" "Net-(R6-Pad2)"
-      "Net-(R7-Pad2)" "Net-(R8-Pad1)" "Net-(U1-Pad19)" "Net-(U1-Pad20)" "Net-(U2-Pad10)"
-      "Net-(U2-Pad12)" "Net-(U2-Pad2)" "Net-(U2-Pad6)" "Net-(XA1-Pad5V2)"
-      "Net-(XA1-PadD0)" "Net-(XA1-PadD1)" "Net-(XA1-PadD50)" "Net-(XA1-PadD51)"
-      "Net-(XA1-PadD52)" "Net-(XA1-PadD53)" "Net-(XA1-PadGND4)" "Net-(XA1-PadIORF)"
-      "Net-(XA1-PadMISO)" "Net-(XA1-PadMOSI)" "Net-(XA1-PadRST1)" "Net-(XA1-PadRST2)"
-      "Net-(XA1-PadSCK)" "Net-(XA1-PadVIN)" SCL SDA "button-01" "button-02"
-      "button-03" "button-04" "button-05" "button-06" "button-07" "button-08"
-      "button-09" "button-10" "button-11" "button-12" "button-13" "button-14"
-      "button-15" "button-16" "button-17" "button-18" "button-19" "button-20"
-      "button-21" "button-22" "button-23" "button-24" "button-25" "button-26"
-      "button-27" "button-28" "button-29" "button-30" "button-31" "button-32"
-      "button-33" "button-34" "button-35" "button-36" "button-37" "button-38"
-      "button-39" "button-40" "button-41" "button-42" "button-43" "button-44"
-      "button-45" "button-46" "button-47" "button-48" "button-49" "button-50"
-      "button-51" "button-52" "button-53" "button-54" "button-55" "button-56"
-      "button-57" "button-58" "button-59" "button-60" "button-61" "softpot-1"
-      "softpot-2"
+      "Net-(D1-Pad1)" "Net-(D1-Pad2)" "Net-(J1-Pad2)" "Net-(J11-Pad1)" "Net-(J11-Pad2)"
+      "Net-(J11-Pad3)" "Net-(J11-Pad4)" "Net-(J11-PadS1)" "Net-(J12-Pad1)"
+      "Net-(J12-Pad3)" "Net-(J12-Pad4)" "Net-(J12-Pad5)" "Net-(J13-Pad2)"
+      "Net-(J14-Pad2)" "Net-(J15-Pad2)" "Net-(J16-Pad2)" "Net-(J17-Pad2)"
+      "Net-(J18-Pad2)" "Net-(J2-Pad2)" "Net-(J3-Pad2)" "Net-(J4-Pad2)" "Net-(J5-Pad2)"
+      "Net-(J6-Pad2)" "Net-(J7-Pad2)" "Net-(J8-Pad2)" "Net-(R6-Pad2)" "Net-(R8-Pad1)"
+      "Net-(U1-Pad19)" "Net-(U1-Pad20)" "Net-(U2-Pad10)" "Net-(U2-Pad12)"
+      "Net-(U2-Pad2)" "Net-(U2-Pad6)" "Net-(XA1-Pad5V2)" "Net-(XA1-PadD0)"
+      "Net-(XA1-PadD1)" "Net-(XA1-PadD50)" "Net-(XA1-PadD51)" "Net-(XA1-PadD52)"
+      "Net-(XA1-PadD53)" "Net-(XA1-PadGND4)" "Net-(XA1-PadIORF)" "Net-(XA1-PadMISO)"
+      "Net-(XA1-PadMOSI)" "Net-(XA1-PadRST1)" "Net-(XA1-PadRST2)" "Net-(XA1-PadSCK)"
+      "Net-(XA1-PadVIN)" SCL SDA "button-01" "button-02" "button-03" "button-04"
+      "button-05" "button-06" "button-07" "button-08" "button-09" "button-10"
+      "button-11" "button-12" "button-13" "button-14" "button-15" "button-16"
+      "button-17" "button-18" "button-19" "button-20" "button-21" "button-22"
+      "button-23" "button-24" "button-25" "button-26" "button-27" "button-28"
+      "button-29" "button-30" "button-31" "button-32" "button-33" "button-34"
+      "button-35" "button-36" "button-37" "button-38" "button-39" "button-40"
+      "button-41" "button-42" "button-43" "button-44" "button-45" "button-46"
+      "button-47" "button-48" "button-49" "button-50" "button-51" "button-52"
+      "button-53" "button-54" "button-55" "button-56" "button-57" "button-58"
+      "button-59" "button-60" "button-61" "softpot-1" "softpot-2"
       (circuit
         (use_via Via[0-1]_800:400_um)
       )
@@ -1089,58 +1119,46 @@
     )
   )
   (wiring
-    (wire (path F.Cu 500  38738.7 -99400  35938.7 -102200)(net 5V)(type protect))
+    (wire (path F.Cu 500  38738.7 -99400  38638.7 -99300)(net 5V)(type protect))
     (wire (path F.Cu 500  39960 -99400  38738.7 -99400)(net 5V)(type protect))
-    (wire (path F.Cu 500  35938.7 -102200  23600 -102200)(net 5V)(type protect))
-    (wire (path F.Cu 500  7600 -118200  -912.5 -118200)(net 5V)(type protect))
-    (wire (path F.Cu 500  23600 -102200  7600 -118200)(net 5V)(type protect))
+    (wire (path F.Cu 500  38638.7 -99300  35600 -99300  32300 -102600  20700 -102600)(net 5V)(type protect))
+    (wire (path F.Cu 500  5100 -118200  -912.5 -118200)(net 5V)(type protect))
+    (wire (path F.Cu 500  20700 -102600  5100 -118200)(net 5V)(type protect))
     (wire (path F.Cu 500  -3312.5 -115800  -4412.5 -115800)(net 5V)(type protect))
     (wire (path F.Cu 500  -912.5 -118200  -3312.5 -115800)(net 5V)(type protect))
-    (wire (path F.Cu 500  -4412.5 -115800  -4412.5 -118312)(net 5V)(type protect))
-    (wire (path F.Cu 500  -6332.2 -120232  -10232.2 -120232)(net 5V)(type protect))
-    (wire (path F.Cu 500  -4412.5 -118312  -6332.2 -120232)(net 5V)(type protect))
-    (wire (path F.Cu 500  -10232.2 -120232  -12900 -117564)(net 5V)(type protect))
-    (wire (path F.Cu 500  -15025 -113212  -15500 -113212)(net 5V)(type protect))
-    (wire (path F.Cu 500  -12900 -115338  -15025 -113212)(net 5V)(type protect))
-    (wire (path F.Cu 500  -12900 -117564  -12900 -115338)(net 5V)(type protect))
-    (wire (path F.Cu 500  -15500 -113212  -21000 -113212  -27012.5 -113212  -29500 -115700)(net 5V)(type protect))
+    (wire (path F.Cu 500  -4412.5 -115800  -4412.5 -127612)(net 5V)(type protect))
+    (wire (path F.Cu 500  -6302.8 -129503  -11102.8 -129503)(net 5V)(type protect))
+    (wire (path F.Cu 500  -4412.5 -127612  -6302.8 -129503)(net 5V)(type protect))
+    (wire (path F.Cu 500  -11102.8 -129503  -12900 -127706  -12900 -113800)(net 5V)(type protect))
+    (wire (path F.Cu 500  -13487.5 -113212  -15500 -113212)(net 5V)(type protect))
+    (wire (path F.Cu 500  -12900 -113800  -13487.5 -113212)(net 5V)(type protect))
+    (wire (path F.Cu 500  -15975 -113212  -16062.5 -113300)(net 5V)(type protect))
+    (wire (path F.Cu 500  -15500 -113212  -15975 -113212)(net 5V)(type protect))
+    (wire (path F.Cu 500  -16150 -113212  -21000 -113212)(net 5V)(type protect))
+    (wire (path F.Cu 500  -16062.5 -113300  -16150 -113212)(net 5V)(type protect))
+    (wire (path F.Cu 500  -21475 -113212  -24162.5 -115900)(net 5V)(type protect))
+    (wire (path F.Cu 500  -21000 -113212  -21475 -113212)(net 5V)(type protect))
+    (wire (path F.Cu 500  -24162.5 -115900  -27800 -115900  -30200 -118300)(net 5V)(type protect))
     (wire (path F.Cu 500  -31525 -121988  -32000 -121988)(net 5V)(type protect))
-    (wire (path F.Cu 500  -29500 -119962  -31525 -121988)(net 5V)(type protect))
-    (wire (path F.Cu 500  -29500 -115700  -29500 -119962)(net 5V)(type protect))
-    (wire (path F.Cu 500  -32000 -121988  -37000 -121988)(net 5V)(type protect))
+    (wire (path F.Cu 500  -30200 -120662  -31525 -121988)(net 5V)(type protect))
+    (wire (path F.Cu 500  -30200 -118300  -30200 -120662)(net 5V)(type protect))
+    (wire (path F.Cu 500  -32475 -121988  -37000 -121988)(net 5V)(type protect))
+    (wire (path F.Cu 500  -32000 -121988  -32475 -121988)(net 5V)(type protect))
     (wire (path F.Cu 500  -41690 -120442  -41690 -119091)(net 5V)(type protect))
     (wire (path F.Cu 500  -40144.2 -121988  -41690 -120442)(net 5V)(type protect))
     (wire (path F.Cu 500  -37000 -121988  -40144.2 -121988)(net 5V)(type protect))
-    (wire (path F.Cu 500  -27012.5 -113212  -27012.5 -113188)(net 5V)(type protect))
-    (wire (path F.Cu 500  -42095 -98105  -42095 -94105)(net 5V)(type protect))
-    (wire (path F.Cu 500  -27012.5 -113188  -31000 -109200)(net 5V)(type protect))
-    (wire (path F.Cu 500  -30900 -109100  -30900 -87487.5)(net 5V)(type protect))
-    (wire (path F.Cu 500  -31000 -109200  -30900 -109100)(net 5V)(type protect))
-    (wire (path F.Cu 500  -31000 -109200  -42095 -98105)(net 5V)(type protect))
-    (wire (path F.Cu 500  -39555 -81855  -39555 -84895)(net 5V)(type protect))
-    (wire (path F.Cu 500  -32700 -82300  -34500 -80500)(net 5V)(type protect))
-    (wire (path F.Cu 500  -32700 -86162.5  -32700 -82300)(net 5V)(type protect))
-    (wire (path F.Cu 500  -31375 -87487.5  -32700 -86162.5)(net 5V)(type protect))
-    (wire (path F.Cu 500  -38200 -80500  -39555 -81855)(net 5V)(type protect))
-    (wire (path F.Cu 500  -34500 -80500  -38200 -80500)(net 5V)(type protect))
+    (wire (path F.Cu 500  -40923.3 -119091  -40200 -118368)(net 5V)(type protect))
+    (wire (path F.Cu 500  -41690 -119091  -40923.3 -119091)(net 5V)(type protect))
+    (wire (path F.Cu 500  -40200 -118368  -40200 -99500)(net 5V)(type protect))
+    (wire (path F.Cu 500  -42095 -97605  -42095 -94105)(net 5V)(type protect))
+    (wire (path F.Cu 500  -40200 -99500  -42095 -97605)(net 5V)(type protect))
+    (wire (path F.Cu 500  -40200 -99500  -39500 -99500  -36900 -96900  -33000 -96900)(net 5V)(type protect))
+    (wire (path F.Cu 500  -30900 -94800  -30900 -87487.5)(net 5V)(type protect))
+    (wire (path F.Cu 500  -33000 -96900  -30900 -94800)(net 5V)(type protect))
+    (wire (path F.Cu 500  -31375 -87487.5  -33000 -85862.5)(net 5V)(type protect))
     (wire (path F.Cu 500  -30900 -87487.5  -31375 -87487.5)(net 5V)(type protect))
-    (wire (path F.Cu 200.66  76993.6 -60543.6  73500 -57050)(net "softpot-1")(type protect))
-    (wire (path F.Cu 200.66  76993.6 -61446.7  76993.6 -60543.6)(net "softpot-1")(type protect))
-    (wire (path F.Cu 200.66  73606.2 -56943.8  73606.2 -55682)(net "softpot-1")(type protect))
-    (wire (path F.Cu 200.66  73500 -57050  73606.2 -56943.8)(net "softpot-1")(type protect))
-    (wire (path F.Cu 200.66  73606.2 -55682  73286 -56002.3)(net "softpot-1")(type protect))
-    (wire (path F.Cu 200.66  73606.2 -55682  65818 -55682  57500 -64000  51400 -64000
-            45500 -58100  43800 -58100)(net "softpot-1")(type protect))
-    (wire (path F.Cu 200.66  43140 -58760  39960 -58760)(net "softpot-1")(type protect))
-    (wire (path F.Cu 200.66  43800 -58100  43140 -58760)(net "softpot-1")(type protect))
-    (wire (path F.Cu 200.66  62185.6 -85932  55696.7 -85932)(net "softpot-2")(type protect))
-    (wire (path F.Cu 200.66  62402.4 -86148.8  62185.6 -85932)(net "softpot-2")(type protect))
-    (wire (path F.Cu 200.66  55696.7 -85932  55156.2 -85932)(net "softpot-2")(type protect))
-    (wire (path F.Cu 200.66  62402.4 -87051.9  62402.4 -86148.8)(net "softpot-2")(type protect))
-    (wire (path F.Cu 200.66  55156.2 -85932  55156.2 -85426.8  53000 -83270.7  53000 -67800)(net "softpot-2")(type protect))
-    (wire (path F.Cu 200.66  46500 -61300  39960 -61300)(net "softpot-2")(type protect))
-    (wire (path F.Cu 200.66  53000 -67800  46500 -61300)(net "softpot-2")(type protect))
-    (wire (path F.Cu 200.66  -12636.5 -109288  -8300 -113624)(net AREF)(type protect))
-    (wire (path F.Cu 200.66  -15500 -109288  -12636.5 -109288)(net AREF)(type protect))
+    (wire (path F.Cu 500  -33000 -85862.5  -33000 -82300  -34700 -80600  -39000 -80600)(net 5V)(type protect))
+    (wire (path F.Cu 500  -39555 -81155  -39555 -84895)(net 5V)(type protect))
+    (wire (path F.Cu 500  -39000 -80600  -39555 -81155)(net 5V)(type protect))
   )
 )

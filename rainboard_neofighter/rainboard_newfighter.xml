@@ -1,0 +1,1771 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="D">
+  <design>
+    <source>/Users/clean/Documents/rainboard/rainboard_neofighter/rainboard_newfighter.sch</source>
+    <date>Sunday, October 18, 2020 at 12:25:52 PM</date>
+    <tool>Eeschema (5.1.5-0-10_14)</tool>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title>Rainboard</title>
+        <company/>
+        <rev>0.2</rev>
+        <date/>
+        <source>rainboard_newfighter.sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="S1">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E9A2DF8</tstamp>
+    </comp>
+    <comp ref="S9">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E9BF0D9</tstamp>
+    </comp>
+    <comp ref="S17">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E9C3F5E</tstamp>
+    </comp>
+    <comp ref="S25">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E9C3F6D</tstamp>
+    </comp>
+    <comp ref="S33">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E9CC04A</tstamp>
+    </comp>
+    <comp ref="S41">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E9CC059</tstamp>
+    </comp>
+    <comp ref="S49">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E9CC068</tstamp>
+    </comp>
+    <comp ref="S57">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E9CC077</tstamp>
+    </comp>
+    <comp ref="S2">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EA057B2</tstamp>
+    </comp>
+    <comp ref="S10">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EA057C1</tstamp>
+    </comp>
+    <comp ref="S18">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EA057D0</tstamp>
+    </comp>
+    <comp ref="S26">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EA057DF</tstamp>
+    </comp>
+    <comp ref="S34">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EA057EE</tstamp>
+    </comp>
+    <comp ref="S42">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EA057FD</tstamp>
+    </comp>
+    <comp ref="S50">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EA0580C</tstamp>
+    </comp>
+    <comp ref="S58">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EA0581B</tstamp>
+    </comp>
+    <comp ref="S3">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EA1868E</tstamp>
+    </comp>
+    <comp ref="S11">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EA1869D</tstamp>
+    </comp>
+    <comp ref="S19">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EA186AC</tstamp>
+    </comp>
+    <comp ref="S27">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EA186BB</tstamp>
+    </comp>
+    <comp ref="S35">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EA186CA</tstamp>
+    </comp>
+    <comp ref="S43">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EA186D9</tstamp>
+    </comp>
+    <comp ref="S51">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EA186E8</tstamp>
+    </comp>
+    <comp ref="S59">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EA186F7</tstamp>
+    </comp>
+    <comp ref="S4">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EA18706</tstamp>
+    </comp>
+    <comp ref="S12">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EA18715</tstamp>
+    </comp>
+    <comp ref="S20">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EA18724</tstamp>
+    </comp>
+    <comp ref="S28">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EA18733</tstamp>
+    </comp>
+    <comp ref="S36">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EA18742</tstamp>
+    </comp>
+    <comp ref="S44">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EA18751</tstamp>
+    </comp>
+    <comp ref="S52">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EA18760</tstamp>
+    </comp>
+    <comp ref="S60">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EA1876F</tstamp>
+    </comp>
+    <comp ref="S5">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EA6CC98</tstamp>
+    </comp>
+    <comp ref="S13">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EA6CCA7</tstamp>
+    </comp>
+    <comp ref="S21">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EA6CCB6</tstamp>
+    </comp>
+    <comp ref="S29">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EA6CCC5</tstamp>
+    </comp>
+    <comp ref="S37">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EA6CCD4</tstamp>
+    </comp>
+    <comp ref="S45">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EA6CCE3</tstamp>
+    </comp>
+    <comp ref="S53">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EA6CCF2</tstamp>
+    </comp>
+    <comp ref="S61">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EA6CD01</tstamp>
+    </comp>
+    <comp ref="S6">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EA6CD10</tstamp>
+    </comp>
+    <comp ref="S14">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EA6CD1F</tstamp>
+    </comp>
+    <comp ref="S22">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EA6CD2E</tstamp>
+    </comp>
+    <comp ref="S30">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EA6CD3D</tstamp>
+    </comp>
+    <comp ref="S38">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EA6CD4C</tstamp>
+    </comp>
+    <comp ref="S46">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EA6CD5B</tstamp>
+    </comp>
+    <comp ref="S54">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EA6CD6A</tstamp>
+    </comp>
+    <comp ref="S7">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EA6CD88</tstamp>
+    </comp>
+    <comp ref="S15">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EA6CD97</tstamp>
+    </comp>
+    <comp ref="S23">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EA6CDA6</tstamp>
+    </comp>
+    <comp ref="S31">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EA6CDB5</tstamp>
+    </comp>
+    <comp ref="S39">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EA6CDC4</tstamp>
+    </comp>
+    <comp ref="S47">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EA6CDD3</tstamp>
+    </comp>
+    <comp ref="S55">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EA6CDE2</tstamp>
+    </comp>
+    <comp ref="S8">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EA6CE00</tstamp>
+    </comp>
+    <comp ref="S16">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EA6CE0F</tstamp>
+    </comp>
+    <comp ref="S24">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EA6CE1E</tstamp>
+    </comp>
+    <comp ref="S32">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EA6CE2D</tstamp>
+    </comp>
+    <comp ref="S40">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EA6CE3C</tstamp>
+    </comp>
+    <comp ref="S48">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EA6CE4B</tstamp>
+    </comp>
+    <comp ref="S56">
+      <value>SANWA-OBSF24</value>
+      <footprint>rainboard_newfighter:Sanwa-OBSF24-v2</footprint>
+      <libsource lib="rainboard_newfighter" part="SANWA-OBSF24" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EA6CE5A</tstamp>
+    </comp>
+    <comp ref="J1">
+      <value>Conn_01x02</value>
+      <footprint>Connector_JST:JST_XH_B2B-XH-AM_1x02_P2.50mm_Vertical</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Connector_Generic" part="Conn_01x02" description="Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5F5394D6</tstamp>
+    </comp>
+    <comp ref="J5">
+      <value>Conn_01x02</value>
+      <footprint>Connector_JST:JST_XH_B2B-XH-AM_1x02_P2.50mm_Vertical</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Connector_Generic" part="Conn_01x02" description="Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5F57BDE7</tstamp>
+    </comp>
+    <comp ref="J6">
+      <value>Conn_01x02</value>
+      <footprint>Connector_JST:JST_XH_B2B-XH-AM_1x02_P2.50mm_Vertical</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Connector_Generic" part="Conn_01x02" description="Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5F5918AA</tstamp>
+    </comp>
+    <comp ref="J7">
+      <value>Conn_01x02</value>
+      <footprint>Connector_JST:JST_XH_B2B-XH-AM_1x02_P2.50mm_Vertical</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Connector_Generic" part="Conn_01x02" description="Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5F5A7115</tstamp>
+    </comp>
+    <comp ref="J8">
+      <value>Conn_01x02</value>
+      <footprint>Connector_JST:JST_XH_B2B-XH-AM_1x02_P2.50mm_Vertical</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Connector_Generic" part="Conn_01x02" description="Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5F5D3F3A</tstamp>
+    </comp>
+    <comp ref="J10">
+      <value>Conn_01x03</value>
+      <footprint>Connector_JST:JST_XH_B3B-XH-AM_1x03_P2.50mm_Vertical</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Connector_Generic" part="Conn_01x03" description="Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5F7591D3</tstamp>
+    </comp>
+    <comp ref="R3">
+      <value>4.7k</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C23162</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5F7A17BA</tstamp>
+    </comp>
+    <comp ref="R4">
+      <value>4.7k</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C23162</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5F7A254A</tstamp>
+    </comp>
+    <comp ref="R1">
+      <value>100k</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C25803</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5F7A3089</tstamp>
+    </comp>
+    <comp ref="C2">
+      <value>100nf</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C14663</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5F7A4752</tstamp>
+    </comp>
+    <comp ref="R5">
+      <value>220R</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C22962</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5FEDEF8F</tstamp>
+    </comp>
+    <comp ref="R6">
+      <value>220R</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C22962</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>6012ADB3</tstamp>
+    </comp>
+    <comp ref="U2">
+      <value>74HC14D</value>
+      <footprint>schmitt_trigger:SOIC127P600X175-14N</footprint>
+      <datasheet>26M7759</datasheet>
+      <fields>
+        <field name="Field4">1201316</field>
+        <field name="Field5">74HC14D</field>
+        <field name="Field6">NXP</field>
+        <field name="Field7">SOIC-14</field>
+        <field name="LCSC">C5605</field>
+      </fields>
+      <libsource lib="schmitt_trigger" part="74HC14D" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>602AD77A</tstamp>
+    </comp>
+    <comp ref="R2">
+      <value>100k</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C25803</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5F7A3BC8</tstamp>
+    </comp>
+    <comp ref="C4">
+      <value>100nf</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C14663</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>6072A28E</tstamp>
+    </comp>
+    <comp ref="C3">
+      <value>100nf</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C14663</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>603471DA</tstamp>
+    </comp>
+    <comp ref="R7">
+      <value>220R</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C22962</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>607514E8</tstamp>
+    </comp>
+    <comp ref="J11">
+      <value>SDS-50J</value>
+      <footprint>MIDI-DIN:CUI_SDS-50J</footprint>
+      <datasheet>CUI Inc</datasheet>
+      <fields>
+        <field name="Field4">Manufacturer recommendations</field>
+      </fields>
+      <libsource lib="midi_din" part="SDS-50J" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>60E7C80D</tstamp>
+    </comp>
+    <comp ref="U3">
+      <value>EL357N(A)(TA)-G</value>
+      <footprint>opto_coupler:SOP254P700X200-4N</footprint>
+      <datasheet>IPC-7351B</datasheet>
+      <fields>
+        <field name="Field4">EL357N_A__TA_-G</field>
+        <field name="Field5">0.10 USD</field>
+        <field name="Field6">SOP-4 Everlight</field>
+        <field name="Field7">Good</field>
+        <field name="Field8">Everlight</field>
+        <field name="Field9">Optocoupler [Everlight Electronics] EL357N_A__TA_-G Optocoupler</field>
+        <field name="LCSC">C142286</field>
+      </fields>
+      <libsource lib="opto_couplers" part="EL357N(A)(TA)-G" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>607274ED</tstamp>
+    </comp>
+    <comp ref="J12">
+      <value>SDS-50J</value>
+      <footprint>MIDI-DIN:CUI_SDS-50J</footprint>
+      <datasheet>CUI Inc</datasheet>
+      <fields>
+        <field name="Field4">Manufacturer recommendations</field>
+      </fields>
+      <libsource lib="midi_din" part="SDS-50J" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>6120ABDB</tstamp>
+    </comp>
+    <comp ref="J13">
+      <value>Conn_01x02</value>
+      <footprint>Connector_JST:JST_XH_B2B-XH-AM_1x02_P2.50mm_Vertical</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Connector_Generic" part="Conn_01x02" description="Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>615AD57E</tstamp>
+    </comp>
+    <comp ref="J14">
+      <value>Conn_01x02</value>
+      <footprint>Connector_JST:JST_XH_B2B-XH-AM_1x02_P2.50mm_Vertical</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Connector_Generic" part="Conn_01x02" description="Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>615AD584</tstamp>
+    </comp>
+    <comp ref="J15">
+      <value>Conn_01x02</value>
+      <footprint>Connector_JST:JST_XH_B2B-XH-AM_1x02_P2.50mm_Vertical</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Connector_Generic" part="Conn_01x02" description="Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>615AD58A</tstamp>
+    </comp>
+    <comp ref="J16">
+      <value>Conn_01x02</value>
+      <footprint>Connector_JST:JST_XH_B2B-XH-AM_1x02_P2.50mm_Vertical</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Connector_Generic" part="Conn_01x02" description="Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>615AD590</tstamp>
+    </comp>
+    <comp ref="J4">
+      <value>Conn_01x02</value>
+      <footprint>Connector_JST:JST_XH_B2B-XH-AM_1x02_P2.50mm_Vertical</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Connector_Generic" part="Conn_01x02" description="Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5F566275</tstamp>
+    </comp>
+    <comp ref="J3">
+      <value>Conn_01x02</value>
+      <footprint>Connector_JST:JST_XH_B2B-XH-AM_1x02_P2.50mm_Vertical</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Connector_Generic" part="Conn_01x02" description="Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5F550609</tstamp>
+    </comp>
+    <comp ref="J2">
+      <value>Conn_01x02</value>
+      <footprint>Connector_JST:JST_XH_B2B-XH-AM_1x02_P2.50mm_Vertical</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Connector_Generic" part="Conn_01x02" description="Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5F53A9B6</tstamp>
+    </comp>
+    <comp ref="J17">
+      <value>Conn_01x02</value>
+      <footprint>Connector_JST:JST_XH_B2B-XH-AM_1x02_P2.50mm_Vertical</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Connector_Generic" part="Conn_01x02" description="Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>6373D6C2</tstamp>
+    </comp>
+    <comp ref="J18">
+      <value>Conn_01x02</value>
+      <footprint>Connector_JST:JST_XH_B2B-XH-AM_1x02_P2.50mm_Vertical</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Connector_Generic" part="Conn_01x02" description="Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>6373D6C8</tstamp>
+    </comp>
+    <comp ref="R8">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C25804</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>61396682</tstamp>
+    </comp>
+    <comp ref="C1">
+      <value>100nf</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C14663</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5F7A5732</tstamp>
+    </comp>
+    <comp ref="XA1">
+      <value>Arduino_Mega2560_Shield</value>
+      <footprint>arduno_mega:Arduino_Mega2560_Shield</footprint>
+      <datasheet>https://store.arduino.cc/arduino-mega-2560-rev3</datasheet>
+      <libsource lib="Arduino_Shields" part="Arduino_Mega2560_Shield" description="Shield for Arduino Mega 2560"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5F5FAE00</tstamp>
+    </comp>
+    <comp ref="J9">
+      <value>Conn_01x03</value>
+      <footprint>Connector_JST:JST_XH_B3B-XH-AM_1x03_P2.50mm_Vertical</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Connector_Generic" part="Conn_01x03" description="Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5F740A1B</tstamp>
+    </comp>
+    <comp ref="U1">
+      <value>MCP23017-E_SO</value>
+      <footprint>io_expander:SOIC127P1030X265-28N</footprint>
+      <datasheet>0.4</datasheet>
+      <fields>
+        <field name="Field10">28.0</field>
+        <field name="Field11">17.9</field>
+        <field name="Field12">17.9</field>
+        <field name="Field13">2.65mm</field>
+        <field name="Field14">0.1</field>
+        <field name="Field15">17.9</field>
+        <field name="Field16">2.65</field>
+        <field name="Field17">0.51</field>
+        <field name="Field18">0.0</field>
+        <field name="Field20">0.835</field>
+        <field name="Field23">0.0</field>
+        <field name="Field26">7.5</field>
+        <field name="Field27">7.5</field>
+        <field name="Field31">Microchip</field>
+        <field name="Field32">10.3</field>
+        <field name="Field33">0.31</field>
+        <field name="Field34">2.65</field>
+        <field name="Field35">2.65</field>
+        <field name="Field36">7.5</field>
+        <field name="Field37">0.41</field>
+        <field name="Field39">1.27</field>
+        <field name="Field40">10.3</field>
+        <field name="Field44">10.3</field>
+        <field name="Field6">1.27</field>
+        <field name="Field7">C</field>
+        <field name="Field9">IPC 7351B</field>
+        <field name="LCSC">C47023</field>
+      </fields>
+      <libsource lib="multiplex" part="MCP23017-E_SO" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5F60A687</tstamp>
+    </comp>
+    <comp ref="R10">
+      <value>4.7k</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C23162</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>64811F9B</tstamp>
+    </comp>
+    <comp ref="R9">
+      <value>4.7k</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C23162</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>6484053B</tstamp>
+    </comp>
+    <comp ref="D1">
+      <value>D</value>
+      <footprint>Diode_SMD:D_SMA</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C95872</field>
+      </fields>
+      <libsource lib="Device" part="D" description="Diode"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5F7937EC</tstamp>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="Arduino_Shields" part="Arduino_Mega2560_Shield">
+      <description>Shield for Arduino Mega 2560</description>
+      <docs>https://store.arduino.cc/arduino-mega-2560-rev3</docs>
+      <footprints>
+        <fp>Arduino_Mega2560_Shield</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">XA</field>
+        <field name="Value">Arduino_Mega2560_Shield</field>
+      </fields>
+      <pins>
+        <pin num="3V3" name="3.3V" type="power_in"/>
+        <pin num="5V1" name="5V" type="power_in"/>
+        <pin num="5V2" name="SPI_5V" type="power_in"/>
+        <pin num="5V3" name="5V" type="power_in"/>
+        <pin num="5V4" name="5V" type="power_in"/>
+        <pin num="A0" name="A0" type="BiDi"/>
+        <pin num="A1" name="A1" type="BiDi"/>
+        <pin num="A2" name="A2" type="BiDi"/>
+        <pin num="A3" name="A3" type="BiDi"/>
+        <pin num="A4" name="A4" type="BiDi"/>
+        <pin num="A5" name="A5" type="BiDi"/>
+        <pin num="A6" name="A6" type="BiDi"/>
+        <pin num="A7" name="A7" type="BiDi"/>
+        <pin num="A8" name="A8" type="BiDi"/>
+        <pin num="A9" name="A9" type="BiDi"/>
+        <pin num="A10" name="A10" type="BiDi"/>
+        <pin num="A11" name="A11" type="BiDi"/>
+        <pin num="A12" name="A12" type="BiDi"/>
+        <pin num="A13" name="A13" type="BiDi"/>
+        <pin num="A14" name="A14" type="BiDi"/>
+        <pin num="A15" name="A15" type="BiDi"/>
+        <pin num="AREF" name="AREF" type="input"/>
+        <pin num="D0" name="D0_RX0" type="BiDi"/>
+        <pin num="D1" name="D1_TX0" type="BiDi"/>
+        <pin num="D2" name="D2_INT0" type="BiDi"/>
+        <pin num="D3" name="D3_INT1" type="BiDi"/>
+        <pin num="D4" name="D4" type="BiDi"/>
+        <pin num="D5" name="D5" type="BiDi"/>
+        <pin num="D6" name="D6" type="BiDi"/>
+        <pin num="D7" name="D7" type="BiDi"/>
+        <pin num="D8" name="D8" type="BiDi"/>
+        <pin num="D9" name="D9" type="BiDi"/>
+        <pin num="D10" name="D10" type="BiDi"/>
+        <pin num="D11" name="D11" type="BiDi"/>
+        <pin num="D12" name="D12" type="BiDi"/>
+        <pin num="D13" name="D13" type="BiDi"/>
+        <pin num="D14" name="D14_TX3" type="BiDi"/>
+        <pin num="D15" name="D15_RX3" type="BiDi"/>
+        <pin num="D16" name="D16_TX2" type="BiDi"/>
+        <pin num="D17" name="D17_RX2" type="BiDi"/>
+        <pin num="D18" name="D18_TX1" type="BiDi"/>
+        <pin num="D19" name="D19_RX1" type="BiDi"/>
+        <pin num="D20" name="D20_SDA" type="BiDi"/>
+        <pin num="D21" name="D21_SCL" type="BiDi"/>
+        <pin num="D22" name="D22" type="BiDi"/>
+        <pin num="D23" name="D23" type="BiDi"/>
+        <pin num="D24" name="D24" type="BiDi"/>
+        <pin num="D25" name="D25" type="BiDi"/>
+        <pin num="D26" name="D26" type="BiDi"/>
+        <pin num="D27" name="D27" type="BiDi"/>
+        <pin num="D28" name="D28" type="BiDi"/>
+        <pin num="D29" name="D29" type="BiDi"/>
+        <pin num="D30" name="D30" type="BiDi"/>
+        <pin num="D31" name="D31" type="BiDi"/>
+        <pin num="D32" name="D32" type="BiDi"/>
+        <pin num="D33" name="D33" type="BiDi"/>
+        <pin num="D34" name="D34" type="BiDi"/>
+        <pin num="D35" name="D35" type="BiDi"/>
+        <pin num="D36" name="D36" type="BiDi"/>
+        <pin num="D37" name="D37" type="BiDi"/>
+        <pin num="D38" name="D38" type="BiDi"/>
+        <pin num="D39" name="D39" type="BiDi"/>
+        <pin num="D40" name="D40" type="BiDi"/>
+        <pin num="D41" name="D41" type="BiDi"/>
+        <pin num="D42" name="D42" type="BiDi"/>
+        <pin num="D43" name="D43" type="BiDi"/>
+        <pin num="D44" name="D44" type="BiDi"/>
+        <pin num="D45" name="D45" type="BiDi"/>
+        <pin num="D46" name="D46" type="BiDi"/>
+        <pin num="D47" name="D47" type="BiDi"/>
+        <pin num="D48" name="D48" type="BiDi"/>
+        <pin num="D49" name="D49" type="BiDi"/>
+        <pin num="D50" name="D50" type="BiDi"/>
+        <pin num="D51" name="D51" type="BiDi"/>
+        <pin num="D52" name="D52" type="BiDi"/>
+        <pin num="D53" name="D53_SS" type="BiDi"/>
+        <pin num="GND1" name="GND" type="power_in"/>
+        <pin num="GND2" name="GND" type="power_in"/>
+        <pin num="GND3" name="GND" type="power_in"/>
+        <pin num="GND4" name="SPI_GND" type="power_in"/>
+        <pin num="GND5" name="GND" type="power_in"/>
+        <pin num="GND6" name="GND" type="power_in"/>
+        <pin num="IORF" name="IOREF" type="output"/>
+        <pin num="MISO" name="SPI_MISO" type="input"/>
+        <pin num="MOSI" name="SPI_MOSI" type="output"/>
+        <pin num="RST1" name="RESET" type="openCol"/>
+        <pin num="RST2" name="SPI_RESET" type="openCol"/>
+        <pin num="SCK" name="SPI_SCK" type="output"/>
+        <pin num="SCL" name="SCL" type="BiDi"/>
+        <pin num="SDA" name="SDA" type="BiDi"/>
+        <pin num="VIN" name="VIN" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="Connector_Generic" part="Conn_01x02">
+      <description>Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Connector*:*_1x??_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Conn_01x02</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="passive"/>
+        <pin num="2" name="Pin_2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Connector_Generic" part="Conn_01x03">
+      <description>Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Connector*:*_1x??_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Conn_01x03</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="passive"/>
+        <pin num="2" name="Pin_2" type="passive"/>
+        <pin num="3" name="Pin_3" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="C">
+      <description>Unpolarized capacitor</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>C_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="D">
+      <description>Diode</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>TO-???*</fp>
+        <fp>*_Diode_*</fp>
+        <fp>*SingleDiode*</fp>
+        <fp>D_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">D</field>
+      </fields>
+      <pins>
+        <pin num="1" name="K" type="passive"/>
+        <pin num="2" name="A" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="R">
+      <description>Resistor</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>R_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="midi_din" part="SDS-50J">
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">SDS-50J</field>
+        <field name="Footprint">CUI_SDS-50J</field>
+        <field name="Datasheet">CUI Inc</field>
+        <field name="Field4">Manufacturer recommendations</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+        <pin num="3" name="3" type="passive"/>
+        <pin num="4" name="4" type="passive"/>
+        <pin num="5" name="5" type="passive"/>
+        <pin num="S1" name="SHIELD" type="passive"/>
+        <pin num="S2" name="SHIELD" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="multiplex" part="MCP23017-E_SO">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">MCP23017-E_SO</field>
+        <field name="Footprint">SOIC127P1030X265-28N</field>
+        <field name="Datasheet">0.4</field>
+        <field name="Field6">1.27</field>
+        <field name="Field7">C</field>
+        <field name="Field9">IPC 7351B</field>
+        <field name="Field10">28.0</field>
+        <field name="Field11">17.9</field>
+        <field name="Field12">17.9</field>
+        <field name="Field13">2.65mm</field>
+        <field name="Field14">0.1</field>
+        <field name="Field15">17.9</field>
+        <field name="Field16">2.65</field>
+        <field name="Field17">0.51</field>
+        <field name="Field18">0.0</field>
+        <field name="Field20">0.835</field>
+        <field name="Field23">0.0</field>
+        <field name="Field26">7.5</field>
+        <field name="Field27">7.5</field>
+        <field name="Field31">Microchip</field>
+        <field name="Field32">10.3</field>
+        <field name="Field33">0.31</field>
+        <field name="Field34">2.65</field>
+        <field name="Field35">2.65</field>
+        <field name="Field36">7.5</field>
+        <field name="Field37">0.41</field>
+        <field name="Field39">1.27</field>
+        <field name="Field40">10.3</field>
+        <field name="Field44">10.3</field>
+      </fields>
+      <pins>
+        <pin num="1" name="GPB0" type="BiDi"/>
+        <pin num="2" name="GPB1" type="BiDi"/>
+        <pin num="3" name="GPB2" type="BiDi"/>
+        <pin num="4" name="GPB3" type="BiDi"/>
+        <pin num="5" name="GPB4" type="BiDi"/>
+        <pin num="6" name="GPB5" type="BiDi"/>
+        <pin num="7" name="GPB6" type="BiDi"/>
+        <pin num="8" name="GPB7" type="BiDi"/>
+        <pin num="9" name="VDD" type="power_in"/>
+        <pin num="10" name="VSS" type="power_in"/>
+        <pin num="12" name="SCK" type="input"/>
+        <pin num="13" name="SDA" type="BiDi"/>
+        <pin num="15" name="A0" type="input"/>
+        <pin num="16" name="A1" type="input"/>
+        <pin num="17" name="A2" type="input"/>
+        <pin num="18" name="~RESET~" type="output"/>
+        <pin num="19" name="INTB" type="output"/>
+        <pin num="20" name="INTA" type="output"/>
+        <pin num="21" name="GPA0" type="BiDi"/>
+        <pin num="22" name="GPA1" type="BiDi"/>
+        <pin num="23" name="GPA2" type="BiDi"/>
+        <pin num="24" name="GPA3" type="BiDi"/>
+        <pin num="25" name="GPA4" type="BiDi"/>
+        <pin num="26" name="GPA5" type="BiDi"/>
+        <pin num="27" name="GPA6" type="BiDi"/>
+        <pin num="28" name="GPA7" type="BiDi"/>
+      </pins>
+    </libpart>
+    <libpart lib="opto_couplers" part="EL357N(A)(TA)-G">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">EL357N(A)(TA)-G</field>
+        <field name="Footprint">SOP254P700X200-4N</field>
+        <field name="Datasheet">IPC-7351B</field>
+        <field name="Field4">EL357N_A__TA_-G</field>
+        <field name="Field5">0.10 USD</field>
+        <field name="Field6">SOP-4 Everlight</field>
+        <field name="Field7">Good</field>
+        <field name="Field8">Everlight</field>
+        <field name="Field9">Optocoupler [Everlight Electronics] EL357N_A__TA_-G Optocoupler</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+        <pin num="3" name="~" type="passive"/>
+        <pin num="4" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="rainboard_newfighter" part="SANWA-OBSF24">
+      <fields>
+        <field name="Reference">S</field>
+        <field name="Value">SANWA-OBSF24</field>
+        <field name="Footprint">rainboard_newfighter:Sanwa-OBSF24</field>
+      </fields>
+      <pins>
+        <pin num="1" name="gnd" type="passive"/>
+        <pin num="2" name="output" type="output"/>
+      </pins>
+    </libpart>
+    <libpart lib="schmitt_trigger" part="74HC14D">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">74HC14D</field>
+        <field name="Footprint">SOIC127P600X175-14N</field>
+        <field name="Datasheet">26M7759</field>
+        <field name="Field4">1201316</field>
+        <field name="Field5">74HC14D</field>
+        <field name="Field6">NXP</field>
+        <field name="Field7">SOIC-14</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1A" type="input"/>
+        <pin num="2" name="1Y" type="output"/>
+        <pin num="3" name="2A" type="input"/>
+        <pin num="4" name="2Y" type="output"/>
+        <pin num="5" name="3A" type="input"/>
+        <pin num="6" name="3Y" type="output"/>
+        <pin num="7" name="GND" type="passive"/>
+        <pin num="8" name="4Y" type="output"/>
+        <pin num="9" name="4A" type="input"/>
+        <pin num="10" name="5Y" type="output"/>
+        <pin num="11" name="5A" type="input"/>
+        <pin num="12" name="6Y" type="output"/>
+        <pin num="13" name="6A" type="input"/>
+        <pin num="14" name="VCC" type="power_in"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="Arduino_Shields">
+      <uri>/Users/clean/Documents/rainboard/rainboard_neofighter/libraries/arduino-kicad-library-master/arduino.lib</uri>
+    </library>
+    <library logical="Connector_Generic">
+      <uri>/Library/Application Support/kicad/library/Connector_Generic.lib</uri>
+    </library>
+    <library logical="Device">
+      <uri>/Library/Application Support/kicad/library/Device.lib</uri>
+    </library>
+    <library logical="midi_din">
+      <uri>/Users/clean/Documents/rainboard/rainboard_neofighter/libraries/SDS-50J/SDS-50J.lib</uri>
+    </library>
+    <library logical="multiplex">
+      <uri>/Users/clean/Documents/rainboard/rainboard_neofighter/libraries/MCP23017-E_SO/MCP23017-E_SO.lib</uri>
+    </library>
+    <library logical="opto_couplers">
+      <uri>/Users/clean/Documents/rainboard/rainboard_neofighter/libraries/EL357N_A__TA_-G/EL357N_A__TA_-G.lib</uri>
+    </library>
+    <library logical="rainboard_newfighter">
+      <uri>/Users/clean/Documents/rainboard/rainboard_neofighter/libraries/rainboard_newfighter.lib</uri>
+    </library>
+    <library logical="schmitt_trigger">
+      <uri>/Users/clean/Documents/rainboard/rainboard_neofighter/libraries/74HC14D/74HC14D.lib</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="button-38">
+      <node ref="XA1" pin="D17"/>
+      <node ref="S38" pin="2"/>
+    </net>
+    <net code="2" name="button-45">
+      <node ref="XA1" pin="D4"/>
+      <node ref="S45" pin="2"/>
+    </net>
+    <net code="3" name="button-37">
+      <node ref="S37" pin="2"/>
+      <node ref="XA1" pin="D16"/>
+    </net>
+    <net code="4" name="button-41">
+      <node ref="S41" pin="2"/>
+      <node ref="XA1" pin="A14"/>
+    </net>
+    <net code="5" name="button-26">
+      <node ref="S26" pin="2"/>
+      <node ref="XA1" pin="A13"/>
+    </net>
+    <net code="6" name="button-34">
+      <node ref="XA1" pin="A12"/>
+      <node ref="S34" pin="2"/>
+    </net>
+    <net code="7" name="BREF">
+      <node ref="XA1" pin="A11"/>
+      <node ref="R4" pin="1"/>
+      <node ref="J10" pin="3"/>
+      <node ref="J9" pin="3"/>
+    </net>
+    <net code="8" name="button-01">
+      <node ref="XA1" pin="D31"/>
+      <node ref="S1" pin="2"/>
+    </net>
+    <net code="9" name="button-09">
+      <node ref="S9" pin="2"/>
+      <node ref="XA1" pin="D40"/>
+    </net>
+    <net code="10" name="button-17">
+      <node ref="S17" pin="2"/>
+      <node ref="XA1" pin="D48"/>
+    </net>
+    <net code="11" name="button-25">
+      <node ref="XA1" pin="D20"/>
+      <node ref="S25" pin="2"/>
+    </net>
+    <net code="12" name="button-33">
+      <node ref="XA1" pin="A15"/>
+      <node ref="S33" pin="2"/>
+    </net>
+    <net code="13" name="button-49">
+      <node ref="S49" pin="2"/>
+      <node ref="XA1" pin="A6"/>
+    </net>
+    <net code="14" name="button-57">
+      <node ref="XA1" pin="D12"/>
+      <node ref="S57" pin="2"/>
+    </net>
+    <net code="15" name="button-02">
+      <node ref="XA1" pin="D35"/>
+      <node ref="S2" pin="2"/>
+    </net>
+    <net code="16" name="button-10">
+      <node ref="S10" pin="2"/>
+      <node ref="XA1" pin="D44"/>
+    </net>
+    <net code="17" name="button-18">
+      <node ref="XA1" pin="D2"/>
+      <node ref="S18" pin="2"/>
+    </net>
+    <net code="18" name="button-42">
+      <node ref="XA1" pin="A8"/>
+      <node ref="S42" pin="2"/>
+    </net>
+    <net code="19" name="button-50">
+      <node ref="XA1" pin="A5"/>
+      <node ref="S50" pin="2"/>
+    </net>
+    <net code="20" name="button-58">
+      <node ref="S58" pin="2"/>
+      <node ref="XA1" pin="D13"/>
+    </net>
+    <net code="21" name="button-03">
+      <node ref="S3" pin="2"/>
+      <node ref="XA1" pin="D38"/>
+    </net>
+    <net code="22" name="button-11">
+      <node ref="XA1" pin="D3"/>
+      <node ref="S11" pin="2"/>
+    </net>
+    <net code="23" name="button-19">
+      <node ref="XA1" pin="D22"/>
+      <node ref="S19" pin="2"/>
+    </net>
+    <net code="24" name="button-27">
+      <node ref="S27" pin="2"/>
+      <node ref="U1" pin="26"/>
+    </net>
+    <net code="25" name="button-35">
+      <node ref="U1" pin="25"/>
+      <node ref="S35" pin="2"/>
+    </net>
+    <net code="26" name="button-43">
+      <node ref="S43" pin="2"/>
+      <node ref="XA1" pin="A7"/>
+    </net>
+    <net code="27" name="button-51">
+      <node ref="XA1" pin="D11"/>
+      <node ref="S51" pin="2"/>
+    </net>
+    <net code="28" name="button-59">
+      <node ref="XA1" pin="D8"/>
+      <node ref="S59" pin="2"/>
+    </net>
+    <net code="29" name="button-04">
+      <node ref="S4" pin="2"/>
+      <node ref="XA1" pin="D42"/>
+    </net>
+    <net code="30" name="button-12">
+      <node ref="XA1" pin="D26"/>
+      <node ref="S12" pin="2"/>
+    </net>
+    <net code="31" name="button-20">
+      <node ref="XA1" pin="D25"/>
+      <node ref="S20" pin="2"/>
+    </net>
+    <net code="32" name="button-28">
+      <node ref="S28" pin="2"/>
+      <node ref="XA1" pin="D21"/>
+    </net>
+    <net code="33" name="button-36">
+      <node ref="XA1" pin="D14"/>
+      <node ref="S36" pin="2"/>
+    </net>
+    <net code="34" name="button-44">
+      <node ref="XA1" pin="D5"/>
+      <node ref="S44" pin="2"/>
+    </net>
+    <net code="35" name="button-52">
+      <node ref="XA1" pin="D10"/>
+      <node ref="S52" pin="2"/>
+    </net>
+    <net code="36" name="button-60">
+      <node ref="XA1" pin="A0"/>
+      <node ref="S60" pin="2"/>
+    </net>
+    <net code="37" name="button-05">
+      <node ref="S5" pin="2"/>
+      <node ref="XA1" pin="D46"/>
+    </net>
+    <net code="38" name="button-13">
+      <node ref="S13" pin="2"/>
+      <node ref="XA1" pin="D29"/>
+    </net>
+    <net code="39" name="button-21">
+      <node ref="XA1" pin="D28"/>
+      <node ref="S21" pin="2"/>
+    </net>
+    <net code="40" name="button-29">
+      <node ref="XA1" pin="D24"/>
+      <node ref="S29" pin="2"/>
+    </net>
+    <net code="41" name="button-53">
+      <node ref="XA1" pin="D9"/>
+      <node ref="S53" pin="2"/>
+    </net>
+    <net code="42" name="button-61">
+      <node ref="S61" pin="2"/>
+      <node ref="XA1" pin="A2"/>
+    </net>
+    <net code="43" name="button-06">
+      <node ref="XA1" pin="D30"/>
+      <node ref="S6" pin="2"/>
+    </net>
+    <net code="44" name="button-14">
+      <node ref="S14" pin="2"/>
+      <node ref="XA1" pin="D33"/>
+    </net>
+    <net code="45" name="button-22">
+      <node ref="S22" pin="2"/>
+      <node ref="XA1" pin="D34"/>
+    </net>
+    <net code="46" name="button-30">
+      <node ref="XA1" pin="D27"/>
+      <node ref="S30" pin="2"/>
+    </net>
+    <net code="47" name="button-46">
+      <node ref="XA1" pin="D15"/>
+      <node ref="S46" pin="2"/>
+    </net>
+    <net code="48" name="button-54">
+      <node ref="XA1" pin="D7"/>
+      <node ref="S54" pin="2"/>
+    </net>
+    <net code="49" name="button-07">
+      <node ref="XA1" pin="D32"/>
+      <node ref="S7" pin="2"/>
+    </net>
+    <net code="50" name="button-15">
+      <node ref="S15" pin="2"/>
+      <node ref="XA1" pin="D39"/>
+    </net>
+    <net code="51" name="button-23">
+      <node ref="S23" pin="2"/>
+      <node ref="XA1" pin="D41"/>
+    </net>
+    <net code="52" name="button-31">
+      <node ref="S31" pin="2"/>
+      <node ref="XA1" pin="D37"/>
+    </net>
+    <net code="53" name="button-39">
+      <node ref="XA1" pin="D23"/>
+      <node ref="S39" pin="2"/>
+    </net>
+    <net code="54" name="button-47">
+      <node ref="XA1" pin="D6"/>
+      <node ref="S47" pin="2"/>
+    </net>
+    <net code="55" name="button-55">
+      <node ref="S55" pin="2"/>
+      <node ref="XA1" pin="A1"/>
+    </net>
+    <net code="56" name="button-08">
+      <node ref="XA1" pin="D36"/>
+      <node ref="S8" pin="2"/>
+    </net>
+    <net code="57" name="button-16">
+      <node ref="S16" pin="2"/>
+      <node ref="XA1" pin="D45"/>
+    </net>
+    <net code="58" name="button-24">
+      <node ref="XA1" pin="D49"/>
+      <node ref="S24" pin="2"/>
+    </net>
+    <net code="59" name="button-32">
+      <node ref="XA1" pin="D47"/>
+      <node ref="S32" pin="2"/>
+    </net>
+    <net code="60" name="button-40">
+      <node ref="S40" pin="2"/>
+      <node ref="XA1" pin="D43"/>
+    </net>
+    <net code="61" name="button-48">
+      <node ref="S48" pin="2"/>
+      <node ref="XA1" pin="A4"/>
+    </net>
+    <net code="62" name="button-56">
+      <node ref="S56" pin="2"/>
+      <node ref="XA1" pin="A3"/>
+    </net>
+    <net code="63" name="Net-(XA1-PadD50)">
+      <node ref="XA1" pin="D50"/>
+    </net>
+    <net code="64" name="Net-(XA1-PadD52)">
+      <node ref="XA1" pin="D52"/>
+    </net>
+    <net code="65" name="Net-(XA1-PadD51)">
+      <node ref="XA1" pin="D51"/>
+    </net>
+    <net code="66" name="softpot-2">
+      <node ref="J10" pin="2"/>
+      <node ref="XA1" pin="A10"/>
+      <node ref="XA1" pin="A9"/>
+      <node ref="R2" pin="1"/>
+    </net>
+    <net code="67" name="Net-(J1-Pad2)">
+      <node ref="J1" pin="2"/>
+      <node ref="U1" pin="1"/>
+    </net>
+    <net code="68" name="Net-(J5-Pad2)">
+      <node ref="J5" pin="2"/>
+      <node ref="U1" pin="5"/>
+    </net>
+    <net code="69" name="Net-(J6-Pad2)">
+      <node ref="J6" pin="2"/>
+      <node ref="U1" pin="6"/>
+    </net>
+    <net code="70" name="Net-(J7-Pad2)">
+      <node ref="U1" pin="7"/>
+      <node ref="J7" pin="2"/>
+    </net>
+    <net code="71" name="Net-(J8-Pad2)">
+      <node ref="U1" pin="8"/>
+      <node ref="J8" pin="2"/>
+    </net>
+    <net code="72" name="SCL">
+      <node ref="U1" pin="12"/>
+      <node ref="R9" pin="2"/>
+      <node ref="XA1" pin="SCL"/>
+    </net>
+    <net code="73" name="SDA">
+      <node ref="U1" pin="13"/>
+      <node ref="R10" pin="2"/>
+      <node ref="XA1" pin="SDA"/>
+    </net>
+    <net code="74" name="3.3V">
+      <node ref="XA1" pin="3V3"/>
+      <node ref="R3" pin="1"/>
+    </net>
+    <net code="75" name="softpot-1">
+      <node ref="R1" pin="1"/>
+      <node ref="J9" pin="2"/>
+    </net>
+    <net code="76" name="GNDA">
+      <node ref="C2" pin="2"/>
+      <node ref="R1" pin="2"/>
+      <node ref="R4" pin="2"/>
+      <node ref="XA1" pin="GND3"/>
+      <node ref="R2" pin="2"/>
+    </net>
+    <net code="77" name="MIDI-OUT">
+      <node ref="XA1" pin="D18"/>
+      <node ref="U2" pin="1"/>
+    </net>
+    <net code="78" name="Net-(U2-Pad2)">
+      <node ref="U2" pin="3"/>
+      <node ref="U2" pin="2"/>
+    </net>
+    <net code="79" name="Net-(R6-Pad2)">
+      <node ref="R6" pin="2"/>
+      <node ref="U2" pin="4"/>
+    </net>
+    <net code="80" name="Net-(U2-Pad6)">
+      <node ref="U2" pin="6"/>
+      <node ref="U2" pin="9"/>
+    </net>
+    <net code="81" name="Net-(U2-Pad10)">
+      <node ref="U2" pin="10"/>
+    </net>
+    <net code="82" name="Net-(U2-Pad12)">
+      <node ref="U2" pin="12"/>
+    </net>
+    <net code="83" name="Net-(J11-Pad1)">
+      <node ref="J11" pin="1"/>
+    </net>
+    <net code="84" name="Net-(J11-Pad2)">
+      <node ref="J11" pin="2"/>
+    </net>
+    <net code="85" name="Net-(J11-Pad3)">
+      <node ref="J11" pin="3"/>
+    </net>
+    <net code="86" name="Net-(J11-PadS1)">
+      <node ref="J11" pin="S1"/>
+      <node ref="J11" pin="S2"/>
+    </net>
+    <net code="87" name="Net-(J11-Pad4)">
+      <node ref="J11" pin="4"/>
+      <node ref="R7" pin="1"/>
+    </net>
+    <net code="88" name="Net-(D1-Pad2)">
+      <node ref="D1" pin="2"/>
+      <node ref="J11" pin="5"/>
+      <node ref="U3" pin="2"/>
+    </net>
+    <net code="89" name="Net-(J12-Pad1)">
+      <node ref="J12" pin="1"/>
+    </net>
+    <net code="90" name="Net-(J12-Pad3)">
+      <node ref="J12" pin="3"/>
+    </net>
+    <net code="91" name="Net-(J12-Pad4)">
+      <node ref="R5" pin="2"/>
+      <node ref="J12" pin="4"/>
+    </net>
+    <net code="92" name="Net-(J12-Pad5)">
+      <node ref="J12" pin="5"/>
+      <node ref="R6" pin="1"/>
+    </net>
+    <net code="93" name="AREF">
+      <node ref="C2" pin="1"/>
+      <node ref="J10" pin="1"/>
+      <node ref="XA1" pin="AREF"/>
+      <node ref="R3" pin="2"/>
+      <node ref="J9" pin="1"/>
+    </net>
+    <net code="94" name="Net-(J13-Pad2)">
+      <node ref="J13" pin="2"/>
+      <node ref="U1" pin="21"/>
+    </net>
+    <net code="95" name="Net-(J14-Pad2)">
+      <node ref="J14" pin="2"/>
+      <node ref="U1" pin="22"/>
+    </net>
+    <net code="96" name="Net-(J15-Pad2)">
+      <node ref="J15" pin="2"/>
+      <node ref="U1" pin="23"/>
+    </net>
+    <net code="97" name="Net-(J4-Pad2)">
+      <node ref="U1" pin="4"/>
+      <node ref="J4" pin="2"/>
+    </net>
+    <net code="98" name="Net-(J3-Pad2)">
+      <node ref="U1" pin="3"/>
+      <node ref="J3" pin="2"/>
+    </net>
+    <net code="99" name="Net-(J2-Pad2)">
+      <node ref="J2" pin="2"/>
+      <node ref="U1" pin="2"/>
+    </net>
+    <net code="100" name="Net-(J16-Pad2)">
+      <node ref="J16" pin="2"/>
+      <node ref="U1" pin="24"/>
+    </net>
+    <net code="101" name="Net-(J17-Pad2)">
+      <node ref="J17" pin="2"/>
+      <node ref="U1" pin="27"/>
+    </net>
+    <net code="102" name="Net-(J18-Pad2)">
+      <node ref="J18" pin="2"/>
+      <node ref="U1" pin="28"/>
+    </net>
+    <net code="103" name="MIDI-IN">
+      <node ref="U2" pin="8"/>
+      <node ref="XA1" pin="D19"/>
+    </net>
+    <net code="105" name="5V">
+      <node ref="C1" pin="1"/>
+      <node ref="XA1" pin="5V1"/>
+      <node ref="C4" pin="1"/>
+      <node ref="XA1" pin="5V3"/>
+      <node ref="XA1" pin="5V4"/>
+      <node ref="R8" pin="2"/>
+      <node ref="C3" pin="1"/>
+      <node ref="R5" pin="1"/>
+      <node ref="U1" pin="9"/>
+      <node ref="U1" pin="18"/>
+      <node ref="U2" pin="14"/>
+      <node ref="R10" pin="1"/>
+      <node ref="R9" pin="1"/>
+    </net>
+    <net code="106" name="Net-(XA1-PadD0)">
+      <node ref="XA1" pin="D0"/>
+    </net>
+    <net code="107" name="Net-(XA1-PadD1)">
+      <node ref="XA1" pin="D1"/>
+    </net>
+    <net code="108" name="Net-(XA1-Pad5V2)">
+      <node ref="XA1" pin="5V2"/>
+    </net>
+    <net code="109" name="Net-(XA1-PadD53)">
+      <node ref="XA1" pin="D53"/>
+    </net>
+    <net code="110" name="Net-(XA1-PadSCK)">
+      <node ref="XA1" pin="SCK"/>
+    </net>
+    <net code="111" name="Net-(XA1-PadVIN)">
+      <node ref="XA1" pin="VIN"/>
+    </net>
+    <net code="112" name="Net-(XA1-PadRST1)">
+      <node ref="XA1" pin="RST1"/>
+    </net>
+    <net code="113" name="Net-(XA1-PadRST2)">
+      <node ref="XA1" pin="RST2"/>
+    </net>
+    <net code="114" name="Net-(XA1-PadGND4)">
+      <node ref="XA1" pin="GND4"/>
+    </net>
+    <net code="115" name="Net-(XA1-PadIORF)">
+      <node ref="XA1" pin="IORF"/>
+    </net>
+    <net code="116" name="Net-(XA1-PadMOSI)">
+      <node ref="XA1" pin="MOSI"/>
+    </net>
+    <net code="117" name="Net-(XA1-PadMISO)">
+      <node ref="XA1" pin="MISO"/>
+    </net>
+    <net code="118" name="Earth">
+      <node ref="S37" pin="1"/>
+      <node ref="S29" pin="1"/>
+      <node ref="C4" pin="2"/>
+      <node ref="S45" pin="1"/>
+      <node ref="C3" pin="2"/>
+      <node ref="S21" pin="1"/>
+      <node ref="S13" pin="1"/>
+      <node ref="U2" pin="7"/>
+      <node ref="U2" pin="13"/>
+      <node ref="U3" pin="3"/>
+      <node ref="U2" pin="11"/>
+      <node ref="J12" pin="2"/>
+      <node ref="J12" pin="S1"/>
+      <node ref="J12" pin="S2"/>
+      <node ref="S56" pin="1"/>
+      <node ref="S53" pin="1"/>
+      <node ref="S61" pin="1"/>
+      <node ref="S5" pin="1"/>
+      <node ref="S6" pin="1"/>
+      <node ref="J13" pin="1"/>
+      <node ref="J14" pin="1"/>
+      <node ref="J15" pin="1"/>
+      <node ref="J16" pin="1"/>
+      <node ref="S14" pin="1"/>
+      <node ref="S60" pin="1"/>
+      <node ref="S52" pin="1"/>
+      <node ref="J4" pin="1"/>
+      <node ref="J3" pin="1"/>
+      <node ref="J2" pin="1"/>
+      <node ref="S22" pin="1"/>
+      <node ref="S30" pin="1"/>
+      <node ref="S44" pin="1"/>
+      <node ref="S36" pin="1"/>
+      <node ref="S38" pin="1"/>
+      <node ref="S46" pin="1"/>
+      <node ref="S28" pin="1"/>
+      <node ref="J17" pin="1"/>
+      <node ref="S54" pin="1"/>
+      <node ref="J18" pin="1"/>
+      <node ref="S7" pin="1"/>
+      <node ref="S15" pin="1"/>
+      <node ref="S1" pin="1"/>
+      <node ref="C1" pin="2"/>
+      <node ref="S20" pin="1"/>
+      <node ref="S23" pin="1"/>
+      <node ref="S12" pin="1"/>
+      <node ref="S31" pin="1"/>
+      <node ref="S4" pin="1"/>
+      <node ref="S59" pin="1"/>
+      <node ref="S51" pin="1"/>
+      <node ref="S43" pin="1"/>
+      <node ref="S35" pin="1"/>
+      <node ref="S27" pin="1"/>
+      <node ref="S19" pin="1"/>
+      <node ref="S11" pin="1"/>
+      <node ref="S3" pin="1"/>
+      <node ref="J8" pin="1"/>
+      <node ref="S58" pin="1"/>
+      <node ref="S50" pin="1"/>
+      <node ref="J7" pin="1"/>
+      <node ref="S42" pin="1"/>
+      <node ref="S34" pin="1"/>
+      <node ref="S26" pin="1"/>
+      <node ref="S18" pin="1"/>
+      <node ref="S39" pin="1"/>
+      <node ref="S10" pin="1"/>
+      <node ref="J6" pin="1"/>
+      <node ref="XA1" pin="GND1"/>
+      <node ref="J5" pin="1"/>
+      <node ref="XA1" pin="GND2"/>
+      <node ref="S2" pin="1"/>
+      <node ref="J1" pin="1"/>
+      <node ref="XA1" pin="GND5"/>
+      <node ref="XA1" pin="GND6"/>
+      <node ref="S47" pin="1"/>
+      <node ref="S48" pin="1"/>
+      <node ref="S57" pin="1"/>
+      <node ref="S55" pin="1"/>
+      <node ref="S49" pin="1"/>
+      <node ref="S41" pin="1"/>
+      <node ref="S8" pin="1"/>
+      <node ref="S33" pin="1"/>
+      <node ref="S16" pin="1"/>
+      <node ref="U1" pin="10"/>
+      <node ref="S25" pin="1"/>
+      <node ref="U1" pin="15"/>
+      <node ref="U1" pin="16"/>
+      <node ref="U1" pin="17"/>
+      <node ref="S24" pin="1"/>
+      <node ref="S32" pin="1"/>
+      <node ref="S17" pin="1"/>
+      <node ref="S9" pin="1"/>
+      <node ref="S40" pin="1"/>
+    </net>
+    <net code="119" name="Net-(R8-Pad1)">
+      <node ref="R8" pin="1"/>
+      <node ref="U2" pin="5"/>
+      <node ref="U3" pin="4"/>
+    </net>
+    <net code="120" name="Net-(U1-Pad20)">
+      <node ref="U1" pin="20"/>
+    </net>
+    <net code="121" name="Net-(U1-Pad19)">
+      <node ref="U1" pin="19"/>
+    </net>
+    <net code="122" name="Net-(D1-Pad1)">
+      <node ref="D1" pin="1"/>
+      <node ref="U3" pin="1"/>
+      <node ref="R7" pin="2"/>
+    </net>
+  </nets>
+</export>

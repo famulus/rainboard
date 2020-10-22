@@ -1,0 +1,31 @@
+source {/Users/clean/Documents/rainboard/rainboard_neofighter/~rainboard_newfighter.do}
+ bus diagonal
+ fanout 5
+The number of pins ( 338 ) exceeds your configuration ( 250 )
+ route 20
+The number of pins ( 338 ) exceeds your configuration ( 250 )
+The number of pins ( 338 ) exceeds your configuration ( 250 )
+The number of pins ( 338 ) exceeds your configuration ( 250 )
+The number of pins ( 338 ) exceeds your configuration ( 250 )
+The number of pins ( 338 ) exceeds your configuration ( 250 )
+The number of pins ( 338 ) exceeds your configuration ( 250 )
+The number of pins ( 338 ) exceeds your configuration ( 250 )
+The number of pins ( 338 ) exceeds your configuration ( 250 )
+The number of pins ( 338 ) exceeds your configuration ( 250 )
+The number of pins ( 338 ) exceeds your configuration ( 250 )
+The number of pins ( 338 ) exceeds your configuration ( 250 )
+The number of pins ( 338 ) exceeds your configuration ( 250 )
+The number of pins ( 338 ) exceeds your configuration ( 250 )
+The number of pins ( 338 ) exceeds your configuration ( 250 )
+The number of pins ( 338 ) exceeds your configuration ( 250 )
+The number of pins ( 338 ) exceeds your configuration ( 250 )
+The number of pins ( 338 ) exceeds your configuration ( 250 )
+The number of pins ( 338 ) exceeds your configuration ( 250 )
+The number of pins ( 338 ) exceeds your configuration ( 250 )
+The number of pins ( 338 ) exceeds your configuration ( 250 )
+ clean 2
+The number of pins ( 338 ) exceeds your configuration ( 250 )
+ERR: Execution Aborted...
+The number of pins ( 338 ) exceeds your configuration ( 250 )
+The number of pins ( 338 ) exceeds your configuration ( 250 )
+The number of pins ( 338 ) exceeds your configuration ( 250 )

@@ -35,7 +35,7 @@ const standoffPoints = standoffHexGrid.map(hex =>{
 // this is the bounding box for the pcbBoundary
 
 const pcbBoundaryHex = Honeycomb.extendHex({
-    size: 89,           // default: 1
+    size: 78,           // default: 1
     orientation: 'pointy' // default: 'pointy'
 })
 const pcbBoundaryGrid = Honeycomb.defineGrid(pcbBoundaryHex)

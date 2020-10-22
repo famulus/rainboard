@@ -1,0 +1,32 @@
+avrdude -p m16u2 -c usbtiny -U flash:w:/Users/clean/Documents/rainboard/hiduino/usbserial_uno_16u2.hex -U lfuse:w:0xFF:m -U hfuse:w:0xD9:m -U efuse:w:0xF4:m -U lock:w:0x0F:m
+
+
+
+avrdude -p at90usb82 -F -P usb -c usbtiny -U flash:w:/Users/clean/Documents/rainboard/hiduino/arduino_midi.hex -U lfuse:w:0xFF:m -U hfuse:w:0xD9:m -U efuse:w:0xF4:m -U lock:w:0x0F:m
+
+
+
+avrdude -p m16u2 -F -P usb -c usbtiny -U flash:w:/Users/clean/Documents/rainboard/hiduino/arduino_midi.hex -U lfuse:w:0xFF:m -U hfuse:w:0xD9:m -U efuse:w:0xF4:m -U lock:w:0x0F:m
+
+
+avrdude -p at90usb82 -F -P usb -c usbtiny -U flash:w:arduino_midi.hex -U lfuse:w:0xFF:m -U hfuse:w:0xD9:m -U efuse:w:0xF4:m -U lock:w:0x0F:m
+
+
+avrdude -p at90usb82 -F -P usb -c usbtiny -U flash:w:HIDUINO_MIDI.hex -U lfuse:w:0xFF:m -U hfuse:w:0xD9:m -U efuse:w:0xF4:m -U lock:w:0x0F:m
+
+
+avrdude -p at90usb82 -F -P usb -c usbtiny -U flash:w:HIDUINO_MIDI.hex -U lfuse:w:0xFF:m -U hfuse:w:0xD9:m -U efuse:w:0xF4:m -U lock:w:0x0F:m
+
+
+
+avrdude -p at90usb82 -F -P usb -c usbtiny -U flash:w:MIDI.hex -U lfuse:w:0xFF:m -U hfuse:w:0xD9:m -U efuse:w:0xF4:m -U lock:w:0x0F:m
+
+
+
+works:
+
+
+avrdude -p at90usb82 -F -P usb -c usbtiny -U flash:w:MIDI2.hex -U lfuse:w:0xFF:m -U hfuse:w:0xD9:m -U efuse:w:0xF4:m -U lock:w:0x0F:m
+
+
+ordered_nodes = nodes.sort(function(a,b){ return (Number( ((a.y-b.y)*10)+(a.x-b.x)  )) })
