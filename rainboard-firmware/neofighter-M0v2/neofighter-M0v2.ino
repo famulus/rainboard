@@ -1,14 +1,14 @@
 
 
 #include <MIDI.h> 
+#include <Wire.h>
+#include "Adafruit_MCP23017.h"
+extern TwoWire Wire1;
 
 MIDI_CREATE_INSTANCE(HardwareSerial, Serial, midiUSB);
 MIDI_CREATE_INSTANCE(HardwareSerial, Serial1, midiDIN);
 
-const uint8_t midi_noteOn_command = 0x90;
-const uint8_t midi_cc_command = 0xB0;
-const uint8_t midi_pitchBend_cmd = 0xE0;
-const uint8_t midi_modWheel_number = 0x01;
+Adafruit_MCP23017 ioExpander; 
 
 const uint8_t number_of_buttons = 61;
 
@@ -37,8 +37,13 @@ uint8_t noteHex[] =
   0x6C, 0x6D, 0x6E, 0x6F, 0x70, 0x71, 0x72, 0x73, 0x74, 0x75, 0x76, 0x77,
   0x78, 0x79, 0x7A, 0x7B, 0x7C, 0x7D, 0x7E, 0x7F};
 
+//const uint8_t  original_button_to_pin[] = 
+//{31,35,38,42,46,30,32,36,40,44,51,26,29,33,39,45,48,50,22,25,28,34,41,49,52,A13,17,18,24,27,37,47,A15,A12,A11,14,16,19,23,43,A14,A8,A7,5,4,15,6,A4,A6,A5,11,10,9,7,A1,A3,12,13,8,A0,A2}; 
+
 const uint8_t  button_to_pin[] = 
-{31,35,38,42,46,30,32,36,40,44,51,26,29,33,39,45,48,50,22,25,28,34,41,49,52,A13,17,18,24,27,37,47,A15,A12,A11,14,16,19,23,43,A14,A8,A7,5,4,15,6,A4,A6,A5,11,10,9,7,A1,A3,12,13,8,A0,A2}; 
+{31,35,38,42,46,30,32,36,40,44,3,26,29,33,39,45,48,2,22,25,28,34,41,49,20,A13,0xFF,21,24,27,37,47,A15,A12,0xFF,14,16,17,23,43,A14,A8,A7,5,4,15,6,A4,A6,A5,11,10,9,7,A1,A3,12,13,8,A0,A2};
+//                             *                   *                   *      *    *                      *          * 
+// modified pin assignments from V1 to V2 PCB. 0xFF = placeholder; BTN 27 and 35 moved to io expander.
 
 const uint8_t  button_to_wiki[] = 
 {42,40,38,36,34,49,47,45,43,41,39,56,54,52,50,48,46,44,63,61,59,57,55,53,51,49,70,68,66,64,62,60,58,56,54,75,73,71,69,67,65,63,61,80,78,76,74,72,70,68,85,83,81,79,77,75,90,88,86,84,82};                  
@@ -48,7 +53,6 @@ const uint8_t  button_to_wiki[] =
 uint8_t ModWheelCurrentPosition;
 uint8_t ModWheelPreviousPosition;
 uint64_t LastModWheelEventTime;
-
 
 //scanPitchBend()
 uint8_t PitchBendCurrentPosition;
@@ -67,10 +71,10 @@ uint64_t LastNoteOffEventTime[number_of_buttons];
 
 boolean NoteOnFlag[number_of_buttons];
 uint8_t ButtonIdleCount[number_of_buttons];
-const uint8_t button_idle_period_cycles = 100;
 
 // configure timing
 const uint64_t dead_zone_time = 2;
+const uint8_t button_idle_period_cycles = 100;
 
 const uint8_t modWheel_scan_period = 10;  
 const uint8_t pitchBend_scan_period = 1;  
@@ -90,54 +94,53 @@ void setup(){
   ModWheelCurrentPosition = ModWheelPreviousPosition = 0;    
   pinMode(pitchBend_pin, INPUT);  
   PitchBendCurrentPosition = PitchBendPreviousPosition = 0;
+  PitchBendValue = 0;
   pinMode(softpots_bottom_pin, INPUT);
   analogReference(EXTERNAL);
   
-  LastModWheelEventTime = LastPitchBendEventTime = millis();  // init timekeepers
-  PitchBendValue = 0;  
-   
-  for(uint8_t i=0; i<number_of_buttons; i++){      //Initialization loop
+  LastModWheelEventTime = LastPitchBendEventTime = millis();  // init timekeepers  
 
-    if((button_to_pin[i] == 18) || (button_to_pin[i] == 19)){   // dont tread on 2nd serial port for now (until we reassign buttons)
-      break;
-    }
+  initIoExpander();                         // init io expander
+  initButtons();                            // init buttons  
   
-    pinMode(button_to_pin[i], INPUT_PULLUP);       //Initialize pins as inputs w/ pullups
-
-    ButtonState[i] = 1;                            // init debounce flags
-    ReadyForPress[i] = 1;
-    ReadyForRelease[i] = 0;
-    NoteOnDeadZone[i] = 0;
-    NoteOffDeadZone[i] = 0;
-    NoteOnFlag[i] = 0;
-    ButtonIdleCount[i] = 0;   
-
-    //noteRange[i] = noteHex[i];
-    
-  }    
-
   midiUSB.begin(MIDI_CHANNEL_OMNI);         // init midi ports
   midiUSB.turnThruOff();
   midiDIN.begin(MIDI_CHANNEL_OMNI);
   midiDIN.turnThruOn();  
+
+  
+    
                      
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 void loop() {
   
-  //scanButtonsV1();
+  scanButtonsV1();
   
-  scanModWheelV1();
+  scanModWheel();
   
-  //scanPitchBendV1(); 
+  //scanPitchBendStandard(); 
+
+  
+  //midiNoteOn(60, 100);
+  //delay(1000);
+  //midiNoteOff(60);
+  //delay(1000);
+
+  //for(uint8_t i=0; i<16; i++){ 
+  //   if(ioExpander.digitalRead(i) == 0){
+  //    midiNoteOn(60, 100);   
+  //    delay(100);  
+  //   }
+  //}
 
 }
 
 
 /////////////////////////////////////// SCAN MOD AND PITCH///////////////////////////////////////
 
-void scanPitchBendV1() {
+void scanPitchBendStandard() {
 
   static uint16_t pitch_bend_raw;
   static uint16_t softpots_bottom_raw;
@@ -184,7 +187,7 @@ void scanPitchBendV1() {
 }
 
 
-void scanModWheelV1() {
+void scanModWheel() {
 
   static uint16_t mod_wheel_raw;
   static uint16_t softpots_bottom_raw;
@@ -221,9 +224,8 @@ void scanModWheelV1() {
 
 void scanButtonsV1(){   // adjustable dead zone. read then process. kill stuck notes
 
-  acquireButtonsFast();
-  //acquireButtonsSlow();
-   
+  acquireButtons();
+    
   Serial.flush();
 
   for(uint8_t i=0; i<number_of_buttons; i++){      
@@ -275,10 +277,6 @@ void scanButtonsV1(){   // adjustable dead zone. read then process. kill stuck n
 
 void midiNoteOn(uint8_t pitch, uint8_t velocity){
   
-     //Serial.write(midi_noteOn_command | (global_midi_channel - 1));
-     //Serial.write(pitch);
-     //Serial.write(velocity);    
-
      midiUSB.sendNoteOn(pitch, velocity, global_midi_channel);
      midiDIN.sendNoteOn(pitch, velocity, global_midi_channel);
 }
@@ -290,10 +288,6 @@ void midiNoteOff(uint8_t pitch){
 
 void midiCCout(uint8_t ccNum, uint8_t ccVal){
   
-    //Serial.write(midi_cc_command | (global_midi_channel - 1));
-    //Serial.write(ccNum);
-    //Serial.write(ccVal);
-
     midiUSB.sendControlChange(ccNum, ccVal, global_midi_channel);
     midiDIN.sendControlChange(ccNum, ccVal, global_midi_channel);
 }
@@ -322,14 +316,93 @@ void midiPitchBend(uint8_t pitchVal){
 
 /////////////////////////////////////// ACQUIRE BUTTONS ////////////////////////////////////
 
-void acquireButtonsSlow(){    // 208 us execution time
-  
-    for(uint8_t i=0; i<number_of_buttons; i++){ 
-      ButtonState[i] = (digitalRead(button_to_pin[i]));       
-   } 
+void acquireButtons(){   
+
+    uint8_t portdata;
+    portdata = PINA;
+    ButtonState[18] = bitRead(portdata,0);
+    ButtonState[38] = bitRead(portdata,1);
+    ButtonState[28] = bitRead(portdata,2);
+    ButtonState[19] = bitRead(portdata,3);
+    ButtonState[11] = bitRead(portdata,4);
+    ButtonState[29] = bitRead(portdata,5);
+    ButtonState[20] = bitRead(portdata,6);
+    ButtonState[12] = bitRead(portdata,7);
+    portdata = PINB;    
+    //ButtonState[24] = bitRead(portdata,1);    // button 25 old
+    //ButtonState[10] = bitRead(portdata,2);    // button 11 old
+    //ButtonState[17] = bitRead(portdata,3);    // button 18 old
+    ButtonState[51] = bitRead(portdata,4);
+    ButtonState[50] = bitRead(portdata,5);
+    ButtonState[56] = bitRead(portdata,6);
+    ButtonState[57] = bitRead(portdata,7);
+    portdata = PINC;
+    ButtonState[30] = bitRead(portdata,0);
+    ButtonState[7]  = bitRead(portdata,1);
+    ButtonState[1]  = bitRead(portdata,2);
+    ButtonState[21] = bitRead(portdata,3);
+    ButtonState[13] = bitRead(portdata,4);
+    ButtonState[6]  = bitRead(portdata,5);
+    ButtonState[0]  = bitRead(portdata,6);
+    ButtonState[5]  = bitRead(portdata,7);
+    portdata = PIND;     
+    //ButtonState[37] = bitRead(portdata,2);    // button 38 old
+    //ButtonState[27] = bitRead(portdata,3);    // button 28 old 
+    ButtonState[27] = bitRead(portdata,0);  // new button 28
+    ButtonState[24] = bitRead(portdata,1);  // new button 25
+    ButtonState[2]  = bitRead(portdata,7);
+    portdata = PINE; 
+    ButtonState[43] = bitRead(portdata,3);
+    ButtonState[17] = bitRead(portdata,4);  // new button 18
+    ButtonState[10] = bitRead(portdata,5);  // new button 11
+    portdata = PINF;
+    ButtonState[59] = bitRead(portdata,0);
+    ButtonState[54] = bitRead(portdata,1);
+    ButtonState[60] = bitRead(portdata,2);
+    ButtonState[55] = bitRead(portdata,3);
+    ButtonState[47] = bitRead(portdata,4);
+    ButtonState[49] = bitRead(portdata,5);
+    ButtonState[48] = bitRead(portdata,6);
+    ButtonState[42] = bitRead(portdata,7);
+    portdata = PING;
+    ButtonState[22] = bitRead(portdata,0);
+    ButtonState[8]  = bitRead(portdata,1);
+    ButtonState[14] = bitRead(portdata,2);
+    ButtonState[44] = bitRead(portdata,5);
+    portdata = PINH;
+    //ButtonState[26] = bitRead(portdata,0);    // button 27 old
+    ButtonState[37] = bitRead(portdata,0);  // new button 38
+    ButtonState[36] = bitRead(portdata,1);    
+    ButtonState[46] = bitRead(portdata,3);
+    ButtonState[53] = bitRead(portdata,4);
+    ButtonState[58] = bitRead(portdata,5);
+    ButtonState[52] = bitRead(portdata,6);
+    portdata = PINJ;
+    ButtonState[45] = bitRead(portdata,0);
+    ButtonState[35] = bitRead(portdata,1); 
+    portdata = PINK;
+    ButtonState[41] = bitRead(portdata,0);
+    //ButtonState[34] = bitRead(portdata,3);    // button 35 old
+    ButtonState[33] = bitRead(portdata,4);
+    ButtonState[25] = bitRead(portdata,5);
+    ButtonState[40] = bitRead(portdata,6);
+    ButtonState[32] = bitRead(portdata,7);   
+    portdata = PINL;
+    ButtonState[23] = bitRead(portdata,0);
+    ButtonState[16] = bitRead(portdata,1);
+    ButtonState[31] = bitRead(portdata,2);
+    ButtonState[4]  = bitRead(portdata,3);
+    ButtonState[15] = bitRead(portdata,4);
+    ButtonState[9]  = bitRead(portdata,5);
+    ButtonState[39] = bitRead(portdata,6);
+    ButtonState[3]  = bitRead(portdata,7); 
+
+    ButtonState[34] = ioExpander.digitalRead(4);  // new button 35
+    ButtonState[26] = ioExpander.digitalRead(5);  // new button 27
+           
 }
 
-void acquireButtonsFast(){    // 1.68 us execution time  
+void acquireButtonsOriginal(){    // 1.68 us execution time  
 
     uint8_t portdata;
     portdata = PINA;
@@ -403,5 +476,38 @@ void acquireButtonsFast(){    // 1.68 us execution time
     ButtonState[15] = bitRead(portdata,4);
     ButtonState[9]  = bitRead(portdata,5);
     ButtonState[39] = bitRead(portdata,6);
-    ButtonState[3]  = bitRead(portdata,7);     
+    ButtonState[3]  = bitRead(portdata,7); 
+        
+}
+
+/////////////////////////////////////// INIT BUTTONS ////////////////////////////////////
+
+void initButtons(){  
+
+  for(uint8_t i=0; i<number_of_buttons; i++){      // init BTNs loop    
+
+    if( (i != 26) && (i != 34)){                  // skip BTN 27 and 35
+      pinMode(button_to_pin[i], INPUT_PULLUP);    // inputs w/ pullups     
+    }
+  
+    ButtonState[i] = 1;                            // debounce flags
+    ReadyForPress[i] = 1;
+    ReadyForRelease[i] = 0;
+    NoteOnDeadZone[i] = 0;
+    NoteOffDeadZone[i] = 0;
+    NoteOnFlag[i] = 0;
+    ButtonIdleCount[i] = 0;   
+
+    //noteRange[i] = noteHex[i];
+    
+  }   
+}
+
+void initIoExpander(){
+  
+  ioExpander.begin();
+  for(uint8_t i=0; i<16; i++){ 
+    ioExpander.pinMode(i, INPUT);
+    ioExpander.pullUp(i, HIGH);    
+  }
 }
