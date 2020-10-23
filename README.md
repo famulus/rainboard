@@ -1,5 +1,5 @@
 # rainboard
 
-An Isomorphic MIDI controller.
+An open-source isomorphic MIDI controller.
 
 Instrument of the Jedi
