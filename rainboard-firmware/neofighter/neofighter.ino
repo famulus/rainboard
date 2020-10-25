@@ -11,13 +11,19 @@ MIDI_CREATE_INSTANCE(HardwareSerial, Serial1, midiDIN);
 Adafruit_MCP23017 ioExpander; 
 
 const uint8_t number_of_buttons = 61;
+const uint8_t number_of_meta_buttons = 16; // only 14 actual meta buttons (overlap of BTNs 27 & 35 on IO expander)
 
 const uint8_t modWheel_pin = A9;             
 const uint8_t pitchBend_pin = A10;    
 const uint8_t softpots_bottom_pin = A11;         
 
-const uint8_t global_midi_channel = 1;
-const uint8_t global_midi_velocity = 0x45;
+const uint8_t midi_note_max = 127;
+const uint8_t midi_note_min = 0;
+const uint8_t midi_velocity_max = 127;
+const uint8_t midi_velocity_min = 0;
+
+uint8_t global_midi_channel = 1;
+uint8_t global_midi_velocity = 0x45;
 
 //uint8_t noteRange[200];
 
@@ -72,9 +78,23 @@ uint64_t LastNoteOffEventTime[number_of_buttons];
 boolean NoteOnFlag[number_of_buttons];
 uint8_t ButtonIdleCount[number_of_buttons];
 
+//scanMetaButtons()
+boolean MetaButtonState[number_of_meta_buttons];
+boolean MetaButtonReadyForPress[number_of_meta_buttons];
+boolean MetaButtonReadyForRelease[number_of_meta_buttons];
+boolean MetaButtonPressDeadZone[number_of_meta_buttons];
+boolean MetaButtonReleaseDeadZone[number_of_meta_buttons];
+uint64_t LastMetaButtonPressTime[number_of_meta_buttons];
+uint64_t LastMetaButtonReleaseTime[number_of_meta_buttons];
+
+boolean MetaButtonPressedFlag[number_of_meta_buttons];
+uint8_t MetaButtonIdleCount[number_of_meta_buttons];
+
 // configure timing
 const uint64_t dead_zone_time = 2;
 const uint8_t button_idle_period_cycles = 100;
+const uint64_t meta_button_dead_zone_time = 2;
+const uint8_t meta_button_idle_period_cycles = 100;
 
 const uint8_t modWheel_scan_period = 10;  
 const uint8_t pitchBend_scan_period = 1;  
@@ -106,34 +126,20 @@ void setup(){
   midiUSB.begin(MIDI_CHANNEL_OMNI);         // init midi ports
   midiUSB.turnThruOff();
   midiDIN.begin(MIDI_CHANNEL_OMNI);
-  midiDIN.turnThruOn();  
-
-  
-    
+  midiDIN.turnThruOn();      
                      
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 void loop() {
   
-  scanButtonsV1();
+  scanButtons();
   
   scanModWheel();
-  
-  //scanPitchBendStandard(); 
 
+  scanMetaButtons();
   
-  //midiNoteOn(60, 100);
-  //delay(1000);
-  //midiNoteOff(60);
-  //delay(1000);
-
-  //for(uint8_t i=0; i<16; i++){ 
-  //   if(ioExpander.digitalRead(i) == 0){
-  //    midiNoteOn(60, 100);   
-  //    delay(100);  
-  //   }
-  //}
+  //scanPitchBendStandard();  
 
 }
 
@@ -220,11 +226,11 @@ void scanModWheel() {
 }
 
 
-///////////////////////////////////////// SCAN BUTTONS V1 /////////////////////////////////////////
+///////////////////////////////////////// SCAN BUTTONS ////////////////////////////////////////////
 
-void scanButtonsV1(){   // adjustable dead zone. read then process. kill stuck notes
+void scanButtons(){  
 
-  acquireButtons();
+  acquireButtons();     // gets all 61 BTNs and stores in ButtonState[] array. including BTN 27 and 35 on the IO expander
     
   Serial.flush();
 
@@ -261,13 +267,129 @@ void scanButtonsV1(){   // adjustable dead zone. read then process. kill stuck n
               }
           }
 
-          ButtonIdleCount[i]++;
+          ButtonIdleCount[i]++;                                                    // kill stuck notes
           if(ButtonIdleCount[i] >= button_idle_period_cycles){
               if(NoteOnFlag[i]){
                   midiNoteOff(noteHex[button_to_wiki[i]+c2_base_note]); 
                   NoteOnFlag[i] = false;   
               }
               ButtonIdleCount[i] = 0;
+          }
+      }
+  }     
+}
+
+/////////////////////////////////////////  META BUTTONS HANDLER /////////////////////////////////////////
+
+void metaButtonHandler(uint8_t meta_button){ 
+  
+  switch (meta_button) {
+    case 0:               // GPIOA.0 J13
+      if(c2_base_note > midi_note_min){      // Semitone -
+        c2_base_note = c2_base_note - 1;   
+      } 
+      break;
+    case 1:               // GPIOA.1 J14
+      if(c2_base_note < midi_note_max){      // Semitone +
+        c2_base_note = c2_base_note + 1;   
+      }
+      break;
+    case 2:               // GPIOA.2 J15
+      if(c2_base_note > midi_note_min + 12){     // Octave -
+        c2_base_note = c2_base_note - 12;   
+      }  
+      break;
+    case 3:               // GPIOA.3 J16
+      if(c2_base_note < midi_note_max - 12){     // Octave +
+        c2_base_note = c2_base_note + 12;   
+      }   
+      break;
+    case 6:               // GPIOA.6 J17
+      break;
+    case 7:               // GPIOA.7 J18
+      break;  
+    case 8:               // GPIOB.0 J1
+      if(global_midi_velocity < midi_velocity_max){           // Velocity +
+        global_midi_velocity = (global_midi_velocity + 1);    // * configure increments
+      }    
+      break;
+    case 9:               // GPIOB.1 J2
+      if(global_midi_velocity > midi_velocity_min){          // Velocity -   
+        global_midi_velocity = (global_midi_velocity - 1);   // * configure increments
+      }     
+      break;
+    case 10:              // GPIOB.2 J3 
+      if(global_midi_channel < 16){        // Channel +    
+        global_midi_channel++;
+      }    
+      break;
+    case 11:              // GPIOB.3 J4
+      if(global_midi_channel > 1){         // Channel -      
+        global_midi_channel--;
+      }    
+      break;
+    case 12:              // GPIOB.4 J5
+      break;
+    case 13:              // GPIOB.5 J6
+      break;    
+    case 14:              // GPIOB.6 J7
+      break;
+    case 15:              // GPIOB.7 J8
+      break;
+    default:
+      break;
+  }
+  
+}
+
+/////////////////////////////////////////// SCAN META BUTTONS //////////////////////////////////////////
+
+void scanMetaButtons(){   
+
+  for(uint8_t i=0; i<number_of_meta_buttons; i++){             // gets all 16 pins of the IO expander which includes 14 meta buttons 
+      MetaButtonState[i] = ioExpander.digitalRead(i);          // and also overlap of BTN 35 and 27 onto GPIOA.4 and GPIOA.5 
+  }                                                           
+
+  for(uint8_t i=0; i<number_of_meta_buttons; i++){      
+
+      if(!MetaButtonState[i]){                                                               // if button is low
+          if(MetaButtonReadyForPress[i]){                                                    // and ready for press                                
+              metaButtonHandler(i);                                                          // initiate meta button press event
+              MetaButtonPressedFlag[i] = true;
+              LastMetaButtonPressTime[i] = millis();                                         // store time
+              MetaButtonReadyForPress[i] = false;                                            // press has been processed
+              MetaButtonPressDeadZone[i] = true;                                             // now in meta button press dead zone              
+          }
+          else if(MetaButtonPressDeadZone[i]){                                               // if in meta button press dead zone
+              if(millis() >= (LastMetaButtonPressTime[i] + meta_button_dead_zone_time)){     // and meta button press dead zone is over
+                  MetaButtonReadyForRelease[i] = true;                                       // ready for release
+                  MetaButtonPressDeadZone[i] = false;                                        // out of meta button press dead zone
+              }
+          }
+      }
+          
+      else {                                                                                 // if button is high
+          if(MetaButtonReadyForRelease[i]){                                                  // and ready for release                
+              ////                                                                           // do nothing but housekeeping on meta button release event
+              MetaButtonPressedFlag[i] = false;
+              LastMetaButtonReleaseTime[i] = millis();                                       // store time
+              MetaButtonReadyForRelease[i] = false;                                          // release has been processed
+              MetaButtonReleaseDeadZone[i] = true;                                           // now in meta button release dead zone              
+          }  
+          else if(MetaButtonReleaseDeadZone[i]){                                             // if in meta button release dead zone
+              if(millis() >= (LastMetaButtonReleaseTime[i] + meta_button_dead_zone_time)){   // and meta button release dead zone is over
+                  MetaButtonReadyForPress[i] = true;                                         // ready for press
+                  MetaButtonReleaseDeadZone[i] = false;                                      // out of meta button release dead zone
+              }
+          }
+
+          MetaButtonIdleCount[i]++;
+          if(MetaButtonIdleCount[i] >= meta_button_idle_period_cycles){
+              if(MetaButtonPressedFlag[i]){
+                  ////                                                                       // do nothing but housekeeping on forced meta button release event
+                  MetaButtonPressedFlag[i] = false;   
+              }
+              MetaButtonIdleCount[i] = 0;
           }
       }
   }     
@@ -328,10 +450,7 @@ void acquireButtons(){
     ButtonState[29] = bitRead(portdata,5);
     ButtonState[20] = bitRead(portdata,6);
     ButtonState[12] = bitRead(portdata,7);
-    portdata = PINB;    
-    //ButtonState[24] = bitRead(portdata,1);    // button 25 old
-    //ButtonState[10] = bitRead(portdata,2);    // button 11 old
-    //ButtonState[17] = bitRead(portdata,3);    // button 18 old
+    portdata = PINB; 
     ButtonState[51] = bitRead(portdata,4);
     ButtonState[50] = bitRead(portdata,5);
     ButtonState[56] = bitRead(portdata,6);
@@ -345,16 +464,14 @@ void acquireButtons(){
     ButtonState[6]  = bitRead(portdata,5);
     ButtonState[0]  = bitRead(portdata,6);
     ButtonState[5]  = bitRead(portdata,7);
-    portdata = PIND;     
-    //ButtonState[37] = bitRead(portdata,2);    // button 38 old
-    //ButtonState[27] = bitRead(portdata,3);    // button 28 old 
-    ButtonState[27] = bitRead(portdata,0);  // new button 28
-    ButtonState[24] = bitRead(portdata,1);  // new button 25
+    portdata = PIND;   
+    ButtonState[27] = bitRead(portdata,0);  
+    ButtonState[24] = bitRead(portdata,1); 
     ButtonState[2]  = bitRead(portdata,7);
     portdata = PINE; 
     ButtonState[43] = bitRead(portdata,3);
-    ButtonState[17] = bitRead(portdata,4);  // new button 18
-    ButtonState[10] = bitRead(portdata,5);  // new button 11
+    ButtonState[17] = bitRead(portdata,4); 
+    ButtonState[10] = bitRead(portdata,5); 
     portdata = PINF;
     ButtonState[59] = bitRead(portdata,0);
     ButtonState[54] = bitRead(portdata,1);
@@ -369,9 +486,8 @@ void acquireButtons(){
     ButtonState[8]  = bitRead(portdata,1);
     ButtonState[14] = bitRead(portdata,2);
     ButtonState[44] = bitRead(portdata,5);
-    portdata = PINH;
-    //ButtonState[26] = bitRead(portdata,0);    // button 27 old
-    ButtonState[37] = bitRead(portdata,0);  // new button 38
+    portdata = PINH;   
+    ButtonState[37] = bitRead(portdata,0); 
     ButtonState[36] = bitRead(portdata,1);    
     ButtonState[46] = bitRead(portdata,3);
     ButtonState[53] = bitRead(portdata,4);
@@ -381,8 +497,7 @@ void acquireButtons(){
     ButtonState[45] = bitRead(portdata,0);
     ButtonState[35] = bitRead(portdata,1); 
     portdata = PINK;
-    ButtonState[41] = bitRead(portdata,0);
-    //ButtonState[34] = bitRead(portdata,3);    // button 35 old
+    ButtonState[41] = bitRead(portdata,0);   
     ButtonState[33] = bitRead(portdata,4);
     ButtonState[25] = bitRead(portdata,5);
     ButtonState[40] = bitRead(portdata,6);
@@ -397,100 +512,23 @@ void acquireButtons(){
     ButtonState[39] = bitRead(portdata,6);
     ButtonState[3]  = bitRead(portdata,7); 
 
-    ButtonState[34] = ioExpander.digitalRead(4);  // new button 35
-    ButtonState[26] = ioExpander.digitalRead(5);  // new button 27
+    ButtonState[34] = ioExpander.digitalRead(4);  // button 35
+    ButtonState[26] = ioExpander.digitalRead(5);  // button 27
            
 }
 
-void acquireButtonsOriginal(){    // 1.68 us execution time  
-
-    uint8_t portdata;
-    portdata = PINA;
-    ButtonState[18] = bitRead(portdata,0);
-    ButtonState[38] = bitRead(portdata,1);
-    ButtonState[28] = bitRead(portdata,2);
-    ButtonState[19] = bitRead(portdata,3);
-    ButtonState[11] = bitRead(portdata,4);
-    ButtonState[29] = bitRead(portdata,5);
-    ButtonState[20] = bitRead(portdata,6);
-    ButtonState[12] = bitRead(portdata,7);
-    portdata = PINB;    
-    ButtonState[24] = bitRead(portdata,1);
-    ButtonState[10] = bitRead(portdata,2);
-    ButtonState[17] = bitRead(portdata,3);
-    ButtonState[51] = bitRead(portdata,4);
-    ButtonState[50] = bitRead(portdata,5);
-    ButtonState[56] = bitRead(portdata,6);
-    ButtonState[57] = bitRead(portdata,7);
-    portdata = PINC;
-    ButtonState[30] = bitRead(portdata,0);
-    ButtonState[7]  = bitRead(portdata,1);
-    ButtonState[1]  = bitRead(portdata,2);
-    ButtonState[21] = bitRead(portdata,3);
-    ButtonState[13] = bitRead(portdata,4);
-    ButtonState[6]  = bitRead(portdata,5);
-    ButtonState[0]  = bitRead(portdata,6);
-    ButtonState[5]  = bitRead(portdata,7);
-    portdata = PIND;     
-    ButtonState[37] = bitRead(portdata,2);
-    ButtonState[27] = bitRead(portdata,3);   
-    ButtonState[2]  = bitRead(portdata,7);
-    portdata = PINE; 
-    ButtonState[43] = bitRead(portdata,3);
-    portdata = PINF;
-    ButtonState[59] = bitRead(portdata,0);
-    ButtonState[54] = bitRead(portdata,1);
-    ButtonState[60] = bitRead(portdata,2);
-    ButtonState[55] = bitRead(portdata,3);
-    ButtonState[47] = bitRead(portdata,4);
-    ButtonState[49] = bitRead(portdata,5);
-    ButtonState[48] = bitRead(portdata,6);
-    ButtonState[42] = bitRead(portdata,7);
-    portdata = PING;
-    ButtonState[22] = bitRead(portdata,0);
-    ButtonState[8]  = bitRead(portdata,1);
-    ButtonState[14] = bitRead(portdata,2);
-    ButtonState[44] = bitRead(portdata,5);
-    portdata = PINH;
-    ButtonState[26] = bitRead(portdata,0);
-    ButtonState[36] = bitRead(portdata,1);    
-    ButtonState[46] = bitRead(portdata,3);
-    ButtonState[53] = bitRead(portdata,4);
-    ButtonState[58] = bitRead(portdata,5);
-    ButtonState[52] = bitRead(portdata,6);
-    portdata = PINJ;
-    ButtonState[45] = bitRead(portdata,0);
-    ButtonState[35] = bitRead(portdata,1); 
-    portdata = PINK;
-    ButtonState[41] = bitRead(portdata,0);
-    ButtonState[34] = bitRead(portdata,3);
-    ButtonState[33] = bitRead(portdata,4);
-    ButtonState[25] = bitRead(portdata,5);
-    ButtonState[40] = bitRead(portdata,6);
-    ButtonState[32] = bitRead(portdata,7);   
-    portdata = PINL;
-    ButtonState[23] = bitRead(portdata,0);
-    ButtonState[16] = bitRead(portdata,1);
-    ButtonState[31] = bitRead(portdata,2);
-    ButtonState[4]  = bitRead(portdata,3);
-    ButtonState[15] = bitRead(portdata,4);
-    ButtonState[9]  = bitRead(portdata,5);
-    ButtonState[39] = bitRead(portdata,6);
-    ButtonState[3]  = bitRead(portdata,7); 
-        
-}
 
 /////////////////////////////////////// INIT BUTTONS ////////////////////////////////////
 
 void initButtons(){  
 
-  for(uint8_t i=0; i<number_of_buttons; i++){      // init BTNs loop    
+  for(uint8_t i=0; i<number_of_buttons; i++){     // init BTNs loop    
 
     if( (i != 26) && (i != 34)){                  // skip BTN 27 and 35
       pinMode(button_to_pin[i], INPUT_PULLUP);    // inputs w/ pullups     
     }
   
-    ButtonState[i] = 1;                            // debounce flags
+    ButtonState[i] = 1;                           // button debounce flags
     ReadyForPress[i] = 1;
     ReadyForRelease[i] = 0;
     NoteOnDeadZone[i] = 0;
@@ -506,8 +544,16 @@ void initButtons(){
 void initIoExpander(){
   
   ioExpander.begin();
-  for(uint8_t i=0; i<16; i++){ 
-    ioExpander.pinMode(i, INPUT);
+  for(uint8_t i=0; i<number_of_meta_buttons; i++){    // init Meta BTNs loop (and also BTN 27 and 35)
+    ioExpander.pinMode(i, INPUT);                     // all pins inputs w/ pullups
     ioExpander.pullUp(i, HIGH);    
+
+    MetaButtonState[i] = 1;                 // meta button debounce flags
+    MetaButtonReadyForPress[i] = 1;
+    MetaButtonReadyForRelease[i] = 0;
+    MetaButtonPressDeadZone[i] = 0;
+    MetaButtonReleaseDeadZone[i] = 0;
+    MetaButtonPressedFlag[i] = 0;
+    MetaButtonIdleCount[i] = 0;   
   }
 }
