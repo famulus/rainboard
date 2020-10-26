@@ -78,10 +78,11 @@ Make sure your Arduino environment is working, you have the two libraries instal
 
 ## Mac OS X
 
+Requires homebrew: https://brew.sh/
 
 `brew install avrdude`
 
-`cd [rainboard directory]`
+`cd [rainboard directory]/rainboard-firmware`
 
 `avrdude -p at90usb82 -F -P usb -c usbtiny -U flash:w:rainboard16u2.hex -U lfuse:w:0xFF:m -U hfuse:w:0xD9:m -U efuse:w:0xF4:m -U lock:w:0x0F:m`
 
