@@ -27,7 +27,7 @@ The Rainboard firmware runs on an Arduino Mega which has two processors on board
 
 ## Windows
 
-#### To flash the USB Controller (ATmega16U2):
+#### Flash the USB Controller (ATmega16U2):
 
 This can be accomplished with a DFU Programmer. Follow the instructions for your programmer.
 
@@ -56,7 +56,7 @@ Alternatively, if you don't have a DFU Programmer you can use Atmel FLIP softwar
 
 
 
-#### To upload the firmware to the Arduino Mega ():
+#### Upload firmware to the Arduino Mega (ATmega2560):
 
 The easiest way to upload the firmware through the Arduino IDE. 
 Make sure you have the proper drivers installed and that you can program the Mega from the Arduino IDE. 
@@ -83,6 +83,8 @@ Also make sure you have already flashed the ATmega16U2 with the `rainboard16U2.h
 
 ## Mac OS X
 
+#### Flash the USB Controller (ATmega16U2):
+
 Requires homebrew: https://brew.sh/
 
 `brew install avrdude`
@@ -91,7 +93,9 @@ Requires homebrew: https://brew.sh/
 
 `avrdude -p at90usb82 -F -P usb -c usbtiny -U flash:w:rainboard16u2.hex -U lfuse:w:0xFF:m -U hfuse:w:0xD9:m -U efuse:w:0xF4:m -U lock:w:0x0F:m`
 
+#### Upload firmware to the Arduino Mega (ATmega2560):
 
+Same instructions as Windows.
 
 
 
