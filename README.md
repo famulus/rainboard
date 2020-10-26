@@ -27,7 +27,7 @@ The Rainboard firmware runs on an Arduino Mega which has two processors on board
 
 ## Windows
 
-#### To flash the ATmega16U2 with the rainboard16U2.hex file:
+#### To flash the USB Controller (ATmega16U2):
 
 This can be accomplished with a DFU Programmer. Follow the instructions for your programmer.
 
@@ -56,18 +56,23 @@ Alternatively, if you don't have a DFU Programmer you can use Atmel FLIP softwar
 
 
 
-#### To upload rainboard_firmware.ino to the Arduino Mega:
+#### To upload the firmware to the Arduino Mega ():
 
-The most straightforward way to do this is through the Arduino IDE. Make sure you have the proper drivers installed and that you can program the Mega from the Arduino IDE. You will also need two Arduino libraries installed that the Rainboard firmware depends on:
+The easiest way to upload the firmware through the Arduino IDE. 
+Make sure you have the proper drivers installed and that you can program the Mega from the Arduino IDE. 
+You will also need two Arduino libraries installed that the Rainboard firmware depends on:
 
-Adafruit-MCP23017-Arduino-Library - https://github.com/adafruit/Adafruit-MCP23017-Arduino-Library
+`Adafruit-MCP23017-Arduino-Library` - https://github.com/adafruit/Adafruit-MCP23017-Arduino-Library
 
-MIDI_Library-5.0.2 -  https://github.com/FortySevenEffects/arduino_midi_library
+`MIDI_Library-5.0.2` -  https://github.com/FortySevenEffects/arduino_midi_library
 
-Make sure your Arduino environment is working, you have the two libraries installed and you can successfully compile the rainboard_firmware.ino sketch.  Also make sure you have already flashed the ATmega16U2 with the `rainboard16U2.hex` file per the previous step.
+Make sure your Arduino environment is working, you have the two libraries installed and you can successfully compile the `rainboard_firmware.ino` sketch.  
+Also make sure you have already flashed the ATmega16U2 with the `rainboard16U2.hex` file per the previous step.
 
 1. Power down the Arduino. (unplug from host Computer)
 2. Connect a jumper across pins 4 and 6 on the ICSP Header of the 16U2 (as shown in fig.1).
+![alt text](https://github.com/famulus/rainboard/blob/master/images/Mega-Jumpers.png?raw=true)
+
 3. Reconnect the Arduino to the host Computer. It should appear as a COM Port Device in the Arduino IDE.
 4. Now you can compile and upload the rainboard_firmware.ino sketch to the Arduino in the standard way.
 5. After programming, power down (unplug from host Computer), remove the jumper from pins 4 and 6 on the   ICSP Header of the 16U2 (as shown in fig.1). The Arduino should now be fully programmed and ready to mate to the Rainboard. 
