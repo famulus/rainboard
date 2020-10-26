@@ -12,15 +12,15 @@ The Rainboard firmware runs on an Arduino Mega which has two processors on board
 
 ##### The Rainboard firmware consists of two files:
 
-1. rainboard_firmware.ino   - the main Arduino sketch.
-2. rainboard16u2.hex   - the USB to serial tranceiver code.
+1. `rainboard_firmware.ino`   - the main Arduino sketch.
+2. `rainboard16u2.hex`   - the USB to serial tranceiver code.
 
 
 
 ##### Installing the Rainboard firmware consists of two steps:
 
-1. Flashing the ATmega16U2 with the rainboard16U2.hex file.
-2. Uploading the compiled rainboard_firmware.ino sketch to the Arduino Mega.
+1. Flashing the ATmega16U2 with the `rainboard16U2.hex` file.
+2. Uploading the compiled `rainboard_firmware.ino` sketch to the Arduino Mega.
 
 
 
@@ -50,8 +50,8 @@ Alternatively, if you don't have a DFU Programmer you can use Atmel FLIP softwar
 12. Start FLIP Software: Go to Start -> All Programs -> Flip -> Flip.
 13. Go to Settings -> Communication -> USB.
 14. Press “Open”.
-15. Go to File -> Load HEX file and select the rainboard16U2.hex file.
-16.  Press “Run”. This will program the 16U2 with the rainboard16U2.hex file.
+15. Go to File -> Load HEX file and select the `rainboard16U2.hex` file.
+16.  Press “Run”. This will program the 16U2 with the `rainboard16U2.hex` file.
 17. Now close FLIP, disconnect and reconnect the Arduino, it should be recognized as a MIDI  device named Rainboard.
 
 
@@ -64,7 +64,7 @@ Adafruit-MCP23017-Arduino-Library - https://github.com/adafruit/Adafruit-MCP2301
 
 MIDI_Library-5.0.2 -  https://github.com/FortySevenEffects/arduino_midi_library
 
-Make sure your Arduino environment is working, you have the two libraries installed and you can successfully compile the rainboard_firmware.ino sketch.  Also make sure you have already flashed the ATmega16U2 with the rainboard16U2.hex file per the previous step.
+Make sure your Arduino environment is working, you have the two libraries installed and you can successfully compile the rainboard_firmware.ino sketch.  Also make sure you have already flashed the ATmega16U2 with the `rainboard16U2.hex` file per the previous step.
 
 1. Power down the Arduino. (unplug from host Computer)
 2. Connect a jumper across pins 4 and 6 on the ICSP Header of the 16U2 (as shown in fig.1).
