@@ -24,6 +24,9 @@ The Rainboard firmware runs on an Arduino Mega which has two processors on board
 
 
 
+
+## Windows
+
 #### To flash the ATmega16U2 with the rainboard16U2.hex file:
 
 This can be accomplished with a DFU Programmer. Follow the instructions for your programmer.
@@ -34,9 +37,12 @@ Alternatively, if you don't have a DFU Programmer you can use Atmel FLIP softwar
 2. Install FLIP. Follow the installation wizard.
 3. Disconnect Arduino from USB.
 4. Jumper pins 5 and 6 on 16U2 ICSP header (as shown in fig.1). This will keep the 16U2 in RESET.
+![alt text](https://github.com/famulus/rainboard/blob/master/images/Mega-Jumpers.png?raw=true)
+
+
 5. Connect Arduino to USB.
 6. Remove the jumper from pins 5 and 6. At this moment, 16U2 goes into DFU mode. A new USB device should be recognized.
-7. If driver is not installed automatically, install it from “c:\Program Files\AtmelFlip 3.4.7\usb\”
+7. If driver is not installed automatically, install it from `c:\Program Files\AtmelFlip 3.4.7\usb\`
 8. Go to Device manager (Win+Pause -> (Hardware) -> Device Manager) and check if you can see the driver installed correctly. It will be located under Atmel USB Devices -> ATmega16U2.
 9. Disconnect Arduino from USB. Jumper pins 5 and 6.
 10. Connect Arduino to USB.
@@ -68,5 +74,18 @@ Make sure your Arduino environment is working, you have the two libraries instal
 6. **Be very careful that all the pins are aligned and inserted properly before fully mating!**
 7. Once the Arduino is mated to the Rainboard, reconnect it to the host PC and it should appear as a MIDI Device with the name Rainboard.
 
-![alt text](https://github.com/famulus/rainboard/blob/master/images/Mega-Jumpers.png?raw=true)
+
+
+## Mac OS X
+
+
+`brew install avrdude`
+
+`cd [rainboard directory]`
+
+`avrdude -p at90usb82 -F -P usb -c usbtiny -U flash:w:rainboard16u2.hex -U lfuse:w:0xFF:m -U hfuse:w:0xD9:m -U efuse:w:0xF4:m -U lock:w:0x0F:m`
+
+
+
+
 
