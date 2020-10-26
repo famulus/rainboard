@@ -2,7 +2,7 @@
 
 An open-source isomorphic MIDI controller.
 
-#### Installation of the Rainboard fIrmware:
+### Installation of the Rainboard fIrmware:
 
 The Rainboard firmware runs on an Arduino Mega which has two processors on board. The main processor being the ATmega2560, and an ATmega16U2 used as a USB to serial tranceiver. The 16U2 processes USB data from the host PC into serial data and feeds it to the serial communications port on the 2560. This is how the host PC communicates with the Arduino Mega for programming, debugging, and other uses, in this case USB MIDI communication.
 
@@ -10,14 +10,14 @@ The Rainboard firmware runs on an Arduino Mega which has two processors on board
 
 
 
-#### The Rainboard firmware consists of two files:
+##### The Rainboard firmware consists of two files:
 
 1. rainboard_firmware.ino   - the main Arduino sketch.
 2. rainboard16u2.hex   - the USB to serial tranceiver code.
 
 
 
-#### Installing the Rainboard firmware consists of two steps:
+##### Installing the Rainboard firmware consists of two steps:
 
 1. Flashing the ATmega16U2 with the rainboard16U2.hex file.
 2. Uploading the compiled rainboard_firmware.ino sketch to the Arduino Mega.
