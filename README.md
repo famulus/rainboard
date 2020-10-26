@@ -2,7 +2,7 @@
 
 An open-source isomorphic MIDI controller.
 
-###### Installation of the Rainboard fIrmware:
+#### Installation of the Rainboard fIrmware:
 
 The Rainboard firmware runs on an Arduino Mega which has two processors on board. The main processor being the ATmega2560, and an ATmega16U2 used as a USB to serial tranceiver. The 16U2 processes USB data from the host PC into serial data and feeds it to the serial communications port on the 2560. This is how the host PC communicates with the Arduino Mega for programming, debugging, and other uses, in this case USB MIDI communication.
 
@@ -10,46 +10,47 @@ The Rainboard firmware runs on an Arduino Mega which has two processors on board
 
 
 
-###### The Rainboard firmware consists of two files:
+#### The Rainboard firmware consists of two files:
 
 1. neofighter.ino   - the main Arduino sketch.
 2. rainboard16u2.hex   - the USB to serial tranceiver code.
 
 
 
-###### Installing the Rainboard firmware consists of two steps:
+#### Installing the Rainboard firmware consists of two steps:
 
 1. Flashing the ATmega16U2 with the rainboard16U2.hex file.
 2. Uploading the compiled neofighter.ino sketch to the Arduino Mega.
 
 
 
-###### To flash the ATmega16U2 with the rainboard16U2.hex file:
+#### To flash the ATmega16U2 with the rainboard16U2.hex file:
 
 This can be accomplished with a DFU Programmer. Follow the instructions for your programmer.
 
 Alternatively, if you don't have a DFU Programmer you can use Atmel FLIP software on a Windows Computer.
 
 1. Go to http://www.atmel.com/tools/FLIP.aspx and download FLIP.
-2. Install it. You should not have any problems, just follow the installation wizard.
-3. Disconnect Arduino from USB . Jumper pins 5 and 6 on 16U2 ICSP header (as shown in fig.1). This will keep the 16U2 in RESET.
-4. Connect Arduino to USB.
-5. Remove the jumper from pins 5 and 6. At this moment, 16U2 goes into DFU mode. A new USB device should be recognized.
-6. If driver is not installed automatically, install it from “c:\Program Files\AtmelFlip 3.4.7\usb\”
-7. Go to Device manager (Win+Pause -> (Hardware) -> Device Manager) and check if you can see the driver installed correctly. It will be located under Atmel USB Devices -> ATmega16U2.
-8. Disconnect Arduino from USB. Jumper pins 5 and 6.
-9. Connect Arduino to USB.
-10. Remove the jumper from pins 5 and 6.
-11. Start FLIP Software: Go to Start -> All Programs -> Flip -> Flip.
-12. Go to Settings -> Communication -> USB.
-13. Press “Open”.
-14. Go to File -> Load HEX file and select the rainboard16U2.hex file.
-15. Press “Run”. This will program the 16U2 with the rainboard16U2.hex file.
-16. Now close FLIP, disconnect and reconnect the Arduino, it should be recognized as a MIDI  device named Rainboard.
+2. Install FLIP. Follow the installation wizard.
+3. Disconnect Arduino from USB.
+4. Jumper pins 5 and 6 on 16U2 ICSP header (as shown in fig.1). This will keep the 16U2 in RESET.
+5. Connect Arduino to USB.
+6. Remove the jumper from pins 5 and 6. At this moment, 16U2 goes into DFU mode. A new USB device should be recognized.
+7. If driver is not installed automatically, install it from “c:\Program Files\AtmelFlip 3.4.7\usb\”
+8. Go to Device manager (Win+Pause -> (Hardware) -> Device Manager) and check if you can see the driver installed correctly. It will be located under Atmel USB Devices -> ATmega16U2.
+9. Disconnect Arduino from USB. Jumper pins 5 and 6.
+10. Connect Arduino to USB.
+11. Remove the jumper from pins 5 and 6.
+12. Start FLIP Software: Go to Start -> All Programs -> Flip -> Flip.
+13. Go to Settings -> Communication -> USB.
+14. Press “Open”.
+15. Go to File -> Load HEX file and select the rainboard16U2.hex file.
+16.  Press “Run”. This will program the 16U2 with the rainboard16U2.hex file.
+17. Now close FLIP, disconnect and reconnect the Arduino, it should be recognized as a MIDI  device named Rainboard.
 
 
 
-###### To upload neofighter.ino to the Arduino Mega:
+#### To upload neofighter.ino to the Arduino Mega:
 
 The most straightforward way to do this is through the Arduino IDE. Make sure you have the proper drivers installed and that you can program the Mega from the Arduino IDE. You will also need two Arduino libraries installed that the Rainboard firmware depends on:
 
@@ -68,4 +69,5 @@ Make sure your Arduino environment is working, you have the two libraries instal
 7. Once the Arduino is mated to the Rainboard, reconnect it to the host PC and it should appear as a MIDI Device with the name Rainboard.
 
 ![](C:\Users\Mortimer\rainboard\Mega-Jumpers.png)
+![alt text](https://github.com/famulus/rainboard/blob/master/images/Mega-Jumpers.png?raw=true)
 
