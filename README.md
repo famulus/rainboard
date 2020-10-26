@@ -26,6 +26,27 @@ The Rainboard firmware runs on an Arduino Mega which has two processors on board
 
 ###### To flash the ATmega16U2 with the rainboard16U2.hex file:
 
+This can be accomplished with a DFU Programmer. Follow the instructions for your programmer.
+
+Alternatively, if you don't have a DFU Programmer you can use Atmel FLIP software on a Windows Computer.
+
+1. Go to http://www.atmel.com/tools/FLIP.aspx and download FLIP.
+2. Install it. You should not have any problems, just follow the installation wizard.
+3. Disconnect Arduino from USB . Jumper pins 5 and 6 on 16U2 ICSP header (as shown in fig.1). This will keep the 16U2 in RESET.
+4. Connect Arduino to USB.
+5. Remove the jumper from pins 5 and 6. At this moment, 16U2 goes into DFU mode. A new USB device should be recognized.
+6. If driver is not installed automatically, install it from “c:\Program Files\AtmelFlip 3.4.7\usb\”
+7. Go to Device manager (Win+Pause -> (Hardware) -> Device Manager) and check if you can see the driver installed correctly. It will be located under Atmel USB Devices -> ATmega16U2.
+8. Disconnect Arduino from USB. Jumper pins 5 and 6.
+9. Connect Arduino to USB.
+10. Remove the jumper from pins 5 and 6.
+11. Start FLIP Software: Go to Start -> All Programs -> Flip -> Flip.
+12. Go to Settings -> Communication -> USB.
+13. Press “Open”.
+14. Go to File -> Load HEX file and select the rainboard16U2.hex file.
+15. Press “Run”. This will program the 16U2 with the rainboard16U2.hex file.
+16. Now close FLIP, disconnect and reconnect the Arduino, it should be recognized as a MIDI  device named Rainboard.
+
 
 
 ###### To upload neofighter.ino to the Arduino Mega:
@@ -38,14 +59,13 @@ MIDI_Library-5.0.2 -  https://github.com/FortySevenEffects/arduino_midi_library
 
 Make sure your Arduino environment is working, you have the two libraries installed and you can successfully compile the neofighter.ino sketch.  Also make sure you have already flashed the ATmega16U2 with the rainboard16U2.hex file per the previous step.
 
-1. Power down the Arduino. (unplug from host PC)
-2. Connect a jumper across pins 5 and 6 on the ICSP Header of the 16U2 (as shown in fig.1)
-3. Reconnect the Arduino to the host PC. It should appear as a COM Port Device in the Arduino IDE.
+1. Power down the Arduino. (unplug from host Computer)
+2. Connect a jumper across pins 4 and 6 on the ICSP Header of the 16U2 (as shown in fig.1).
+3. Reconnect the Arduino to the host Computer. It should appear as a COM Port Device in the Arduino IDE.
 4. Now you can compile and upload the neofighter.ino sketch to the Arduino in the standard way.
-5. After programming, power down (unplug from host PC), remove the jumper from pins 5 and 6 on the   ICSP Header of the 16U2 (as shown in fig.1) The Arduino should now be fully programmed and ready to mate to the Rainboard. 
+5. After programming, power down (unplug from host Computer), remove the jumper from pins 4 and 6 on the   ICSP Header of the 16U2 (as shown in fig.1). The Arduino should now be fully programmed and ready to mate to the Rainboard. 
 6. **Be very careful that all the pins are aligned and inserted properly before fully mating!**
 7. Once the Arduino is mated to the Rainboard, reconnect it to the host PC and it should appear as a MIDI Device with the name Rainboard.
 
+![](C:\Users\Mortimer\rainboard\Mega-Jumpers.png)
 
-
-![](C:\Users\Mortimer\rainboard\Arduino-Mega-Photo.jpg)

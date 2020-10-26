@@ -11,7 +11,7 @@ MIDI_CREATE_INSTANCE(HardwareSerial, Serial1, midiDIN);
 Adafruit_MCP23017 ioExpander; 
 
 const uint8_t number_of_buttons = 61;
-const uint8_t number_of_meta_buttons = 16; // only 14 actual meta buttons (overlap of BTNs 27 & 35 on IO expander)
+const uint8_t number_of_meta_buttons = 16; // only 14 actual meta buttons (extra 2 are overlap of BTNs 27 & 35 on IO expander)
 
 const uint8_t modWheel_pin = A9;             
 const uint8_t pitchBend_pin = A10;    
@@ -21,9 +21,10 @@ const uint8_t midi_note_max = 127;
 const uint8_t midi_note_min = 0;
 const uint8_t midi_velocity_max = 127;
 const uint8_t midi_velocity_min = 0;
+const uint8_t midi_velocity_increment = 10;
 
 uint8_t global_midi_channel = 1;
-uint8_t global_midi_velocity = 0x45;
+uint8_t global_midi_velocity = 97;
 
 //uint8_t noteRange[200];
 
@@ -49,7 +50,7 @@ uint8_t noteHex[] =
 const uint8_t  button_to_pin[] = 
 {31,35,38,42,46,30,32,36,40,44,3,26,29,33,39,45,48,2,22,25,28,34,41,49,20,A13,0xFF,21,24,27,37,47,A15,A12,0xFF,14,16,17,23,43,A14,A8,A7,5,4,15,6,A4,A6,A5,11,10,9,7,A1,A3,12,13,8,A0,A2};
 //                             *                   *                   *      *    *                      *          * 
-// modified pin assignments from V1 to V2 PCB. 0xFF = placeholder; BTN 27 and 35 moved to io expander.
+// modified pin assignments from V1 to V3 PCB. 0xFF = placeholder; BTN 27 and 35 moved to io expander.
 
 const uint8_t  button_to_wiki[] = 
 {42,40,38,36,34,49,47,45,43,41,39,56,54,52,50,48,46,44,63,61,59,57,55,53,51,49,70,68,66,64,62,60,58,56,54,75,73,71,69,67,65,63,61,80,78,76,74,72,70,68,85,83,81,79,77,75,90,88,86,84,82};                  
@@ -63,7 +64,6 @@ uint64_t LastModWheelEventTime;
 //scanPitchBend()
 uint8_t PitchBendCurrentPosition;
 uint8_t PitchBendPreviousPosition;
-uint8_t PitchBendValue;
 uint64_t LastPitchBendEventTime;
 
 //scanButtons()
@@ -77,6 +77,7 @@ uint64_t LastNoteOffEventTime[number_of_buttons];
 
 boolean NoteOnFlag[number_of_buttons];
 uint8_t ButtonIdleCount[number_of_buttons];
+uint8_t LastPitchSent[number_of_buttons];
 
 //scanMetaButtons()
 boolean MetaButtonState[number_of_meta_buttons];
@@ -113,8 +114,7 @@ void setup(){
   pinMode(modWheel_pin, INPUT);                                // init softpots
   ModWheelCurrentPosition = ModWheelPreviousPosition = 0;    
   pinMode(pitchBend_pin, INPUT);  
-  PitchBendCurrentPosition = PitchBendPreviousPosition = 0;
-  PitchBendValue = 0;
+  PitchBendCurrentPosition = PitchBendPreviousPosition = 0;  
   pinMode(softpots_bottom_pin, INPUT);
   analogReference(EXTERNAL);
   
@@ -139,7 +139,9 @@ void loop() {
 
   scanMetaButtons();
   
-  //scanPitchBendStandard();  
+  scanPitchBendStandard(); 
+
+ 
 
 }
 
@@ -184,11 +186,18 @@ void scanPitchBendStandard() {
       if((PitchBendCurrentPosition >= 0) && (PitchBendCurrentPosition <= 127)){                 // if in range
          if(PitchBendCurrentPosition != PitchBendPreviousPosition){                             // and has changed
             midiPitchBend(PitchBendCurrentPosition);                                            // send midi            
-            PitchBendPreviousPosition = PitchBendCurrentPosition;                    // update pitch bend value
-            LastPitchBendEventTime = millis();                                       // update timekeeper
+            PitchBendPreviousPosition = PitchBendCurrentPosition;                               // update pitch bend value
+            LastPitchBendEventTime = millis();                                                  // update timekeeper
          } 
       }
-    }      
+    } 
+    else if(pitch_bend_raw < softpots_bottom_raw){                    // if it is a release  
+      if(PitchBendCurrentPosition != 64){                             // and pitch bend not centered
+        midiPitchBend(64);                                            // send midi pitch bend center 
+        PitchBendPreviousPosition = PitchBendCurrentPosition = 64;    // update pitch bend value
+        LastPitchBendEventTime = millis();                            // update timekeeper
+      }          
+    }
   }   
 }
 
@@ -216,9 +225,9 @@ void scanModWheel() {
        ModWheelCurrentPosition = map(mod_wheel_raw, mod_wheel_min, mod_wheel_max, 0, 127);     // get mod wheel value
        if((ModWheelCurrentPosition >= 0) && (ModWheelCurrentPosition <= 127)){                 // if in range
           if(ModWheelCurrentPosition != ModWheelPreviousPosition){                             // and has changed
-             midiModWheel(ModWheelCurrentPosition);                                           // send midi
-             ModWheelPreviousPosition = ModWheelCurrentPosition;                    // update mod wheel value
-             LastModWheelEventTime = millis();                                      // update timekeeper
+             midiModWheel(ModWheelCurrentPosition);                                            // send midi
+             ModWheelPreviousPosition = ModWheelCurrentPosition;                               // update mod wheel value
+             LastModWheelEventTime = millis();                                                 // update timekeeper
           } 
        }
     }      
@@ -230,47 +239,51 @@ void scanModWheel() {
 
 void scanButtons(){  
 
+  uint8_t midi_note;
+
   acquireButtons();     // gets all 61 BTNs and stores in ButtonState[] array. including BTN 27 and 35 on the IO expander
     
   Serial.flush();
 
   for(uint8_t i=0; i<number_of_buttons; i++){      
 
-      if(!ButtonState[i]){                                                                 // if button is low
-          if(ReadyForPress[i]){                                                            // and ready for press                                
-              midiNoteOn(noteHex[button_to_wiki[i]+c2_base_note], global_midi_velocity);   // initiate button press event
+      if(!ButtonState[i]){                                                         // if button is low
+          if(ReadyForPress[i]){                                                            // and ready for press  
+              midi_note = noteHex[button_to_wiki[i]+c2_base_note];                         // lookup pitch     
+              midiNoteOn(midi_note, global_midi_velocity);                                 // initiate button press event
+              LastPitchSent[i] = midi_note;
               NoteOnFlag[i] = true;
               LastNoteOnEventTime[i] = millis();                                           // store time
               ReadyForPress[i] = false;                                                    // press has been processed
               NoteOnDeadZone[i] = true;                                                    // now in noteOn dead zone              
           }
-          else if(NoteOnDeadZone[i]){                                              // if in noteOn dead zone
-              if(millis() >= (LastNoteOnEventTime[i] + dead_zone_time)){           // and noteOn dead zone is over
-                  ReadyForRelease[i] = true;                                       // ready for release
-                  NoteOnDeadZone[i] = false;                                       // out of noteOn dead zone
+          else if(NoteOnDeadZone[i]){                                                      // if in noteOn dead zone
+              if(millis() >= (LastNoteOnEventTime[i] + dead_zone_time)){                   // and noteOn dead zone is over
+                  ReadyForRelease[i] = true;                                               // ready for release
+                  NoteOnDeadZone[i] = false;                                               // out of noteOn dead zone
               }
           }
       }
           
-      else {                                                                              // if button is high
+      else {                                                                       // if button is high
           if(ReadyForRelease[i]){                                                         // and ready for release                
-              midiNoteOff(noteHex[button_to_wiki[i]+c2_base_note]);                       // initiate button release event
+              midiNoteOff(LastPitchSent[i]);                                              // initiate button release event
               NoteOnFlag[i] = false;
               LastNoteOffEventTime[i] = millis();                                         // store time
               ReadyForRelease[i] = false;                                                 // release has been processed
               NoteOffDeadZone[i] = true;                                                  // now in noteOff dead zone              
           }  
-          else if(NoteOffDeadZone[i]){                                             // if in noteOff dead zone
-              if(millis() >= (LastNoteOffEventTime[i] + dead_zone_time)){          // and noteOff dead zone is over
-                  ReadyForPress[i] = true;                                         // ready for press
-                  NoteOffDeadZone[i] = false;                                      // out of noteOff dead zone
+          else if(NoteOffDeadZone[i]){                                                    // if in noteOff dead zone
+              if(millis() >= (LastNoteOffEventTime[i] + dead_zone_time)){                 // and noteOff dead zone is over
+                  ReadyForPress[i] = true;                                                // ready for press
+                  NoteOffDeadZone[i] = false;                                             // out of noteOff dead zone
               }
           }
 
-          ButtonIdleCount[i]++;                                                    // kill stuck notes
+          ButtonIdleCount[i]++;                                                           // kill stuck notes
           if(ButtonIdleCount[i] >= button_idle_period_cycles){
               if(NoteOnFlag[i]){
-                  midiNoteOff(noteHex[button_to_wiki[i]+c2_base_note]); 
+                  midiNoteOff(LastPitchSent[i]); 
                   NoteOnFlag[i] = false;   
               }
               ButtonIdleCount[i] = 0;
@@ -282,7 +295,15 @@ void scanButtons(){
 /////////////////////////////////////////  META BUTTONS HANDLER /////////////////////////////////////////
 
 void metaButtonHandler(uint8_t meta_button){ 
-  
+
+  // these two notes serve as half tone up or down.
+  //      if(i == 26){
+  //        c2_base_note = c2_base_note + 1;
+  //      }
+  //      else if (i == 34){
+  //        c2_base_note = c2_base_note - 1;
+  //      }
+
   switch (meta_button) {
     case 0:               // GPIOA.0 J13
       if(c2_base_note > midi_note_min){      // Semitone -
@@ -305,17 +326,19 @@ void metaButtonHandler(uint8_t meta_button){
       }   
       break;
     case 6:               // GPIOA.6 J17
+      // 
       break;
     case 7:               // GPIOA.7 J18
+      // 
       break;  
     case 8:               // GPIOB.0 J1
-      if(global_midi_velocity < midi_velocity_max){           // Velocity +
-        global_midi_velocity = (global_midi_velocity + 1);    // * configure increments
+      if(global_midi_velocity < (midi_velocity_max - midi_velocity_increment)){     // Velocity +
+        global_midi_velocity = (global_midi_velocity + midi_velocity_increment);    // * configure increments
       }    
       break;
     case 9:               // GPIOB.1 J2
-      if(global_midi_velocity > midi_velocity_min){          // Velocity -   
-        global_midi_velocity = (global_midi_velocity - 1);   // * configure increments
+      if(global_midi_velocity > (midi_velocity_min + midi_velocity_increment)){    // Velocity -   
+        global_midi_velocity = (global_midi_velocity - midi_velocity_increment);   // * configure increments
       }     
       break;
     case 10:              // GPIOB.2 J3 
@@ -329,13 +352,18 @@ void metaButtonHandler(uint8_t meta_button){
       }    
       break;
     case 12:              // GPIOB.4 J5
+      // 
       break;
     case 13:              // GPIOB.5 J6
+      // 
       break;    
     case 14:              // GPIOB.6 J7
+      // 
       break;
     case 15:              // GPIOB.7 J8
+      // 
       break;
+    
     default:
       break;
   }
@@ -352,7 +380,7 @@ void scanMetaButtons(){
 
   for(uint8_t i=0; i<number_of_meta_buttons; i++){      
 
-      if(!MetaButtonState[i]){                                                               // if button is low
+      if(!MetaButtonState[i]){                                                      // if button is low
           if(MetaButtonReadyForPress[i]){                                                    // and ready for press                                
               metaButtonHandler(i);                                                          // initiate meta button press event
               MetaButtonPressedFlag[i] = true;
@@ -368,7 +396,7 @@ void scanMetaButtons(){
           }
       }
           
-      else {                                                                                 // if button is high
+      else {                                                                          // if button is high
           if(MetaButtonReadyForRelease[i]){                                                  // and ready for release                
               ////                                                                           // do nothing but housekeeping on meta button release event
               MetaButtonPressedFlag[i] = false;
