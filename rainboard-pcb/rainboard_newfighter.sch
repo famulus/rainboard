@@ -1975,7 +1975,7 @@ button-28
 Text GLabel 1300 5050 0    50   Input ~ 0
 5V
 Text GLabel 1050 3250 0    50   Input ~ 0
-softpot-2
+softpot-1
 Wire Wire Line
 	1050 3250 1650 3250
 Wire Wire Line
