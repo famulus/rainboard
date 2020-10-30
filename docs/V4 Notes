@@ -7,21 +7,21 @@ goal of v0.4 PCB is to validate component selection.
 
 
 
-Include all v3 features and:
+Include all v0.3 features and:
 
 1) Integrate Arduino Mega onto PCB
 
-5) All SMT componends populated by JLCPCB
+5) All SMT components populated by JLCPCB
 
-2) Power supply capable of powering 61 LEDS and arduino, effeciently 
+2) Power supply capable of powering 61 LEDS and Arduino, efficiently 
 
 4) 61 LEDS and bypass caps
 
 3) engage programmer mode with meta buttons
 
-6) add 220 ohm Resistor to each button positive (for static discharge protestion)?
+6) add 220 ohm Resistor to each button positive (for static discharge protection)?
 
-7) Redesign back panel for better asthetic design.
+7) Redesign back panel for better aesthetic design.
 
 
 
