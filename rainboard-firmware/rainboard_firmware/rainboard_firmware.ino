@@ -130,7 +130,7 @@ void setup(){
                      
 }
 
-/////////////////////////////////////////////// MAIN LOOP ///////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////
 void loop() {
   
   scanButtons();
@@ -140,6 +140,10 @@ void loop() {
   scanMetaButtons();
   
   scanPitchBendStandard(); 
+
+  if (midiDIN.read()) {      // MIDI DIN Input echo thru to MIDI USB
+     midiUSB.send(midiDIN.getType(), midiDIN.getData1(), midiDIN.getData2(), midiDIN.getChannel());
+  }
 
  
 
@@ -448,20 +452,23 @@ void midiModWheel(uint8_t modVal){
 }
 
 void midiPitchBend(uint8_t pitchVal){ 
-  
-    //uint8_t pitchLSB = 0;
-    //if(pitchVal == 127){
-    //  pitchLSB = 127;  
-    //}
 
-    //uint16_t pitchFullVal = ((pitchVal << 8) + pitchLSB);
+    int pitchFullVal;
+   
+    pitchFullVal = map(pitchVal, 0, 127, -8192, 8191); 
+
+    //midiUSB.sendPitchBend(pitchFullVal, global_midi_channel);
+    //midiDIN.sendPitchBend(pitchFullVal, global_midi_channel);
     
-    //Serial.write(midi_pitchBend_cmd | (global_midi_channel - 1));
-    //Serial.write(pitchLSB);
-    //Serial.write(pitchVal);
-
-    midiUSB.sendPitchBend(pitchVal, global_midi_channel);
-    midiDIN.sendPitchBend(pitchVal, global_midi_channel);
+    if(pitchVal == 127){
+      midiUSB.send(midi::PitchBend, 127, 127, global_midi_channel);  
+      midiDIN.send(midi::PitchBend, 127, 127, global_midi_channel);  
+    }
+    else {
+      midiUSB.send(midi::PitchBend, 0, pitchFullVal, global_midi_channel);
+      midiDIN.send(midi::PitchBend, 0, pitchFullVal, global_midi_channel);
+    }
+    
 }
 
 /////////////////////////////////////// ACQUIRE BUTTONS ////////////////////////////////////
