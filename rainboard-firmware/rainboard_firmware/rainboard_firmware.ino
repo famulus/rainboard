@@ -47,10 +47,16 @@ uint8_t noteHex[] =
 //const uint8_t  original_button_to_pin[] = 
 //{31,35,38,42,46,30,32,36,40,44,51,26,29,33,39,45,48,50,22,25,28,34,41,49,52,A13,17,18,24,27,37,47,A15,A12,A11,14,16,19,23,43,A14,A8,A7,5,4,15,6,A4,A6,A5,11,10,9,7,A1,A3,12,13,8,A0,A2}; 
 
-const uint8_t  button_to_pin[] = 
-{31,35,38,42,46,30,32,36,40,44,3,26,29,33,39,45,48,2,22,25,28,34,41,49,20,A13,0xFF,21,24,27,37,47,A15,A12,0xFF,14,16,17,23,43,A14,A8,A7,5,4,15,6,A4,A6,A5,11,10,9,7,A1,A3,12,13,8,A0,A2};
-//                             *                   *                   *      *    *                      *          * 
+//const uint8_t  v3_button_to_pin[] = 
+//{31,35,38,42,46,30,32,36,40,44,3,26,29,33,39,45,48,2,22,25,28,34,41,49,20,A13,0xFF,21,24,27,37,47,A15,A12,0xFF,14,16,17,23,43,A14,A8,A7,5,4,15,6,A4,A6,A5,11,10,9,7,A1,A3,12,13,8,A0,A2};
+//                               *                   *                   *      *    *                      *          * 
 // modified pin assignments from V1 to V3 PCB. 0xFF = placeholder; BTN 27 and 35 moved to io expander.
+
+const uint8_t  button_to_pin[] = 
+{31,35,38,42,46,30,32,36,40,44,3,26,29,33,39,45,48,2,22,25,28,34,41,49,0xFF,A13,0xFF,0xFF,24,27,37,47,A15,A12,0xFF,14,16,17,23,43,A14,A8,A7,5,4,15,6,A4,A6,A5,11,10,9,7,A1,A3,12,13,8,A0,A2};
+//                             *                   *                   *        *    *                        *          * 
+// modified pin assignments from V1 to V3 PCB. 0xFF = placeholder; BTN 27 and 35 moved to io expander. V3+ BTN 25 and 28 moved to io expander
+
 
 const uint8_t  button_to_wiki[] = 
 {42,40,38,36,34,49,47,45,43,41,39,56,54,52,50,48,46,44,63,61,59,57,55,53,51,49,70,68,66,64,62,60,58,56,54,75,73,71,69,67,65,63,61,80,78,76,74,72,70,68,85,83,81,79,77,75,90,88,86,84,82};                  
@@ -245,7 +251,7 @@ void scanButtons(){
 
   uint8_t midi_note;
 
-  acquireButtons();     // gets all 61 BTNs and stores in ButtonState[] array. including BTN 27 and 35 on the IO expander
+  acquireButtons();     // gets all 61 BTNs and stores in ButtonState[] array. including BTN 27, 35, 25, and 28 on the IO expander
     
   Serial.flush();
 
@@ -453,7 +459,7 @@ void midiModWheel(uint8_t modVal){
 
 void midiPitchBend(uint8_t pitchVal){ 
 
-    int pitchFullVal;
+   int16_t pitchFullVal;
    
     pitchFullVal = map(pitchVal, 0, 127, -8192, 8191); 
 
@@ -470,6 +476,7 @@ void midiPitchBend(uint8_t pitchVal){
     }
     
 }
+
 
 /////////////////////////////////////// ACQUIRE BUTTONS ////////////////////////////////////
 
@@ -500,8 +507,8 @@ void acquireButtons(){
     ButtonState[0]  = bitRead(portdata,6);
     ButtonState[5]  = bitRead(portdata,7);
     portdata = PIND;   
-    ButtonState[27] = bitRead(portdata,0);  
-    ButtonState[24] = bitRead(portdata,1); 
+    //ButtonState[27] = bitRead(portdata,0);  // relocated
+    //ButtonState[24] = bitRead(portdata,1);  // relocated
     ButtonState[2]  = bitRead(portdata,7);
     portdata = PINE; 
     ButtonState[43] = bitRead(portdata,3);
@@ -549,6 +556,8 @@ void acquireButtons(){
 
     ButtonState[34] = ioExpander.digitalRead(4);  // button 35
     ButtonState[26] = ioExpander.digitalRead(5);  // button 27
+    ButtonState[27] = ioExpander.digitalRead(6);  // button 28
+    ButtonState[24] = ioExpander.digitalRead(7);  // button 25
            
 }
 
@@ -559,7 +568,7 @@ void initButtons(){
 
   for(uint8_t i=0; i<number_of_buttons; i++){     // init BTNs loop    
 
-    if( (i != 26) && (i != 34)){                  // skip BTN 27 and 35
+    if( (i != 26) && (i != 34) && (i != 24) && (i != 27)){    // skip BTN 27 ,35, 25, 28
       pinMode(button_to_pin[i], INPUT_PULLUP);    // inputs w/ pullups     
     }
   
@@ -579,7 +588,7 @@ void initButtons(){
 void initIoExpander(){
   
   ioExpander.begin();
-  for(uint8_t i=0; i<number_of_meta_buttons; i++){    // init Meta BTNs loop (and also BTN 27 and 35)
+  for(uint8_t i=0; i<number_of_meta_buttons; i++){    // init Meta BTNs loop (and also BTN 27 ,35, 25, and 28)
     ioExpander.pinMode(i, INPUT);                     // all pins inputs w/ pullups
     ioExpander.pullUp(i, HIGH);    
 
