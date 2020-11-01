@@ -1794,8 +1794,6 @@ Wire Wire Line
 	4650 5250 4250 5250
 Wire Wire Line
 	4250 5150 4650 5150
-Text GLabel 1250 1850 0    50   Input ~ 0
-button-25
 Text GLabel 4650 1150 2    50   Input ~ 0
 button-11
 Text GLabel 4650 1050 2    50   Input ~ 0
@@ -1970,8 +1968,6 @@ Wire Wire Line
 	4250 2150 4650 2150
 Wire Wire Line
 	1650 1350 1250 1350
-Text GLabel 1250 1950 0    50   Input ~ 0
-button-28
 Text GLabel 1300 5050 0    50   Input ~ 0
 5V
 Text GLabel 1050 3250 0    50   Input ~ 0
@@ -2442,10 +2438,6 @@ Wire Wire Line
 	20800 11950 20150 11950
 Wire Wire Line
 	20150 11950 20150 12050
-Wire Wire Line
-	1250 1850 1650 1850
-Wire Wire Line
-	1250 1950 1650 1950
 Text GLabel 1250 3950 0    50   Input ~ 0
 AREF
 Wire Wire Line
@@ -2758,62 +2750,6 @@ Wire Wire Line
 	2950 12150 4350 12150
 Wire Wire Line
 	4350 12150 4350 11950
-$Comp
-L Connector_Generic:Conn_01x02 J17
-U 1 1 6373D6C2
-P 5650 11700
-F 0 "J17" H 5730 11692 50  0000 L CNN
-F 1 "Conn_01x02" H 5730 11601 50  0000 L CNN
-F 2 "Connector_JST:JST_XH_B2B-XH-AM_1x02_P2.50mm_Vertical" H 5650 11700 50  0001 C CNN
-F 3 "~" H 5650 11700 50  0001 C CNN
-	1    5650 11700
-	1    0    0    -1  
-$EndComp
-$Comp
-L Connector_Generic:Conn_01x02 J18
-U 1 1 6373D6C8
-P 5650 12050
-F 0 "J18" H 5730 12042 50  0000 L CNN
-F 1 "Conn_01x02" H 5730 11951 50  0000 L CNN
-F 2 "Connector_JST:JST_XH_B2B-XH-AM_1x02_P2.50mm_Vertical" H 5650 12050 50  0001 C CNN
-F 3 "~" H 5650 12050 50  0001 C CNN
-	1    5650 12050
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:Earth #PWR0122
-U 1 1 6373D6CE
-P 5450 11700
-F 0 "#PWR0122" H 5450 11450 50  0001 C CNN
-F 1 "Earth" H 5450 11550 50  0001 C CNN
-F 2 "" H 5450 11700 50  0001 C CNN
-F 3 "~" H 5450 11700 50  0001 C CNN
-	1    5450 11700
-	0    1    1    0   
-$EndComp
-$Comp
-L power:Earth #PWR0123
-U 1 1 6373D6D4
-P 5450 12050
-F 0 "#PWR0123" H 5450 11800 50  0001 C CNN
-F 1 "Earth" H 5450 11900 50  0001 C CNN
-F 2 "" H 5450 12050 50  0001 C CNN
-F 3 "~" H 5450 12050 50  0001 C CNN
-	1    5450 12050
-	0    1    1    0   
-$EndComp
-Wire Wire Line
-	5050 11800 5050 11250
-Wire Wire Line
-	5050 11250 4350 11250
-Wire Wire Line
-	5050 11800 5450 11800
-Wire Wire Line
-	4950 12150 4950 11350
-Wire Wire Line
-	4950 11350 4350 11350
-Wire Wire Line
-	4950 12150 5450 12150
 Text Notes 8650 10150 0    50   ~ 0
 SOFTPOTS
 Text Notes 3350 9250 0    50   ~ 0
@@ -3133,4 +3069,12 @@ Wire Wire Line
 Connection ~ 14650 12200
 Wire Wire Line
 	14650 12200 14200 12200
+Text GLabel 4550 11350 2    50   Input ~ 0
+button-25
+Text GLabel 4550 11250 2    50   Input ~ 0
+button-28
+Wire Wire Line
+	4350 11250 4550 11250
+Wire Wire Line
+	4350 11350 4550 11350
 $EndSCHEMATC
