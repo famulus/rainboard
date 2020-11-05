@@ -315,23 +315,31 @@ void metaButtonHandler(uint8_t meta_button){
   //      }
 
   switch (meta_button) {
+
+
     case 0:               // GPIOA.0 J13
-      if(c2_base_note > midi_note_min){      // Semitone -
-        c2_base_note = c2_base_note - 1;   
-      } 
-      break;
-    case 1:               // GPIOA.1 J14
-      if(c2_base_note < midi_note_max){      // Semitone +
-        c2_base_note = c2_base_note + 1;   
+      if(global_midi_velocity >= (midi_velocity_min + midi_velocity_increment)){    // Velocity -
+	global_midi_velocity = (global_midi_velocity - midi_velocity_increment);   // * configure increments
       }
       break;
+
+
+    case 1:               // GPIOA.1 J14
+      if(global_midi_velocity <= (midi_velocity_max - midi_velocity_increment)){     // Velocity +
+	global_midi_velocity = (global_midi_velocity + midi_velocity_increment);    // * configure increments
+      }
+      break;
+
+
+
+
     case 2:               // GPIOA.2 J15
-      if(c2_base_note > midi_note_min + 12){     // Octave -
+      if(c2_base_note >= midi_note_min + 12){     // Octave -
         c2_base_note = c2_base_note - 12;   
       }  
       break;
     case 3:               // GPIOA.3 J16
-      if(c2_base_note < midi_note_max - 12){     // Octave +
+      if(c2_base_note <= midi_note_max - 12){     // Octave +
         c2_base_note = c2_base_note + 12;   
       }   
       break;
@@ -340,26 +348,33 @@ void metaButtonHandler(uint8_t meta_button){
       break;
     case 7:               // GPIOA.7 J18
       // 
-      break;  
+      break;
+
+
+
+
     case 8:               // GPIOB.0 J1
-      if(global_midi_velocity < (midi_velocity_max - midi_velocity_increment)){     // Velocity +
-        global_midi_velocity = (global_midi_velocity + midi_velocity_increment);    // * configure increments
-      }    
+      if(c2_base_note > midi_note_min){      // Semitone -
+	c2_base_note = c2_base_note - 1;
+      }
       break;
     case 9:               // GPIOB.1 J2
-      if(global_midi_velocity > (midi_velocity_min + midi_velocity_increment)){    // Velocity -   
-        global_midi_velocity = (global_midi_velocity - midi_velocity_increment);   // * configure increments
-      }     
+      if(c2_base_note < midi_note_max){      // Semitone +
+	c2_base_note = c2_base_note + 1;
+      }
       break;
+
+
+
     case 10:              // GPIOB.2 J3 
-      if(global_midi_channel < 16){        // Channel +    
-        global_midi_channel++;
-      }    
+      // if(global_midi_channel < 16){        // Channel +
+      //   global_midi_channel++;
+      // }
       break;
     case 11:              // GPIOB.3 J4
-      if(global_midi_channel > 1){         // Channel -      
-        global_midi_channel--;
-      }    
+      // if(global_midi_channel > 1){         // Channel -
+      //   global_midi_channel--;
+      // }
       break;
     case 12:              // GPIOB.4 J5
       // 
