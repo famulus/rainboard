@@ -20,11 +20,11 @@ const uint8_t softpots_bottom_pin = A11;
 const uint8_t midi_note_max = 127;
 const uint8_t midi_note_min = 0;
 const uint8_t midi_velocity_max = 127;
-const uint8_t midi_velocity_min = 0;
-const uint8_t midi_velocity_increment = 10;
+const uint8_t midi_velocity_min = 2;
+const uint8_t midi_velocity_increment = 25;
 
 uint8_t global_midi_channel = 1;
-uint8_t global_midi_velocity = 97;
+uint8_t global_midi_velocity = 102;
 
 //uint8_t noteRange[200];
 
