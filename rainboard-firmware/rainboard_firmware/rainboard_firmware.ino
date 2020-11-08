@@ -20,11 +20,11 @@ const uint8_t softpots_bottom_pin = A11;
 const uint8_t midi_note_max = 127;
 const uint8_t midi_note_min = 0;
 const uint8_t midi_velocity_max = 127;
-const uint8_t midi_velocity_min = 0;
-const uint8_t midi_velocity_increment = 10;
+const uint8_t midi_velocity_min = 2;
+const uint8_t midi_velocity_increment = 25;
 
 uint8_t global_midi_channel = 1;
-uint8_t global_midi_velocity = 97;
+uint8_t global_midi_velocity = 102;
 
 //uint8_t noteRange[200];
 
@@ -47,10 +47,16 @@ uint8_t noteHex[] =
 //const uint8_t  original_button_to_pin[] = 
 //{31,35,38,42,46,30,32,36,40,44,51,26,29,33,39,45,48,50,22,25,28,34,41,49,52,A13,17,18,24,27,37,47,A15,A12,A11,14,16,19,23,43,A14,A8,A7,5,4,15,6,A4,A6,A5,11,10,9,7,A1,A3,12,13,8,A0,A2}; 
 
-const uint8_t  button_to_pin[] = 
-{31,35,38,42,46,30,32,36,40,44,3,26,29,33,39,45,48,2,22,25,28,34,41,49,20,A13,0xFF,21,24,27,37,47,A15,A12,0xFF,14,16,17,23,43,A14,A8,A7,5,4,15,6,A4,A6,A5,11,10,9,7,A1,A3,12,13,8,A0,A2};
-//                             *                   *                   *      *    *                      *          * 
+//const uint8_t  v3_button_to_pin[] =
+//{31,35,38,42,46,30,32,36,40,44,3,26,29,33,39,45,48,2,22,25,28,34,41,49,20,A13,0xFF,21,24,27,37,47,A15,A12,0xFF,14,16,17,23,43,A14,A8,A7,5,4,15,6,A4,A6,A5,11,10,9,7,A1,A3,12,13,8,A0,A2};
+//                               *                   *                   *      *    *                      *          *
 // modified pin assignments from V1 to V3 PCB. 0xFF = placeholder; BTN 27 and 35 moved to io expander.
+
+const uint8_t  button_to_pin[] =
+{31,35,38,42,46,30,32,36,40,44,3,26,29,33,39,45,48,2,22,25,28,34,41,49,0xFF,A13,0xFF,0xFF,24,27,37,47,A15,A12,0xFF,14,16,17,23,43,A14,A8,A7,5,4,15,6,A4,A6,A5,11,10,9,7,A1,A3,12,13,8,A0,A2};
+//                             *                   *                   *        *    *                        *          *
+// modified pin assignments from V1 to V3 PCB. 0xFF = placeholder; BTN 27 and 35 moved to io expander. V3+ BTN 25 and 28 moved to io expander
+
 
 const uint8_t  button_to_wiki[] = 
 {42,40,38,36,34,49,47,45,43,41,39,56,54,52,50,48,46,44,63,61,59,57,55,53,51,49,70,68,66,64,62,60,58,56,54,75,73,71,69,67,65,63,61,80,78,76,74,72,70,68,85,83,81,79,77,75,90,88,86,84,82};                  
@@ -130,7 +136,7 @@ void setup(){
                      
 }
 
-/////////////////////////////////////////////// MAIN LOOP ///////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////
 void loop() {
   
   scanButtons();
@@ -140,6 +146,10 @@ void loop() {
   scanMetaButtons();
   
   scanPitchBendStandard(); 
+
+  if (midiDIN.read()) {      // MIDI DIN Input echo thru to MIDI USB
+     midiUSB.send(midiDIN.getType(), midiDIN.getData1(), midiDIN.getData2(), midiDIN.getChannel());
+  }
 
  
 
@@ -241,7 +251,7 @@ void scanButtons(){
 
   uint8_t midi_note;
 
-  acquireButtons();     // gets all 61 BTNs and stores in ButtonState[] array. including BTN 27 and 35 on the IO expander
+  acquireButtons();     // gets all 61 BTNs and stores in ButtonState[] array. including BTN 27, 35, 25, and 28 on the IO expander
     
   Serial.flush();
 
@@ -305,23 +315,31 @@ void metaButtonHandler(uint8_t meta_button){
   //      }
 
   switch (meta_button) {
+
+
     case 0:               // GPIOA.0 J13
-      if(c2_base_note > midi_note_min){      // Semitone -
-        c2_base_note = c2_base_note - 1;   
-      } 
-      break;
-    case 1:               // GPIOA.1 J14
-      if(c2_base_note < midi_note_max){      // Semitone +
-        c2_base_note = c2_base_note + 1;   
+      if(global_midi_velocity >= (midi_velocity_min + midi_velocity_increment)){    // Velocity -
+	global_midi_velocity = (global_midi_velocity - midi_velocity_increment);   // * configure increments
       }
       break;
+
+
+    case 1:               // GPIOA.1 J14
+      if(global_midi_velocity <= (midi_velocity_max - midi_velocity_increment)){     // Velocity +
+	global_midi_velocity = (global_midi_velocity + midi_velocity_increment);    // * configure increments
+      }
+      break;
+
+
+
+
     case 2:               // GPIOA.2 J15
-      if(c2_base_note > midi_note_min + 12){     // Octave -
+      if(c2_base_note >= midi_note_min + 12){     // Octave -
         c2_base_note = c2_base_note - 12;   
       }  
       break;
     case 3:               // GPIOA.3 J16
-      if(c2_base_note < midi_note_max - 12){     // Octave +
+      if(c2_base_note <= midi_note_max - 12){     // Octave +
         c2_base_note = c2_base_note + 12;   
       }   
       break;
@@ -330,26 +348,33 @@ void metaButtonHandler(uint8_t meta_button){
       break;
     case 7:               // GPIOA.7 J18
       // 
-      break;  
+      break;
+
+
+
+
     case 8:               // GPIOB.0 J1
-      if(global_midi_velocity < (midi_velocity_max - midi_velocity_increment)){     // Velocity +
-        global_midi_velocity = (global_midi_velocity + midi_velocity_increment);    // * configure increments
-      }    
+      if(c2_base_note > midi_note_min){      // Semitone -
+	c2_base_note = c2_base_note - 1;
+      }
       break;
     case 9:               // GPIOB.1 J2
-      if(global_midi_velocity > (midi_velocity_min + midi_velocity_increment)){    // Velocity -   
-        global_midi_velocity = (global_midi_velocity - midi_velocity_increment);   // * configure increments
-      }     
+      if(c2_base_note < midi_note_max){      // Semitone +
+	c2_base_note = c2_base_note + 1;
+      }
       break;
+
+
+
     case 10:              // GPIOB.2 J3 
-      if(global_midi_channel < 16){        // Channel +    
-        global_midi_channel++;
-      }    
+      // if(global_midi_channel < 16){        // Channel +
+      //   global_midi_channel++;
+      // }
       break;
     case 11:              // GPIOB.3 J4
-      if(global_midi_channel > 1){         // Channel -      
-        global_midi_channel--;
-      }    
+      // if(global_midi_channel > 1){         // Channel -
+      //   global_midi_channel--;
+      // }
       break;
     case 12:              // GPIOB.4 J5
       // 
@@ -448,21 +473,25 @@ void midiModWheel(uint8_t modVal){
 }
 
 void midiPitchBend(uint8_t pitchVal){ 
-  
-    //uint8_t pitchLSB = 0;
-    //if(pitchVal == 127){
-    //  pitchLSB = 127;  
-    //}
 
-    //uint16_t pitchFullVal = ((pitchVal << 8) + pitchLSB);
-    
-    //Serial.write(midi_pitchBend_cmd | (global_midi_channel - 1));
-    //Serial.write(pitchLSB);
-    //Serial.write(pitchVal);
+   int16_t pitchFullVal;
 
-    midiUSB.sendPitchBend(pitchVal, global_midi_channel);
-    midiDIN.sendPitchBend(pitchVal, global_midi_channel);
+    pitchFullVal = map(pitchVal, 0, 127, -8192, 8191);
+
+    //midiUSB.sendPitchBend(pitchFullVal, global_midi_channel);
+    //midiDIN.sendPitchBend(pitchFullVal, global_midi_channel);
+
+    if(pitchVal == 127){
+      midiUSB.send(midi::PitchBend, 127, 127, global_midi_channel);
+      midiDIN.send(midi::PitchBend, 127, 127, global_midi_channel);
+    }
+    else {
+      midiUSB.send(midi::PitchBend, 0, pitchFullVal, global_midi_channel);
+      midiDIN.send(midi::PitchBend, 0, pitchFullVal, global_midi_channel);
+    }
+
 }
+
 
 /////////////////////////////////////// ACQUIRE BUTTONS ////////////////////////////////////
 
@@ -493,8 +522,8 @@ void acquireButtons(){
     ButtonState[0]  = bitRead(portdata,6);
     ButtonState[5]  = bitRead(portdata,7);
     portdata = PIND;   
-    ButtonState[27] = bitRead(portdata,0);  
-    ButtonState[24] = bitRead(portdata,1); 
+    //ButtonState[27] = bitRead(portdata,0);  // relocated
+    //ButtonState[24] = bitRead(portdata,1);  // relocated
     ButtonState[2]  = bitRead(portdata,7);
     portdata = PINE; 
     ButtonState[43] = bitRead(portdata,3);
@@ -542,6 +571,8 @@ void acquireButtons(){
 
     ButtonState[34] = ioExpander.digitalRead(4);  // button 35
     ButtonState[26] = ioExpander.digitalRead(5);  // button 27
+    ButtonState[27] = ioExpander.digitalRead(6);  // button 28
+    ButtonState[24] = ioExpander.digitalRead(7);  // button 25
            
 }
 
@@ -552,7 +583,7 @@ void initButtons(){
 
   for(uint8_t i=0; i<number_of_buttons; i++){     // init BTNs loop    
 
-    if( (i != 26) && (i != 34)){                  // skip BTN 27 and 35
+    if( (i != 26) && (i != 34) && (i != 24) && (i != 27)){    // skip BTN 27 ,35, 25, 28
       pinMode(button_to_pin[i], INPUT_PULLUP);    // inputs w/ pullups     
     }
   
@@ -572,7 +603,7 @@ void initButtons(){
 void initIoExpander(){
   
   ioExpander.begin();
-  for(uint8_t i=0; i<number_of_meta_buttons; i++){    // init Meta BTNs loop (and also BTN 27 and 35)
+  for(uint8_t i=0; i<number_of_meta_buttons; i++){    // init Meta BTNs loop (and also BTN 27 ,35, 25, and 28)
     ioExpander.pinMode(i, INPUT);                     // all pins inputs w/ pullups
     ioExpander.pullUp(i, HIGH);    
 
