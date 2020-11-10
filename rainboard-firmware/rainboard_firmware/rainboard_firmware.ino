@@ -11,7 +11,7 @@ MIDI_CREATE_INSTANCE(HardwareSerial, Serial1, midiDIN);
 Adafruit_MCP23017 ioExpander; 
 
 const uint8_t number_of_buttons = 61;
-const uint8_t number_of_meta_buttons = 16; // only 14 actual meta buttons (extra 2 are overlap of BTNs 27 & 35 on IO expander)
+const uint8_t number_of_meta_buttons = 16; // only 12 actual meta buttons (extra 4 are overlap of BTNs 27,25,28, & 35 on IO expander)
 
 const uint8_t modWheel_pin = A9;             
 const uint8_t pitchBend_pin = A10;    
@@ -43,14 +43,7 @@ uint8_t noteHex[] =
   0x60, 0x61, 0x62, 0x63, 0x64, 0x65, 0x66, 0x67, 0x68, 0x69, 0x6A, 0x6B,
   0x6C, 0x6D, 0x6E, 0x6F, 0x70, 0x71, 0x72, 0x73, 0x74, 0x75, 0x76, 0x77,
   0x78, 0x79, 0x7A, 0x7B, 0x7C, 0x7D, 0x7E, 0x7F};
-
-//const uint8_t  original_button_to_pin[] = 
-//{31,35,38,42,46,30,32,36,40,44,51,26,29,33,39,45,48,50,22,25,28,34,41,49,52,A13,17,18,24,27,37,47,A15,A12,A11,14,16,19,23,43,A14,A8,A7,5,4,15,6,A4,A6,A5,11,10,9,7,A1,A3,12,13,8,A0,A2}; 
-
-//const uint8_t  v3_button_to_pin[] = 
-//{31,35,38,42,46,30,32,36,40,44,3,26,29,33,39,45,48,2,22,25,28,34,41,49,20,A13,0xFF,21,24,27,37,47,A15,A12,0xFF,14,16,17,23,43,A14,A8,A7,5,4,15,6,A4,A6,A5,11,10,9,7,A1,A3,12,13,8,A0,A2};
-//                               *                   *                   *      *    *                      *          * 
-// modified pin assignments from V1 to V3 PCB. 0xFF = placeholder; BTN 27 and 35 moved to io expander.
+  
 
 const uint8_t  button_to_pin[] = 
 {31,35,38,42,46,30,32,36,40,44,3,26,29,33,39,45,48,2,22,25,28,34,41,49,0xFF,A13,0xFF,0xFF,24,27,37,47,A15,A12,0xFF,14,16,17,23,43,A14,A8,A7,5,4,15,6,A4,A6,A5,11,10,9,7,A1,A3,12,13,8,A0,A2};
@@ -58,8 +51,10 @@ const uint8_t  button_to_pin[] =
 // modified pin assignments from V1 to V3 PCB. 0xFF = placeholder; BTN 27 and 35 moved to io expander. V3+ BTN 25 and 28 moved to io expander
 
 
-const uint8_t  button_to_wiki[] = 
-{42,40,38,36,34,49,47,45,43,41,39,56,54,52,50,48,46,44,63,61,59,57,55,53,51,49,70,68,66,64,62,60,58,56,54,75,73,71,69,67,65,63,61,80,78,76,74,72,70,68,85,83,81,79,77,75,90,88,86,84,82};                  
+uint8_t  button_to_wiki[] = 
+{42,40,38,36,34,49,47,45,43,41,39,56,54,52,50,48,46,44,63,61,59,57,55,53,51,49,70,68,66,64,62,60,58,56,54,75,73,71,69,67,65,63,61,80,78,76,74,72,70,68,85,83,81,79,77,75,90,88,86,84,82};
+                  
+uint8_t current_note_map[number_of_buttons] = {0}; 
 
  
 //scanModWheel()
@@ -98,42 +93,40 @@ boolean MetaButtonPressedFlag[number_of_meta_buttons];
 uint8_t MetaButtonIdleCount[number_of_meta_buttons];
 
 // configure timing
-const uint64_t dead_zone_time = 2;
-const uint8_t button_idle_period_cycles = 100;
-const uint64_t meta_button_dead_zone_time = 2;
-const uint8_t meta_button_idle_period_cycles = 100;
+const uint64_t dead_zone_time = 2;                   // in milliseconds
+const uint8_t button_idle_period_cycles = 5;         // iterations of scanButtons() @1.52ms
+const uint64_t meta_button_dead_zone_time = 2;       // in milliseconds
+const uint8_t meta_button_idle_period_cycles = 2;    // iterations of scanMetaButtons() @4.56ms
 
-const uint8_t modWheel_scan_period = 10;  
-const uint8_t pitchBend_scan_period = 1;  
+const uint8_t modWheel_scan_period = 10;             // in milliseconds  
+const uint8_t pitchBend_scan_period = 1;             // in milliseconds  
 
 // configure limits
-const uint8_t modWheel_ceiling = 20;
+const uint8_t modWheel_ceiling = 20;                 // in samples (total of 1024)
 const uint8_t modWheel_floor = 20;
 const uint8_t pitchBend_ceiling = 20;
 const uint8_t pitchBend_floor = 20;
 const uint8_t pitchBend_dead_center = 20;
 const uint16_t softpots_max = 1023; 
 
+// configure modes
+const boolean PitchInverted = true;
+const boolean ModInverted = true;
+
 ////////////////////////////////////////////////////////////////////////////////////////////////
 void setup(){  
-                                                              
-  pinMode(modWheel_pin, INPUT);                                // init softpots
-  ModWheelCurrentPosition = ModWheelPreviousPosition = 0;    
-  pinMode(pitchBend_pin, INPUT);  
-  PitchBendCurrentPosition = PitchBendPreviousPosition = 0;  
-  pinMode(softpots_bottom_pin, INPUT);
-  analogReference(EXTERNAL);
   
-  LastModWheelEventTime = LastPitchBendEventTime = millis();  // init timekeepers  
-
   initIoExpander();                         // init io expander
   initButtons();                            // init buttons  
+  initSoftpots();                           // init softpots   
   
   midiUSB.begin(MIDI_CHANNEL_OMNI);         // init midi ports
   midiUSB.turnThruOff();
   midiDIN.begin(MIDI_CHANNEL_OMNI);
-  midiDIN.turnThruOn();      
-                     
+  midiDIN.turnThruOn();   
+
+  loadNoteMap(button_to_wiki);
+                       
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -150,14 +143,19 @@ void loop() {
   if (midiDIN.read()) {      // MIDI DIN Input echo thru to MIDI USB
      midiUSB.send(midiDIN.getType(), midiDIN.getData1(), midiDIN.getData2(), midiDIN.getChannel());
   }
-
  
-
 }
 
+////////////////////////////////////////// LOAD NOTE MAP ////////////////////////////////////////
+void loadNoteMap(uint8_t *note_map){
 
-/////////////////////////////////////// SCAN MOD AND PITCH///////////////////////////////////////
+  for(uint8_t i=0; i<number_of_buttons; i++){
+    current_note_map[i] = *note_map; 
+    note_map++; 
+  }  
+}
 
+/////////////////////////////////////////// SCAN PITCH//////////////////////////////////////////
 void scanPitchBendStandard() {
 
   static uint16_t pitch_bend_raw;
@@ -194,6 +192,9 @@ void scanPitchBendStandard() {
       }
              
       if((PitchBendCurrentPosition >= 0) && (PitchBendCurrentPosition <= 127)){                 // if in range
+         if(PitchInverted){
+          PitchBendCurrentPosition = map(PitchBendCurrentPosition, 0, 127, 127, 0);  
+         }
          if(PitchBendCurrentPosition != PitchBendPreviousPosition){                             // and has changed
             midiPitchBend(PitchBendCurrentPosition);                                            // send midi            
             PitchBendPreviousPosition = PitchBendCurrentPosition;                               // update pitch bend value
@@ -211,7 +212,7 @@ void scanPitchBendStandard() {
   }   
 }
 
-
+/////////////////////////////////////////// SCAN MOD  ///////////////////////////////////////////
 void scanModWheel() {
 
   static uint16_t mod_wheel_raw;
@@ -234,6 +235,9 @@ void scanModWheel() {
     if(mod_wheel_raw > softpots_bottom_raw){                                                   // if its not a release
        ModWheelCurrentPosition = map(mod_wheel_raw, mod_wheel_min, mod_wheel_max, 0, 127);     // get mod wheel value
        if((ModWheelCurrentPosition >= 0) && (ModWheelCurrentPosition <= 127)){                 // if in range
+          if(ModInverted){
+             ModWheelCurrentPosition = map(ModWheelCurrentPosition, 0, 127, 127, 0);  
+          }
           if(ModWheelCurrentPosition != ModWheelPreviousPosition){                             // and has changed
              midiModWheel(ModWheelCurrentPosition);                                            // send midi
              ModWheelPreviousPosition = ModWheelCurrentPosition;                               // update mod wheel value
@@ -246,7 +250,6 @@ void scanModWheel() {
 
 
 ///////////////////////////////////////// SCAN BUTTONS ////////////////////////////////////////////
-
 void scanButtons(){  
 
   uint8_t midi_note;
@@ -259,7 +262,7 @@ void scanButtons(){
 
       if(!ButtonState[i]){                                                         // if button is low
           if(ReadyForPress[i]){                                                            // and ready for press  
-              midi_note = noteHex[button_to_wiki[i]+c2_base_note];                         // lookup pitch     
+              midi_note = noteHex[current_note_map[i]+c2_base_note];                         // lookup pitch     
               midiNoteOn(midi_note, global_midi_velocity);                                 // initiate button press event
               LastPitchSent[i] = midi_note;
               NoteOnFlag[i] = true;
@@ -290,9 +293,9 @@ void scanButtons(){
               }
           }
 
-          ButtonIdleCount[i]++;                                                           // kill stuck notes
+          ButtonIdleCount[i]++;                                                           // kill stuck notes  
           if(ButtonIdleCount[i] >= button_idle_period_cycles){
-              if(NoteOnFlag[i]){
+              if(NoteOnFlag[i]){                                                                      // * BTN 35, 27, 25, and 28 -> GPIOA.4, GPIOA.5, GPIOA.7, GPIOA.6
                   midiNoteOff(LastPitchSent[i]); 
                   NoteOnFlag[i] = false;   
               }
@@ -303,7 +306,6 @@ void scanButtons(){
 }
 
 /////////////////////////////////////////  META BUTTONS HANDLER /////////////////////////////////////////
-
 void metaButtonHandler(uint8_t meta_button){ 
 
   // these two notes serve as half tone up or down.
@@ -316,23 +318,16 @@ void metaButtonHandler(uint8_t meta_button){
 
   switch (meta_button) {
 
-
     case 0:               // GPIOA.0 J13
       if(global_midi_velocity >= (midi_velocity_min + midi_velocity_increment)){    // Velocity -
-	global_midi_velocity = (global_midi_velocity - midi_velocity_increment);   // * configure increments
+	       global_midi_velocity = (global_midi_velocity - midi_velocity_increment);   // * configure increments
       }
       break;
-
-
     case 1:               // GPIOA.1 J14
       if(global_midi_velocity <= (midi_velocity_max - midi_velocity_increment)){     // Velocity +
-	global_midi_velocity = (global_midi_velocity + midi_velocity_increment);    // * configure increments
+	       global_midi_velocity = (global_midi_velocity + midi_velocity_increment);    // * configure increments
       }
       break;
-
-
-
-
     case 2:               // GPIOA.2 J15
       if(c2_base_note >= midi_note_min + 12){     // Octave -
         c2_base_note = c2_base_note - 12;   
@@ -344,28 +339,21 @@ void metaButtonHandler(uint8_t meta_button){
       }   
       break;
     case 6:               // GPIOA.6 J17
-      // 
+      // used for BTNs
       break;
     case 7:               // GPIOA.7 J18
-      // 
+      // used for BTNs
       break;
-
-
-
-
     case 8:               // GPIOB.0 J1
       if(c2_base_note > midi_note_min){      // Semitone -
-	c2_base_note = c2_base_note - 1;
+	       c2_base_note = c2_base_note - 1;
       }
       break;
     case 9:               // GPIOB.1 J2
       if(c2_base_note < midi_note_max){      // Semitone +
-	c2_base_note = c2_base_note + 1;
+	       c2_base_note = c2_base_note + 1;
       }
       break;
-
-
-
     case 10:              // GPIOB.2 J3 
       // if(global_midi_channel < 16){        // Channel +
       //   global_midi_channel++;
@@ -377,10 +365,10 @@ void metaButtonHandler(uint8_t meta_button){
       // }
       break;
     case 12:              // GPIOB.4 J5
-      // 
+      // used for BTNs
       break;
     case 13:              // GPIOB.5 J6
-      // 
+      // used for BTNs
       break;    
     case 14:              // GPIOB.6 J7
       // 
@@ -396,11 +384,10 @@ void metaButtonHandler(uint8_t meta_button){
 }
 
 /////////////////////////////////////////// SCAN META BUTTONS //////////////////////////////////////////
-
 void scanMetaButtons(){   
 
-  for(uint8_t i=0; i<number_of_meta_buttons; i++){             // gets all 16 pins of the IO expander which includes 14 meta buttons 
-      MetaButtonState[i] = ioExpander.digitalRead(i);          // and also overlap of BTN 35 and 27 onto GPIOA.4 and GPIOA.5 
+  for(uint8_t i=0; i<number_of_meta_buttons; i++){             // gets all 16 pins of the IO expander which includes 12 meta buttons 
+      MetaButtonState[i] = ioExpander.digitalRead(i);          // and also overlap of BTN 35, 27, 25, and 28 onto GPIOA.4, GPIOA.5, GPIOA.7, GPIOA.6
   }                                                           
 
   for(uint8_t i=0; i<number_of_meta_buttons; i++){      
@@ -449,7 +436,6 @@ void scanMetaButtons(){
 }
 
 ///////////////////////////////////////// MIDI MESSAGES //////////////////////////////////////
-
 void midiNoteOn(uint8_t pitch, uint8_t velocity){
   
      midiUSB.sendNoteOn(pitch, velocity, global_midi_channel);
@@ -492,9 +478,7 @@ void midiPitchBend(uint8_t pitchVal){
     
 }
 
-
 /////////////////////////////////////// ACQUIRE BUTTONS ////////////////////////////////////
-
 void acquireButtons(){   
 
     uint8_t portdata;
@@ -522,8 +506,6 @@ void acquireButtons(){
     ButtonState[0]  = bitRead(portdata,6);
     ButtonState[5]  = bitRead(portdata,7);
     portdata = PIND;   
-    //ButtonState[27] = bitRead(portdata,0);  // relocated
-    //ButtonState[24] = bitRead(portdata,1);  // relocated
     ButtonState[2]  = bitRead(portdata,7);
     portdata = PINE; 
     ButtonState[43] = bitRead(portdata,3);
@@ -577,8 +559,7 @@ void acquireButtons(){
 }
 
 
-/////////////////////////////////////// INIT BUTTONS ////////////////////////////////////
-
+/////////////////////////////////////// INIT HARDWARE ////////////////////////////////////
 void initButtons(){  
 
   for(uint8_t i=0; i<number_of_buttons; i++){     // init BTNs loop    
@@ -615,4 +596,17 @@ void initIoExpander(){
     MetaButtonPressedFlag[i] = 0;
     MetaButtonIdleCount[i] = 0;   
   }
+}
+
+void initSoftpots(){  
+
+   pinMode(modWheel_pin, INPUT);                                // init softpots
+   pinMode(pitchBend_pin, INPUT);  
+   pinMode(softpots_bottom_pin, INPUT);
+   analogReference(EXTERNAL);
+
+   ModWheelCurrentPosition = ModWheelPreviousPosition = 0;     // init controllers
+   PitchBendCurrentPosition = PitchBendPreviousPosition = 0; 
+   LastModWheelEventTime = LastPitchBendEventTime = millis();  // init timekeepers  
+  
 }
