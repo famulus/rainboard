@@ -1,0 +1,112 @@
+
+(rules PCB rainboard_newfighter
+  (snap_angle 
+    none
+  )
+  (autoroute_settings
+    (fanout off)
+    (eu.mihosoft.freerouting.autoroute on)
+    (postroute on)
+    (vias on)
+    (via_costs 50)
+    (plane_via_costs 5)
+    (start_ripup_costs 40)
+    (start_pass_no 973)
+    (layer_rule F.Cu
+      (active on)
+      (preferred_direction horizontal)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 2.0)
+    )
+    (layer_rule B.Cu
+      (active on)
+      (preferred_direction vertical)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 2.0)
+    )
+  )
+  (rule
+    (width 200.6)
+    (clear 178.0)
+    (clear 100.3 (type smd_to_turn_gap))
+    (clear 44.6 (type smd_smd))
+  )
+  (padstack "Via[0-1]_800:400_um"
+    (shape
+      (circle F.Cu 800.0 0.0 0.0)
+    )
+    (shape
+      (circle B.Cu 800.0 0.0 0.0)
+    )
+    (attach off)
+  )
+  (via 
+    "Via[0-1]_800:400_um" "Via[0-1]_800:400_um" default
+  )
+  (via 
+    "Via[0-1]_800:400_um-kicad_default" "Via[0-1]_800:400_um" "kicad_default"
+  )
+  (via_rule
+    default "Via[0-1]_800:400_um"
+  )
+  (via_rule
+    "kicad_default" "Via[0-1]_800:400_um-kicad_default"
+  )
+  (class default
+    (clearance_class default)
+    (via_rule default)
+    (rule
+      (width 200.6)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+  (class "kicad_default"
+    "button-01" "button-02" "button-03" "button-04" "button-05" "button-06" "button-07" "button-08"
+    "button-09" "button-10" "button-13" "button-12" "button-11" "button-22" "button-23" "button-24"
+    "button-25" "button-26" "button-27" "button-28" "button-29" "button-30" "button-31" "button-32"
+    "button-33" "button-34" "button-35" "button-36" "button-37" "button-38" "button-39" "button-40"
+    "button-41" "button-42" "button-43" "button-44" "button-45" "button-46" "button-47" "button-48"
+    "button-49" "button-50" "button-51" "button-52" "button-53" "button-17" "button-18" "button-14"
+    "button-15" "button-16" "button-19" "button-20" "button-21" "button-54" "button-55" "button-56"
+    "button-57" "button-58" "button-59" "button-60" "button-61" "softpot-1" "softpot-2" "Net-(J3-Pad2)"
+    "Net-(J4-Pad2)" "Net-(J5-Pad2)" "Net-(J6-Pad2)" "Net-(J7-Pad2)" "Net-(J8-Pad2)" "Net-(J1-Pad2)" "Net-(J2-Pad2)" SCL
+    SDA 3.3V "Net-(J12-Pad4)" "Net-(R6-Pad2)" "Net-(U2-Pad6)" "Net-(U2-Pad2)" "MIDI-OUT" "Net-(J11-Pad4)"
+    "Net-(J12-Pad5)" "Net-(J13-Pad2)" "MIDI-IN" "Net-(J11-PadS1)" AREF "Net-(J14-Pad2)" "Net-(J15-Pad2)" "Net-(J16-Pad2)"
+    BREF GNDA "Net-(R8-Pad1)" "Net-(D1-Pad2)" "Net-(D1-Pad1)" "Net-(J11-Pad3)" "Net-(J11-Pad1)" "Net-(J11-Pad2)"
+    "Net-(J12-Pad3)" "Net-(J12-Pad1)" "Net-(U1-Pad20)" "Net-(U1-Pad19)" "Net-(U2-Pad12)" "Net-(U2-Pad10)" "Net-(XA1-PadMISO)" "Net-(XA1-PadD53)"
+    "Net-(XA1-PadD52)" "Net-(XA1-PadD51)" "Net-(XA1-PadD50)" "Net-(XA1-PadD1)" "Net-(XA1-PadD0)" "Net-(XA1-PadD20)" "Net-(XA1-PadD21)" "Net-(XA1-PadIORF)"
+    "Net-(XA1-PadRST1)" "Net-(XA1-PadVIN)" "Net-(XA1-Pad5V2)" "Net-(XA1-PadSCK)" "Net-(XA1-PadMOSI)" "Net-(XA1-PadGND4)" "Net-(XA1-PadRST2)" "Net-(R11-Pad1)"
+    (clearance_class "kicad_default")
+    (via_rule kicad_default)
+    (rule
+      (width 200.6)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+  (class earth
+    Earth
+    (clearance_class default)
+    (via_rule default)
+    (rule
+      (width 500.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+  (class power
+    5V
+    (clearance_class default)
+    (via_rule default)
+    (rule
+      (width 500.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+)

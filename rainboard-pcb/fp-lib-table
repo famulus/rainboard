@@ -5,4 +5,6 @@
   (lib (name io_expander)(type KiCad)(uri ${KIPRJMOD}/libraries/MCP23017-E_SO)(options "")(descr ""))
   (lib (name MIDI-DIN)(type KiCad)(uri ${KIPRJMOD}/libraries/SDS-50J)(options "")(descr ""))
   (lib (name opto_coupler)(type KiCad)(uri ${KIPRJMOD}/libraries/EL357N_A__TA_-G)(options "")(descr ""))
+  (lib (name opto_coupler2)(type KiCad)(uri /Users/clean/Documents/rainboard/rainboard-pcb/libraries/6N138SDM)(options "")(descr ""))
+  (lib (name diode)(type KiCad)(uri /Users/clean/Documents/rainboard/rainboard-pcb/libraries/SODFL2513X100N)(options "")(descr ""))
 )

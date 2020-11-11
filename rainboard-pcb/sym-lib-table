@@ -6,4 +6,5 @@
   (lib (name schmitt_trigger)(type Legacy)(uri ${KIPRJMOD}/libraries/74HC14D/74HC14D.lib)(options "")(descr ""))
   (lib (name opto_couplers)(type Legacy)(uri ${KIPRJMOD}/libraries/EL357N_A__TA_-G/EL357N_A__TA_-G.lib)(options "")(descr ""))
   (lib (name midi_din)(type Legacy)(uri ${KIPRJMOD}/libraries/SDS-50J/SDS-50J.lib)(options "")(descr ""))
+  (lib (name opto_couplers2)(type Legacy)(uri /Users/clean/Documents/rainboard/rainboard-pcb/libraries/6N138SDM/6N138SDM.lib)(options "")(descr ""))
 )
