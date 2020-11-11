@@ -3,7 +3,7 @@
 An open-source isomorphic MIDI controller.
 
 
-![alt Rainboard](https://github.com/famulus/rainboard/blob/master/images/rainboard_bottom.JPG?raw=true)
+![alt Rainboard](https://github.com/famulus/rainboard/blob/master/images/rainboard_top.JPG?raw=true)
 
 
 ### Firmware Install:
