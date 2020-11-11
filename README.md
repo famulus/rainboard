@@ -95,4 +95,5 @@ Requires homebrew: https://brew.sh/
 Same instructions as Windows.
 
 
+![alt Rainboard](https://github.com/famulus/rainboard/blob/master/images/rainboard_bottom.JPG?raw=true)
 
