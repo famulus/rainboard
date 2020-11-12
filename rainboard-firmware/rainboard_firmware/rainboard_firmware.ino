@@ -4,12 +4,12 @@
 #include <Wire.h>
 #include "Adafruit_MCP23017.h"
 extern TwoWire Wire1;
+// #define TWI_FREQ 400000L in Arduino\hardware\arduino\avr\libraries\Wire\src\utility\twi.h for 400kHz i2c mode
 
+Adafruit_MCP23017 ioExpander;
 
 MIDI_CREATE_INSTANCE(HardwareSerial, Serial, midiUSB);
-MIDI_CREATE_INSTANCE(HardwareSerial, Serial1, midiDIN);
-
-Adafruit_MCP23017 ioExpander; 
+MIDI_CREATE_INSTANCE(HardwareSerial, Serial1, midiDIN); 
 
 const uint8_t number_of_buttons = 61;
 const uint8_t number_of_meta_buttons = 16; // only 12 actual meta buttons (extra 4 are overlap of BTNs 27,25,28, & 35 on IO expander)
@@ -31,7 +31,7 @@ uint8_t global_midi_velocity = 102;
 const uint8_t  button_to_pin[] = 
 {31,35,38,42,46,30,32,36,40,44,3,26,29,33,39,45,48,2,22,25,28,34,41,49,0xFF,A13,0xFF,0xFF,24,27,37,47,A15,A12,0xFF,14,16,17,23,43,A14,A8,A7,5,4,15,6,A4,A6,A5,11,10,9,7,A1,A3,12,13,8,A0,A2};
 //                             *                   *                   *        *    *                        *          * 
-// modified pin assignments from V1 to V3 PCB. 0xFF = placeholder; BTN 27 and 35 moved to io expander. V3+ BTN 25 and 28 moved to io expander
+// modified pin assignments from V1 to V3 PCB. 0xFF = placeholder; BTN 27, 35, 25, and 28 moved to io expander.
 
 
 uint8_t  button_to_wiki[] = 
@@ -41,6 +41,8 @@ uint8_t current_note_map[number_of_buttons] = {0};
 
 const uint8_t UP = 1;
 const uint8_t DOWN = 0;
+const uint8_t ON = 127;
+const uint8_t OFF = 0;
 
  
 //scanModWheel()
@@ -80,9 +82,9 @@ uint8_t MetaButtonIdleCount[number_of_meta_buttons];
 
 // configure timing
 const uint64_t dead_zone_time = 2;                   // in milliseconds
-const uint8_t button_idle_period_cycles = 5;         // iterations of scanButtons() @1.52ms
+const uint8_t button_idle_period_cycles = 5;         // iterations of scanButtons() @1.52ms (@880us in 400kHz i2c mode)
 const uint64_t meta_button_dead_zone_time = 2;       // in milliseconds
-const uint8_t meta_button_idle_period_cycles = 2;    // iterations of scanMetaButtons() @4.56ms
+const uint8_t meta_button_idle_period_cycles = 2;    // iterations of scanMetaButtons() @4.56ms (@2.08ms in 400kHz i2c mode)
 
 const uint8_t modWheel_scan_period = 10;             // in milliseconds  
 const uint8_t pitchBend_scan_period = 1;             // in milliseconds  
@@ -103,8 +105,6 @@ const boolean IgnoreChannelShift = true;
 ////////////////////////////////////////////////////////////////////////////////////////////////
 void setup(){  
 
-  Wire1.setClock(400000L);  // *
-  
   initIoExpander();                         // init io expander
   initButtons();                            // init buttons  
   initSoftpots();                           // init softpots   
@@ -236,7 +236,6 @@ void scanModWheel() {
     }      
   }   
 }
-
 
 ///////////////////////////////////////// SCAN BUTTONS ////////////////////////////////////////////
 void scanButtons(){  
@@ -396,16 +395,16 @@ void metaButtonHandler(uint8_t meta_button){
       channelShift(DOWN);      // Channel -
       break;
     case 12:  // GPIOB.4 J5
-      ////
+      midiProgramChange(43);
       break;
     case 13: // GPIOB.5 J6
       ////
       break;    
-    case 14: // GPIOB.6 J7
-      //// 
+    case 14: // GPIOB.6 J7     // from midi_Defs.h
+      midiCCout(71, ON);       // SoundController2 = 71, ///< Synth: Harmonic Content  FX: Compressor On/Off
       break;
     case 15: // GPIOB.7 J8
-      //// 
+      midiCCout(71, OFF);
       break;
     
     default:
@@ -482,6 +481,12 @@ void midiCCout(uint8_t ccNum, uint8_t ccVal){
   
     midiUSB.sendControlChange(ccNum, ccVal, global_midi_channel);
     midiDIN.sendControlChange(ccNum, ccVal, global_midi_channel);
+}
+
+void midiProgramChange(uint8_t programNumber){
+  
+    midiUSB.sendProgramChange(programNumber, global_midi_channel);
+    midiDIN.sendProgramChange(programNumber, global_midi_channel);
 }
 
 void midiModWheel(uint8_t modVal){  
