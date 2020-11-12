@@ -2,6 +2,10 @@
 
 An open-source isomorphic MIDI controller.
 
+
+![alt Rainboard](https://github.com/famulus/rainboard/blob/master/images/rainboard_top.JPG?raw=true)
+
+
 ### Firmware Install:
 
 The Rainboard firmware runs on an Arduino Mega which has two processors on board:
@@ -91,4 +95,5 @@ Requires homebrew: https://brew.sh/
 Same instructions as Windows.
 
 
+![alt Rainboard](https://github.com/famulus/rainboard/blob/master/images/rainboard_bottom.JPG?raw=true)
 
