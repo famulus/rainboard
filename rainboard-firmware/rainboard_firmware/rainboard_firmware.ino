@@ -96,7 +96,7 @@ const uint8_t pitchBend_dead_center = 20;
 const uint16_t softpots_max = 1023; 
 
 // configure modes
-const boolean PitchInverted = false;
+const boolean PitchInverted = true;
 const boolean ModInverted = false;
 const boolean IgnoreChannelShift = true;
 
