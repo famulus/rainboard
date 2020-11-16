@@ -98,8 +98,8 @@ const uint8_t pitchBend_dead_center = 20;
 const uint16_t softpots_max = 1023; 
 
 // configure modes
-const boolean PitchInverted = false;
-const boolean ModInverted = false;
+const boolean PitchInverted = true;
+const boolean ModInverted = true;
 const boolean IgnoreChannelShift = true;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -132,6 +132,7 @@ void loop() {
   if (midiDIN.read()) {      // MIDI DIN Input echo thru to MIDI USB
      midiUSB.send(midiDIN.getType(), midiDIN.getData1(), midiDIN.getData2(), midiDIN.getChannel());
   }
+
  
 }
 
@@ -173,17 +174,24 @@ void scanPitchBendStandard() {
     if(pitch_bend_raw > softpots_bottom_raw){                                                             // if its not a release
 
       if((pitch_bend_raw >= pitch_bend_min) && (pitch_bend_raw <= pitch_bend_down_max)){                  // if it is a pitch down
-          PitchBendCurrentPosition = map(pitch_bend_raw, pitch_bend_min, pitch_bend_down_max, 0, 63);     // get pitch down value            
+          if(PitchInverted){
+            PitchBendCurrentPosition = map(pitch_bend_raw, pitch_bend_min, pitch_bend_down_max, 127, 64);     
+          }
+          else if(!PitchInverted){
+            PitchBendCurrentPosition = map(pitch_bend_raw, pitch_bend_min, pitch_bend_down_max, 0, 63);   // get pitch down value      
+          }                  
       }
 
       else if((pitch_bend_raw >= pitch_bend_up_min) && (pitch_bend_raw <= pitch_bend_max)){               // if it is a pitch up
-          PitchBendCurrentPosition = map(pitch_bend_raw, pitch_bend_up_min, pitch_bend_max, 64, 127);     // get pitch up value          
+          if(PitchInverted){
+            PitchBendCurrentPosition = map(pitch_bend_raw, pitch_bend_up_min, pitch_bend_max, 63, 0);   
+          }
+          else if(!PitchInverted){
+            PitchBendCurrentPosition = map(pitch_bend_raw, pitch_bend_up_min, pitch_bend_max, 64, 127);   // get pitch up value   
+          }                   
       }
              
-      if((PitchBendCurrentPosition >= 0) && (PitchBendCurrentPosition <= 127)){                 // if in range
-         if(PitchInverted){
-          PitchBendCurrentPosition = map(PitchBendCurrentPosition, 0, 127, 127, 0);  
-         }
+      if((PitchBendCurrentPosition >= 0) && (PitchBendCurrentPosition <= 127)){                 // if in range         
          if(PitchBendCurrentPosition != PitchBendPreviousPosition){                             // and has changed
             midiPitchBend(PitchBendCurrentPosition);                                            // send midi            
             PitchBendPreviousPosition = PitchBendCurrentPosition;                               // update pitch bend value
@@ -395,16 +403,16 @@ void metaButtonHandler(uint8_t meta_button){
       channelShift(DOWN);      // Channel -
       break;
     case 12:  // GPIOB.4 J5
-      midiProgramChange(43);
+      ////
       break;
     case 13: // GPIOB.5 J6
       ////
       break;    
-    case 14: // GPIOB.6 J7     // from midi_Defs.h
-      midiCCout(71, ON);       // SoundController2 = 71, ///< Synth: Harmonic Content  FX: Compressor On/Off
+    case 14: // GPIOB.6 J7   
+      ////
       break;
     case 15: // GPIOB.7 J8
-      midiCCout(71, OFF);
+      ////
       break;
     
     default:
@@ -464,6 +472,7 @@ void scanMetaButtons(){
       }
   }     
 }
+
 
 ///////////////////////////////////////// MIDI MESSAGES //////////////////////////////////////
 void midiNoteOn(uint8_t pitch, uint8_t velocity){
