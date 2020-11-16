@@ -176,7 +176,7 @@ void scanPitchBendStandard() {
 
       if((pitch_bend_raw >= pitch_bend_min) && (pitch_bend_raw <= pitch_bend_down_max)){                  // if it is a pitch down
           if(PitchInverted){
-            PitchBendCurrentPosition = map(pitch_bend_raw, pitch_bend_min, pitch_bend_down_max, 127, 64);     
+            PitchBendCurrentPosition = map(pitch_bend_raw, pitch_bend_min, pitch_bend_down_max, 127, 64); // pitch inverted    
           }
           else if(!PitchInverted){
             PitchBendCurrentPosition = map(pitch_bend_raw, pitch_bend_min, pitch_bend_down_max, 0, 63);   // get pitch down value      
@@ -185,7 +185,7 @@ void scanPitchBendStandard() {
 
       else if((pitch_bend_raw >= pitch_bend_up_min) && (pitch_bend_raw <= pitch_bend_max)){               // if it is a pitch up
           if(PitchInverted){
-            PitchBendCurrentPosition = map(pitch_bend_raw, pitch_bend_up_min, pitch_bend_max, 63, 0);   
+            PitchBendCurrentPosition = map(pitch_bend_raw, pitch_bend_up_min, pitch_bend_max, 63, 0);     // pitch inverted 
           }
           else if(!PitchInverted){
             PitchBendCurrentPosition = map(pitch_bend_raw, pitch_bend_up_min, pitch_bend_max, 64, 127);   // get pitch up value   
@@ -404,16 +404,18 @@ void metaButtonHandler(uint8_t meta_button){
       channelShift(DOWN);      // Channel -
       break;
     case 12:  // GPIOB.4 J5
-      ////
+      midiCCout(13, ON);
+      midiCCout(13, OFF);
       break;
     case 13: // GPIOB.5 J6
-      ////
+      midiCCout(12, ON);
+      midiCCout(12, OFF);
       break;    
     case 14: // GPIOB.6 J7   
       ////
       break;
     case 15: // GPIOB.7 J8
-      ////
+      ////      
       break;
     
     default:
