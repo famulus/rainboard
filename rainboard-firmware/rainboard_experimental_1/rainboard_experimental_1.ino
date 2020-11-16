@@ -80,11 +80,14 @@ uint64_t LastMetaButtonReleaseTime[number_of_meta_buttons];
 boolean MetaButtonPressedFlag[number_of_meta_buttons];
 uint8_t MetaButtonIdleCount[number_of_meta_buttons];
 
+uint8_t ControllerNumber;
+boolean ControllerActive = false;
+
 // configure timing
 const uint64_t dead_zone_time = 2;                   // in milliseconds
 const uint8_t button_idle_period_cycles = 5;         // iterations of scanButtons() @1.52ms (@880us in 400kHz i2c mode)
 const uint64_t meta_button_dead_zone_time = 2;       // in milliseconds
-const uint8_t meta_button_idle_period_cycles = 2;    // iterations of scanMetaButtons() @4.56ms (@2.08ms in 400kHz i2c mode)
+const uint8_t meta_button_idle_period_cycles = 5;    // iterations of scanMetaButtons() @4.56ms (@2.08ms in 400kHz i2c mode)
 
 const uint8_t modWheel_scan_period = 10;             // in milliseconds  
 const uint8_t pitchBend_scan_period = 1;             // in milliseconds  
@@ -98,9 +101,8 @@ const uint8_t pitchBend_dead_center = 20;
 const uint16_t softpots_max = 1023; 
 
 // configure modes
-const boolean PitchInverted = true;
-
-const boolean ModInverted = true;
+const boolean PitchInverted = false;
+const boolean ModInverted = false;
 const boolean IgnoreChannelShift = true;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -120,22 +122,23 @@ void setup(){
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
-void loop() {
+void loop() { 
+  
+  scanMetaButtons();
   
   scanButtons();
   
   scanModWheel();
-
-  scanMetaButtons();
   
   scanPitchBendStandard(); 
 
   if (midiDIN.read()) {      // MIDI DIN Input echo thru to MIDI USB
      midiUSB.send(midiDIN.getType(), midiDIN.getData1(), midiDIN.getData2(), midiDIN.getChannel());
   }
-
+   
  
 }
+
 
 ////////////////////////////////////////// LOAD NOTE MAP ////////////////////////////////////////
 void loadNoteMap(uint8_t *note_map){
@@ -175,24 +178,17 @@ void scanPitchBendStandard() {
     if(pitch_bend_raw > softpots_bottom_raw){                                                             // if its not a release
 
       if((pitch_bend_raw >= pitch_bend_min) && (pitch_bend_raw <= pitch_bend_down_max)){                  // if it is a pitch down
-          if(PitchInverted){
-            PitchBendCurrentPosition = map(pitch_bend_raw, pitch_bend_min, pitch_bend_down_max, 127, 64);     
-          }
-          else if(!PitchInverted){
-            PitchBendCurrentPosition = map(pitch_bend_raw, pitch_bend_min, pitch_bend_down_max, 0, 63);   // get pitch down value      
-          }                  
+          PitchBendCurrentPosition = map(pitch_bend_raw, pitch_bend_min, pitch_bend_down_max, 0, 63);     // get pitch down value            
       }
 
       else if((pitch_bend_raw >= pitch_bend_up_min) && (pitch_bend_raw <= pitch_bend_max)){               // if it is a pitch up
-          if(PitchInverted){
-            PitchBendCurrentPosition = map(pitch_bend_raw, pitch_bend_up_min, pitch_bend_max, 63, 0);   
-          }
-          else if(!PitchInverted){
-            PitchBendCurrentPosition = map(pitch_bend_raw, pitch_bend_up_min, pitch_bend_max, 64, 127);   // get pitch up value   
-          }                   
+          PitchBendCurrentPosition = map(pitch_bend_raw, pitch_bend_up_min, pitch_bend_max, 64, 127);     // get pitch up value          
       }
              
-      if((PitchBendCurrentPosition >= 0) && (PitchBendCurrentPosition <= 127)){                 // if in range         
+      if((PitchBendCurrentPosition >= 0) && (PitchBendCurrentPosition <= 127)){                 // if in range
+         if(PitchInverted){
+          PitchBendCurrentPosition = map(PitchBendCurrentPosition, 0, 127, 127, 0);  
+         }
          if(PitchBendCurrentPosition != PitchBendPreviousPosition){                             // and has changed
             midiPitchBend(PitchBendCurrentPosition);                                            // send midi            
             PitchBendPreviousPosition = PitchBendCurrentPosition;                               // update pitch bend value
@@ -237,7 +233,14 @@ void scanModWheel() {
              ModWheelCurrentPosition = map(ModWheelCurrentPosition, 0, 127, 127, 0);  
           }
           if(ModWheelCurrentPosition != ModWheelPreviousPosition){                             // and has changed
-             midiModWheel(ModWheelCurrentPosition);                                            // send midi
+             if(ControllerActive == false){
+                midiModWheel(ModWheelCurrentPosition);                                         // send mod
+             }
+             if(ControllerActive == true){
+                midiCCout(ControllerNumber, ModWheelCurrentPosition);                          // send cc
+             }
+                                                      
+             
              ModWheelPreviousPosition = ModWheelCurrentPosition;                               // update mod wheel value
              LastModWheelEventTime = millis();                                                 // update timekeeper
           } 
@@ -371,8 +374,79 @@ void channelShift(uint8_t shift_direction){
   }  
 }
 
+void zeroAllControllers(){
+
+}
+
+/////////////////////////////////////// DIGIT ENTRY ////////////////////////////////////
+uint16_t acquireDigitStates(){   
+                                
+    uint16_t DigitButtonState = 0;     // active high logic                                
+    uint8_t portdata;
+    
+    if(!ioExpander.digitalRead(5)){ bitSet(DigitButtonState,9); }   // button 27  //// 9     
+    if(!ioExpander.digitalRead(6)){ bitSet(DigitButtonState,8); }   // button 28  //// 8    
+    portdata = PINA;   
+    if(!bitRead(portdata,2)){ bitSet(DigitButtonState,7); }         // button 29  //// 7    
+    if(!bitRead(portdata,5)){ bitSet(DigitButtonState,6); }         // button 30  //// 6      
+    portdata = PINC;
+    if(!bitRead(portdata,0)){ bitSet(DigitButtonState,5); }         // button 31  //// 5        
+    portdata = PINL;  
+    if(!bitRead(portdata,2)){ bitSet(DigitButtonState,4); }         // button 32  //// 4       
+    portdata = PINK;   
+    if(!bitRead(portdata,7)){ bitSet(DigitButtonState,3); }         // button 33  //// 3       
+    if(!bitRead(portdata,4)){ bitSet(DigitButtonState,2); }         // button 34  //// 2       
+    if(!ioExpander.digitalRead(4)){ bitSet(DigitButtonState,1); }   // button 35  //// 1    
+    if(!bitRead(portdata,5)){ bitSet(DigitButtonState,0); }         // button 26  //// 0    
+       
+    return(DigitButtonState);
+}
+
+uint8_t getDigit(){
+
+    uint16_t digitStates = 0;
+    uint16_t digitMask;
+ 
+    while(!digitStates){
+      digitStates = acquireDigitStates();  
+    }
+
+    while(digitStates != 1 && digitStates != 2 && digitStates != 4 && digitStates != 8 && digitStates != 16 && digitStates != 32 && digitStates != 64 && digitStates != 128 && digitStates != 256 && digitStates != 512){
+      digitStates = acquireDigitStates();  
+    };
+    
+    for(uint8_t digit=0; digit<=9; digit++){
+       digitMask = 1 << digit;
+       if(digitStates == digitMask){
+          do{ digitStates = acquireDigitStates(); }
+          while(digitStates);
+          return(digit);  
+       }      
+    }     
+}
+
+uint8_t getThreeDigitNumber(){
+
+  uint8_t digit = 0;
+  uint8_t ThreeDigits = 0;
+
+  digit = getDigit();
+  ThreeDigits = (digit * 100);
+  digit = getDigit();
+  ThreeDigits = ThreeDigits + (digit * 10);
+  digit = getDigit();
+  ThreeDigits = ThreeDigits + digit;
+  if((ThreeDigits >= 0) && (ThreeDigits <= 127)){
+    return(ThreeDigits);  
+  }
+  else return(0xFF);  
+  
+}
+
 /////////////////////////////////////////  META BUTTONS HANDLER /////////////////////////////////////////
 void metaButtonHandler(uint8_t meta_button){ 
+
+  uint8_t ThreeDigitsEntered;
 
   switch (meta_button) {
 
@@ -404,16 +478,19 @@ void metaButtonHandler(uint8_t meta_button){
       channelShift(DOWN);      // Channel -
       break;
     case 12:  // GPIOB.4 J5
-      ////
+      ControllerNumber = getThreeDigitNumber();
+      ControllerActive = true;
+      midiCCout(ControllerNumber, 0);
       break;
     case 13: // GPIOB.5 J6
-      ////
+      ControllerActive = false;
       break;    
-    case 14: // GPIOB.6 J7   
-      ////
+    case 14: // GPIOB.6 J7    
+      zeroAllControllers();
       break;
     case 15: // GPIOB.7 J8
-      ////
+      ThreeDigitsEntered = getThreeDigitNumber();
+      midiProgramChange(ThreeDigitsEntered);
       break;
     
     default:
@@ -461,7 +538,7 @@ void scanMetaButtons(){
                   MetaButtonReleaseDeadZone[i] = false;                                      // out of meta button release dead zone
               }
           }
-
+          
           MetaButtonIdleCount[i]++;
           if(MetaButtonIdleCount[i] >= meta_button_idle_period_cycles){
               if(MetaButtonPressedFlag[i]){
@@ -469,7 +546,7 @@ void scanMetaButtons(){
                   MetaButtonPressedFlag[i] = false;   
               }
               MetaButtonIdleCount[i] = 0;
-          }
+          }          
       }
   }     
 }
