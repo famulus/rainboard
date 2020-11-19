@@ -45,30 +45,17 @@ const uint8_t ON = 127;
 const uint8_t OFF = 0;
 
  
-//scanModWheel()
+//scanModWheel
 uint8_t ModWheelCurrentPosition;
 uint8_t ModWheelPreviousPosition;
 uint64_t LastModWheelEventTime;
 
-//scanPitchBend()
+//scanPitchBend
 uint8_t PitchBendCurrentPosition;
 uint8_t PitchBendPreviousPosition;
 uint64_t LastPitchBendEventTime;
 
-//scanButtons()
-boolean ButtonState[number_of_buttons];
-boolean ReadyForPress[number_of_buttons];
-boolean ReadyForRelease[number_of_buttons];
-boolean NoteOnDeadZone[number_of_buttons];
-boolean NoteOffDeadZone[number_of_buttons];
-uint64_t LastNoteOnEventTime[number_of_buttons];
-uint64_t LastNoteOffEventTime[number_of_buttons];
-
-boolean NoteOnFlag[number_of_buttons];
-uint8_t ButtonIdleCount[number_of_buttons];
-uint8_t LastPitchSent[number_of_buttons];
-
-//scanMetaButtons()
+//scanMetaButtons
 boolean MetaButtonState[number_of_meta_buttons];
 boolean MetaButtonReadyForPress[number_of_meta_buttons];
 boolean MetaButtonReadyForRelease[number_of_meta_buttons];
@@ -80,16 +67,14 @@ uint64_t LastMetaButtonReleaseTime[number_of_meta_buttons];
 boolean MetaButtonPressedFlag[number_of_meta_buttons];
 uint8_t MetaButtonIdleCount[number_of_meta_buttons];
 
-// configure timing
-const uint64_t dead_zone_time = 2;                   // in milliseconds
-const uint8_t button_idle_period_cycles = 5;         // iterations of scanButtons() @1.52ms (@880us in 400kHz i2c mode)
+//configure timing
 const uint64_t meta_button_dead_zone_time = 2;       // in milliseconds
-const uint8_t meta_button_idle_period_cycles = 2;    // iterations of scanMetaButtons() @4.56ms (@2.08ms in 400kHz i2c mode)
+const uint8_t meta_button_idle_period_cycles = 2;    // iterations of scanMetaButtons() @4.56ms (@2.08ms in 400kHz i2c mode)     // originally 100
 
 const uint8_t modWheel_scan_period = 10;             // in milliseconds  
 const uint8_t pitchBend_scan_period = 1;             // in milliseconds  
 
-// configure limits
+//configure softpot limits
 const uint8_t modWheel_ceiling = 20;                 // in samples (total of 1024)
 const uint8_t modWheel_floor = 20;
 const uint8_t pitchBend_ceiling = 20;
@@ -97,11 +82,30 @@ const uint8_t pitchBend_floor = 20;
 const uint8_t pitchBend_dead_center = 20;
 const uint16_t softpots_max = 1023; 
 
-// configure modes
+//configure modes
 const boolean PitchInverted = true;
 
 const boolean ModInverted = true;
 const boolean IgnoreChannelShift = true;
+
+//scanButtons 
+const uint8_t READY_FOR_PRESS = 1;
+const uint8_t WAIT_FOR_IDLE_LO = 2;
+const uint8_t READY_FOR_RELEASE = 3;
+const uint8_t WAIT_FOR_IDLE_HI = 4;
+
+uint8_t ButtonPhase[number_of_buttons];
+boolean ButtonState[number_of_buttons];    
+uint8_t LastPitchSent[number_of_buttons];  
+
+uint8_t ButtonIdleCountLo[number_of_buttons];
+uint8_t ButtonIdleCountHi[number_of_buttons];
+uint64_t LastLoDetectedTime[number_of_buttons];
+uint64_t LastHiDetectedTime[number_of_buttons];
+
+const uint64_t idle_time_lo = 1;                   // in milliseconds ( minimum 1 )
+const uint64_t idle_time_hi = 1;                   // in milliseconds ( minimum 1 )
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 void setup(){  
@@ -121,7 +125,7 @@ void setup(){
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 void loop() {
-  
+   
   scanButtons();
   
   scanModWheel();
@@ -132,9 +136,83 @@ void loop() {
 
   if (midiDIN.read()) {      // MIDI DIN Input echo thru to MIDI USB
      midiUSB.send(midiDIN.getType(), midiDIN.getData1(), midiDIN.getData2(), midiDIN.getChannel());
-  }
-
+  }  
  
+}
+
+///////////////////////////////////////// SCAN BUTTONS ////////////////////////////////////////////
+void scanButtons(){  
+  
+  uint64_t Now;
+
+  acquireButtons();     // gets all 61 BTNs and stores in ButtonState[] array. including BTN 27, 35, 25, and 28 on the IO expander
+    
+  Serial.flush();
+
+    for(uint8_t i=0; i<number_of_buttons; i++){      
+
+      if(ButtonPhase[i] == READY_FOR_PRESS){             // if ready for press
+          if(ButtonState[i] == 0){                       // and LO detected then it is the first falling edge
+              buttonPressEvent(i);                       // initiate button press event
+              ButtonPhase[i] = WAIT_FOR_IDLE_LO;         // next button phase
+              LastLoDetectedTime[i] = millis();          // mark the time of first falling edge
+              ButtonIdleCountLo[i] = 0;                  // reset idle LO counter
+          }
+      }
+      
+      else if(ButtonPhase[i] == WAIT_FOR_IDLE_LO){       // if waiting for idle LO
+          Now = millis();                          // * Deal with Overflow
+          if(ButtonState[i] == 0){                              // if it is LO
+              if(ButtonIdleCountLo[i] >= idle_time_lo){               // and idle LO counter has expired
+                  ButtonPhase[i] = READY_FOR_RELEASE;                 // next button phase                  
+              }
+              else if(Now > LastLoDetectedTime[i]){                  // or if time has passed ( > 1ms)               
+                  ButtonIdleCountLo[i] = ButtonIdleCountLo[i] + (Now - LastLoDetectedTime[i]);  // update idle LO counter   
+                  LastLoDetectedTime[i] = Now;                       // mark the time of last LO detected
+              }                 
+          }
+          else if(ButtonState[i] == 1){                         // if it is HI
+              ButtonIdleCountLo[i] = 0;                         // then its a bounce, reset idle LO counter
+          }         
+      }
+      
+      else if(ButtonPhase[i] == READY_FOR_RELEASE){             // if ready for release
+          if(ButtonState[i] == 1){                              // and HI detected then it is the first rising edge
+              ButtonPhase[i] = WAIT_FOR_IDLE_HI;                // next button phase 
+              LastHiDetectedTime[i] = millis();                 // mark the time of first rising edge
+              ButtonIdleCountHi[i] = 0;                         // reset idle HI counter     
+          }       
+      }
+      
+      else if(ButtonPhase[i] == WAIT_FOR_IDLE_HI){              // if waiting for idle HI
+          Now = millis();                          // * Deal with Overflow
+          if(ButtonState[i] == 0){                              // if it is LO
+              ButtonIdleCountHi[i] = 0;                         // then its a bounce, reset idle HI counter
+          }
+          else if(ButtonState[i] == 1){                         // if it is HI
+              if(ButtonIdleCountHi[i] >= idle_time_hi){             // and idle HI counter has expired
+                  buttonReleaseEvent(i);                            // initiate button release event
+                  ButtonPhase[i] = READY_FOR_PRESS;                 // next button phase                  
+              }
+              else if(Now > LastHiDetectedTime[i]){                 // or if time has passed ( > 1ms)                
+                  ButtonIdleCountHi[i] = ButtonIdleCountHi[i] + (Now - LastHiDetectedTime[i]);  // update idle HI counter 
+                  LastHiDetectedTime[i] = Now;                      // mark the time of last HI detected
+              }         
+          }    
+      }
+  }     
+}
+
+void buttonPressEvent(uint8_t button){
+    uint8_t midi_note;
+    midi_note = current_note_map[button];                  // lookup pitch 
+    midiNoteOn(midi_note, global_midi_velocity);           // send note on
+    LastPitchSent[button] = midi_note;                     // store pitch sent
+}
+
+void buttonReleaseEvent(uint8_t button){
+
+    midiNoteOff(LastPitchSent[button]);                    // send note off
 }
 
 ////////////////////////////////////////// LOAD NOTE MAP ////////////////////////////////////////
@@ -244,62 +322,6 @@ void scanModWheel() {
        }
     }      
   }   
-}
-
-///////////////////////////////////////// SCAN BUTTONS ////////////////////////////////////////////
-void scanButtons(){  
-
-  uint8_t midi_note;
-
-  acquireButtons();     // gets all 61 BTNs and stores in ButtonState[] array. including BTN 27, 35, 25, and 28 on the IO expander
-    
-  Serial.flush();
-
-  for(uint8_t i=0; i<number_of_buttons; i++){      
-
-      if(!ButtonState[i]){                                                         // if button is low
-          if(ReadyForPress[i]){                                                            // and ready for press                                         
-              midi_note = current_note_map[i];                                             // lookup pitch 
-              midiNoteOn(midi_note, global_midi_velocity);                                 // initiate button press event
-              LastPitchSent[i] = midi_note;
-              NoteOnFlag[i] = true;
-              LastNoteOnEventTime[i] = millis();                                           // store time
-              ReadyForPress[i] = false;                                                    // press has been processed
-              NoteOnDeadZone[i] = true;                                                    // now in noteOn dead zone              
-          }
-          else if(NoteOnDeadZone[i]){                                                      // if in noteOn dead zone
-              if(millis() >= (LastNoteOnEventTime[i] + dead_zone_time)){                   // and noteOn dead zone is over
-                  ReadyForRelease[i] = true;                                               // ready for release
-                  NoteOnDeadZone[i] = false;                                               // out of noteOn dead zone
-              }
-          }
-      }
-          
-      else {                                                                       // if button is high
-          if(ReadyForRelease[i]){                                                         // and ready for release                
-              midiNoteOff(LastPitchSent[i]);                                              // initiate button release event
-              NoteOnFlag[i] = false;
-              LastNoteOffEventTime[i] = millis();                                         // store time
-              ReadyForRelease[i] = false;                                                 // release has been processed
-              NoteOffDeadZone[i] = true;                                                  // now in noteOff dead zone              
-          }  
-          else if(NoteOffDeadZone[i]){                                                    // if in noteOff dead zone
-              if(millis() >= (LastNoteOffEventTime[i] + dead_zone_time)){                 // and noteOff dead zone is over
-                  ReadyForPress[i] = true;                                                // ready for press
-                  NoteOffDeadZone[i] = false;                                             // out of noteOff dead zone
-              }
-          }
-
-          ButtonIdleCount[i]++;                                                           // kill stuck notes  
-          if(ButtonIdleCount[i] >= button_idle_period_cycles){
-              if(NoteOnFlag[i]){                                                                      // * BTN 35, 27, 25, and 28 -> GPIOA.4, GPIOA.5, GPIOA.7, GPIOA.6
-                  midiNoteOff(LastPitchSent[i]); 
-                  NoteOnFlag[i] = false;   
-              }
-              ButtonIdleCount[i] = 0;
-          }
-      }
-  }     
 }
 
 /////////////////////////////////////////  META BUTTON FUNCTIONS /////////////////////////////////////////
@@ -617,12 +639,7 @@ void initButtons(){
     }
   
     ButtonState[i] = 1;                           // button debounce flags
-    ReadyForPress[i] = 1;
-    ReadyForRelease[i] = 0;
-    NoteOnDeadZone[i] = 0;
-    NoteOffDeadZone[i] = 0;
-    NoteOnFlag[i] = 0;
-    ButtonIdleCount[i] = 0;   
+    ButtonPhase[i] = READY_FOR_PRESS;
     
   }   
 }
