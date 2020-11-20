@@ -43,6 +43,8 @@ const uint8_t UP = 1;
 const uint8_t DOWN = 0;
 const uint8_t ON = 127;
 const uint8_t OFF = 0;
+const uint8_t HI = 1;
+const uint8_t LO = 0;
 
  
 //scanModWheel
@@ -94,16 +96,20 @@ const uint8_t READY_FOR_RELEASE = 3;
 const uint8_t WAIT_FOR_IDLE_HI = 4;
 
 uint8_t ButtonPhase[number_of_buttons];
-boolean ButtonState[number_of_buttons];    
+boolean ButtonState[number_of_buttons];     
 uint8_t LastPitchSent[number_of_buttons];  
+boolean ButtonActive[number_of_buttons]; 
 
-uint8_t ButtonIdleCountLo[number_of_buttons];
-uint8_t ButtonIdleCountHi[number_of_buttons];
+uint16_t ButtonIdleCountLo[number_of_buttons];
+uint16_t ButtonIdleCountHi[number_of_buttons];
 uint64_t LastLoDetectedTime[number_of_buttons];
 uint64_t LastHiDetectedTime[number_of_buttons];
+uint16_t ButtonWatchdogCount[number_of_buttons];
 
-const uint64_t idle_time_lo = 1;                   // in milliseconds ( minimum 1 )
-const uint64_t idle_time_hi = 1;                   // in milliseconds ( minimum 1 )
+const uint64_t idle_time_lo = 200;                   // in microseconds 
+const uint64_t idle_time_hi = 200;                   // in microseconds 
+
+const uint16_t button_watchdog_timeout = 5;         // iterations of button scan
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -148,52 +154,68 @@ void scanButtons(){
     
   Serial.flush();
 
-    for(uint8_t i=0; i<number_of_buttons; i++){      
+    for(uint8_t i=0; i<number_of_buttons; i++){   
+
+      if(ButtonState[i] == LO){ 
+          ButtonWatchdogCount[i] = 0;     
+      }
+      if(ButtonState[i] == HI){ 
+          ButtonWatchdogCount[i]++;     
+      }
+
+      if( (ButtonActive[i] == true) && (ButtonWatchdogCount[i] >= button_watchdog_timeout)){
+          buttonReleaseEvent(i);                           
+          ButtonActive[i] = false;
+          ButtonWatchdogCount[i] = 0;
+          ButtonPhase[i] = READY_FOR_PRESS;                       
+      }
 
       if(ButtonPhase[i] == READY_FOR_PRESS){             // if ready for press
-          if(ButtonState[i] == 0){                       // and LO detected then it is the first falling edge
+          if(ButtonState[i] == LO){                      // and LO detected then it is the first falling edge
               buttonPressEvent(i);                       // initiate button press event
+              ButtonActive[i] = true;
               ButtonPhase[i] = WAIT_FOR_IDLE_LO;         // next button phase
-              LastLoDetectedTime[i] = millis();          // mark the time of first falling edge
+              LastLoDetectedTime[i] = micros();          // mark the time of first falling edge
               ButtonIdleCountLo[i] = 0;                  // reset idle LO counter
           }
       }
       
       else if(ButtonPhase[i] == WAIT_FOR_IDLE_LO){       // if waiting for idle LO
-          Now = millis();                          // * Deal with Overflow
-          if(ButtonState[i] == 0){                              // if it is LO
-              if(ButtonIdleCountLo[i] >= idle_time_lo){               // and idle LO counter has expired
-                  ButtonPhase[i] = READY_FOR_RELEASE;                 // next button phase                  
+          Now = micros();                          // * Deal with Overflow
+          if(ButtonState[i] == LO){                              // if it is LO
+              if(ButtonIdleCountLo[i] >= idle_time_lo){              // and idle LO counter has expired
+                  ButtonPhase[i] = READY_FOR_RELEASE;                // next button phase                  
               }
-              else if(Now > LastLoDetectedTime[i]){                  // or if time has passed ( > 1ms)               
+              else if(Now > LastLoDetectedTime[i]){                  // or if time has passed               
                   ButtonIdleCountLo[i] = ButtonIdleCountLo[i] + (Now - LastLoDetectedTime[i]);  // update idle LO counter   
                   LastLoDetectedTime[i] = Now;                       // mark the time of last LO detected
               }                 
           }
-          else if(ButtonState[i] == 1){                         // if it is HI
+          else if(ButtonState[i] == HI){                        // if it is HI
               ButtonIdleCountLo[i] = 0;                         // then its a bounce, reset idle LO counter
           }         
       }
       
-      else if(ButtonPhase[i] == READY_FOR_RELEASE){             // if ready for release
-          if(ButtonState[i] == 1){                              // and HI detected then it is the first rising edge
+      else if(ButtonPhase[i] == READY_FOR_RELEASE){      // if ready for release
+          if(ButtonState[i] == HI){                             // and HI detected then it is the first rising edge
               ButtonPhase[i] = WAIT_FOR_IDLE_HI;                // next button phase 
-              LastHiDetectedTime[i] = millis();                 // mark the time of first rising edge
+              LastHiDetectedTime[i] = micros();                 // mark the time of first rising edge
               ButtonIdleCountHi[i] = 0;                         // reset idle HI counter     
           }       
       }
       
-      else if(ButtonPhase[i] == WAIT_FOR_IDLE_HI){              // if waiting for idle HI
-          Now = millis();                          // * Deal with Overflow
-          if(ButtonState[i] == 0){                              // if it is LO
+      else if(ButtonPhase[i] == WAIT_FOR_IDLE_HI){       // if waiting for idle HI
+          Now = micros();                          // * Deal with Overflow
+          if(ButtonState[i] == LO){                             // if it is LO
               ButtonIdleCountHi[i] = 0;                         // then its a bounce, reset idle HI counter
           }
-          else if(ButtonState[i] == 1){                         // if it is HI
+          else if(ButtonState[i] == HI){                        // if it is HI
               if(ButtonIdleCountHi[i] >= idle_time_hi){             // and idle HI counter has expired
                   buttonReleaseEvent(i);                            // initiate button release event
+                  ButtonActive[i] = false;
                   ButtonPhase[i] = READY_FOR_PRESS;                 // next button phase                  
               }
-              else if(Now > LastHiDetectedTime[i]){                 // or if time has passed ( > 1ms)                
+              else if(Now > LastHiDetectedTime[i]){                 // or if time has passed                
                   ButtonIdleCountHi[i] = ButtonIdleCountHi[i] + (Now - LastHiDetectedTime[i]);  // update idle HI counter 
                   LastHiDetectedTime[i] = Now;                      // mark the time of last HI detected
               }         
@@ -637,8 +659,10 @@ void initButtons(){
       pinMode(button_to_pin[i], INPUT_PULLUP);    // inputs w/ pullups     
     }
   
-    ButtonState[i] = 1;                           // button debounce flags
+    ButtonState[i] = HI;                           // init button debounce 
     ButtonPhase[i] = READY_FOR_PRESS;
+    ButtonActive[i] = false;
+    ButtonWatchdogCount[i] = 0;
     
   }   
 }
@@ -650,7 +674,7 @@ void initIoExpander(){
     ioExpander.pinMode(i, INPUT);                     // all pins inputs w/ pullups
     ioExpander.pullUp(i, HIGH);    
 
-    MetaButtonState[i] = 1;                 // meta button debounce flags
+    MetaButtonState[i] = 1;                 // meta button debounce 
     MetaButtonReadyForPress[i] = 1;
     MetaButtonReadyForRelease[i] = 0;
     MetaButtonPressDeadZone[i] = 0;
