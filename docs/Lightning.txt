@@ -1,0 +1,85 @@
+
+Rainboard Lightning Specification:
+
+
+
+
+
+
+Include all v0.4 features and:
+
+
+
+Architectural changes:
+
+
+Use low latency multiplexing:
+
+61 keys + 12 metabuttons
+
+73 inputs 
+
+2 analog inputs (maybe expand to 3?)
+
+how many input pins are required for this approach?
+
+please link to an explainer on this technique.
+
+
+
+
+Programmer mode:
+
+Press and hold 4 buttons to toggle programmer mode.
+
+
+
+
+
+
+
+
+
+
+
+
+Should still work if the LEDs are not populated
+
+
+
+
+1) Integrate Arduino Mega onto PCB
+
+5) All SMT components populated by JLCPCB
+
+2) Power supply capable of powering 61 LEDS and Arduino, efficiently 
+
+4) 61 LEDS and bypass caps
+
+3) engage programmer mode with meta buttons
+
+6) add 220 ohm Resistor to each button positive (for static discharge protection)?
+
+7) Redesign back panel for better aesthetic design.
+
+
+
+Stretch goals:
+
+7) sustain pedal in
+
+8) CV out
+
+
+
+Part, JLCPCB:
+
+ATMEGA2560-16AU: C22460
+
+ATMEGA16U2-MU: C17317
+
+X322516MLB4SI: C13738
+
+
+
+

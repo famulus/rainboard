@@ -86,6 +86,7 @@ const uint16_t softpots_max = 1023;
 
 //configure modes
 const boolean PitchInverted = true;
+
 const boolean ModInverted = true;
 const boolean IgnoreChannelShift = true;
 
