@@ -20,6 +20,7 @@ Rainboard Lightning Spec
   Thunder:
     61 main keys (RGB lEDs left unpopulated)
     USB only
+    no external power supply
 
 
 
