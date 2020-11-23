@@ -41,6 +41,8 @@ Take existing PCB and improve:
 
 * move meta-button from front-sides to rear-sides.
 
+* possibly engineer a better solution to connect metabuttons.
+
 * engage programmer mode with meta buttons (or other solution).
 
 * add 220 ohm Resistor to each button positive (for static discharge protection)?
