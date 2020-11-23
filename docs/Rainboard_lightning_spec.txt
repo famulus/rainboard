@@ -27,17 +27,21 @@ Rainboard Lightning Spec
 
 Take existing PCB and improve:
 
-* Integrate Arduino Mega onto PCB
+* Integrate Arduino Mega onto PCB.
 
-* Implement input multiplexing (maybe remove IO expander if unnecessary)
+* Implement input multiplexing (maybe remove IO expander if unnecessary).
 
-* Power supply capable of powering 61 LEDS and Arduino, efficiently 
+
+* 61 LEDS and bypass caps.
+
+* Power supply capable of powering 61 LEDS and Arduino, efficiently.
 
 * When unit is powered with USB only, should still function, but without lights.
 
-* 61 LEDS and bypass caps
 
-* engage programmer mode with meta buttons (or other solution)
+* move meta-button from front-sides to rear-sides.
+
+* engage programmer mode with meta buttons (or other solution).
 
 * add 220 ohm Resistor to each button positive (for static discharge protection)?
 
