@@ -1,0 +1,40 @@
+Rainboard Lightning Spec
+
+
+
+
+Include all v0.4 features and:
+
+* Integrate Arduino Mega onto PCB
+
+* Implement input multiplexing (maybe remove IO expander if unecessar)
+
+
+* Power supply capable of powering 61 LEDS and Arduino, efficiently 
+
+* When unit is powered with USB only, should still function, but without lights.
+
+* 61 LEDS and bypass caps
+
+* engage programmer mode with meta buttons (or other solutio*
+
+* add 220 ohm Resistor to each button positive (for static discharge protectio)?
+
+* Redesign back panel for better aesthetic design.
+
+* Two versions of product will use PCB: 
+
+  Lightning:
+    61 RGB LEDSs
+    12 meta-buttons
+    2 potentiometers 
+    Midi-DINs
+    DC power input
+    sustain pedal in  
+    control-voltage-out
+
+  Thunder:
+    61 main keys (RGB lEDs left unpopulated)
+    USB only.
+
+
