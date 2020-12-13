@@ -1,0 +1,13 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP META-BUTTON
+D meta button
+K meta button sw switch
+$ENDCMP
+#
+$CMP SANWA-OBSF24
+D 24mm Joystick Button
+K OBSF 24mm
+$ENDCMP
+#
+#End Doc Library
