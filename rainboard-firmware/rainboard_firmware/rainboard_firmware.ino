@@ -576,18 +576,20 @@ void metaButtonHandler(uint8_t meta_button){
       channelShift(DOWN);      // Channel -
       break;
     case 12:  // GPIOB.4 J5
-      midiCCout(13, ON);
+      midiCCout(13, ON);       // User assignable CC 13
       midiCCout(13, OFF);
       break;
     case 13: // GPIOB.5 J6
-      midiCCout(12, ON);
+      midiCCout(12, ON);       // User assignable CC 12
       midiCCout(12, OFF);
       break;    
     case 14: // GPIOB.6 J7   
-      ////
+      midiCCout(14, ON);       // User assignable CC 14
+      midiCCout(14, OFF);
       break;
     case 15: // GPIOB.7 J8
-      ////      
+      midiCCout(15, ON);       // User assignable CC 15
+      midiCCout(15, OFF);
       break;
     
     default:
