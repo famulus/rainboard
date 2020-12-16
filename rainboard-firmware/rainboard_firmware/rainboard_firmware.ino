@@ -74,7 +74,7 @@ uint8_t MetaButtonIdleCount[number_of_meta_buttons];
 
 //configure timing
 const uint64_t meta_button_dead_zone_time = 2;       // in milliseconds
-const uint8_t meta_button_idle_period_cycles = 2;    // iterations of scanMetaButtons() @4.56ms (@2.08ms in 400kHz i2c mode)     // originally 100
+const uint8_t meta_button_idle_period_cycles = 2;    // iterations of scanMetaButtons() @4.56ms (@2.08ms in 400kHz i2c mode)     
 
 const uint8_t modWheel_scan_period = 10;             // in milliseconds  
 const uint8_t pitchBend_scan_period = 1;             // in milliseconds  
@@ -121,7 +121,8 @@ volatile uint32_t PitchDecayStepPeriod = 0;       // period of isr (1000 x pitch
 volatile uint8_t PitchDecayOffsetPosition = 0;    // counter in isr , and also relative current decay position
 volatile boolean PitchDecayActive = false;
 volatile boolean PitchDecayDirection = DOWN;
-
+boolean RelativePitchActive = false;
+uint16_t pitch_bend_relative_base;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 void setup(){  
@@ -154,12 +155,176 @@ void loop() {
   
   //scanPitchBendStandard(); 
 
-  scanPitchBendDecay(); 
+  //scanPitchBendDecay(); 
+
+  //scanPitchBendRelative();
+
+  scanPitchBendDecayRelative();
 
   if (midiDIN.read()) {      // MIDI DIN Input echo thru to MIDI USB
      midiUSB.send(midiDIN.getType(), midiDIN.getData1(), midiDIN.getData2(), midiDIN.getChannel());
   }  
  
+}
+
+///////////////////////////////////////// SCAN PITCH W DECAY RELATIVE /////////////////////////////////
+void scanPitchBendDecayRelative() {
+
+  static uint16_t pitch_bend_raw;
+  static uint16_t softpots_bottom_raw;
+  static uint16_t pitch_bend_min;
+  static uint16_t pitch_bend_max;
+  static uint16_t pitch_bend_center;
+  static uint16_t pitch_bend_up_min;
+  static uint16_t pitch_bend_down_max;  
+
+  if(millis() < LastPitchBendEventTime){                                           // check for rollover
+    return;
+  }
+
+  if(millis() > LastPitchBendEventTime + pitchBend_scan_period){                    // throttle and debounce
+                                          
+    softpots_bottom_raw = analogRead(softpots_bottom_pin);                          // get softpots bottom voltage
+    pitch_bend_raw = analogRead(pitchBend_pin);                                     // get pitch bend voltage
+
+    pitch_bend_min = softpots_bottom_raw + pitchBend_floor;                             // set lower limit
+    pitch_bend_max = softpots_max - pitchBend_ceiling;                                  // set upper limit
+    //pitch_bend_center = (pitch_bend_min + ((pitch_bend_max - pitch_bend_min) / 2));     // set center             
+    //pitch_bend_up_min = (pitch_bend_center + (pitchBend_dead_center / 2));              // set pitch bend up lower limit
+    //pitch_bend_down_max = (pitch_bend_center - (pitchBend_dead_center / 2));            // set pitch bend down upper limit   
+    
+    if(pitch_bend_raw > softpots_bottom_raw){                                                          // if its not a release
+
+      if(RelativePitchActive == false){                                                                   // if it a first touch
+        RelativePitchActive = true;  
+        pitch_bend_relative_base = pitch_bend_raw;
+      }
+
+      if(RelativePitchActive == true){
+        pitch_bend_center = pitch_bend_relative_base;                            // set center             
+        pitch_bend_up_min = (pitch_bend_center + (pitchBend_dead_center / 2));              // set pitch bend up lower limit
+        pitch_bend_down_max = (pitch_bend_center - (pitchBend_dead_center / 2));            // set pitch bend down upper limit    
+      }
+
+      if((pitch_bend_raw >= pitch_bend_min) && (pitch_bend_raw <= pitch_bend_down_max)){                  // if it is a pitch down
+          if(PitchInverted){
+            PitchBendCurrentPosition = map(pitch_bend_raw, pitch_bend_min, pitch_bend_down_max, 127, 64);    // pitch inverted    
+          }
+          else if(!PitchInverted){
+            PitchBendCurrentPosition = map(pitch_bend_raw, pitch_bend_min, pitch_bend_down_max, 0, 63);      // get pitch down value      
+          }                  
+      }
+      else if((pitch_bend_raw >= pitch_bend_up_min) && (pitch_bend_raw <= pitch_bend_max)){             // if it is a pitch up
+          if(PitchInverted){
+            PitchBendCurrentPosition = map(pitch_bend_raw, pitch_bend_up_min, pitch_bend_max, 63, 0);      // pitch inverted 
+          }
+          else if(!PitchInverted){
+            PitchBendCurrentPosition = map(pitch_bend_raw, pitch_bend_up_min, pitch_bend_max, 64, 127);    // get pitch up value   
+          }                   
+      }
+             
+      if((PitchBendCurrentPosition >= 0) && (PitchBendCurrentPosition <= 127)){      // if in range         
+         if(PitchBendCurrentPosition != PitchBendPreviousPosition){                     // and has changed
+            PitchDecayActive = 0;                                                          // defeat decay
+            Timer3.stop();                                                                 // decay over
+            midiPitchBend(PitchBendCurrentPosition);                                       // send midi            
+            PitchBendPreviousPosition = PitchBendCurrentPosition;                          // update pitch bend value
+            LastPitchBendEventTime = millis();                                             // update timekeeper
+         } 
+      }
+    } 
+    
+    else if(pitch_bend_raw < softpots_bottom_raw){                    // if it is a release  
+      if(RelativePitchActive == true){
+        RelativePitchActive = false;  
+      }
+      if(PitchBendCurrentPosition != 64){                               // and pitch bend not centered                                                                      
+         if(!PitchDecayActive){                                           // and a decay is not currently active      
+            initPitchDecay();                                                // initiate decay                  
+         }
+      } 
+      LastPitchBendEventTime = millis();                             // update timekeeper         
+    }
+    
+  }   
+} 
+
+/////////////////////////////////////////// SCAN PITCH RELATIVE ////////////////////////////////////
+void scanPitchBendRelative() {
+
+  static uint16_t pitch_bend_raw;
+  static uint16_t softpots_bottom_raw;
+  static uint16_t pitch_bend_min;
+  static uint16_t pitch_bend_max;
+  static uint16_t pitch_bend_center;
+  static uint16_t pitch_bend_up_min;
+  static uint16_t pitch_bend_down_max;
+
+  if(millis() < LastPitchBendEventTime){                                           // check for rollover
+    return;
+  }
+
+  if(millis() > LastPitchBendEventTime + pitchBend_scan_period){                    // throttle and debounce
+                                          
+    softpots_bottom_raw = analogRead(softpots_bottom_pin);                          // get softpots bottom voltage
+    pitch_bend_raw = analogRead(pitchBend_pin);                                     // get pitch bend voltage
+
+    pitch_bend_min = softpots_bottom_raw + pitchBend_floor;                             // set lower limit
+    pitch_bend_max = softpots_max - pitchBend_ceiling;                                  // set upper limit
+    //pitch_bend_center = (pitch_bend_min + ((pitch_bend_max - pitch_bend_min) / 2));     // set center             
+    //pitch_bend_up_min = (pitch_bend_center + (pitchBend_dead_center / 2));              // set pitch bend up lower limit
+    //pitch_bend_down_max = (pitch_bend_center - (pitchBend_dead_center / 2));            // set pitch bend down upper limit   
+    
+    if(pitch_bend_raw > softpots_bottom_raw){                                                             // if its not a release
+
+      if(RelativePitchActive == false){                                                                   // if it a first touch
+        RelativePitchActive = true;  
+        pitch_bend_relative_base = pitch_bend_raw;
+      }
+
+      if(RelativePitchActive == true){
+        pitch_bend_center = pitch_bend_relative_base;                            // set center             
+        pitch_bend_up_min = (pitch_bend_center + (pitchBend_dead_center / 2));              // set pitch bend up lower limit
+        pitch_bend_down_max = (pitch_bend_center - (pitchBend_dead_center / 2));            // set pitch bend down upper limit    
+      }
+      
+      if((pitch_bend_raw >= pitch_bend_min) && (pitch_bend_raw <= pitch_bend_down_max)){                  // if it is a pitch down
+          if(PitchInverted){
+            PitchBendCurrentPosition = map(pitch_bend_raw, pitch_bend_min, pitch_bend_down_max, 127, 64); // pitch inverted    
+          }
+          else if(!PitchInverted){
+            PitchBendCurrentPosition = map(pitch_bend_raw, pitch_bend_min, pitch_bend_down_max, 0, 63);   // get pitch down value      
+          }                  
+      }
+
+      else if((pitch_bend_raw >= pitch_bend_up_min) && (pitch_bend_raw <= pitch_bend_max)){               // if it is a pitch up
+          if(PitchInverted){
+            PitchBendCurrentPosition = map(pitch_bend_raw, pitch_bend_up_min, pitch_bend_max, 63, 0);     // pitch inverted 
+          }
+          else if(!PitchInverted){
+            PitchBendCurrentPosition = map(pitch_bend_raw, pitch_bend_up_min, pitch_bend_max, 64, 127);   // get pitch up value   
+          }                   
+      }
+             
+      if((PitchBendCurrentPosition >= 0) && (PitchBendCurrentPosition <= 127)){                 // if in range         
+         if(PitchBendCurrentPosition != PitchBendPreviousPosition){                             // and has changed
+            midiPitchBend(PitchBendCurrentPosition);                                            // send midi            
+            PitchBendPreviousPosition = PitchBendCurrentPosition;                               // update pitch bend value
+            LastPitchBendEventTime = millis();                                                  // update timekeeper
+         } 
+      }
+    } 
+    else if(pitch_bend_raw < softpots_bottom_raw){                    // if it is a release  
+      if(RelativePitchActive == true){
+        RelativePitchActive = false;  
+      }
+      if(PitchBendCurrentPosition != 64){                             // and pitch bend not centered
+        midiPitchBend(64);                                            // send midi pitch bend center 
+        PitchBendPreviousPosition = PitchBendCurrentPosition = 64;    // update pitch bend value
+        LastPitchBendEventTime = millis();                            // update timekeeper
+      }          
+    }
+  }   
 }
 
 ///////////////////////////////////////// PITCH BEND DECAY ////////////////////////////////////////
@@ -576,20 +741,18 @@ void metaButtonHandler(uint8_t meta_button){
       channelShift(DOWN);      // Channel -
       break;
     case 12:  // GPIOB.4 J5
-      midiCCout(13, ON);       // User assignable CC 13
+      midiCCout(13, ON);
       midiCCout(13, OFF);
       break;
     case 13: // GPIOB.5 J6
-      midiCCout(12, ON);       // User assignable CC 12
+      midiCCout(12, ON);
       midiCCout(12, OFF);
       break;    
     case 14: // GPIOB.6 J7   
-      midiCCout(14, ON);       // User assignable CC 14
-      midiCCout(14, OFF);
+      ////
       break;
     case 15: // GPIOB.7 J8
-      midiCCout(15, ON);       // User assignable CC 15
-      midiCCout(15, OFF);
+      ////      
       break;
     
     default:
