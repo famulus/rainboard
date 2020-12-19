@@ -1,0 +1,230 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr D 34000 22000
+encoding utf-8
+Sheet 16 18
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+Text HLabel 1150 2350 0    50   Input ~ 0
+FIRST_DIN
+Text Notes 1450 750  0    100  Italic 20
+BUTTON + RGB
+Text Notes 1350 900  0    75   Italic 15
+Separate PCB for Actual Button/RGB HW
+Wire Wire Line
+	1900 1900 1450 1900
+Wire Wire Line
+	1900 2100 1800 2100
+Wire Wire Line
+	1900 1700 1500 1700
+Wire Wire Line
+	1900 2000 1750 2000
+$Comp
+L Connector:Conn_01x05_Male J?
+U 1 1 60277D94
+P 1250 1900
+F 0 "J?" H 1250 2200 50  0000 C CNN
+F 1 "Conn_01x05_Male" H 1250 1600 50  0000 C CNN
+F 2 "" H 1250 1900 50  0001 C CNN
+F 3 "~" H 1250 1900 50  0001 C CNN
+	1    1250 1900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1750 2000 1750 2050
+Wire Wire Line
+	1750 2050 1400 2350
+Wire Wire Line
+	1400 2350 1150 2350
+Connection ~ 1750 2000
+Wire Wire Line
+	1750 2000 1450 2000
+Wire Wire Line
+	1450 1800 1500 1800
+Wire Wire Line
+	1500 1800 1500 1750
+Wire Wire Line
+	1500 1750 1900 1300
+Wire Wire Line
+	1900 1300 3250 1300
+Wire Wire Line
+	3250 1300 3250 2350
+Connection ~ 1500 1800
+Wire Wire Line
+	1500 1800 1900 1800
+$Sheet
+S 1900 1500 1200 800 
+U 602675A0
+F0 "OFFBoardButton" 100
+F1 "OFFBoardButton.sch" 100
+F2 "DIN" I L 1900 2000 50 
+F3 "DOUT" I L 1900 1800 50 
+F4 "BTN" I L 1900 1700 50 
+F5 "VDD" I L 1900 2100 50 
+F6 "GND" I L 1900 1900 50 
+$EndSheet
+Wire Wire Line
+	4300 1900 3850 1900
+Wire Wire Line
+	4300 2100 4200 2100
+Wire Wire Line
+	4300 1700 3900 1700
+Wire Wire Line
+	4300 2000 4150 2000
+$Comp
+L Connector:Conn_01x05_Male J?
+U 1 1 602A3A35
+P 3650 1900
+F 0 "J?" H 3650 2200 50  0000 C CNN
+F 1 "Conn_01x05_Male" H 3650 1600 50  0000 C CNN
+F 2 "" H 3650 1900 50  0001 C CNN
+F 3 "~" H 3650 1900 50  0001 C CNN
+	1    3650 1900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4150 2000 4150 2050
+Wire Wire Line
+	4150 2050 3800 2350
+Connection ~ 4150 2000
+Wire Wire Line
+	4150 2000 3850 2000
+Wire Wire Line
+	3850 1800 3900 1800
+Wire Wire Line
+	3900 1800 3900 1750
+Wire Wire Line
+	3900 1750 4300 1300
+Wire Wire Line
+	4300 1300 5650 1300
+Wire Wire Line
+	5650 1300 5650 2350
+Wire Wire Line
+	5650 2350 5950 2350
+Connection ~ 3900 1800
+Wire Wire Line
+	3900 1800 4300 1800
+$Sheet
+S 4300 1500 1200 800 
+U 602A3A4D
+F0 "sheet602A3A4D" 100
+F1 "OFFBoardButton.sch" 100
+F2 "DIN" I L 4300 2000 50 
+F3 "DOUT" I L 4300 1800 50 
+F4 "BTN" I L 4300 1700 50 
+F5 "VDD" I L 4300 2100 50 
+F6 "GND" I L 4300 1900 50 
+$EndSheet
+Wire Wire Line
+	3250 2350 3800 2350
+Text Notes 5950 1100 0    150  ~ 30
+TODO SELECT CONNECTOR\nTODO X12
+Text Notes 7750 1400 0    150  ~ 30
+TODO SELECT CONNECTOR\nTODO X12
+$Comp
+L lib_symbol:C C?
+U 1 1 6030AD47
+P 3700 3450
+AR Path="/6030AD47" Ref="C?"  Part="1" 
+AR Path="/601E0BD6/6030AD47" Ref="C?"  Part="1" 
+F 0 "C?" H 3725 3550 50  0000 L CNN
+F 1 "10uF 25V" V 3550 3250 50  0000 L CNN
+F 2 "Capacitor_SMD:C_1206_3216Metric" H 3738 3300 50  0001 C CNN
+F 3 "~" H 3700 3450 50  0001 C CNN
+F 4 "CL21B105KBFNNNE" V 3850 3450 50  0001 C CNN "PN"
+	1    3700 3450
+	1    0    0    -1  
+$EndComp
+Text GLabel 1800 2250 3    50   Input ~ 0
+VLED
+Wire Wire Line
+	1800 2250 1800 2100
+Connection ~ 1800 2100
+Wire Wire Line
+	1800 2100 1450 2100
+Text GLabel 4200 2250 3    50   Input ~ 0
+VLED
+Wire Wire Line
+	4200 2250 4200 2100
+Connection ~ 4200 2100
+Wire Wire Line
+	4200 2100 3850 2100
+Text GLabel 3700 3250 1    50   Input ~ 0
+VLED
+$Comp
+L lib_symbol:GND #PWR?
+U 1 1 60310445
+P 3700 3650
+AR Path="/60310445" Ref="#PWR?"  Part="1" 
+AR Path="/601E0BD6/60310445" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 3700 3400 50  0001 C CNN
+F 1 "GND" H 3700 3500 50  0000 C CNN
+F 2 "" H 3700 3650 50  0001 C CNN
+F 3 "" H 3700 3650 50  0001 C CNN
+	1    3700 3650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3700 3650 3700 3600
+Wire Wire Line
+	3700 3300 3700 3250
+Text Notes 600  3400 0    150  ~ 30
+Layout Notes:\n
+Text Notes 750  3850 0    125  ~ 25
+Place caps near each\npair of headers\n
+$Comp
+L lib_symbol:C C?
+U 1 1 6033EACF
+P 7000 3350
+AR Path="/6033EACF" Ref="C?"  Part="1" 
+AR Path="/601E0BD6/6033EACF" Ref="C?"  Part="1" 
+F 0 "C?" H 7025 3450 50  0000 L CNN
+F 1 "10uF 25V" V 6850 3150 50  0000 L CNN
+F 2 "Capacitor_SMD:C_1206_3216Metric" H 7038 3200 50  0001 C CNN
+F 3 "~" H 7000 3350 50  0001 C CNN
+F 4 "CL21B105KBFNNNE" V 7150 3350 50  0001 C CNN "PN"
+	1    7000 3350
+	1    0    0    -1  
+$EndComp
+Text GLabel 7000 3150 1    50   Input ~ 0
+VLED
+$Comp
+L lib_symbol:GND #PWR?
+U 1 1 6033EADA
+P 7000 3550
+AR Path="/6033EADA" Ref="#PWR?"  Part="1" 
+AR Path="/601E0BD6/6033EADA" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 7000 3300 50  0001 C CNN
+F 1 "GND" H 7000 3400 50  0000 C CNN
+F 2 "" H 7000 3550 50  0001 C CNN
+F 3 "" H 7000 3550 50  0001 C CNN
+	1    7000 3550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7000 3550 7000 3500
+Wire Wire Line
+	7000 3200 7000 3150
+Text GLabel 1500 1350 1    50   Input ~ 0
+BTN-X
+Wire Wire Line
+	1500 1350 1500 1700
+Connection ~ 1500 1700
+Wire Wire Line
+	1500 1700 1450 1700
+Text GLabel 3900 1350 1    50   Input ~ 0
+BTN-X+1
+Wire Wire Line
+	3900 1350 3900 1700
+Connection ~ 3900 1700
+Wire Wire Line
+	3900 1700 3850 1700
+$EndSCHEMATC

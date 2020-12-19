@@ -1,0 +1,401 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 23 18
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L lib_symbol:SANWA-OBSF24 SW?
+U 1 1 60269DF5
+P 5600 2250
+AR Path="/5FE0C65A/60269DF5" Ref="SW?"  Part="1" 
+AR Path="/5FFBAA40/60269DF5" Ref="SW?"  Part="1" 
+AR Path="/5FFFF42E/60269DF5" Ref="SW?"  Part="1" 
+AR Path="/5FFFF437/60269DF5" Ref="SW?"  Part="1" 
+AR Path="/6006983A/60269DF5" Ref="SW?"  Part="1" 
+AR Path="/60069843/60269DF5" Ref="SW?"  Part="1" 
+AR Path="/6006984B/60269DF5" Ref="SW?"  Part="1" 
+AR Path="/6008EF9E/60269DF5" Ref="SW?"  Part="1" 
+AR Path="/6008EFA7/60269DF5" Ref="SW?"  Part="1" 
+AR Path="/6008EFAF/60269DF5" Ref="SW?"  Part="1" 
+AR Path="/6008EFB9/60269DF5" Ref="SW?"  Part="1" 
+AR Path="/6008EFC2/60269DF5" Ref="SW?"  Part="1" 
+AR Path="/6008EFCA/60269DF5" Ref="SW?"  Part="1" 
+AR Path="/600DCC71/60269DF5" Ref="SW?"  Part="1" 
+AR Path="/600DCC7A/60269DF5" Ref="SW?"  Part="1" 
+AR Path="/600DCC82/60269DF5" Ref="SW?"  Part="1" 
+AR Path="/600DCC8C/60269DF5" Ref="SW?"  Part="1" 
+AR Path="/600DCC95/60269DF5" Ref="SW?"  Part="1" 
+AR Path="/600DCC9D/60269DF5" Ref="SW?"  Part="1" 
+AR Path="/6016C70A/6019598E/60269DF5" Ref="SW?"  Part="1" 
+AR Path="/6016C70A/60195998/60269DF5" Ref="SW?"  Part="1" 
+AR Path="/6016C70A/601959A1/60269DF5" Ref="SW?"  Part="1" 
+AR Path="/6016C70A/601959A9/60269DF5" Ref="SW?"  Part="1" 
+AR Path="/6016C70A/601959B3/60269DF5" Ref="SW?"  Part="1" 
+AR Path="/6016C70A/601959BC/60269DF5" Ref="SW?"  Part="1" 
+AR Path="/6016C70A/601959C4/60269DF5" Ref="SW?"  Part="1" 
+AR Path="/6016C70A/601959CE/60269DF5" Ref="SW?"  Part="1" 
+AR Path="/6016C70A/601959D7/60269DF5" Ref="SW?"  Part="1" 
+AR Path="/6016C70A/601959DF/60269DF5" Ref="SW?"  Part="1" 
+AR Path="/6016C70A/601959E9/60269DF5" Ref="SW?"  Part="1" 
+AR Path="/6016C70A/601959F1/60269DF5" Ref="SW?"  Part="1" 
+AR Path="/6016C70A/601959F9/60269DF5" Ref="SW?"  Part="1" 
+AR Path="/60198AF4/6019598E/60269DF5" Ref="SW?"  Part="1" 
+AR Path="/60198AF4/60195998/60269DF5" Ref="SW?"  Part="1" 
+AR Path="/60198AF4/601959A1/60269DF5" Ref="SW?"  Part="1" 
+AR Path="/60198AF4/601959A9/60269DF5" Ref="SW?"  Part="1" 
+AR Path="/60198AF4/601959B3/60269DF5" Ref="SW?"  Part="1" 
+AR Path="/60198AF4/601959BC/60269DF5" Ref="SW?"  Part="1" 
+AR Path="/60198AF4/601959C4/60269DF5" Ref="SW?"  Part="1" 
+AR Path="/60198AF4/601959CE/60269DF5" Ref="SW?"  Part="1" 
+AR Path="/60198AF4/601959D7/60269DF5" Ref="SW?"  Part="1" 
+AR Path="/60198AF4/601959DF/60269DF5" Ref="SW?"  Part="1" 
+AR Path="/60198AF4/601959E9/60269DF5" Ref="SW?"  Part="1" 
+AR Path="/60198AF4/601959F1/60269DF5" Ref="SW?"  Part="1" 
+AR Path="/60198AF4/601959F9/60269DF5" Ref="SW?"  Part="1" 
+AR Path="/601E0BD6/602675A0/60269DF5" Ref="SW?"  Part="1" 
+AR Path="/601E0BD6/602A3A4D/60269DF5" Ref="SW?"  Part="1" 
+F 0 "SW?" H 5600 2150 50  0000 C CNN
+F 1 "SANWA-OBSF24" H 5600 2190 50  0001 C CNN
+F 2 "" H 5600 2450 50  0001 C CNN
+F 3 "" H 5600 2450 50  0001 C CNN
+	1    5600 2250
+	0    1    1    0   
+$EndComp
+$Comp
+L lib_symbol:WS2812B D?
+U 1 1 60269DFB
+P 3500 2250
+AR Path="/5FE0C65A/60269DFB" Ref="D?"  Part="1" 
+AR Path="/5FFBAA40/60269DFB" Ref="D?"  Part="1" 
+AR Path="/5FFFF42E/60269DFB" Ref="D?"  Part="1" 
+AR Path="/5FFFF437/60269DFB" Ref="D?"  Part="1" 
+AR Path="/6006983A/60269DFB" Ref="D?"  Part="1" 
+AR Path="/60069843/60269DFB" Ref="D?"  Part="1" 
+AR Path="/6006984B/60269DFB" Ref="D?"  Part="1" 
+AR Path="/6008EF9E/60269DFB" Ref="D?"  Part="1" 
+AR Path="/6008EFA7/60269DFB" Ref="D?"  Part="1" 
+AR Path="/6008EFAF/60269DFB" Ref="D?"  Part="1" 
+AR Path="/6008EFB9/60269DFB" Ref="D?"  Part="1" 
+AR Path="/6008EFC2/60269DFB" Ref="D?"  Part="1" 
+AR Path="/6008EFCA/60269DFB" Ref="D?"  Part="1" 
+AR Path="/600DCC71/60269DFB" Ref="D?"  Part="1" 
+AR Path="/600DCC7A/60269DFB" Ref="D?"  Part="1" 
+AR Path="/600DCC82/60269DFB" Ref="D?"  Part="1" 
+AR Path="/600DCC8C/60269DFB" Ref="D?"  Part="1" 
+AR Path="/600DCC95/60269DFB" Ref="D?"  Part="1" 
+AR Path="/600DCC9D/60269DFB" Ref="D?"  Part="1" 
+AR Path="/6016C70A/6019598E/60269DFB" Ref="D?"  Part="1" 
+AR Path="/6016C70A/60195998/60269DFB" Ref="D?"  Part="1" 
+AR Path="/6016C70A/601959A1/60269DFB" Ref="D?"  Part="1" 
+AR Path="/6016C70A/601959A9/60269DFB" Ref="D?"  Part="1" 
+AR Path="/6016C70A/601959B3/60269DFB" Ref="D?"  Part="1" 
+AR Path="/6016C70A/601959BC/60269DFB" Ref="D?"  Part="1" 
+AR Path="/6016C70A/601959C4/60269DFB" Ref="D?"  Part="1" 
+AR Path="/6016C70A/601959CE/60269DFB" Ref="D?"  Part="1" 
+AR Path="/6016C70A/601959D7/60269DFB" Ref="D?"  Part="1" 
+AR Path="/6016C70A/601959DF/60269DFB" Ref="D?"  Part="1" 
+AR Path="/6016C70A/601959E9/60269DFB" Ref="D?"  Part="1" 
+AR Path="/6016C70A/601959F1/60269DFB" Ref="D?"  Part="1" 
+AR Path="/6016C70A/601959F9/60269DFB" Ref="D?"  Part="1" 
+AR Path="/60198AF4/6019598E/60269DFB" Ref="D?"  Part="1" 
+AR Path="/60198AF4/60195998/60269DFB" Ref="D?"  Part="1" 
+AR Path="/60198AF4/601959A1/60269DFB" Ref="D?"  Part="1" 
+AR Path="/60198AF4/601959A9/60269DFB" Ref="D?"  Part="1" 
+AR Path="/60198AF4/601959B3/60269DFB" Ref="D?"  Part="1" 
+AR Path="/60198AF4/601959BC/60269DFB" Ref="D?"  Part="1" 
+AR Path="/60198AF4/601959C4/60269DFB" Ref="D?"  Part="1" 
+AR Path="/60198AF4/601959CE/60269DFB" Ref="D?"  Part="1" 
+AR Path="/60198AF4/601959D7/60269DFB" Ref="D?"  Part="1" 
+AR Path="/60198AF4/601959DF/60269DFB" Ref="D?"  Part="1" 
+AR Path="/60198AF4/601959E9/60269DFB" Ref="D?"  Part="1" 
+AR Path="/60198AF4/601959F1/60269DFB" Ref="D?"  Part="1" 
+AR Path="/60198AF4/601959F9/60269DFB" Ref="D?"  Part="1" 
+AR Path="/601E0BD6/602675A0/60269DFB" Ref="D?"  Part="1" 
+AR Path="/601E0BD6/602A3A4D/60269DFB" Ref="D?"  Part="1" 
+F 0 "D?" H 3700 2475 50  0000 R BNN
+F 1 "WS2812B" H 3550 2025 50  0000 L TNN
+F 2 "LED_SMD:LED_WS2812B_PLCC4_5.0x5.0mm_P3.2mm" H 3550 1950 50  0001 L TNN
+F 3 "https://cdn-shop.adafruit.com/datasheets/WS2812B.pdf" H 3600 1875 50  0001 L TNN
+	1    3500 2250
+	1    0    0    -1  
+$EndComp
+$Comp
+L lib_symbol:GND #PWR?
+U 1 1 60269E01
+P 5600 2550
+AR Path="/5FE0C65A/60269E01" Ref="#PWR?"  Part="1" 
+AR Path="/5FFBAA40/60269E01" Ref="#PWR?"  Part="1" 
+AR Path="/5FFFF42E/60269E01" Ref="#PWR?"  Part="1" 
+AR Path="/5FFFF437/60269E01" Ref="#PWR?"  Part="1" 
+AR Path="/6006983A/60269E01" Ref="#PWR?"  Part="1" 
+AR Path="/60069843/60269E01" Ref="#PWR?"  Part="1" 
+AR Path="/6006984B/60269E01" Ref="#PWR?"  Part="1" 
+AR Path="/6008EF9E/60269E01" Ref="#PWR?"  Part="1" 
+AR Path="/6008EFA7/60269E01" Ref="#PWR?"  Part="1" 
+AR Path="/6008EFAF/60269E01" Ref="#PWR?"  Part="1" 
+AR Path="/6008EFB9/60269E01" Ref="#PWR?"  Part="1" 
+AR Path="/6008EFC2/60269E01" Ref="#PWR?"  Part="1" 
+AR Path="/6008EFCA/60269E01" Ref="#PWR?"  Part="1" 
+AR Path="/600DCC71/60269E01" Ref="#PWR?"  Part="1" 
+AR Path="/600DCC7A/60269E01" Ref="#PWR?"  Part="1" 
+AR Path="/600DCC82/60269E01" Ref="#PWR?"  Part="1" 
+AR Path="/600DCC8C/60269E01" Ref="#PWR?"  Part="1" 
+AR Path="/600DCC95/60269E01" Ref="#PWR?"  Part="1" 
+AR Path="/600DCC9D/60269E01" Ref="#PWR?"  Part="1" 
+AR Path="/6016C70A/6019598E/60269E01" Ref="#PWR?"  Part="1" 
+AR Path="/6016C70A/60195998/60269E01" Ref="#PWR?"  Part="1" 
+AR Path="/6016C70A/601959A1/60269E01" Ref="#PWR?"  Part="1" 
+AR Path="/6016C70A/601959A9/60269E01" Ref="#PWR?"  Part="1" 
+AR Path="/6016C70A/601959B3/60269E01" Ref="#PWR?"  Part="1" 
+AR Path="/6016C70A/601959BC/60269E01" Ref="#PWR?"  Part="1" 
+AR Path="/6016C70A/601959C4/60269E01" Ref="#PWR?"  Part="1" 
+AR Path="/6016C70A/601959CE/60269E01" Ref="#PWR?"  Part="1" 
+AR Path="/6016C70A/601959D7/60269E01" Ref="#PWR?"  Part="1" 
+AR Path="/6016C70A/601959DF/60269E01" Ref="#PWR?"  Part="1" 
+AR Path="/6016C70A/601959E9/60269E01" Ref="#PWR?"  Part="1" 
+AR Path="/6016C70A/601959F1/60269E01" Ref="#PWR?"  Part="1" 
+AR Path="/6016C70A/601959F9/60269E01" Ref="#PWR?"  Part="1" 
+AR Path="/60198AF4/6019598E/60269E01" Ref="#PWR?"  Part="1" 
+AR Path="/60198AF4/60195998/60269E01" Ref="#PWR?"  Part="1" 
+AR Path="/60198AF4/601959A1/60269E01" Ref="#PWR?"  Part="1" 
+AR Path="/60198AF4/601959A9/60269E01" Ref="#PWR?"  Part="1" 
+AR Path="/60198AF4/601959B3/60269E01" Ref="#PWR?"  Part="1" 
+AR Path="/60198AF4/601959BC/60269E01" Ref="#PWR?"  Part="1" 
+AR Path="/60198AF4/601959C4/60269E01" Ref="#PWR?"  Part="1" 
+AR Path="/60198AF4/601959CE/60269E01" Ref="#PWR?"  Part="1" 
+AR Path="/60198AF4/601959D7/60269E01" Ref="#PWR?"  Part="1" 
+AR Path="/60198AF4/601959DF/60269E01" Ref="#PWR?"  Part="1" 
+AR Path="/60198AF4/601959E9/60269E01" Ref="#PWR?"  Part="1" 
+AR Path="/60198AF4/601959F1/60269E01" Ref="#PWR?"  Part="1" 
+AR Path="/60198AF4/601959F9/60269E01" Ref="#PWR?"  Part="1" 
+AR Path="/601E0BD6/602675A0/60269E01" Ref="#PWR?"  Part="1" 
+AR Path="/601E0BD6/602A3A4D/60269E01" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 5600 2300 50  0001 C CNN
+F 1 "GND" H 5600 2400 50  0000 C CNN
+F 2 "" H 5600 2550 50  0001 C CNN
+F 3 "" H 5600 2550 50  0001 C CNN
+	1    5600 2550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3500 2650 3500 2550
+Wire Wire Line
+	3500 1850 3500 1950
+Wire Wire Line
+	3100 2250 3200 2250
+Wire Wire Line
+	5600 2550 5600 2450
+Wire Wire Line
+	5600 2050 5600 1950
+$Comp
+L lib_symbol:R R?
+U 1 1 60269E14
+P 4000 2250
+AR Path="/5FE0C65A/60269E14" Ref="R?"  Part="1" 
+AR Path="/5FFBAA40/60269E14" Ref="R?"  Part="1" 
+AR Path="/5FFFF42E/60269E14" Ref="R?"  Part="1" 
+AR Path="/5FFFF437/60269E14" Ref="R?"  Part="1" 
+AR Path="/6006983A/60269E14" Ref="R?"  Part="1" 
+AR Path="/60069843/60269E14" Ref="R?"  Part="1" 
+AR Path="/6006984B/60269E14" Ref="R?"  Part="1" 
+AR Path="/6008EF9E/60269E14" Ref="R?"  Part="1" 
+AR Path="/6008EFA7/60269E14" Ref="R?"  Part="1" 
+AR Path="/6008EFAF/60269E14" Ref="R?"  Part="1" 
+AR Path="/6008EFB9/60269E14" Ref="R?"  Part="1" 
+AR Path="/6008EFC2/60269E14" Ref="R?"  Part="1" 
+AR Path="/6008EFCA/60269E14" Ref="R?"  Part="1" 
+AR Path="/600DCC71/60269E14" Ref="R?"  Part="1" 
+AR Path="/600DCC7A/60269E14" Ref="R?"  Part="1" 
+AR Path="/600DCC82/60269E14" Ref="R?"  Part="1" 
+AR Path="/600DCC8C/60269E14" Ref="R?"  Part="1" 
+AR Path="/600DCC95/60269E14" Ref="R?"  Part="1" 
+AR Path="/600DCC9D/60269E14" Ref="R?"  Part="1" 
+AR Path="/6016C70A/6019598E/60269E14" Ref="R?"  Part="1" 
+AR Path="/6016C70A/60195998/60269E14" Ref="R?"  Part="1" 
+AR Path="/6016C70A/601959A1/60269E14" Ref="R?"  Part="1" 
+AR Path="/6016C70A/601959A9/60269E14" Ref="R?"  Part="1" 
+AR Path="/6016C70A/601959B3/60269E14" Ref="R?"  Part="1" 
+AR Path="/6016C70A/601959BC/60269E14" Ref="R?"  Part="1" 
+AR Path="/6016C70A/601959C4/60269E14" Ref="R?"  Part="1" 
+AR Path="/6016C70A/601959CE/60269E14" Ref="R?"  Part="1" 
+AR Path="/6016C70A/601959D7/60269E14" Ref="R?"  Part="1" 
+AR Path="/6016C70A/601959DF/60269E14" Ref="R?"  Part="1" 
+AR Path="/6016C70A/601959E9/60269E14" Ref="R?"  Part="1" 
+AR Path="/6016C70A/601959F1/60269E14" Ref="R?"  Part="1" 
+AR Path="/6016C70A/601959F9/60269E14" Ref="R?"  Part="1" 
+AR Path="/60198AF4/6019598E/60269E14" Ref="R?"  Part="1" 
+AR Path="/60198AF4/60195998/60269E14" Ref="R?"  Part="1" 
+AR Path="/60198AF4/601959A1/60269E14" Ref="R?"  Part="1" 
+AR Path="/60198AF4/601959A9/60269E14" Ref="R?"  Part="1" 
+AR Path="/60198AF4/601959B3/60269E14" Ref="R?"  Part="1" 
+AR Path="/60198AF4/601959BC/60269E14" Ref="R?"  Part="1" 
+AR Path="/60198AF4/601959C4/60269E14" Ref="R?"  Part="1" 
+AR Path="/60198AF4/601959CE/60269E14" Ref="R?"  Part="1" 
+AR Path="/60198AF4/601959D7/60269E14" Ref="R?"  Part="1" 
+AR Path="/60198AF4/601959DF/60269E14" Ref="R?"  Part="1" 
+AR Path="/60198AF4/601959E9/60269E14" Ref="R?"  Part="1" 
+AR Path="/60198AF4/601959F1/60269E14" Ref="R?"  Part="1" 
+AR Path="/60198AF4/601959F9/60269E14" Ref="R?"  Part="1" 
+AR Path="/601E0BD6/602675A0/60269E14" Ref="R?"  Part="1" 
+AR Path="/601E0BD6/602A3A4D/60269E14" Ref="R?"  Part="1" 
+F 0 "R?" V 4100 2200 50  0000 L CNN
+F 1 "220R" V 3900 2200 50  0000 L CNN
+F 2 "Resistor_SMD:R_0805_2012Metric" V 3930 2250 50  0001 C CNN
+F 3 "~" H 4000 2250 50  0001 C CNN
+F 4 "C228630" H 4000 2250 50  0001 C CNN "LCSC"
+	1    4000 2250
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	3850 2250 3800 2250
+Text HLabel 3100 2250 0    50   Input ~ 0
+DIN
+Text HLabel 4200 2250 2    50   Input ~ 0
+DOUT
+Text HLabel 5600 1950 1    50   Input ~ 0
+BTN
+Wire Wire Line
+	4200 2250 4150 2250
+Wire Wire Line
+	4850 1950 4850 2050
+$Comp
+L lib_symbol:GND #PWR?
+U 1 1 60269E29
+P 4850 2450
+AR Path="/5FE0C65A/60269E29" Ref="#PWR?"  Part="1" 
+AR Path="/5FFBAA40/60269E29" Ref="#PWR?"  Part="1" 
+AR Path="/5FFFF42E/60269E29" Ref="#PWR?"  Part="1" 
+AR Path="/5FFFF437/60269E29" Ref="#PWR?"  Part="1" 
+AR Path="/6006983A/60269E29" Ref="#PWR?"  Part="1" 
+AR Path="/60069843/60269E29" Ref="#PWR?"  Part="1" 
+AR Path="/6006984B/60269E29" Ref="#PWR?"  Part="1" 
+AR Path="/6008EF9E/60269E29" Ref="#PWR?"  Part="1" 
+AR Path="/6008EFA7/60269E29" Ref="#PWR?"  Part="1" 
+AR Path="/6008EFAF/60269E29" Ref="#PWR?"  Part="1" 
+AR Path="/6008EFB9/60269E29" Ref="#PWR?"  Part="1" 
+AR Path="/6008EFC2/60269E29" Ref="#PWR?"  Part="1" 
+AR Path="/6008EFCA/60269E29" Ref="#PWR?"  Part="1" 
+AR Path="/600DCC71/60269E29" Ref="#PWR?"  Part="1" 
+AR Path="/600DCC7A/60269E29" Ref="#PWR?"  Part="1" 
+AR Path="/600DCC82/60269E29" Ref="#PWR?"  Part="1" 
+AR Path="/600DCC8C/60269E29" Ref="#PWR?"  Part="1" 
+AR Path="/600DCC95/60269E29" Ref="#PWR?"  Part="1" 
+AR Path="/600DCC9D/60269E29" Ref="#PWR?"  Part="1" 
+AR Path="/6016C70A/6019598E/60269E29" Ref="#PWR?"  Part="1" 
+AR Path="/6016C70A/60195998/60269E29" Ref="#PWR?"  Part="1" 
+AR Path="/6016C70A/601959A1/60269E29" Ref="#PWR?"  Part="1" 
+AR Path="/6016C70A/601959A9/60269E29" Ref="#PWR?"  Part="1" 
+AR Path="/6016C70A/601959B3/60269E29" Ref="#PWR?"  Part="1" 
+AR Path="/6016C70A/601959BC/60269E29" Ref="#PWR?"  Part="1" 
+AR Path="/6016C70A/601959C4/60269E29" Ref="#PWR?"  Part="1" 
+AR Path="/6016C70A/601959CE/60269E29" Ref="#PWR?"  Part="1" 
+AR Path="/6016C70A/601959D7/60269E29" Ref="#PWR?"  Part="1" 
+AR Path="/6016C70A/601959DF/60269E29" Ref="#PWR?"  Part="1" 
+AR Path="/6016C70A/601959E9/60269E29" Ref="#PWR?"  Part="1" 
+AR Path="/6016C70A/601959F1/60269E29" Ref="#PWR?"  Part="1" 
+AR Path="/6016C70A/601959F9/60269E29" Ref="#PWR?"  Part="1" 
+AR Path="/60198AF4/6019598E/60269E29" Ref="#PWR?"  Part="1" 
+AR Path="/60198AF4/60195998/60269E29" Ref="#PWR?"  Part="1" 
+AR Path="/60198AF4/601959A1/60269E29" Ref="#PWR?"  Part="1" 
+AR Path="/60198AF4/601959A9/60269E29" Ref="#PWR?"  Part="1" 
+AR Path="/60198AF4/601959B3/60269E29" Ref="#PWR?"  Part="1" 
+AR Path="/60198AF4/601959BC/60269E29" Ref="#PWR?"  Part="1" 
+AR Path="/60198AF4/601959C4/60269E29" Ref="#PWR?"  Part="1" 
+AR Path="/60198AF4/601959CE/60269E29" Ref="#PWR?"  Part="1" 
+AR Path="/60198AF4/601959D7/60269E29" Ref="#PWR?"  Part="1" 
+AR Path="/60198AF4/601959DF/60269E29" Ref="#PWR?"  Part="1" 
+AR Path="/60198AF4/601959E9/60269E29" Ref="#PWR?"  Part="1" 
+AR Path="/60198AF4/601959F1/60269E29" Ref="#PWR?"  Part="1" 
+AR Path="/60198AF4/601959F9/60269E29" Ref="#PWR?"  Part="1" 
+AR Path="/601E0BD6/602675A0/60269E29" Ref="#PWR?"  Part="1" 
+AR Path="/601E0BD6/602A3A4D/60269E29" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 4850 2200 50  0001 C CNN
+F 1 "GND" H 4850 2300 50  0000 C CNN
+F 2 "" H 4850 2450 50  0001 C CNN
+F 3 "" H 4850 2450 50  0001 C CNN
+	1    4850 2450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4850 2450 4850 2350
+$Comp
+L Connector:Conn_01x05_Female J?
+U 1 1 60269E31
+P 1900 2300
+AR Path="/601E0BD6/60269E31" Ref="J?"  Part="1" 
+AR Path="/601E0BD6/602675A0/60269E31" Ref="J?"  Part="1" 
+AR Path="/601E0BD6/602A3A4D/60269E31" Ref="J?"  Part="1" 
+F 0 "J?" H 1900 2600 50  0000 C CNN
+F 1 "Conn_01x05_Female" H 1900 2000 50  0000 C CNN
+F 2 "" H 1900 2300 50  0001 C CNN
+F 3 "~" H 1900 2300 50  0001 C CNN
+	1    1900 2300
+	-1   0    0    -1  
+$EndComp
+Text HLabel 3350 1850 0    50   Input ~ 0
+VDD
+Wire Wire Line
+	3350 1850 3500 1850
+Text HLabel 3400 2650 0    50   Input ~ 0
+GND
+Wire Wire Line
+	3400 2650 3500 2650
+Text HLabel 4850 1950 0    50   Input ~ 0
+VDD
+Text Notes 3850 1550 0    150  ~ 30
+TODO, might need larger cap?
+$Comp
+L lib_symbol:C C?
+U 1 1 602712DA
+P 4850 2200
+AR Path="/601E0BD6/602675A0/602712DA" Ref="C?"  Part="1" 
+AR Path="/601E0BD6/602A3A4D/602712DA" Ref="C?"  Part="1" 
+F 0 "C?" H 4875 2300 50  0000 L CNN
+F 1 "1uF 25V" V 4700 2000 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 4888 2050 50  0001 C CNN
+F 3 "~" H 4850 2200 50  0001 C CNN
+F 4 "CL21B105KBFNNNE" V 5000 2200 50  0001 C CNN "PN"
+	1    4850 2200
+	1    0    0    -1  
+$EndComp
+Text HLabel 2200 2300 2    50   Input ~ 0
+GND
+Wire Wire Line
+	2200 2300 2100 2300
+Text HLabel 2200 2500 2    50   Input ~ 0
+VDD
+Wire Wire Line
+	2200 2500 2100 2500
+Text HLabel 2200 2100 2    50   Input ~ 0
+BTN
+Wire Wire Line
+	2200 2100 2100 2100
+Text HLabel 2200 2200 2    50   Input ~ 0
+DOUT
+Wire Wire Line
+	2200 2200 2100 2200
+Text HLabel 2200 2400 2    50   Input ~ 0
+DIN
+Wire Wire Line
+	2200 2400 2100 2400
+Wire Notes Line
+	1400 2850 6250 2850
+Wire Notes Line
+	6250 2850 6250 1600
+Wire Notes Line
+	6250 1600 1400 1600
+Wire Notes Line
+	1400 1600 1400 2850
+Text Notes 1200 1350 0    150  ~ 30
+Separate PCB\nLayout w/ MouseBites
+$EndSCHEMATC

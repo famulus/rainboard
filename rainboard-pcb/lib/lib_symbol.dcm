@@ -126,6 +126,36 @@ K cap capacitor
 F ~
 $ENDCMP
 #
+$CMP Conn_01x05_Female
+D Generic connector, single row, 01x05, script generated (kicad-library-utils/schlib/autogen/connector/)
+K connector
+F ~
+$ENDCMP
+#
+$CMP Conn_01x05_Male
+D Generic connector, single row, 01x05, script generated (kicad-library-utils/schlib/autogen/connector/)
+K connector
+F ~
+$ENDCMP
+#
+$CMP Conn_01x06_Female
+D Generic connector, single row, 01x06, script generated (kicad-library-utils/schlib/autogen/connector/)
+K connector
+F ~
+$ENDCMP
+#
+$CMP Conn_02x03_Odd_Even
+D Generic connector, double row, 02x03, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)
+K connector
+F ~
+$ENDCMP
+#
+$CMP Crystal
+D Two pin crystal
+K quartz ceramic resonator oscillator
+F ~
+$ENDCMP
+#
 $CMP D_Schottky
 D Schottky diode
 K diode Schottky
@@ -141,6 +171,12 @@ $ENDCMP
 $CMP D_Zener
 D Zener diode
 K diode
+F ~
+$ENDCMP
+#
+$CMP D_Zener_x2_ACom_KKA
+D Dual Zener diode, common anode on pin 3
+K diode zener dual
 F ~
 $ENDCMP
 #
@@ -264,6 +300,12 @@ $ENDCMP
 $CMP RT8298
 D Buck Switching Regulator IC Positive Adjustable 0.8V 1 Output 6A 8-SOIC (0.154", 3.90mm Width) Exposed Pad
 K Buck Switching Regulator IC Positive Adjustable 0.8V 1 Output 6A 8-SOIC (0.154", 3.90mm Width) Exposed Pad
+F ~
+$ENDCMP
+#
+$CMP Resonator
+D Three pin ceramic resonator
+K ceramic resonator
 F ~
 $ENDCMP
 #

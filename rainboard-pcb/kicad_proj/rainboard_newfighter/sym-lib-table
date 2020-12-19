@@ -1,3 +1,4 @@
 (sym_lib_table
-  (lib (name lib_symbol)(type Legacy)(uri ${RAINBOARD_SYM_LIB}/lib_symbol.lib)(options "")(descr ""))
+  (lib (name lib_symbol)(type Legacy)(uri ${KPROJLIB}/lib_symbol.lib)(options "")(descr ""))
+  (lib (name rainboard_newfighter)(type Legacy)(uri ${KPROJLIB}/rainboard_newfighter.lib)(options "")(descr ""))
 )
