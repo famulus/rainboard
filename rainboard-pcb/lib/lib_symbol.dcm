@@ -1,5 +1,17 @@
 EESchema-DOCLIB  Version 2.0
 #
+$CMP 74HC14
+D Hex inverter schmitt trigger
+K HCMOS not inverter
+F http://www.ti.com/lit/gpn/sn74HC14
+$ENDCMP
+#
+$CMP 74LS14
+D Hex inverter schmitt trigger
+K TTL not inverter
+F http://www.ti.com/lit/gpn/sn74LS14
+$ENDCMP
+#
 $CMP AMS1117-1.5
 D 1A Low Dropout regulator, positive, 1.5V fixed output, SOT-223
 K linear regulator ldo fixed positive
@@ -126,6 +138,12 @@ K cap capacitor
 F ~
 $ENDCMP
 #
+$CMP Conn_01x03
+D Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)
+K connector
+F ~
+$ENDCMP
+#
 $CMP Conn_01x05_Female
 D Generic connector, single row, 01x05, script generated (kicad-library-utils/schlib/autogen/connector/)
 K connector
@@ -191,6 +209,12 @@ D Power symbol creates a global label with name "GND" , ground
 K power-flag
 $ENDCMP
 #
+$CMP Jumper
+D Jumper, normally closed
+K jumper bridge link NC
+F ~
+$ENDCMP
+#
 $CMP L
 D Inductor
 K inductor choke coil reactor magnetic
@@ -230,6 +254,12 @@ $ENDCMP
 $CMP META-BUTTON
 D meta button
 K meta button sw switch
+$ENDCMP
+#
+$CMP MouseBites
+D generic mouse bites
+K generic mouse bites
+F ~
 $ENDCMP
 #
 $CMP NCP1117-1.5_SOT223
@@ -291,6 +321,12 @@ K resettable fuse PTC PPTC polyfuse polyswitch
 F ~
 $ENDCMP
 #
+$CMP Q_DUAL_NMOS_S1G1D2S2G2D1
+D Dual NMOS transistor, 6 pin package
+K transistor NMOS N-MOS N-MOSFET
+F ~
+$ENDCMP
+#
 $CMP R
 D Resistor
 K R res resistor
@@ -312,6 +348,18 @@ $ENDCMP
 $CMP SANWA-OBSF24
 D 24mm Joystick Button
 K OBSF 24mm
+$ENDCMP
+#
+$CMP SDS-50J
+D CONN RCPT FMALE DIN 5POS SOLDER
+K CONN RCPT FMALE DIN 5POS SOLDER
+F CUI Inc
+$ENDCMP
+#
+$CMP TestPoint
+D test point
+K test point tp
+F ~
 $ENDCMP
 #
 $CMP USB_B_Micro

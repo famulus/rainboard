@@ -126,6 +126,12 @@ K cap capacitor
 F ~
 $ENDCMP
 #
+$CMP Conn_01x03
+D Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)
+K connector
+F ~
+$ENDCMP
+#
 $CMP Conn_01x05_Female
 D Generic connector, single row, 01x05, script generated (kicad-library-utils/schlib/autogen/connector/)
 K connector
@@ -135,6 +141,24 @@ $ENDCMP
 $CMP Conn_01x05_Male
 D Generic connector, single row, 01x05, script generated (kicad-library-utils/schlib/autogen/connector/)
 K connector
+F ~
+$ENDCMP
+#
+$CMP Conn_01x06_Female
+D Generic connector, single row, 01x06, script generated (kicad-library-utils/schlib/autogen/connector/)
+K connector
+F ~
+$ENDCMP
+#
+$CMP Conn_02x03_Odd_Even
+D Generic connector, double row, 02x03, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)
+K connector
+F ~
+$ENDCMP
+#
+$CMP Crystal
+D Two pin crystal
+K quartz ceramic resonator oscillator
 F ~
 $ENDCMP
 #
@@ -156,6 +180,12 @@ K diode
 F ~
 $ENDCMP
 #
+$CMP D_Zener_x2_ACom_KKA
+D Dual Zener diode, common anode on pin 3
+K diode zener dual
+F ~
+$ENDCMP
+#
 $CMP Ferrite_Bead
 D Ferrite bead
 K L ferrite bead inductor filter
@@ -165,6 +195,12 @@ $ENDCMP
 $CMP GND
 D Power symbol creates a global label with name "GND" , ground
 K power-flag
+$ENDCMP
+#
+$CMP Jumper
+D Jumper, normally closed
+K jumper bridge link NC
+F ~
 $ENDCMP
 #
 $CMP L
@@ -206,6 +242,12 @@ $ENDCMP
 $CMP META-BUTTON
 D meta button
 K meta button sw switch
+$ENDCMP
+#
+$CMP MouseBites
+D generic mouse bites
+K generic mouse bites
+F ~
 $ENDCMP
 #
 $CMP NCP1117-1.5_SOT223
@@ -267,6 +309,12 @@ K resettable fuse PTC PPTC polyfuse polyswitch
 F ~
 $ENDCMP
 #
+$CMP Q_DUAL_NMOS_S1G1D2S2G2D1
+D Dual NMOS transistor, 6 pin package
+K transistor NMOS N-MOS N-MOSFET
+F ~
+$ENDCMP
+#
 $CMP R
 D Resistor
 K R res resistor
@@ -279,9 +327,27 @@ K Buck Switching Regulator IC Positive Adjustable 0.8V 1 Output 6A 8-SOIC (0.154
 F ~
 $ENDCMP
 #
+$CMP Resonator
+D Three pin ceramic resonator
+K ceramic resonator
+F ~
+$ENDCMP
+#
 $CMP SANWA-OBSF24
 D 24mm Joystick Button
 K OBSF 24mm
+$ENDCMP
+#
+$CMP SDS-50J
+D CONN RCPT FMALE DIN 5POS SOLDER
+K CONN RCPT FMALE DIN 5POS SOLDER
+F CUI Inc
+$ENDCMP
+#
+$CMP TestPoint
+D test point
+K test point tp
+F ~
 $ENDCMP
 #
 $CMP USB_B_Micro

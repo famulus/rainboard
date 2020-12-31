@@ -7,4 +7,6 @@
   (lib (name opto_coupler)(type KiCad)(uri ${KIPRJMOD}/libraries/EL357N_A__TA_-G)(options "")(descr ""))
   (lib (name opto_coupler2)(type KiCad)(uri /Users/clean/Documents/rainboard/rainboard-pcb/libraries/6N138SDM)(options "")(descr ""))
   (lib (name diode)(type KiCad)(uri /Users/clean/Documents/rainboard/rainboard-pcb/libraries/SODFL2513X100N)(options "")(descr ""))
+  (lib (name SDS-50J)(type KiCad)(uri ${KIPRJMOD}/../../lib/SDS-50J.pretty)(options "")(descr ""))
+  (lib (name KICAD_PCB_Footprint_Archival)(type KiCad)(uri ${KIPRJMOD}/KICAD_PCB_Footprint_Archival)(options "")(descr ""))
 )
