@@ -138,6 +138,12 @@ K cap capacitor
 F ~
 $ENDCMP
 #
+$CMP Conn_01x02_Female
+D Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)
+K connector
+F ~
+$ENDCMP
+#
 $CMP Conn_01x03
 D Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)
 K connector
@@ -313,6 +319,12 @@ $ENDCMP
 $CMP NMOS_SGD_123_4_5
 D Generic PowerPAK-8 1212-8
 K Generic PowerPAK-8 1212-8
+$ENDCMP
+#
+$CMP PWR_FLAG
+D Special symbol for telling ERC where power comes from
+K power-flag
+F ~
 $ENDCMP
 #
 $CMP Polyfuse
