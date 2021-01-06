@@ -1,5 +1,11 @@
 EESchema-DOCLIB  Version 2.0
 #
+$CMP 6N137
+D Single High Speed LSTTL/TTL Compatible Optocoupler with enable, dV/dt 1000/us, VCM 10, max 7V VCC, DIP-8
+K High speed optically coupled gates enable
+F https://docs.broadcom.com/docs/AV02-0940EN
+$ENDCMP
+#
 $CMP 74HC14
 D Hex inverter schmitt trigger
 K HCMOS not inverter
@@ -215,6 +221,24 @@ D Power symbol creates a global label with name "GND" , ground
 K power-flag
 $ENDCMP
 #
+$CMP HCPL-2601
+D Single High Speed LSTTL/TTL Compatible Optocoupler with enable, dV/dt 10000/us, VCM 1000, max 7V VCC, DIP-8
+K High speed optically coupled gates enable
+F https://docs.broadcom.com/docs/AV02-0940EN
+$ENDCMP
+#
+$CMP HCPL-2611
+D Single High Speed LSTTL/TTL Compatible Optocoupler with enable, dV/dt 15000/us, VCM 1000, max 7V VCC, DIP-8
+K High speed optically coupled gates enable
+F https://docs.broadcom.com/docs/AV02-0940EN
+$ENDCMP
+#
+$CMP HCPL-261N
+D Single High Speed HCMOS/LSTTL/TTL Compatible Optocoupler with enable, dV/dt 1000/us, VCM 1000, -0.5V to 7V VCC, DIP-8
+K High speed optically coupled gates enable
+F http://docs.avagotech.com/docs/AV02-0391EN
+$ENDCMP
+#
 $CMP Jumper
 D Jumper, normally closed
 K jumper bridge link NC
@@ -384,6 +408,18 @@ $CMP USB_B_Mini
 D USB Mini Type B connector
 K connector USB mini
 F ~
+$ENDCMP
+#
+$CMP VO2601
+D Single High Speed CMOS Compatible Optocoupler with enable, dV/dt 5000/us, VCM 50, max 7V VCC, DIP-8
+K High speed optically coupled gates enable
+F https://www.vishay.com/doc?84732
+$ENDCMP
+#
+$CMP VO2611
+D Single High Speed CMOS Compatible Optocoupler with enable, dV/dt 15000/us, VCM 1000, max 7V VCC, DIP-8
+K High speed optically coupled gates enable
+F https://www.vishay.com/doc?84732
 $ENDCMP
 #
 $CMP WS2812B
