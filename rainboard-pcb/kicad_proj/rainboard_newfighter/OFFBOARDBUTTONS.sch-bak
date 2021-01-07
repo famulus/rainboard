@@ -401,6 +401,4 @@ Wire Wire Line
 	3000 5850 3000 5950
 Wire Notes Line
 	2650 5750 2550 5850
-Wire Notes Line
-	2650 3150 2650 2500
 $EndSCHEMATC

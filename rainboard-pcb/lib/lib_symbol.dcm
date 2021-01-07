@@ -398,6 +398,12 @@ K test point tp
 F ~
 $ENDCMP
 #
+$CMP USB_B
+D USB Type B connector
+K connector USB
+F  ~
+$ENDCMP
+#
 $CMP USB_B_Micro
 D USB Micro Type B connector
 K connector USB micro
