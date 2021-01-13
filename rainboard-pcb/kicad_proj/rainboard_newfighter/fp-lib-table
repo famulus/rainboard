@@ -1,12 +1,3 @@
 (fp_lib_table
-  (lib (name rainboard_newfighter)(type KiCad)(uri ${KIPRJMOD}/libraries/rainboard_newfighter.pretty)(options "")(descr ""))
-  (lib (name arduno_mega)(type KiCad)(uri ${KIPRJMOD}/libraries/arduino-kicad-library-master/Arduino.pretty)(options "")(descr ""))
-  (lib (name schmitt_trigger)(type KiCad)(uri ${KIPRJMOD}/libraries/74HC14D)(options "")(descr ""))
-  (lib (name io_expander)(type KiCad)(uri ${KIPRJMOD}/libraries/MCP23017-E_SO)(options "")(descr ""))
-  (lib (name MIDI-DIN)(type KiCad)(uri ${KIPRJMOD}/libraries/SDS-50J)(options "")(descr ""))
-  (lib (name opto_coupler)(type KiCad)(uri ${KIPRJMOD}/libraries/EL357N_A__TA_-G)(options "")(descr ""))
-  (lib (name opto_coupler2)(type KiCad)(uri /Users/clean/Documents/rainboard/rainboard-pcb/libraries/6N138SDM)(options "")(descr ""))
-  (lib (name diode)(type KiCad)(uri /Users/clean/Documents/rainboard/rainboard-pcb/libraries/SODFL2513X100N)(options "")(descr ""))
-  (lib (name SDS-50J)(type KiCad)(uri ${KIPRJMOD}/../../lib/SDS-50J.pretty)(options "")(descr ""))
-  (lib (name KICAD_PCB_Footprint_Archival)(type KiCad)(uri ${KIPRJMOD}/KICAD_PCB_Footprint_Archival)(options "")(descr ""))
+  (lib (name rainboard_fp)(type KiCad)(uri ${KIPRJMOD}/../../lib/rainboard_fp.pretty)(options "")(descr ""))
 )
