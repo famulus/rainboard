@@ -9337,7 +9337,7 @@
   )
 
   (module Connector_JST:JST_XH_B3B-XH-AM_1x03_P2.50mm_Vertical (layer F.Cu) (tedit 5C28146E) (tstamp 600C5D63)
-    (at 233.57 -48)
+    (at 70.9295 119.9515)
     (descr "JST XH series connector, B3B-XH-AM, with boss (http://www.jst-mfg.com/product/pdf/eng/eXH.pdf), generated with kicad-footprint-generator")
     (tags "connector JST XH vertical boss")
     (path /6304E18A)
@@ -9399,7 +9399,7 @@
   )
 
   (module Connector_JST:JST_XH_B3B-XH-AM_1x03_P2.50mm_Vertical (layer F.Cu) (tedit 5C28146E) (tstamp 600C5D38)
-    (at 219.49 -36.15)
+    (at 61.3175 132.7785)
     (descr "JST XH series connector, B3B-XH-AM, with boss (http://www.jst-mfg.com/product/pdf/eng/eXH.pdf), generated with kicad-footprint-generator")
     (tags "connector JST XH vertical boss")
     (path /630A9128)
@@ -9511,7 +9511,7 @@
   )
 
   (module Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical (layer F.Cu) (tedit 5C28146C) (tstamp 600C5CF1)
-    (at 195.66 9.98)
+    (at -81.7245 119.888)
     (descr "JST XH series connector, B2B-XH-A (http://www.jst-mfg.com/product/pdf/eng/eXH.pdf), generated with kicad-footprint-generator")
     (tags "connector JST XH vertical")
     (path /604BAD9B)
@@ -9614,7 +9614,7 @@
   )
 
   (module Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical (layer F.Cu) (tedit 5C28146C) (tstamp 600C5CAA)
-    (at 195.66 2.18)
+    (at -99.187 86.8045)
     (descr "JST XH series connector, B2B-XH-A (http://www.jst-mfg.com/product/pdf/eng/eXH.pdf), generated with kicad-footprint-generator")
     (tags "connector JST XH vertical")
     (path /6041F2DE)
@@ -9673,7 +9673,7 @@
   )
 
   (module Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical (layer F.Cu) (tedit 5C28146C) (tstamp 600C5C81)
-    (at 216.29 -9.8)
+    (at -118.6815 54.737)
     (descr "JST XH series connector, B2B-XH-A (http://www.jst-mfg.com/product/pdf/eng/eXH.pdf), generated with kicad-footprint-generator")
     (tags "connector JST XH vertical")
     (path /60111A02)
@@ -9732,7 +9732,7 @@
   )
 
   (module Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical (layer F.Cu) (tedit 5C28146C) (tstamp 600C5C58)
-    (at 233.38 -30.5)
+    (at -144.3355 19.1135)
     (descr "JST XH series connector, B2B-XH-A (http://www.jst-mfg.com/product/pdf/eng/eXH.pdf), generated with kicad-footprint-generator")
     (tags "connector JST XH vertical")
     (path /602E633B)
@@ -9791,7 +9791,7 @@
   )
 
   (module Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical (layer F.Cu) (tedit 5C28146C) (tstamp 600C5C2F)
-    (at 223.93 -28.35)
+    (at 85.725 100.076)
     (descr "JST XH series connector, B2B-XH-A (http://www.jst-mfg.com/product/pdf/eng/eXH.pdf), generated with kicad-footprint-generator")
     (tags "connector JST XH vertical")
     (path /605DBB7F)
@@ -9850,7 +9850,7 @@
   )
 
   (module Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical (layer F.Cu) (tedit 5C28146C) (tstamp 600C5C06)
-    (at 205.8 -5.62)
+    (at 97.3855 76.835)
     (descr "JST XH series connector, B2B-XH-A (http://www.jst-mfg.com/product/pdf/eng/eXH.pdf), generated with kicad-footprint-generator")
     (tags "connector JST XH vertical")
     (path /605DBB6E)
@@ -9909,7 +9909,7 @@
   )
 
   (module Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical (layer F.Cu) (tedit 5C28146C) (tstamp 600C5BDD)
-    (at 233.38 -22.7)
+    (at 112.7125 50.8635)
     (descr "JST XH series connector, B2B-XH-A (http://www.jst-mfg.com/product/pdf/eng/eXH.pdf), generated with kicad-footprint-generator")
     (tags "connector JST XH vertical")
     (path /605DBBC3)
@@ -9968,7 +9968,7 @@
   )
 
   (module Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical (layer F.Cu) (tedit 5C28146C) (tstamp 600C5BB4)
-    (at 254.97 -48)
+    (at 125.857 22.225)
     (descr "JST XH series connector, B2B-XH-A (http://www.jst-mfg.com/product/pdf/eng/eXH.pdf), generated with kicad-footprint-generator")
     (tags "connector JST XH vertical")
     (path /605DBBB2)
@@ -10027,7 +10027,7 @@
   )
 
   (module Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical (layer F.Cu) (tedit 5C28146C) (tstamp 600C5B8B)
-    (at 196.35 -5.62)
+    (at -48.0695 -127.0635)
     (descr "JST XH series connector, B2B-XH-A (http://www.jst-mfg.com/product/pdf/eng/eXH.pdf), generated with kicad-footprint-generator")
     (tags "connector JST XH vertical")
     (path /605DBBA1)
@@ -10086,7 +10086,7 @@
   )
 
   (module Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical (layer F.Cu) (tedit 5C28146C) (tstamp 600C5B62)
-    (at 240.77 -40.2)
+    (at -18.669 -127.0635)
     (descr "JST XH series connector, B2B-XH-A (http://www.jst-mfg.com/product/pdf/eng/eXH.pdf), generated with kicad-footprint-generator")
     (tags "connector JST XH vertical")
     (path /605DBB5D)
@@ -10145,7 +10145,7 @@
   )
 
   (module Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical (layer F.Cu) (tedit 5C28146C) (tstamp 600C5B39)
-    (at 216.29 -17.6)
+    (at 16.4465 -124.7775)
     (descr "JST XH series connector, B2B-XH-A (http://www.jst-mfg.com/product/pdf/eng/eXH.pdf), generated with kicad-footprint-generator")
     (tags "connector JST XH vertical")
     (path /605DBB4C)
@@ -10204,7 +10204,7 @@
   )
 
   (module Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical (layer F.Cu) (tedit 5C28146C) (tstamp 600C5B10)
-    (at 245.52 -48)
+    (at 45.085 -126.873)
     (descr "JST XH series connector, B2B-XH-A (http://www.jst-mfg.com/product/pdf/eng/eXH.pdf), generated with kicad-footprint-generator")
     (tags "connector JST XH vertical")
     (path /605DBB3B)
