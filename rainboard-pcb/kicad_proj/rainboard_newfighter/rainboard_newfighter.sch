@@ -399,14 +399,12 @@ U 1 1 5FDC25B7
 P 800 1450
 F 0 "J1" H 800 1660 50  0000 C CNN
 F 1 "EJ508A" H 800 1250 50  0000 C CNN
-F 2 "Connector_BarrelJack:BarrelJack_Horizontal" H 850 1410 50  0001 C CNN
+F 2 "rainboard_fp:BarrelJack_Horizontal" H 850 1410 50  0001 C CNN
 F 3 "~" H 850 1410 50  0001 C CNN
 F 4 "EJ508A" H 800 1450 50  0001 C CNN "PN"
 	1    800  1450
 	1    0    0    -1  
 $EndComp
-Text Notes -3100 1700 0    150  ~ 30
-TODO double check footprint, \nusing kicad lib generic 
 Text GLabel 12100 6300 2    50   Input ~ 0
 VLED
 Text Notes 500  3000 0    250  Italic 50
@@ -839,7 +837,7 @@ U 1 1 608F3418
 P 5100 6600
 F 0 "U2" H 4850 7150 50  0000 C CNN
 F 1 "RT8298" H 5200 7150 50  0000 C CNN
-F 2 "Package_SO:SOIC-8-1EP_3.9x4.9mm_P1.27mm_EP2.41x3.3mm_ThermalVias" H 4350 6600 50  0001 L CNN
+F 2 "rainboard_fp:SOIC-8-1EP_3.9x4.9mm_P1.27mm_EP2.41x3.3mm_ThermalVias" H 4350 6600 50  0001 L CNN
 F 3 "~" H 5100 6600 50  0001 C CNN
 F 4 "RT8298ZSP" H 5250 7250 50  0001 C CNN "PN"
 	1    5100 6600
@@ -959,7 +957,7 @@ U 1 1 60B3D4BF
 P 6050 6650
 F 0 "Q1" H 6250 6725 50  0000 L CNN
 F 1 "30V 10mOhm" V 6300 6150 50  0000 L CNN
-F 2 "Package_SO:PowerPAK_SO-8_Single" H 6250 6575 50  0001 L CIN
+F 2 "rainboard_fp:PowerPAK_SO-8_Single" H 6250 6575 50  0001 L CIN
 F 3 "" H 6050 6650 50  0001 L CNN
 F 4 "SI7114ADN-T1-GE3" V 6400 6350 50  0001 C CNN "PN"
 	1    6050 6650
@@ -1769,7 +1767,7 @@ U 1 1 61CE393F
 P 18400 4950
 F 0 "U4" H 17800 6300 50  0000 L BNN
 F 1 "ATmega16U2-MU" H 18500 3600 50  0000 L TNN
-F 2 "Package_DFN_QFN:QFN-32-1EP_5x5mm_P0.5mm_EP3.1x3.1mm" H 18400 4950 50  0001 C CIN
+F 2 "rainboard_fp:QFN33P50_500X500X60L40X24T300N" H 18400 4950 50  0001 C CIN
 F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/doc7799.pdf" H 18400 4950 50  0001 C CNN
 F 4 "ATMEGA16U2-MUR" H 18400 4950 50  0001 C CNN "PN"
 	1    18400 4950
@@ -2956,8 +2954,6 @@ F 4 "Virtual" H 22200 10400 50  0001 C CNN "PN"
 	1    22200 10400
 	0    -1   -1   0   
 $EndComp
-Text Notes -4000 8750 0    250  Italic 50
-Todo FOOTPRINTS
 Text Notes 18650 12800 0    50   ~ 0
 512 B RAM\n73 LEDs = 73x3 = 219B needed to store all LEDs
 Wire Wire Line
