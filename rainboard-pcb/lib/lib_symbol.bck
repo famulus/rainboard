@@ -204,6 +204,12 @@ K diode
 F ~
 $ENDCMP
 #
+$CMP D_Zener_SOT23
+D Zener diode
+K diode
+F ~
+$ENDCMP
+#
 $CMP D_Zener_x2_ACom_KKA
 D Dual Zener diode, common anode on pin 3
 K diode zener dual
@@ -396,6 +402,12 @@ $CMP TestPoint
 D test point
 K test point tp
 F ~
+$ENDCMP
+#
+$CMP USB_B
+D USB Type B connector
+K connector USB
+F  ~
 $ENDCMP
 #
 $CMP USB_B_Micro
