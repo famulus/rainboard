@@ -1,4 +1,4 @@
-update=1/22/2021 7:12:58 AM
+update=1/25/2021 3:13:22 AM
 version=1
 last_client=kicad
 [general]
@@ -26,7 +26,7 @@ ERC_TestSimilarLabels=1
 version=1
 PageLayoutDescrFile=
 LastNetListRead=rainboard_newfighter.net
-CopperLayerCount=2
+CopperLayerCount=4
 BoardThickness=1.6
 AllowMicroVias=0
 AllowBlindVias=0
@@ -41,6 +41,7 @@ MinHoleToHole=0.25
 TrackWidth1=0.20066
 TrackWidth2=0.381
 TrackWidth3=0.508
+TrackWidth4=1.016
 ViaDiameter1=0.8
 ViaDrill1=0.4
 ViaDiameter2=0.635
@@ -79,11 +80,11 @@ Enabled=1
 [pcbnew/Layer.In1.Cu]
 Name=In1.Cu
 Type=0
-Enabled=0
+Enabled=1
 [pcbnew/Layer.In2.Cu]
 Name=In2.Cu
 Type=0
-Enabled=0
+Enabled=1
 [pcbnew/Layer.In3.Cu]
 Name=In3.Cu
 Type=0
