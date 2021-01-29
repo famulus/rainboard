@@ -245,6 +245,11 @@ K High speed optically coupled gates enable
 F http://docs.avagotech.com/docs/AV02-0391EN
 $ENDCMP
 #
+$CMP Headphone_Jack
+D 6.35mm (0.250", 1/4") - Headphone Phone Jack Stereo (3 Conductor, TRS) Connector Kinked Pin
+K 6.35mm (0.250", 1/4") - Headphone Phone Jack Stereo (3 Conductor, TRS) Connector Kinked Pin
+$ENDCMP
+#
 $CMP Jumper
 D Jumper, normally closed
 K jumper bridge link NC
