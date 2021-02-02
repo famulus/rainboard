@@ -1,0 +1,52 @@
+Lightning
+
+61 key isomorphic midi keyboard with colored lights
+Genuine Sanwa arcade buttons
+5 octave range (11 octave with octave up/down meta-buttons)
+Pitchbend ribbon
+Modulation ribbon
+12 meta-buttons on the sides:
+  octave up/down
+  semitone up/down
+  velocity up/down
+  6 user assignable buttons
+Adjustable keyboard layouts:
+  Gerhard
+  Park
+  Maupin
+  Wicki-Hayden
+  Harmonic
+  Janko
+  C-System
+  B-System
+  Custom  
+MIDI DIN OUT
+MIDI USB IN/OUT
+Velocity adjustable (not velocity sensitive)
+External power supply only required for lights
+Includes USB cable and power adapter
+Open source and customizable
+
+
+Thunder
+
+61 key isomorphic midi keyboard
+Genuine Sanwa arcade buttons
+5 octave range
+MIDI USB OUT
+Adjustable keyboard layouts:
+  Gerhard
+  Park
+  Maupin
+  Wicki-Hayden
+  Harmonic
+  Janko
+  C-System
+  B-System
+  Custom  
+Open source and customizable
+
+
+
+
+
