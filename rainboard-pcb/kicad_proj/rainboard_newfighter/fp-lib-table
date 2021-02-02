@@ -1,0 +1,3 @@
+(fp_lib_table
+  (lib (name rainboard_fp)(type KiCad)(uri ${KIPRJMOD}/../../lib/rainboard_fp.pretty)(options "")(descr ""))
+)

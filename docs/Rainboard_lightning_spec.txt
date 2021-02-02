@@ -1,0 +1,53 @@
+Rainboard Lightning Spec
+
+
+
+
+
+* Two versions of product will use same PCB: 
+
+  Lightning:
+    61 performance buttons (the buttons on top of unit)
+    61 RGB LEDs (one LED under each button)
+    12 meta-buttons (buttons on sides)
+    2 softpots 
+    2 MIDI DINs
+    DC power input
+    Sustain pedal in  
+    Foot controller in
+    Control Voltage out
+
+  Thunder:
+    61 main keys (RGB lEDs left unpopulated)
+    USB only
+    no external power supply
+
+
+
+
+Take existing PCB and improve:
+
+* Integrate Arduino Mega onto PCB.
+
+* Implement input multiplexing (maybe remove IO expander if unnecessary).
+
+
+* 61 LEDS and bypass caps.
+
+* Power supply capable of powering 61 LEDS and Arduino, efficiently.
+
+* When unit is powered with USB only, should still function, but without lights.
+
+
+* move meta-button from front-sides to rear-sides.
+
+* possibly engineer a better solution to connect metabuttons.
+
+* engage programmer mode with meta buttons (or other solution).
+
+* add 220 ohm Resistor to each button positive (for static discharge protection)?
+
+* Redesign back panel for better aesthetic design.
+
+
+

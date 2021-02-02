@@ -1,0 +1,78 @@
+17723833008087
+rainboard_fp
+ACJS-MHDR
+
+
+0
+7
+7
+rainboard_fp
+BarrelJack_Horizontal
+DC Barrel Jack
+Power Jack
+0
+3
+3
+rainboard_fp
+COUPL_6N138SDM
+
+
+0
+8
+8
+rainboard_fp
+CUI_SDS-50J
+
+
+0
+7
+7
+rainboard_fp
+INDC250X180X200L50N
+Inductor, Chip; 2.50 mm L X 1.80 mm W X 2.00 mm H body
+
+0
+2
+2
+rainboard_fp
+PowerPAK_SO-8_Single
+PowerPAK SO-8 Single (https://www.vishay.com/docs/71655/powerpak.pdf, https://www.vishay.com/docs/72599/72599.pdf)
+PowerPAK SO-8 Single
+0
+9
+5
+rainboard_fp
+QFN33P50_500X500X60L40X24T300N
+Quad Flat No-Lead (QFN with Tab), 0.50 mm pitch; square, 8 pin X 8 pin, 5.00 mm L X 5.00 mm W X 0.60 mm H body
+
+0
+40
+33
+rainboard_fp
+SOIC-8-1EP_3.9x4.9mm_P1.27mm_EP2.41x3.3mm_ThermalVias
+SOIC, 8 Pin (http://www.allegromicro.com/~/media/Files/Datasheets/A4950-Datasheet.ashx#page=8), generated with kicad-footprint-generator ipc_gullwing_generator.py
+SOIC SO
+0
+12
+9
+rainboard_fp
+SOT23-3
+Small Outline Transistor (SOT23), 0.95 mm pitch; 3 pin, 2.90 mm L X 1.30 mm W X 1.00 mm H body
+
+0
+3
+3
+rainboard_fp
+Sanwa-OBSF24-v2
+
+
+0
+2
+2
+rainboard_fp
+UJ2-BH-1-TH
+
+
+0
+6
+5
