@@ -120,7 +120,7 @@ body {
 .images-content-container,
 .copy-content-container,
 .footer-content-container {
-  max-width: 960px;
+  max-width: 600px;
   /*padding: 1rem;*/
   margin: 0 auto;
 }
@@ -158,7 +158,7 @@ body {
 
 .footer-link-container {
   margin: 0 auto;
-  max-width: 960px;
+  max-width: 600px;
 }
 
 .footer-link {
@@ -224,7 +224,7 @@ p, ul {
 .keyboard-image {
   display: block;
   width:100%;
-  max-width: 500px;
+  max-width: 600px;
   margin: 0 auto;
 }
 
