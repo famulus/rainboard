@@ -21,7 +21,6 @@
 
 html {
   color: #222;
-  /*font-size: 2vw;*/
   line-height: 1.4;
 }
 
@@ -101,13 +100,12 @@ textarea {
    ========================================================================== */
 * {
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
-  font-family: 'Oxygen', sans-serif;
+  font-family: 'Oxygen', Helvetica, sans-serif;
 }
 
 body {
   margin: 0;
-  /*font-family: Arial, Helvetica, sans-serif;*/
+  background-color: #f2f2f2; /* off-white */
 }
 
 #rainboard-body {
@@ -118,21 +116,18 @@ body {
 /*container layout*/
 .header-content-container,
 .images-content-container,
-.copy-content-container,
-.footer-content-container {
+.copy-content-container {
+  display: block;
   max-width: 600px;
   /*padding: 1rem;*/
   margin: 0 auto;
-}
-
-.header-container {
-
 }
 
 .header-container,
 .images-container,
 .content-container,
 .footer-container {
+  display: block;
   width: 100%;
   padding: 1rem;
   margin: 0 auto;
@@ -140,20 +135,15 @@ body {
 
 .footer-container {
   display: block;
-  /*position: fixed;*/
   left: 0;
   bottom: 0;
   width: 100%;
   max-width: 100%;
   font-size: 90%;
   z-index: 1;
-  padding: .25rem;
-  background-color: #fff;
+  padding: .25rem .5rem;
   text-align: right;
-  border-top: 2px solid #efefef;
-  /* so that text slides behind footer gently on small screens*/
-  box-shadow: 0 0 2rem 1rem #ffff;
-  /*background-image: url(../img/what-the-hex/what-the-hex.png);*/
+  border-top: 2px solid #e6e6e6;
 }
 
 .footer-link-container {
@@ -184,14 +174,14 @@ body {
 
 
 h1 {
+  display: block;
   margin: 0 auto;
   font-size: 5em;
   font-weight: 700;
   opacity: .9;
-    -webkit-text-fill-color: white; /* Will override color (regardless of order) */
+    -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: black;
-  /*letter-spacing: -3.7px;*/
   font-family: 'Russo One', sans-serif;
   font-family: 'Archivo Black', sans-serif;
   font-family: 'Chakra Petch', sans-serif;
@@ -202,12 +192,14 @@ h1 {
 }
 
 h2 {
+  display: block;
   margin: 0;
   font-size: 1.25em;
   font-weight: 100;
 }
 
 h3 {
+  display: block;
   margin: .25rem 0 0 0;
   font-size: 1.5em;
   font-weight: 100;
