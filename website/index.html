@@ -1,214 +1,184 @@
-<!doctype html>
+<!DOCTYPE html>
 <html class="no-js" lang="">
-
 <head>
   <meta charset="utf-8">
-  <title></title>
-  <meta name="description" content="Rainboard. An isomorphic music keyboard">
-  <meta name="keywords" content="rainboard, keyboard, isomorphic, music, midi, hexogonal, synthesizer, MIDI controller, MIDI, open-source">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <meta property="og:title" content="">
-  <meta property="og:type" content="">
-  <meta property="og:url" content="">
-  <meta property="og:image" content="">
-
-  <link rel="manifest" href="site.webmanifest">
-  <link rel="apple-touch-icon" href="./favicons/favicons/icon.png">
-  <link rel="apple-touch-icon" sizes="57x57" href="./favicons/apple-icon-57x57.png">
-  <link rel="apple-touch-icon" sizes="60x60" href="./favicons/apple-icon-60x60.png">
-  <link rel="apple-touch-icon" sizes="72x72" href="./favicons/apple-icon-72x72.png">
-  <link rel="apple-touch-icon" sizes="76x76" href="./favicons/apple-icon-76x76.png">
-  <link rel="apple-touch-icon" sizes="114x114" href="./favicons/apple-icon-114x114.png">
-  <link rel="apple-touch-icon" sizes="120x120" href="./favicons/apple-icon-120x120.png">
-  <link rel="apple-touch-icon" sizes="144x144" href="./favicons/apple-icon-144x144.png">
-  <link rel="apple-touch-icon" sizes="152x152" href="./favicons/apple-icon-152x152.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="./favicons/apple-icon-180x180.png">
-  <link rel="icon" type="image/png" sizes="192x192"  href="./favicons/android-icon-192x192.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="./favicons/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="./favicons/favicon-96x96.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="./favicons/favicon-16x16.png">
-  <link rel="manifest" href="/manifest.json">
-  <meta name="msapplication-TileColor" content="#ffffff">
-  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
-  <meta name="theme-color" content="#ffffff">
-  <!-- Place favicon.ico in the root directory -->
-
-  <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/main.css">
-
-  <meta name="theme-color" content="#fafafa">
-
+  <title>Rainboard. isomorphic MIDI controller keyboard</title>
+  <meta content="Rainboard. An isomorphic music keyboard" name="description">
+  <meta content="rainboard, keyboard, isomorphic, music, midi, hexogonal, synthesizer, MIDI controller, MIDI, open-source" name="keywords">
+  <meta content="Sarah Phillips" name="author">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <meta content="Rainboard Isomorphic Keyboard" property="og:title">
+  <meta content="" property="og:type">
+  <meta content="https://rainboard.surge.sh/" property="og:url">
+  <meta content="" property="og:image">
+  <link href="site.webmanifest" rel="manifest">
+  <link href="./favicons/favicons/icon.png" rel="apple-touch-icon">
+  <link href="./favicons/apple-icon-57x57.png" rel="apple-touch-icon" sizes="57x57">
+  <link href="./favicons/apple-icon-60x60.png" rel="apple-touch-icon" sizes="60x60">
+  <link href="./favicons/apple-icon-72x72.png" rel="apple-touch-icon" sizes="72x72">
+  <link href="./favicons/apple-icon-76x76.png" rel="apple-touch-icon" sizes="76x76">
+  <link href="./favicons/apple-icon-114x114.png" rel="apple-touch-icon" sizes="114x114">
+  <link href="./favicons/apple-icon-120x120.png" rel="apple-touch-icon" sizes="120x120">
+  <link href="./favicons/apple-icon-144x144.png" rel="apple-touch-icon" sizes="144x144">
+  <link href="./favicons/apple-icon-152x152.png" rel="apple-touch-icon" sizes="152x152">
+  <link href="./favicons/apple-icon-180x180.png" rel="apple-touch-icon" sizes="180x180">
+  <link href="./favicons/android-icon-192x192.png" rel="icon" sizes="192x192" type="image/png">
+  <link href="./favicons/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+  <link href="./favicons/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png">
+  <link href="./favicons/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+  <link href="/manifest.json" rel="manifest">
+  <meta content="#ffffff" name="msapplication-TileColor">
+  <meta content="/ms-icon-144x144.png" name="msapplication-TileImage">
+  <meta content="#ffffff" name="theme-color">
+  <link href="css/normalize.css" rel="stylesheet">
+  <link href="css/main.css" rel="stylesheet">
+  <meta content="#fafafa" name="theme-color">
   <style>
- /*google fonts*/
-  @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap');
 
-  /*body copy fonts*/
-  @import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap');
+  /*google fonts*/
+   @import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap');
 
-  @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;1,100;1,300;1,400&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,400;1,500&display=swap');
-
-
-
+   @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;1,100;1,300;1,400&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,400;1,500&display=swap');
   </style>
-  <script src="https://kit.fontawesome.com/b9028e174d.js" crossorigin="anonymous"></script>
+
+  <!-- font awesome -->
+  <script src="https://kit.fontawesome.com/b9028e174d.js"></script>
+
+
 </head>
-
 <body>
+  <div id="rainboard-body&quot;">
+    <section class="header-container">
+      <div class="header-content-container">
+        <h1>rainboard</h1>
+        <h2>isomorphic MIDI controller keyboard</h2>
+      </div>
+    </section>
+    <section class="images-container">
+      <img alt="rainboard unit" class="keyboard-image" src="./img/rainboard-midi-controller.png">
+    </section>
 
-  <div id-"rainboard-body">
+    <section class="copy-container">
+      <div class="copy-content-container">
 
+        <div class="content-container">
+          <h3>Lightning Features</h3>
+            <ul>
+              <li>61 key isomorphic midi keyboard with colored lights</li>
+              <li>Genuine Sanwa arcade buttons</li>
+              <li>5 octave range (11 octave with octave up/down meta-buttons)</li>
+              <li>Pitchbend ribbon</li>
+              <li>Modulation ribbon</li>
+                <ul>
+                  <li class="sublist-heading">12 meta-buttons on the sides:</li>
+                  <li class="sublist-item">octave up/down</li>
+                  <li class="sublist-item">semitone up/down</li>
+                  <li class="sublist-item">velocity up/down</li>
+                  <li class="sublist-item">six user assignable buttons</li>
+                </ul>
+                <ul>
+                  <li class="sublist-heading">Adjustable keyboard layouts:</li>
+                  <li class="sublist-item">Gerhard</li>
+                  <li class="sublist-item">Park</li>
+                  <li class="sublist-item">Maupin</li>
+                  <li class="sublist-item">Wicki-Hayden</li>
+                  <li class="sublist-item">Harmonic</li>
+                  <li class="sublist-item">Janko</li>
+                  <li class="sublist-item">C-System</li>
+                  <li class="sublist-item">B-System</li>
+                  <li class="sublist-item">Custom</li>
+                </ul>
+              <li>MIDI DIN out</li>
+              <li>MIDI USB in/out</li>
+              <li>Velocity adjustable (not velocity sensitive)</li>
+              <li>External power supply only required for lights</li>
+              <li>Includes USB cable and power adapter</li>
+              <li>Open source and customizable</li>
+            </ul>
+          </div>
 
-  <section class="header-container">
-    <div class="header-content-container">
-      <h1>rainboard</h1>
-      <h2>isomorphic MIDI controller keyboard</h2>
+          <hr>
+
+          <div class="content-container">
+            <h3>Thunder Features</h3>
+            <ul>
+              <li>61 key isomorphic midi keyboard</li>
+              <li>Genuine Sanwa arcade buttons</li>
+              <li>5 octave range</li>
+              <li>MIDI USB out</li>
+                <ul>
+                  <li class="sublist-heading">Adjustable keyboard layouts:</li>
+                  <li class="sublist-item">Gerhard</li>
+                  <li class="sublist-item">Park</li>
+                  <li class="sublist-item">Maupin</li>
+                  <li class="sublist-item">Wicki-Hayden</li>
+                  <li class="sublist-item">Harmonic</li>
+                  <li class="sublist-item">Janko</li>
+                  <li class="sublist-item">C-System</li>
+                  <li class="sublist-item">B-System</li>
+                  <li class="sublist-item">Custom</li>
+                </ul>
+              <li>Open source and customizable</li>
+            </ul>
+          </div>
+
+        <hr>
+
+        <div class="content-container">
+          <h3>specs</h3>
+          <ul>
+            <li>lorem ipsum</li>
+            <li>consectetur</li>
+            <li>adipiscing elit</li>
+            <li>adipiscing elit</li>
+            <li>eros quis scelerisque</li>
+            <li>fermentum</li>
+          </ul>
+        </div>
+
+        <hr>
+
+        <div class="content-container">
+          <h3>learn more</h3>
+          <p>Sed id nulla ut dui fringilla lacinia sed ac lorem. Vestibulum elementum lorem nec odio consectetur ultrices.</p>
+        </div>
+
+      </div>
+    </section>
+    </div>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <section class="footer-container">
+    <div class="footer-content-container">
+      <p><a class="footer-link" href="https://github.com/famulus/rainboard">view source code on github <i class="fab fa-github"></i></a></p>
     </div>
   </section>
 
-  <section class="images-container">
-    <img class="keyboard-image"
-         src="./img/rainboard_top-cropped.png"
-         alt="rainboard unit">
-  </section>
 
 
-  <section class="copy-container">
-  <div class="copy-content-container">
-
-   <div class="content-container">
-    <h3>Lightning Features</h3>
-
-    <div class="features-container">
-
-    <ul>
-      <li>- 61 key isomorphic midi keyboard with colored lights</li>
-      <li>- Genuine Sanwa arcade buttons</li>
-      <li>- 5 octave range (11 octave with octave up/down meta-buttons)</li>
-      <li>- Pitchbend ribbon</li>
-      <li>- Modulation ribbon</li>
-      <li>
-        <ul>
-          <li class="sublist-heading">- 12 meta-buttons on the sides:</li>
-            <li class="sublist-item">- octave up/down</li>
-            <li class="sublist-item">- semitone up/down</li>
-            <li class="sublist-item">- velocity up/down</li>
-            <li class="sublist-item">- six user assignable buttons</li>
-        </ul>
-      </li>
-      <li>
-        <ul>
-          <li class="sublist-heading">- Adjustable keyboard layouts:</li>
-          <li class="sublist-item">- Gerhard</li>
-          <li class="sublist-item">- Park</li>
-          <li class="sublist-item">- Maupin</li>
-          <li class="sublist-item">- Wicki-Hayden</li>
-          <li class="sublist-item">- Harmonic</li>
-          <li class="sublist-item">- Janko</li>
-          <li class="sublist-item">- C-System</li>
-          <li class="sublist-item">- B-System</li>
-          <li class="sublist-item">- Custom</li>
-        </ul>
-      </li>
-      <li>- MIDI DIN OUT</li>
-      <li>- MIDI USB IN/OUT</li>
-      <li>- Velocity adjustable (not velocity sensitive)</li>
-      <li>- External power supply only required for lights</li>
-      <li>- Includes USB cable and power adapter</li>
-      <li>- Open source and customizable</li>
-    </ul>
+  <!-- ========================================= -->
+  <!-- ========================================= -->
+  <!-- ========================================= -->
+  <!-- ========================================= -->
+  <!-- ========================================= -->
 
 
 
-<hr>
-
-<h3>Thunder Features</h3>
-  <ul>
-    <li>- 61 key isomorphic midi keyboard</li>
-    <li>- Genuine Sanwa arcade buttons</li>
-    <li>- 5 octave range</li>
-    <li>- MIDI USB OUT</li>
-    <li>
-      <ul>
-        <li class="sublist-heading">- Adjustable keyboard layouts:</li>
-        <li class="sublist-item">- Gerhard</li>
-        <li class="sublist-item">- Park</li>
-        <li class="sublist-item">- Maupin</li>
-        <li class="sublist-item">- Wicki-Hayden</li>
-        <li class="sublist-item">- Harmonic</li>
-        <li class="sublist-item">- Janko</li>
-        <li class="sublist-item">- C-System</li>
-        <li class="sublist-item">- B-System</li>
-        <li class="sublist-item">- Custom</li>
-      </ul>
-    <li>- Open source and customizable</li>
-  </ul>
-
-
-    </div>
-  </div>
-
-   <div class="content-container">
-    <h3>specs</h3>
-    <ul>
-      <li>- Lorem ipsum</li>
-      <li>- consectetur</li>
-      <li>- adipiscing elit</li>
-      <li>- adipiscing elit</li>
-      <li>- eros quis scelerisque</li>
-      <li>- fermentum</li>
-    </ul>
-   </div>
-
-   <div class="content-container">
-     <h3>learn more</h3>
-     <p>Sed id nulla ut dui fringilla lacinia sed ac lorem. Vestibulum  elementum lorem nec odio consectetur ultrices.</p>
-   </div>
-
-  </div>
-
-</div>
-
-</section>
-
-<br>
-<br>
-<br>
-<br>
-
-<section class="footer-container">
-  <div class="footer-content-container">
-  <p>
-    <a class="footer-link"
-       href="https://github.com/famulus/rainboard">
-       view on github <i class="fab fa-github"></i>
-    </a>
-  </p>
-</div>
-</section>
-
-</div>
-
-
-
-
-
-  <script src="js/vendor/modernizr-3.11.2.min.js"></script>
-  <script src="js/plugins.js"></script>
-  <script src="js/main.js"></script>
-
-  <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
-  <script>
-    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
-    ga('create', 'UA-XXXXX-Y', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
+  <script src="js/vendor/modernizr-3.11.2.min.js">
   </script>
-  <script src="https://www.google-analytics.com/analytics.js" async></script>
-</body>
+  <script src="js/plugins.js">
+  </script>
+  <script src="js/main.js">
+  </script> <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
 
+  <script>
+     window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+     ga('create', 'UA-XXXXX-Y', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
+  </script>
+  <script async src="https://www.google-analytics.com/analytics.js">
+  </script>
+</body>
 </html>

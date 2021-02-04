@@ -7,21 +7,10 @@
  * Kroc Camen, and the H5BP dev community and team.
  */
 
-/* Google Fonts */
-/*font-family: 'Chakra Petch', sans-serif;*/
-/*font-family: 'Syne', sans-serif;*/
-/*font-family: 'Cabin', sans-serif;*/
-/*font-family: 'Varela Round', sans-serif;*/
-/*font-family: 'Archivo Black', sans-serif;*/
-/*font-family: 'Russo One', sans-serif;*/
-
 /* ==========================================================================
    Base styles: opinionated defaults
    ========================================================================== */
 
-html {
-  line-height: 1.4;
-}
 
 /*
  * Remove text-shadow in selection highlight:
@@ -41,19 +30,6 @@ html {
 ::selection {
   background: #b3d4fc;
   text-shadow: none;
-}
-
-/*
- * A better looking default horizontal rule
- */
-
-hr {
-  display: block;
-  height: 1px;
-  border: 0;
-  border-top: 2px solid #e6e6e6;
-  margin: 1em 0;
-  padding: 0;
 }
 
 /*
@@ -97,6 +73,11 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+html {
+  line-height: 1.4;
+}
+
+
 * {
   box-sizing: border-box;
   font-family: 'Oxygen', Helvetica, sans-serif;
@@ -106,6 +87,15 @@ body {
   margin: 0;
   color: #242424;
   background-color: #fafafa; /* off-white */
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 2px solid #e6e6e6;
+  margin: 0;
+  padding: 0;
 }
 
 #rainboard-body {
@@ -134,16 +124,17 @@ body {
 }
 
 .footer-container {
+  width: 100%;
+  padding: .25rem 1rem;
   display: block;
   left: 0;
   bottom: 0;
-  width: 100%;
   max-width: 100%;
-  font-size: 90%;
-  z-index: 1;
-  padding: .25rem 1rem;
-  text-align: right;
+  background: #f7f7f7;
   border-top: 2px solid #e6e6e6;
+  font-size: 90%;
+  text-align: right;
+  z-index: 1;
 }
 
 .footer-link-container {
@@ -166,9 +157,6 @@ body {
   margin-top: 1em;
 }
 
-
-
-
 h1 {
   display: block;
   text-align: center;
@@ -178,12 +166,6 @@ h1 {
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke-width: 1.5px;
   -webkit-text-stroke-color: #222;
-  font-family: 'Russo One', sans-serif;
-  font-family: 'Archivo Black', sans-serif;
-  font-family: 'Chakra Petch', sans-serif;
-  font-family: 'Varela Round', sans-serif;
-  font-family: 'Syne', sans-serif;
-  font-family: 'Cabin', sans-serif;
   font-family: 'Oxygen', sans-serif;
 }
 
@@ -210,10 +192,10 @@ h4 {
   font-weight: 100;
 }
 
-p, ul {
+p, ul, li {
   font-size: 1em;
-  font-family: 'Lato', sans-serif;
-  font-family: 'Open Sans', sans-serif;
+  /*font-family: 'Lato', sans-serif;*/
+  /*font-family: 'Open Sans', sans-serif;*/
   font-family: 'Roboto', sans-serif;
 }
 
@@ -223,7 +205,16 @@ ul {
 }
 
 li {
+  font-size: 1em;
   line-height: 2;
+}
+
+li::before {
+  content: "- ";
+}
+
+.sublist-heading {
+
 }
 
 .sublist-item {
@@ -232,10 +223,9 @@ li {
 }
 
 
-
 .keyboard-image {
   display: block;
-  width:100%;
+  width: 100%;
   max-width: 600px;
   margin: 0 auto;
 }
@@ -287,6 +277,10 @@ h1 {
 
   p, ul {
     font-size: .85em;
+  }
+
+  .content-container {
+    margin-top: 1em;
   }
 
   .footer-container {
@@ -363,9 +357,14 @@ only screen and (min-device-pixel-ratio : 1.5) {
 
 
 
-
-
-
+/* ==========================================================================
+/* ==========================================================================
+/* ==========================================================================
+/* ==========================================================================
+/* ==========================================================================
+/* ==========================================================================
+   End Author's custom styles
+   ========================================================================== */
 
 
 
