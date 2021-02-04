@@ -3,4 +3,14 @@
 TO DEPLOY UPDATES TO SURGE:
 ====================
 
+Deploying first time? Get surge:
+
+$ npm install --global surge
+
+Learn more:
+https://surge.sh/help/getting-started-with-surge
+
+
+Deploy:
+
 $ surge --domain https://rainboard.surge.sh
