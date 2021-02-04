@@ -91,10 +91,11 @@ body {
 
 hr {
   display: block;
+  width: 90%;
+  margin: 0 auto;
   height: 1px;
   border: 0;
   border-top: 2px solid #e6e6e6;
-  margin: 0;
   padding: 0;
 }
 
@@ -142,9 +143,9 @@ hr {
   max-width: 600px;
 }
 
-.footer-link {
+.link {
   color: #222 !important;
-  text-decoration: none;
+  text-decoration: none !important;
   transition: color .25s;
 }
 
@@ -192,7 +193,7 @@ h4 {
   font-weight: 100;
 }
 
-p, ul, li {
+p, li {
   font-size: 1em;
   /*font-family: 'Lato', sans-serif;*/
   /*font-family: 'Open Sans', sans-serif;*/
@@ -257,7 +258,7 @@ and (max-device-width : 480px) {
     padding: .5rem 1rem;
   }
 
-h1 {
+  h1 {
     margin: 0;
     font-size: 3em;
     font-weight: 700;
@@ -275,7 +276,7 @@ h1 {
     font-weight: 100;
   }
 
-  p, ul {
+  p, li {
     font-size: .85em;
   }
 
