@@ -1,3 +1,5 @@
+
+
 Lightning
 
 61 key isomorphic midi keyboard with colored lights
@@ -10,6 +12,7 @@ Modulation ribbon
   semitone up/down
   velocity up/down
   6 user assignable buttons
+
 Adjustable keyboard layouts:
   Gerhard
   Park
@@ -19,7 +22,8 @@ Adjustable keyboard layouts:
   Janko
   C-System
   B-System
-  Custom  
+  Custom
+
 MIDI DIN OUT
 MIDI USB IN/OUT
 Velocity adjustable (not velocity sensitive)
@@ -43,7 +47,7 @@ Adjustable keyboard layouts:
   Janko
   C-System
   B-System
-  Custom  
+  Custom
 Open source and customizable
 
 

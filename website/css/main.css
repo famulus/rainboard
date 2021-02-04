@@ -20,7 +20,6 @@
    ========================================================================== */
 
 html {
-  color: #222;
   line-height: 1.4;
 }
 
@@ -52,7 +51,7 @@ hr {
   display: block;
   height: 1px;
   border: 0;
-  border-top: 1px solid #ccc;
+  border-top: 2px solid #e6e6e6;
   margin: 1em 0;
   padding: 0;
 }
@@ -105,7 +104,8 @@ textarea {
 
 body {
   margin: 0;
-  background-color: #f2f2f2; /* off-white */
+  color: #242424;
+  background-color: #fafafa; /* off-white */
 }
 
 #rainboard-body {
@@ -141,7 +141,7 @@ body {
   max-width: 100%;
   font-size: 90%;
   z-index: 1;
-  padding: .25rem .5rem;
+  padding: .25rem 1rem;
   text-align: right;
   border-top: 2px solid #e6e6e6;
 }
@@ -162,10 +162,6 @@ body {
   text-decoration: none;
 }
 
-.features-container {
-  /*column-count: 2;*/
-}
-
 .content-container {
   margin-top: 1em;
 }
@@ -175,13 +171,13 @@ body {
 
 h1 {
   display: block;
+  text-align: center;
   margin: 0 auto;
   font-size: 5em;
   font-weight: 700;
-  opacity: .9;
-    -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: black;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: 1.5px;
+  -webkit-text-stroke-color: #222;
   font-family: 'Russo One', sans-serif;
   font-family: 'Archivo Black', sans-serif;
   font-family: 'Chakra Petch', sans-serif;
@@ -193,7 +189,8 @@ h1 {
 
 h2 {
   display: block;
-  margin: 0;
+  text-align: center;
+  margin: 0 auto;
   font-size: 1.25em;
   font-weight: 100;
 }
@@ -201,9 +198,16 @@ h2 {
 h3 {
   display: block;
   margin: .25rem 0 0 0;
-  font-size: 1.5em;
+  font-size: 1.25em;
   font-weight: 100;
   text-transform: uppercase;
+}
+
+h4 {
+  display: block;
+  margin: .25rem 0 0 0;
+  font-size: 1.25em;
+  font-weight: 100;
 }
 
 p, ul {
@@ -213,6 +217,22 @@ p, ul {
   font-family: 'Roboto', sans-serif;
 }
 
+ul {
+  list-style-type:none;
+  padding-inline-start: 0;
+}
+
+li {
+  line-height: 2;
+}
+
+.sublist-item {
+  margin-left: 2em;
+  line-height: 1.75;
+}
+
+
+
 .keyboard-image {
   display: block;
   width:100%;
@@ -220,10 +240,6 @@ p, ul {
   margin: 0 auto;
 }
 
-ul {
-  list-style-type:none;
-  padding-inline-start: 0;
-}
 
 
 /* ====================================== */
