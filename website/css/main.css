@@ -193,10 +193,8 @@ h4 {
   font-weight: 100;
 }
 
-p, li {
+p, li, a {
   font-size: 1em;
-  /*font-family: 'Lato', sans-serif;*/
-  /*font-family: 'Open Sans', sans-serif;*/
   font-family: 'Roboto', sans-serif;
 }
 
