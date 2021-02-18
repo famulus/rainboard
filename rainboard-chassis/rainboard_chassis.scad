@@ -2,7 +2,7 @@ round_over = 4;
 wall_thickness = 3 ;
 
 rainboad_diameter = 332.55  ; // point to point, long diagonal  288 short diag
-rainboard_height = 48;
+rainboard_height = 41;
 
 hole_radius = 12;
 
@@ -19,24 +19,24 @@ foot_inset = 15;
 module backPanel(dimentions=[1,2,3]) {
 
 midi_opening = 18.5; //diameter
-usb_opening = [14.5,14.5,10] ;
-usb_vert_offset = 9.03;    
+midi_horizontal_offset = 38.9735;    
+usb_width = 14.5;    //cube_width
+usb_opening = [usb_width,usb_width,10] ;
     
 dc_power_opening = 13; // diameter
+dc_power_horizontal_offset = -38.1765;    
     
-midi_in_y = -15.4; // offset from 0 on PCB
-midi_out_y = -37; 
-midi_vert_offset = -7.75;   
+top_of_chassis_to_top_of_pcb = 25;    
+    
+pcb_offset = top_of_chassis_to_top_of_pcb -(rainboard_height/2);
  
-translate([0,((288/2)-1.5),0]) rotate([90,0,0]){ // place all holes at the back panel
+translate([0,((288/2)-1.5),pcb_offset]) rotate([90,0,0]){ // place all holes at the back panel
     
-     translate([
-    19.5+midi_in_y, usb_vert_offset,0]) cube(usb_opening, center=true); // cutout for USB
-    translate([50+midi_in_y,usb_vert_offset,0]) cylinder(20, d=(dc_power_opening), center=true,$fn=resolution);  // cutout for power   
+     translate([ 0, -(usb_width/2),0]) cube(usb_opening, center=true); // cutout for USB
+    translate([midi_horizontal_offset,-(dc_power_opening/2),0]) cylinder(20, d=(dc_power_opening), center=true,$fn=resolution);  // cutout for power   
 
-    translate([midi_in_y,midi_vert_offset,0]) cylinder(20, d=(midi_opening), center=true,$fn=resolution);   // midi IN  
+    translate([dc_power_horizontal_offset,-(midi_opening/2),0]) cylinder(20, d=(midi_opening), center=true,$fn=resolution);   // midi OUT  
     
-    translate([midi_out_y,midi_vert_offset,0]) cylinder(20, d=(midi_opening), center=true,$fn=resolution);     // midi OUT
      }   
      
 
@@ -102,22 +102,20 @@ module buttons(buttons ) {
 
 
 
-module ledge( ) {
+module ledge( ) {    // ledge for plexiglass
 
-    // ledge for plexiglass
+plexi_thickness = 3; 
+recess = 2; 
+
 difference (){
- plexi_thickness = 3;   
     
- translate([0,0,  (rainboard_height/2 - (plexi_thickness/2)-plexi_thickness-2)  ])    cylinder(h=plexi_thickness , d=(rainboad_diameter  ), center=true,$fn=6);   // the ledge  
+ translate([0,0,  (rainboard_height/2 - (plexi_thickness/2)-plexi_thickness-recess)  ])    cylinder(h=plexi_thickness , d=(rainboad_diameter  ), center=true,$fn=6);   // the ledge  
     
 
 
     translate([0,0,rainboard_height/2 - 3-2])   cylinder(h=20 , d=(rainboad_diameter-foot_inset-4), center=true,$fn=6);     // the cutout negative
 
-translate([0,((288/2)-1.5),0]) rotate([90,0,0]){ // place all holes at the back panel
-    translate([20,(rainboard_height/2)-10.5,0])cube([80,10,20],true);
 
-}
 
     }
 
@@ -236,11 +234,6 @@ softpot_wall_thickness = 1.5;
       
       
 
-//difference(){
-//    
-//
-//
-//    }
 
 
  }
@@ -273,8 +266,8 @@ difference(){
     backPanel(back_panel);
 
    
-     rotate([0,0,60])sideButtons();
-     rotate([0,0,300])sideButtons();
+     rotate([0,0,120])sideButtons();
+     rotate([0,0,240])sideButtons();
      rotate([0,0,0])sideButtons();
       
 
