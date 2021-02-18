@@ -3,8 +3,9 @@ wall_thickness = 2.5 ;
 
 rainboard_diameter = 332.55  ; // point to point, long diagonal  288 short diag
 rainboard_minor_diameter = 288;
-rainboard_short_diameter = 300;
-rainboard_short_minor_diameter = 259.8;
+
+rainboard_short_diameter = 280;
+rainboard_short_minor_diameter = 242.5;
 
 
 
@@ -19,7 +20,7 @@ back_panel = [125,40,60];
 foot_inset = 15;
 
 module footprint(){
-  translate([0,7,0]) import("/Users/clean/Documents/rainboard/rainboard-chassis/chassis_solver.svg", center=true);
+  translate([0,11.4,0]) import("/Users/clean/Documents/rainboard/rainboard-chassis/thunder/chassis_solver.svg", center=true);
 
 
 }
