@@ -1,4 +1,4 @@
-16949509247524645
+17154521527906452
 Battery
 BatteryHolder_Bulgin_BX0036_1xC
 Bulgin Battery Holder, BX0036, Battery Type C (https://www.bulgin.com/products/pub/media/bulgin/data/Battery_holders.pdf)
@@ -53487,13 +53487,6 @@ Maxim_WLP-12
 12
 12
 Package_BGA
-Microchip_TFBGA-196_11x11mm_Layout14x14_P0.75mm_SMD
-TFBGA-196, 11.0x11.0mm, 196 Ball, 14x14 Layout, 0.75mm Pitch, http://ww1.microchip.com/downloads/en/DeviceDoc/SAMA5D2-Series-Data-Sheet-DS60001476C.pdf#page=2956
-BGA 196 0.75
-0
-196
-196
-Package_BGA
 TFBGA-64_5x5mm_Layout8x8_P0.5mm
 TFBGA-64, 8x8 raster, 5x5mm package, pitch 0.5mm; see section 6.3 of http://www.st.com/resource/en/datasheet/stm32f100v8.pdf
 BGA 64 0.5
@@ -75263,6 +75256,874 @@ varistor SIOV
 0
 2
 2
+footprints
+54-00166
+
+
+0
+3
+3
+footprints
+500E-0249
+
+
+0
+3
+3
+footprints
+62684-401100ALF
+
+
+0
+42
+41
+footprints
+10103594-0001LF
+Micro USB Type B 10103594-0001LF, http://cdn.amphenol-icc.com/media/wysiwyg/files/drawing/10103594.pdf
+USB USB_B USB_micro USB_OTG
+0
+17
+6
+footprints
+009296002202906
+
+
+0
+4
+2
+footprints
+009296003202906
+
+
+0
+6
+3
+footprints
+ACM4520V-142-2P-T00
+
+
+0
+4
+4
+footprints
+ACS70331EESATR-2P5U3
+
+
+0
+12
+12
+footprints
+B04P-VL
+
+
+0
+4
+4
+footprints
+BK_1A1907-06-R
+
+
+0
+4
+2
+footprints
+BarrelJack_Horizontal
+DC Barrel Jack
+Power Jack
+0
+3
+3
+footprints
+CAPACITOR_0402N
+Capacitor, Chip; 1.00 mm L X 0.50 mm W X 0.37 mm H body
+
+0
+2
+2
+footprints
+CAPACITOR_0603N
+Capacitor, Chip; 1.60 mm L X 0.80 mm W X 0.55 mm H body
+
+0
+2
+2
+footprints
+CAPACITOR_0805N
+Capacitor, Chip; 2.00 mm L X 1.25 mm W X 0.65 mm H body
+
+0
+2
+2
+footprints
+CAPACITOR_1206N
+Capacitor, Chip; 3.20 mm L X 1.60 mm W X 1.60 mm H body
+
+0
+2
+2
+footprints
+CAPACITOR_1210N
+Capacitor, Chip; 3.20 mm L X 2.50 mm W X 0.70 mm H body
+
+0
+2
+2
+footprints
+CAPAE660X550D720L265X65N
+Capacitor, Aluminum Electrolytic; 6.60 mm L X 6.60 mm W X 5.50 mm H body
+
+0
+2
+2
+footprints
+CAPAE660X800L240X65N
+Capacitor, Aluminum Electrolytic; 6.60 mm L X 6.60 mm W X 8.00 mm H body
+
+0
+2
+2
+footprints
+CAPPRD200W50D550H1250
+Capacitor, Polarized, Radial (Electrolytic); 2.00 mm C X 5.50 mm Dia X 12.50 mm H body
+
+0
+2
+2
+footprints
+CAPRB254W54L508T318H762
+Capacitor, Radial (Disk); 2.54 mm C X 0.548 mm W 5.08 mm L X 3.18 mm T X 7.62 mm H body
+
+0
+2
+2
+footprints
+CORTEK_SIZE_2
+
+
+0
+1
+1
+footprints
+CUSTOM_BELLO_SW
+
+
+0
+2
+2
+footprints
+D3V3F8U9LP3810-7
+
+
+0
+9
+9
+footprints
+DIOAD650W83L430D220
+Diode, Axial; 6.50 mm C X 0.832 mm W 4.30 mm L X 2.20 mm Dia body
+
+0
+2
+2
+footprints
+DIODE_SMAN
+Diode, Small Outline Diode Flat Lead (SODFL); 4.295 mm L X 2.595 mm W X 2.29 mm H body
+
+0
+2
+2
+footprints
+DIODE_SMBN
+Diode, Small Outline Diode Flat Lead (SODFL); 4.405 mm L X 3.62 mm W X 2.61 mm H body
+
+0
+2
+2
+footprints
+DPAK3P457_994X240L165X76T538X492N
+DPAK, 4.572 mm pitch; 2 pin, 6.096 mm L X 6.575 mm W X 2.40 mm H body
+
+0
+14
+3
+footprints
+DPAK3P460_1010X240L155X76T530X483N
+DPAK, 4.60 mm pitch; 2 pin, 6.10 mm L X 6.60 mm W X 2.40 mm H body
+
+0
+9
+3
+footprints
+DPAK3P460_1010X240L155X76T540X546N
+DPAK, 4.60 mm pitch; 2 pin, 6.10 mm L X 6.60 mm W X 2.40 mm H body
+
+0
+9
+3
+footprints
+EDSTLZ1555_8
+Header, Vertical Shrouded, 3.81 mm row X 1.00 mm column pitch; 0.90 mm lead width, 8 pins, 1 row, 8 pins per row, 35.68 mm L X 6.90 mm W X 9.20 mm H body
+
+0
+8
+8
+footprints
+EDSTLZ1555_14
+Header, Vertical Shrouded, 3.81 mm row X 1.00 mm column pitch; 0.90 mm lead width, 14 pins, 1 row, 14 pins per row, 54.73 mm L X 6.90 mm W X 9.30 mm H body
+
+0
+14
+14
+footprints
+FUSC455X324X155L45N
+Fuse, Chip; 4.55 mm L X 3.24 mm W X 1.55 mm H body
+
+0
+2
+2
+footprints
+FUSE_0603N
+Fuse, Chip; 1.60 mm L X 0.80 mm W X 0.55 mm H body
+
+0
+2
+2
+footprints
+FUSE_0805
+Fuse, Chip; 2.00 mm L X 1.25 mm W X 0.65 mm H body
+
+0
+2
+2
+footprints
+FUSE_1206
+Fuse, Chip; 3.20 mm L X 1.60 mm W X 1.60 mm H body
+
+0
+2
+2
+footprints
+FUSE_2016
+Fuse, Chip; 5.08 mm L X 4.065 mm W X 1.60 mm H body
+
+0
+2
+2
+footprints
+FUSE_2920N
+Fuse, Chip; 7.355 mm L X 5.12 mm W X 5.44 mm H body
+
+0
+2
+2
+footprints
+FX8C-140_140P11-SV4J(71)
+
+
+0
+284
+281
+footprints
+FX8C-140_140S11-SV5J(71)
+
+
+0
+284
+281
+footprints
+G2RL-24
+
+
+0
+8
+8
+footprints
+G4W-2212P-US-TV5-HP-DC24
+
+
+0
+6
+6
+footprints
+INDC300X300X120L75N
+Inductor, Chip; 3.00 mm L X 3.00 mm W X 1.20 mm H body
+
+0
+2
+2
+footprints
+INDUCTOR_0805N
+Inductor, Chip; 2.00 mm L X 1.25 mm W X 0.65 mm H body
+
+0
+2
+2
+footprints
+INDUCTOR_1008N
+Inductor, Chip; 2.50 mm L X 2.00 mm W X 1.00 mm H body
+
+0
+2
+2
+footprints
+INDUCTOR_2520N
+Inductor, Chip; 2.50 mm L X 2.00 mm W X 1.00 mm H body
+
+0
+2
+2
+footprints
+LEDM160X80X65L35X65N
+LED, Molded Body; 1.60 mm L X 0.80 mm W X 0.65 mm H body
+
+0
+2
+2
+footprints
+LED_1206N
+LED, Chip; 3.20 mm L X 1.60 mm W X 1.60 mm H body
+
+0
+2
+2
+footprints
+MAX485ESA+N
+Small Outline IC (SOIC), 1.27 mm pitch; 8 pin, 4.90 mm L X 3.90 mm W X 1.75 mm H body
+
+0
+8
+8
+footprints
+MM3Z5V1T1GN
+Diode, Small Outline Diode (SOD); 1.70 mm L X 1.25 mm W X 1.10 mm H body
+
+0
+2
+2
+footprints
+NP_LOGO_SMALL
+
+
+0
+0
+0
+footprints
+OKI-78SR_horizontal
+
+
+0
+3
+3
+footprints
+P1J-2-AX16PA
+
+
+0
+8
+8
+footprints
+PTH_1.5mm_2.5mm
+
+
+0
+1
+1
+footprints
+PTS_647_SN70_SMTR2_LFS
+
+
+0
+4
+4
+footprints
+PinHeader_1x02_P2.54mm_Vertical
+Through hole straight pin header, 1x02, 2.54mm pitch, single row
+Through hole pin header THT 1x02 2.54mm single row
+0
+2
+2
+footprints
+PinSocket_2x25_P1.27mm_Vertical_PIP-1
+Through hole straight socket strip, 2x25, 1.27mm pitch, double cols (from Kicad 4.0.7), script generated
+Through hole socket strip THT 2x25 1.27mm double row
+0
+50
+50
+footprints
+PinSocket_2x25_P1.27mm_Vertical_PIP-2
+Through hole straight socket strip, 2x25, 1.27mm pitch, double cols (from Kicad 4.0.7), script generated
+Through hole socket strip THT 2x25 1.27mm double row
+0
+50
+50
+footprints
+PinSocket_2x25_P1.27mm_Vertical_PIP-3
+Through hole straight socket strip, 2x25, 1.27mm pitch, double cols (from Kicad 4.0.7), script generated
+Through hole socket strip THT 2x25 1.27mm double row
+0
+50
+50
+footprints
+QFN-64-1EP_9x9mm_P0.5mm_EP7.3x7.3mm_ThermalVias
+QFN, 64 Pin (http://ww1.microchip.com/downloads/en/DeviceDoc/00002304A.pdf (page 43)), generated with kicad-footprint-generator ipc_dfn_qfn_generator.py
+QFN DFN_QFN
+0
+86
+69
+footprints
+QFN17P50_300X300X80L40X25T110N
+Quad Flat No-Lead (QFN with Tab), 0.50 mm pitch; square, 4 pin X 4 pin, 3.00 mm L X 3.00 mm W X 0.80 mm H body
+
+0
+17
+17
+footprints
+QFN17P50_300X300X100L40X24T168N
+Quad Flat No-Lead (QFN with Tab), 0.50 mm pitch; square, 4 pin X 4 pin, 3.00 mm L X 3.00 mm W X 1.00 mm H body
+
+0
+24
+17
+footprints
+QFN25P50_400X400X100L40X24T210N
+Quad Flat No-Lead (QFN with Tab), 0.50 mm pitch; square, 6 pin X 6 pin, 4.00 mm L X 4.00 mm W X 1.00 mm H body
+
+0
+32
+25
+footprints
+QFN33P50_500X500X60L40X24T300N
+Quad Flat No-Lead (QFN with Tab), 0.50 mm pitch; square, 8 pin X 8 pin, 5.00 mm L X 5.00 mm W X 0.60 mm H body
+
+0
+40
+33
+footprints
+QFN49P50_700X700X60L40X25T560N
+Quad Flat No-Lead (QFN with Tab), 0.50 mm pitch; square, 12 pin X 12 pin, 7.00 mm L X 7.00 mm W X 0.60 mm H body
+
+0
+66
+49
+footprints
+QFP32P80_900X900X160L60X37N
+Quad Flat Pack (QFP), 0.80 mm pitch; square, 8 pin X 8 pin, 7.00 mm L X 7.00 mm W X 1.60 mm H body
+
+0
+32
+32
+footprints
+QFP100P50_1600X1600X160L52X19N
+Quad Flat Pack (QFP), 0.50 mm pitch; square, 25 pin X 25 pin, 13.90 mm L X 13.90 mm W X 1.60 mm H body
+
+0
+102
+102
+footprints
+QFP128P40_1600X1600X160L60X18N
+Quad Flat Pack (QFP), 0.40 mm pitch; square, 32 pin X 32 pin, 14.00 mm L X 14.00 mm W X 1.60 mm H body
+
+0
+130
+130
+footprints
+RESAD500W45L340D200
+Resistor, Axial; 5.00 mm C X 0.45 mm W 3.40 mm L X 2.00 mm Dia body
+
+0
+2
+2
+footprints
+RESISTOR_0402N
+Resistor, Chip; 1.00 mm L X 0.50 mm W X 0.37 mm H body
+
+0
+2
+2
+footprints
+RESISTOR_0603N
+Resistor, Chip; 1.60 mm L X 0.80 mm W X 0.55 mm H body
+
+0
+2
+2
+footprints
+RESISTOR_0805N
+Resistor, Chip; 2.00 mm L X 1.25 mm W X 0.65 mm H body
+
+0
+2
+2
+footprints
+RESISTOR_1206N
+Resistor, Chip; 3.20 mm L X 1.60 mm W X 1.60 mm H body
+
+0
+2
+2
+footprints
+RESTEC_ACDC_MODULE
+
+
+0
+4
+1
+footprints
+RH100-12.000-10-2020-EXT-TR
+
+
+0
+4
+4
+footprints
+SDR1307-470KL
+
+
+0
+2
+2
+footprints
+SHDRV2W69P250_100_2X1_740X575H705
+Header, Vertical Shrouded, 2.50 mm row X 1.00 mm column pitch; 0.69 mm lead width, 2 pins, 1 row, 2 pins per row, 7.40 mm L X 5.75 mm W X 7.05 mm H body
+
+0
+2
+2
+footprints
+SHDRV2W100P100_420_1X2_540X960H1310
+Header, Vertical Shrouded, 1.00 mm row X 4.20 mm column pitch; 1.00 mm lead width, 2 pins, 2 rows, 1 pin per row, 5.40 mm L X 9.60 mm W X 13.10 mm H body
+
+0
+2
+2
+footprints
+SHDRV3W69P250_100_3X1_990X575H705
+Header, Vertical Shrouded, 2.50 mm row X 1.00 mm column pitch; 0.69 mm lead width, 3 pins, 1 row, 3 pins per row, 9.90 mm L X 5.75 mm W X 7.05 mm H body
+
+0
+3
+3
+footprints
+SHDRV4W69P250_100_4X1_1240X575H705
+Header, Vertical Shrouded, 2.50 mm row X 1.00 mm column pitch; 0.69 mm lead width, 4 pins, 1 row, 4 pins per row, 12.40 mm L X 5.75 mm W X 7.05 mm H body
+
+0
+4
+4
+footprints
+SHDRV4W125P420_550_2X2_960X960H1310
+Header, Vertical Shrouded, 4.20 mm row X 5.50 mm column pitch; 1.25 mm lead width, 4 pins, 2 rows, 2 pins per row, 9.60 mm L X 9.60 mm W X 13.10 mm H body
+
+0
+4
+4
+footprints
+SHDRV6W114P396_100_6X1_2370X850H940
+Header, Vertical Shrouded, 3.96 mm row X 1.00 mm column pitch; 1.14 mm lead width, 6 pins, 1 row, 6 pins per row, 23.70 mm L X 8.50 mm W X 9.40 mm H body
+
+0
+6
+6
+footprints
+SHDRV6W185P620_828_3X2_1960X1800H1645
+Header, Vertical Shrouded, 6.20 mm row X 8.28 mm column pitch; 1.85 mm lead width, 6 pins, 2 rows, 3 pins per row, 19.60 mm L X 18.00 mm W X 16.45 mm H body
+
+0
+6
+6
+footprints
+SHDRV9W55P200_100_9X1_1990X450H605
+Header, Vertical Shrouded, 2.00 mm row X 1.00 mm column pitch; 0.55 mm lead width, 9 pins, 1 row, 9 pins per row, 19.90 mm L X 4.50 mm W X 6.05 mm H body
+
+0
+9
+9
+footprints
+SHDRV14W55P200_100_14X1_2990X450H605
+Header, Vertical Shrouded, 2.00 mm row X 1.00 mm column pitch; 0.55 mm lead width, 14 pins, 1 row, 14 pins per row, 29.90 mm L X 4.50 mm W X 6.05 mm H body
+
+0
+14
+14
+footprints
+SHDRV16W55P200_100_16X1_3390X450H605
+Header, Vertical Shrouded, 2.00 mm row X 1.00 mm column pitch; 0.55 mm lead width, 16 pins, 1 row, 16 pins per row, 33.90 mm L X 4.50 mm W X 6.05 mm H body
+
+0
+16
+16
+footprints
+SMI-1324-TW-5V-3-R
+
+
+0
+2
+2
+footprints
+SOD250X125X110L30X32N
+Diode, Small Outline Diode (SOD); 1.70 mm L X 1.25 mm W X 1.10 mm H body
+
+0
+2
+2
+footprints
+SOD260X130X100L32X30N
+Diode, Small Outline Diode (SOD); 1.70 mm L X 1.30 mm W X 1.00 mm H body
+
+0
+2
+2
+footprints
+SOD262X130X100L32X30N
+Diode, Small Outline Diode (SOD); 1.70 mm L X 1.30 mm W X 1.00 mm H body
+
+0
+2
+2
+footprints
+SODFL360X160X130L45X62N
+Diode, Small Outline Diode Flat Lead (SODFL); 2.675 mm L X 1.60 mm W X 1.30 mm H body
+
+0
+2
+2
+footprints
+SODFL370X178X100L65X90N
+Diode, Small Outline Diode Flat Lead (SODFL); 2.80 mm L X 1.78 mm W X 1.00 mm H body
+
+0
+2
+2
+footprints
+SOIC4P254_458X1015X390L80X75N
+Small Outline IC (SOIC), 2.54 mm pitch; 4 pin, 4.58 mm L X 6.50 mm W X 3.90 mm H body
+
+0
+4
+4
+footprints
+SOIC8P127_488X585X343L60X40N
+Small Outline IC (SOIC), 1.27 mm pitch; 8 pin, 4.88 mm L X 3.92 mm W X 3.43 mm H body
+
+0
+8
+8
+footprints
+SOIC16P127_990X600X175L83X41N
+Small Outline IC (SOIC), 1.27 mm pitch; 16 pin, 9.90 mm L X 3.90 mm W X 1.75 mm H body
+
+0
+16
+16
+footprints
+SOP6P95_290X280X110L45X40N
+Small Outline Pkg (SOP), 0.95 mm pitch; 6 pin, 2.90 mm L X 1.60 mm W X 1.10 mm H body
+
+0
+6
+6
+footprints
+SOP16P65_500X640X120L62X24N
+Small Outline Pkg (SOP), 0.65 mm pitch; 16 pin, 5.00 mm L X 4.40 mm W X 1.20 mm H body
+
+0
+16
+16
+footprints
+SOP24P65_780X640X110L62X24N
+Small Outline Pkg (SOP), 0.65 mm pitch; 24 pin, 7.80 mm L X 4.40 mm W X 1.10 mm H body
+
+0
+24
+24
+footprints
+SOT23-3P65_220X100L38X35N
+Small Outline Transistor (SOT23), 0.65 mm pitch; 3 pin, 2.00 mm L X 1.25 mm W X 1.00 mm H body
+
+0
+3
+3
+footprints
+SOT23-3P95_230X110L30X43N
+Small Outline Transistor (SOT23), 0.95 mm pitch; 3 pin, 2.90 mm L X 1.30 mm W X 1.10 mm H body
+
+0
+3
+3
+footprints
+SOT23-3P95_240X100L30X42N
+Small Outline Transistor (SOT23), 0.95 mm pitch; 3 pin, 2.90 mm L X 1.30 mm W X 1.00 mm H body
+
+0
+3
+3
+footprints
+SOT23-3P95_285X115L45X42N
+Small Outline Transistor (SOT23), 0.95 mm pitch; 3 pin, 3.00 mm L X 1.60 mm W X 1.15 mm H body
+
+0
+3
+3
+footprints
+SOT23-3P96_237X112L57X44N
+Small Outline Transistor (SOT23), 0.96 mm pitch; 3 pin, 2.92 mm L X 1.30 mm W X 1.12 mm H body
+
+0
+3
+3
+footprints
+SOT23-3P103_235X102L32X38N
+Small Outline Transistor (SOT23), 1.03 mm pitch; 3 pin, 2.85 mm L X 1.25 mm W X 1.025 mm H body
+
+0
+3
+3
+footprints
+SOT23-5P95_282X145L45X40N
+Small Outline Transistor (SOT23), 0.95 mm pitch; 5 pin, 2.96 mm L X 1.60 mm W X 1.45 mm H body
+
+0
+5
+5
+footprints
+SOT143-4P190_237X112L31X44N
+Small Outline Transistor (SOT143), 1.90 mm pitch; 4 pin, 2.92 mm L X 1.30 mm W X 1.12 mm H body
+
+0
+4
+4
+footprints
+SOT223-4P230_700X180L80X75N
+Small Outline Transistor (SOT223), 2.30 mm pitch; 4 pin, 6.50 mm L X 3.50 mm W X 1.80 mm H body
+
+0
+4
+4
+footprints
+SOT223-4P230_700X180L87X72N
+Small Outline Transistor (SOT223), 2.30 mm pitch; 4 pin, 6.50 mm L X 3.50 mm W X 1.80 mm H body
+
+0
+4
+4
+footprints
+STX-3000
+
+
+0
+5
+4
+footprints
+TC33X-2-503E
+
+
+0
+3
+3
+footprints
+TC2030_SMALL
+Tag-Connect TC2030 footprint by carloscuev@gmail.com
+Tag-Connect TC2030
+0
+6
+6
+footprints
+TEST_POINT_2PADS
+
+
+0
+2
+2
+footprints
+TLP3555A(TP1,F
+
+
+0
+4
+4
+footprints
+TO254P965X465X1473-3
+Flange Mount (TO-220) Vertical, 2.54 mm pitch; 3 pin, 9.65 mm L X 4.65 mm W X 14.73 mm H body
+
+0
+3
+3
+footprints
+TO254P965X465X1473-3-HEATSINK
+Flange Mount (TO-220) Vertical, 2.54 mm pitch; 3 pin, 9.65 mm L X 4.65 mm W X 14.73 mm H body
+
+0
+3
+3
+footprints
+UJ2-AV-1-TH
+
+
+0
+6
+5
+footprints
+VIA-25_12_BOTTOM_PROBE
+
+
+0
+1
+1
+footprints
+VIA-40_26_BOTTOM_PROBE
+
+
+0
+1
+1
+panelizing
+FIDUCIAL_1mmX2mm
+
+
+0
+1
+1
+panelizing
+MountingHole_3.5mm
+Mounting Hole 3.5mm, no annular
+mounting hole 3.5mm no annular
+0
+0
+0
+panelizing
+double_sided_tab
+
+
+0
+0
+0
+panelizing
+feeding_dir
+
+
+0
+0
+0
+panelizing
+rounded_tab_small
+
+
+0
+0
+0
+panelizing
+single_sided_tab
+
+
+0
+0
+0
+rainboard_fp
+009296003202906
+
+
+0
+6
+3
 rainboard_fp
 ACJS-MHDR
 
