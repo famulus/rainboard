@@ -1,12 +1,12 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
-<svg xmlns="http://www.w3.org/2000/svg"  xmlns:xlink="http://www.w3.org/1999/xlink" width='310.000mm' height='283.904mm' viewBox="0 0 310.000 283.904">
+<svg xmlns="http://www.w3.org/2000/svg"  xmlns:xlink="http://www.w3.org/1999/xlink" width='290.000mm' height='275.244mm' viewBox="0 0 290.000 275.244">
 
 <title>Exported SVG</title>
 
 <style><![CDATA[
 polygon {
 shape-rendering:crispEdges;
-stroke-width:0.310000;
+stroke-width:0.290000;
 }
 .s1 {
 stroke:#000000;
@@ -115,6 +115,6 @@ stroke-linejoin:round;
 fill:none;
 }
 ]]></style>
-<path d='M88.138 5.000 L5.000,149.000 L80.000,278.904 L230.000,278.904 L305.000,149.000 L221.862,5.000 L88.138,5.000 ' class='s0' />
+<path d='M88.138 5.000 L5.000,149.000 L75.000,270.244 L215.000,270.244 L285.000,149.000 L201.862,5.000 L88.138,5.000 ' class='s0' />
 
 </svg>
