@@ -13,7 +13,7 @@ rainboard_height = 33;
 
 hole_radius = 12;
 
-resolution = 20;
+resolution = 100;
 
 back_panel = [125,40,60];
 
