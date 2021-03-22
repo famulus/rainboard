@@ -13,7 +13,7 @@ rainboard_height = 33;
 
 hole_radius = 12;
 
-resolution = 100;
+resolution = 15;
 
 back_panel = [125,40,60];
 
@@ -55,11 +55,11 @@ module interior(rainboard_height,rainboard_diameter, round_over, wall_thickness 
 //------------------ LEDGE ------------------
 
 
+clip_thickness = 2.5;
+clip_offset = clip_thickness/2;
 
 module ledge( ) {    // ledge for plexiglass
   plexi_thickness = 3; 
-  clip_thickness = 2;
-  clip_offset = clip_thickness/2;
 
   difference(){
     translate([0,0,rainboard_height-plexi_thickness-clip_thickness])linear_extrude(height = wall_thickness)
@@ -77,14 +77,21 @@ module ledge( ) {    // ledge for plexiglass
   module clip( ) {
     //clip
     translate([0,0,(rainboard_height+2.5)])
-    rotate([70,0,0]) rotate([0,90,0])    cylinder(h=110 , d=(clip_thickness  ), center=true,$fn=3);   // the clip 
+    rotate([65,0,0]) rotate([0,90,0])    cylinder(h=70 , d=(clip_thickness  ), center=true, $fn=3);   // the clip 
   }
+
 
   translate([0,(rainboard_minor_diameter/2)-1,0])
   clip();
   
-  #rotate([0,0,180]) 
-  translate([0,(rainboard_short_minor_diameter/2)-1,0]) 
+  rotate([0,0,180]) 
+  translate([0,(rainboard_short_minor_diameter/2)-1.2,0]) 
+  clip();
+  rotate([0,0,60]) 
+  translate([0,(rainboard_short_minor_diameter/2)-1.2,0]) 
+  clip();
+  rotate([0,0,300]) 
+  translate([0,(rainboard_short_minor_diameter/2)-1.2,0]) 
   clip();
 
 }
