@@ -9,7 +9,7 @@ rainboard_short_minor_diameter = 242.5;
 
 
 
-rainboard_height = 33;
+rainboard_height = 42.28;
 
 hole_radius = 12;
 
@@ -100,17 +100,20 @@ module ledge( ) {    // ledge for plexiglass
 
 module backPanel(dimentions=[1,2,3]) {
 
-usb_width = 14.5;     //cube_width
+// usb_width = 14.5;     //cube_width
+usb_width = 15.5;     //cube_width
 usb_opening = [usb_width,usb_width,10] ;
     
     
-top_of_chassis_to_top_of_pcb = 25;    
+top_of_chassis_to_top_of_pcb = 21.50 + wall_thickness;    
     
 pcb_offset = top_of_chassis_to_top_of_pcb ;
+
+pcb_thickness = 1.68;
  
 translate([0,((rainboard_minor_diameter/2)-1.5),pcb_offset]) rotate([90,0,0]){ // place all holes at the back panel
     
-     translate([ 0, -(usb_width/2),0]) cube(usb_opening, center=true); // cutout for USB
+    #translate([ 0, -(usb_width/2),0]) cube(usb_opening, center=true); // cutout for USB
      }   
  }
 
